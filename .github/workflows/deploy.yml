@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     container: pandoc/latex
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Install mustache (to update the date)
         run: apk add ruby && gem install mustache
       - name: creates output
@@ -21,8 +21,8 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.AUTO_ACTIONS }}
         with:
           source-directory: 'output'
-          destination-github-username: 'pminsun'
-          destination-repository-name: 'TtorangttorangWeb'
+          destination-github-username: pminsun
+          destination-repository-name: TtorangttorangWeb
           user-email: ${{ secrets.EMAIL }}
           commit-message: ${{ github.event.commits[0].message }}
           target-branch: main
