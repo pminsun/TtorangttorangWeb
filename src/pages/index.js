@@ -1,6 +1,22 @@
 import GuideMent from '@/components/GuideMent';
+import { cls } from '@/utils/config';
+import { useState } from 'react';
 
 export default function Home() {
+  const [presentPurpose, setpresentPurpose] = useState('');
+  const [endingTxt, setEndingTxt] = useState('');
+
+  const selectPurpose = (purpose) => {
+    setpresentPurpose(purpose);
+  };
+
+  const selectEndingTxt = (txt) => {
+    setEndingTxt(txt);
+  };
+
+  console.log('presentPurpose', presentPurpose);
+  console.log('endingTxt', endingTxt);
+
   return (
     <main className="main_container">
       <section className="topBanner_area"></section>
@@ -51,59 +67,44 @@ export default function Home() {
                 <p>
                   2. <span className="required">*</span>발표 목적을 선택해 주세요
                 </p>
-                <div className="radioCheck">
-                  <label for="company">
-                    <input
-                      type="radio"
-                      name="purpose"
-                      value="company"
-                      id="company"
-                    />
-                    회사 컨퍼런스
-                  </label>
-                  <label for="school">
-                    <input
-                      type="radio"
-                      name="purpose"
-                      value="school"
-                      id="school"
-                    />
-                    학교 발표
-                  </label>
-                  <label for="club">
-                    <input
-                      type="radio"
-                      name="purpose"
-                      value="club"
-                      id="club"
-                    />
-                    소모임
-                  </label>
+                <div className="purposeCheck">
+                  <div
+                    onClick={() => selectPurpose('company')}
+                    className={cls(presentPurpose === 'company' ? 'active_color' : 'disabled_color')}
+                  >
+                    <span>회사 컨퍼런스</span>
+                  </div>
+                  <div
+                    onClick={() => selectPurpose('school')}
+                    className={cls(presentPurpose === 'school' ? 'active_color' : 'disabled_color')}
+                  >
+                    <span>학교 발표</span>
+                  </div>
+                  <div
+                    onClick={() => selectPurpose('club')}
+                    className={cls(presentPurpose === 'club' ? 'active_color' : 'disabled_color')}
+                  >
+                    <span>소모임</span>
+                  </div>
                 </div>
               </div>
               <div>
                 <p>
                   3. <span className="required">*</span>종결 어미를 선택해 주세요
                 </p>
-                <div className="radioCheck">
-                  <label for="hapnida">
-                    <input
-                      type="radio"
-                      name="ending"
-                      value="hapnida"
-                      id="hapnida"
-                    />
-                    - 합니다체
-                  </label>
-                  <label for="haeyo">
-                    <input
-                      type="radio"
-                      name="ending"
-                      value="haeyo"
-                      id="haeyo"
-                    />
-                    - 해요체
-                  </label>
+                <div className="endingTxtCheck">
+                  <div
+                    onClick={() => selectEndingTxt('hapnida')}
+                    className={cls(endingTxt === 'hapnida' ? 'active_color' : 'disabled_color')}
+                  >
+                    <span>- 합니다체</span>
+                  </div>
+                  <div
+                    onClick={() => selectEndingTxt('haeyo')}
+                    className={cls(endingTxt === 'haeyo' ? 'active_color' : 'disabled_color')}
+                  >
+                    <span>- 해요체</span>
+                  </div>
                 </div>
               </div>
               <div className="repeat_box">

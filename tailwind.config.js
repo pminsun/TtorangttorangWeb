@@ -71,6 +71,14 @@ module.exports = {
         '.gray_colorTxt': {
           color: '#757575',
         },
+        '.disabled_color': {
+          backgroundColor: '#EDEDED',
+          color: '#757575',
+        },
+        '.active_color': {
+          backgroundColor: '#FD8889',
+          color: '#FEFEFE',
+        },
       };
       addUtilities(newCssUtilities, ['responsive', 'hover']);
       addUtilities(colorUtilities, ['responsive', 'hover']);
