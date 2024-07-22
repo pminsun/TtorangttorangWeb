@@ -14,9 +14,6 @@ export default function Home() {
     setEndingTxt(txt);
   };
 
-  console.log('presentPurpose', presentPurpose);
-  console.log('endingTxt', endingTxt);
-
   return (
     <main className="main_container">
       <section className="topBanner_area"></section>
@@ -33,8 +30,8 @@ export default function Home() {
               </p>
               <textarea
                 placeholder="발표문 초안을 작성해주세요"
-                maxlength="5000"
-              ></textarea>
+                maxLength="5000"
+              />
               <div className="copy">
                 <div className="icon"></div>
                 <p>복사하기</p>
@@ -60,8 +57,8 @@ export default function Home() {
                 </p>
                 <textarea
                   placeholder="ex : 생활 속에서 실천할 수 있는 환경 보호 방안"
-                  maxlength="100"
-                ></textarea>
+                  maxLength="100"
+                />
               </div>
               <div>
                 <p>
@@ -114,11 +111,11 @@ export default function Home() {
                   id="repeat"
                 />
                 <label
-                  for="repeat"
+                  htmlFor="repeat"
                   className="checkboxCustom"
                 ></label>
                 <label
-                  for="repeat"
+                  htmlFor="repeat"
                   className="checkboxTxt"
                 >
                   중복 표현을 제거할게요
