@@ -1,0 +1,169 @@
+main.main_container {
+  @apply pt-[40px];
+
+  /* common */
+  .required {
+    @apply main_colorTxt pr-[4px];
+  }
+
+  .guideMent {
+    @apply flex items-end gap-[20px] h-[100px] mb-[55px] border;
+
+    .character_box {
+      @apply h-full w-[80px] bg-gray-300;
+    }
+
+    .ment_box {
+      @apply pb-[4px];
+
+      p {
+        @apply gray_colorTxt text-[20px];
+
+        &:first-of-type {
+          @apply font-bold text-[24px];
+        }
+      }
+    }
+  }
+
+  /* banner */
+  section.topBanner_area {
+    @apply w-full h-[496px] rounded-md main_colorBg overflow-hidden;
+  }
+
+  /* 발표 대본 교정 */
+  section.correction_area {
+    @apply w-full mt-[60px];
+
+    .scriptModify_box {
+      @apply flex_xBetween gap-[100px] w-full h-[832px] pt-[26px] px-[40px] pb-[50px] rounded bg-[#fefefe] border border-[#c3c4c4];
+
+      .scriptWrite_box {
+        @apply flex_xBetween flex-col w-[775px] h-full;
+
+        > div {
+          @apply w-full;
+        }
+
+        .script {
+          > p {
+            @apply text-[18px] gray_colorTxt;
+          }
+
+          textarea {
+            @apply w-full h-[520px] p-[16px] my-[16px] text-[16px] leading-[40px] bg-[#fefefe] border border-[#C4C4C4] rounded;
+          }
+
+          .copy {
+            @apply flex justify-end gap-[4px];
+            .icon {
+              @apply w-[24px] bg-gray-300;
+            }
+
+            p {
+              @apply text-[18px] gray_colorTxt;
+            }
+          }
+        }
+
+        .script_info {
+          @apply flex items-start px-[9px] py-[17px] border border-[#C4C4C4] rounded;
+
+          span {
+            @apply text-[16px] tracking-tight;
+          }
+
+          > div {
+            @apply relative px-[8px];
+
+            &:first-of-type {
+              @apply pl-0;
+            }
+
+            &::after {
+              @apply content-[''] absolute_yHalf right-0 w-[1px] h-[50%] bg-[#757575];
+            }
+
+            &:last-of-type {
+              @apply pr-0;
+            }
+
+            &:last-of-type::after {
+              @apply hidden;
+            }
+          }
+        }
+      }
+
+      .scriptSetting_box {
+        @apply flex-col flex-1 h-full flex_xBetween;
+
+        .detailSetting {
+          @apply flex flex-col gap-[40px] w-full h-[520px];
+
+          p {
+            @apply mb-[12px] text-[18px] font-medium gray_colorTxt;
+          }
+
+          input[type='radio'],
+          input[type='checkbox'] {
+            @apply hidden;
+          }
+
+          .radioCheck {
+            @apply flex gap-[28px] w-full h-[52px];
+
+            label {
+              @apply flex_center w-[160px] bg-[#EDEDED];
+            }
+          }
+
+          > div:first-of-type {
+            textarea {
+              @apply w-full h-[132px] p-[16px] text-[16px] border border-[#C4C4C4];
+            }
+          }
+
+          .repeat_box {
+            @apply flex gap-[12px];
+            label.checkboxCustom {
+              @apply flex_center w-[24px] aspect-square rounded cursor-pointer bg-[#EDEDED];
+              user-select: none;
+            }
+
+            label.checkboxTxt {
+              @apply flex gap-[12px] text-[18px] font-medium gray_colorTxt;
+            }
+          }
+        }
+
+        .btn_box {
+          @apply flex_xBetween gap-[34px] w-full h-[60px];
+          button {
+            @apply flex_center flex-1 h-full text-[16px] font-medium rounded gray_colorTxt bg-[#EDEDED];
+          }
+        }
+      }
+    }
+  }
+
+  /* 예상질문 */
+  section.ask_area {
+    @apply w-full mt-[60px];
+
+    .ask_box {
+      @apply flex_center w-full h-[665px];
+
+      .none_ask {
+        @apply flex-col flex_center gap-[44px];
+        .illust_box {
+          @apply w-[254px] aspect-square bg-gray-300;
+        }
+
+        p {
+          @apply text-center text-[20px] leading-[32px] gray_colorTxt;
+        }
+      }
+    }
+  }
+}
