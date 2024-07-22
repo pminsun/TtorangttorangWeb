@@ -7,7 +7,7 @@ main.main_container {
   }
 
   .guideMent {
-    @apply flex items-end gap-[20px] h-[100px] mb-[55px] border;
+    @apply flex items-end gap-[20px] h-[100px] mb-[55px];
 
     .character_box {
       @apply h-full w-[80px] bg-gray-300;
@@ -110,11 +110,12 @@ main.main_container {
             @apply hidden;
           }
 
-          .radioCheck {
-            @apply flex gap-[28px] w-full h-[52px];
+          .purposeCheck,
+          .endingTxtCheck {
+            @apply flex_vertical_center gap-[32px] w-full h-[52px];
 
-            label {
-              @apply flex_center w-[160px] bg-[#EDEDED];
+            > div {
+              @apply flex_center flex-1 max-w-[160px] h-full rounded cursor-pointer;
             }
           }
 
