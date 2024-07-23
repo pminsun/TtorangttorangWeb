@@ -1,6 +1,7 @@
 import GuideMent from '@/components/GuideMent';
-import { cls, formatNumber } from '@/utils/config';
-import { useEffect, useState } from 'react';
+import SkeletonLoading from '@/components/SkeletonLoading';
+import { cls, formatNumber, measureTextWidth } from '@/utils/config';
+import { useEffect, useState, useRef } from 'react';
 
 export default function Home() {
   const [script, setScript] = useState('');
@@ -14,6 +15,12 @@ export default function Home() {
   const [repeat, setRepeat] = useState(false);
   const [askListState, setAskListState] = useState([false, false, false]);
   const [test, setTest] = useState(false);
+
+  //
+  const scriptTextareaRef = useRef(null);
+  const skeletonRef = useRef(null);
+  const [showSkeleton, setShowSkeleton] = useState(false);
+  const [lineWidths, setLineWidths] = useState([]);
 
   const selectPurpose = (purpose) => {
     setpresentPurpose(purpose);
@@ -74,8 +81,36 @@ export default function Home() {
 
   //  교정하기
   const modifyScript = () => {
-    setTest(true);
+    setShowSkeleton(true);
+    scriptTextareaRef.current.style.opacity = '0';
+    setTimeout(() => {
+      setShowSkeleton(false);
+      scriptTextareaRef.current.style.opacity = '1';
+      setTest(true);
+    }, 3000);
   };
+
+  // 스켈레톤 로딩
+  useEffect(() => {
+    const lines = script.split('\n');
+    const newLineWidths = lines.map((line) => measureTextWidth(line, '16px NotoSansKR'));
+    setLineWidths(newLineWidths);
+  }, [script]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (skeletonRef.current) {
+        skeletonRef.current.style.top = `-${scriptTextareaRef.current.scrollTop}px`;
+      }
+    };
+
+    const textarea = scriptTextareaRef.current;
+    textarea.addEventListener('scroll', handleScroll);
+
+    return () => {
+      textarea.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <main className="main_container">
@@ -91,12 +126,22 @@ export default function Home() {
               <p>
                 <span className="required">*</span>발표 내용
               </p>
-              <textarea
-                placeholder="발표문 초안을 작성해주세요"
-                maxLength="3000"
-                value={script}
-                onChange={writeScript}
-              />
+              <div className="scriptText_box">
+                <textarea
+                  ref={scriptTextareaRef}
+                  placeholder="발표문 초안을 작성해주세요"
+                  maxLength="3000"
+                  value={script}
+                  onChange={writeScript}
+                />
+                <div
+                  ref={skeletonRef}
+                  className="skeleton_box"
+                  style={{ pointerEvents: 'none' }}
+                >
+                  {showSkeleton && <SkeletonLoading lineWidths={lineWidths} />}
+                </div>
+              </div>
               <div className="copy_box">
                 <div>
                   <div className="icon"></div>
@@ -189,14 +234,14 @@ export default function Home() {
               <button
                 type="button"
                 onClick={deleteAllScript}
-                className={cls(script.length > 0 || subject.length > 0 ? 'active_color' : 'disabled_color')}
+                className={cls(script.length > 0 || subject.length > 0 ? 'active_color cursor-pointer' : 'disabled_color cursor-default')}
               >
                 초기화
               </button>
               <button
                 type="button"
                 onClick={modifyScript}
-                className={cls(modifyBtn ? 'active_color' : 'disabled_color')}
+                className={cls(modifyBtn ? 'active_color cursor-pointer' : 'disabled_color cursor-default')}
               >
                 교정하기
               </button>

@@ -1,6 +1,6 @@
 export default function SkeletonLoading({ lineWidths }) {
   const SkeletonLine = ({ width }) => {
-    const MAX_WIDTH = 1280;
+    const MAX_WIDTH = 725;
     const totalWidth = Math.ceil(width);
     const bars = Math.floor(totalWidth / MAX_WIDTH);
     const remainder = Math.ceil(totalWidth - MAX_WIDTH * bars);
@@ -9,7 +9,7 @@ export default function SkeletonLoading({ lineWidths }) {
     if (width <= 10) {
       return (
         <div
-          className="skeletonLine opacity-0 !mb-[0.1em]"
+          className="skeletonLine opacity-0 !mb-[8px]"
           style={{
             width: `${width + 10}px`,
           }}
@@ -40,11 +40,12 @@ export default function SkeletonLoading({ lineWidths }) {
             }}
           />
         ))}
+        {/* 여기보기 */}
         {remainder > 0 && (
           <div
             className="skeletonLine"
             style={{
-              width: `${remainder + 80 > MAX_WIDTH ? MAX_WIDTH : remainder + 80}px`,
+              width: `${remainder + 150 > MAX_WIDTH ? MAX_WIDTH : remainder + 20}px`,
             }}
           />
         )}

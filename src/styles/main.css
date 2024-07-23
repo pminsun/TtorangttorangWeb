@@ -50,8 +50,20 @@ main.main_container {
             @apply text-[18px] gray_colorTxt;
           }
 
-          textarea {
-            @apply w-full h-[520px] p-[16px] my-[16px] text-[16px] leading-[40px] bg-[#fefefe] border border-[#C4C4C4] rounded;
+          .scriptText_box {
+            @apply relative w-full h-[520px] my-[16px] overflow-hidden border border-[#C4C4C4] rounded;
+
+            textarea {
+              @apply w-full h-full p-[16px] text-[16px] leading-[40px] bg-[#fefefe];
+            }
+
+            .skeleton_box {
+              @apply absolute top-0 left-0 w-full h-auto overflow-y-auto overflow-x-hidden py-[18px] px-[16px];
+
+              > div {
+                @apply w-full;
+              }
+            }
           }
 
           .copy_box {

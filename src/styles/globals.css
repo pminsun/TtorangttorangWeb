@@ -70,7 +70,7 @@ footer {
 
 /* SkeletonLoading */
 .skeletonLine {
-  @apply relative mb-[0.3em] rounded-[4px] h-[20px] overflow-hidden bg-[#d6d6d6];
+  @apply relative mb-[8px] rounded-[5px] h-[32px] overflow-hidden bg-[#d6d6d6];
 
   &:before {
     content: '';
