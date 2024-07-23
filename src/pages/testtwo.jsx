@@ -1,45 +1,49 @@
 import SkeletonLoading from '@/components/SkeletonLoading';
 import { useEffect, useRef, useState } from 'react';
 import { diffWords } from 'diff';
+import { HighlightWithinTextarea } from 'react-highlight-within-textarea';
+
+const testTxt =
+  "안녕하세요, 여러분. 오늘은 디자인 프로세스에서 중요한 역할을 하는 퍼소나(Persona)에 대해 이야기해보겠습니다. 퍼소나는 디자인 작업을 진행할 때 필수적인 도구 중 하나예요. 퍼소나는 우리의 제품이나 서비스를 사용할 가상의 사용자를 대표하는 캐릭터로, 실제 사용자 데이터를 기반으로 만들어집니다. 이를 통해 디자이너는 사용자 중심의 디자인을 구현할 수 있어요. 퍼소나를 만드는 과정은 다음과 같습니다. 먼저, 사용자 리서치를 통해 목표 사용자의 행동, 동기, 요구사항 등을 파악해요. 이때 인터뷰, 설문조사, 사용성 테스트 등의 방법을 사용합니다. 수집된 데이터를 분석하여 공통된 특성과 패턴을 찾아내고, 이를 바탕으로 하나 이상의 퍼소나를 정의해요.퍼소나는 예를 들어, 우리의 목표 사용자가 30대 직장인이라면, 그들의 하루 일과, 주요 관심사, 직장에서 겪는 문제점 등을 자세히 기록하는 편이에요. 퍼소나는 디자인 과정에서 여러 가지 중요한 역할을 합니다. 첫째, 팀원들이 사용자에 대한 공통된 이해를 갖게 해요. 이는 의사소통을 원활하게 하고, 팀원들이 같은 방향을 바라보도록 도와줍니다. 둘째, 디자인 결정 시 사용자 관점을 유지해 사용자에게 실제로 필요한 기능과 경험을 제공할 수 있습니다. 셋째, 사용자의 요구와 목표를 구체적으로 함으로써, 디자이너가 더 창의적이고 효율적으로 문제를 해결할 수 있도록 해줘요. 예를 들어, 우리는 '김지훈'이라는 퍼소나를 만들 수 있습니다. 지훈은 35세의 마케팅 매니저로, 바쁜 업무 일정 속에서 효율적으";
 
 export default function TestTwo() {
-  const highlightDiffs = (oldStr, newStr) => {
-    const diff = diffWords(oldStr, newStr);
-    return diff.map((part, index) => {
-      if (part.added) {
-        return (
-          <span
-            key={index}
-            style={{ backgroundColor: 'lightgreen' }}
-          >
-            {part.value}
-          </span>
-        );
-      }
-      // if (part.removed) {
-      //   return (
-      //     <span
-      //       key={index}
-      //       style={{ backgroundColor: 'salmon' }}
-      //     >
-      //       {part.value}
-      //     </span>
-      //   );
-      // }
-      // return <span key={index}>{part.value}</span>;
-      if (!part.removed) {
-        return <span key={index}>{part.value}</span>;
-      }
-      return null;
-    });
-  };
+  // const highlightDiffs = (oldStr, newStr) => {
+  //   const diff = diffWords(oldStr, newStr);
+  //   return diff.map((part, index) => {
+  //     if (part.added) {
+  //       return (
+  //         <span
+  //           key={index}
+  //           style={{ backgroundColor: 'lightgreen' }}
+  //         >
+  //           {part.value}
+  //         </span>
+  //       );
+  //     }
+  //     // if (part.removed) {
+  //     //   return (
+  //     //     <span
+  //     //       key={index}
+  //     //       style={{ backgroundColor: 'salmon' }}
+  //     //     >
+  //     //       {part.value}
+  //     //     </span>
+  //     //   );
+  //     // }
+  //     // return <span key={index}>{part.value}</span>;
+  //     if (!part.removed) {
+  //       return <span key={index}>{part.value}</span>;
+  //     }
+  //     return null;
+  //   });
+  // };
 
   // const highlightDiffs = (oldStr, newStr) => {
   //   const diff = diffWords(oldStr, newStr);
   //   return diff
   //     .map((part) => {
   //       if (part.added) {
-  //         return `/${part.value}/`; // 추가된 부분을 슬래시로 감쌈
+  //         return `${part.value}`;
   //       }
   //       if (!part.removed) {
   //         return part.value;
@@ -48,20 +52,47 @@ export default function TestTwo() {
   //     })
   //     .join('');
   // };
+
+  const highlightDiffs = (oldStr, newStr) => {
+    const diff = diffWords(oldStr, newStr);
+    const highlights = [];
+
+    diff.forEach((part) => {
+      if (part.added) {
+        highlights.push(part.value.trim());
+      }
+    });
+
+    // diff
+    //   .map((part) => {
+    //     if (part.added) {
+    //       highlights.push(part.value.trim());
+    //     }
+    //     if (!part.removed) {
+    //       return part.value;
+    //     }
+    //   })
+    //   .join('');
+
+    console.log('highlights', highlights);
+
+    return highlights;
+  };
+
   const [originalText, setOriginalText] = useState('');
   const [correctedText, setCorrectedText] = useState('');
-  const [highlightedText, setHighlightedText] = useState(null);
-
-  const txt =
-    '스마트 홈 기술의 현재와 미래에 대해 이야기하겠습니다. 스마트 홈 기술은 우리 일상생활을 혁신적으로 변화시키고 있습니다. 이제는 단순히 가전제품을 원격으로 조작하는 것을 넘어서, 집 전체를 자동화하는 수준에 이르렀습니다. 가장 일반적인 예로는 스마트 스피커를 들 수 있습니다. 아마존의 에코나 구글 홈 같은 제품들은 음성 명령을 통해 음악을 재생하고, 날씨 정보를 제공하며, 집 안의 다른 스마트 기기를 제어할 수도 있습니다. 스마트 조명 시스템은 사용자의 생활 패턴에 맞춰 자동으로 밝기를 조절하고, 색상을 변경할 수 있어 에너지 절약에도 큰 도움이 됩니다. 보안 측면에서도 스마트 홈 기술은 크게 발전했습니다. 스마트 도어벨과 CCTV는 실시간으로 집 주변을 모니터링하며, 이상 상황 발생 시 즉시 알림을 받습니다. 이런 시스템은 외부 침입을 방지하고, 사용자에게 심리적 안정을 제공하는 데 큰 역할을 합니다. 앞으로의 스마트 홈은 더욱 개인화되고 통합된 시스템을 갖출 예정입니다. 인공지능이 더욱 발전하면서 사용자의 습관과 취향을 학습해 최적화된 환경을 제공하게 될 것입니다. 예를 들어, AI가 사용자의 일정을 파악하여 아침에 자동으로 커피를 준비하고, 퇴근 시간에 맞춰 집 안의 온도를 적절히 조절하는 등의 서비스가 가능해질 것입니다. 사물인터넷(IoT)의 발전으로 모든 가전제품이 서로 연결되어 중앙에서 통합 관리될 수 있는 스마트 홈 허브가 등장할 것입니다. 사용자는 하나의 앱이나 디바이스로 집 안의 모든 기기를 제어할 수 있게 되어 편리함이 극대화될 것입니다. 스마트 홈 기술은 우리의 생활을 더욱 편리하고 안전하게 만들고 있습니다.';
+  const [highlightedText, setHighlightedText] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Assume correctedText is obtained from some correction service
-    setCorrectedText(txt);
-    setHighlightedText(highlightDiffs(originalText, correctedText));
+    setCorrectedText(testTxt);
   };
+
+  useEffect(() => {
+    if (correctedText) {
+      setHighlightedText(highlightDiffs(originalText, correctedText));
+    }
+  }, [correctedText, originalText]);
 
   return (
     <main className="w-full flex_center h-[1000px] bg-gray-200">
@@ -72,21 +103,22 @@ export default function TestTwo() {
             onChange={(e) => setOriginalText(e.target.value)}
             rows="4"
             cols="50"
+            className="w-[700px] h-[300px]"
           />
           <button type="submit">Submit</button>
         </form>
-        {highlightedText && (
-          <div className="w-[500px] h-[500px]">
+        {highlightedText.length > 0 && (
+          <div className="w-[700px] h-[500px]">
             <h2>교정된 결과:</h2>
-            <div>{highlightedText}</div>
 
-            {/* <textarea
-              value={highlightedText} // 강조된 텍스트를 텍스트 영역에 표시
-              readOnly
-              rows="4"
-              cols="50"
-              className="h-full"
-            /> */}
+            <div>
+              <HighlightWithinTextarea
+                highlight={highlightedText}
+                value={correctedText}
+                onChange={(value) => setCorrectedText(value)}
+                className="text-red"
+              />
+            </div>
           </div>
         )}
       </div>
