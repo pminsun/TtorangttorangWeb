@@ -14,7 +14,7 @@ const TextareaSkeleton = () => {
   const [charCount, setCharCount] = useState(0);
   const [lineWidths, setLineWidths] = useState([]);
   const [showSkeleton, setShowSkeleton] = useState(false);
-  const [estimatedTime, setEstimatedTime] = useState(0); // 예상 발표 시간 상태 추가
+  const [estimatedPresentTime, setEstimatedPresentTime] = useState(0); // 예상 발표 시간 상태 추가
   const textareaRef = useRef(null);
   const skeletonRef = useRef(null);
 
@@ -25,7 +25,7 @@ const TextareaSkeleton = () => {
   };
   useEffect(() => {
     const newEstimatedTime = Math.ceil(charCount / 5); // 초 단위
-    setEstimatedTime(newEstimatedTime);
+    setEstimatedPresentTime(newEstimatedTime);
   }, [charCount, text]);
 
   const handleSubmit = () => {
@@ -89,7 +89,7 @@ const TextareaSkeleton = () => {
       </div>
       <div className="mt-[20px]">
         <p>예상 발표 시간</p>
-        <p>{estimatedTime}</p>
+        <p>{estimatedPresentTime}</p>
       </div>
     </>
   );

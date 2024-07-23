@@ -30,7 +30,7 @@ textarea {
 }
 
 .root_layout {
-  @apply w-full max-w-[1495px] mx-auto pb-[205px];
+  @apply w-full max-w-[1555px] mx-auto px-[30px] pb-[205px];
 }
 
 /* header */
@@ -47,7 +47,7 @@ footer {
   @apply w-full h-[128px] bg-white;
 
   .ft_container {
-    @apply flex_xBetween w-full max-w-[1262px] h-full mx-auto;
+    @apply flex_xBetween w-full max-w-[1322px] h-full px-[30px] mx-auto;
 
     p {
       @apply gray_colorTxt font-medium text-[16px];

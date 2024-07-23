@@ -36,7 +36,7 @@ main.main_container {
     @apply w-full mt-[60px];
 
     .scriptModify_box {
-      @apply flex_xBetween gap-[100px] w-full h-[832px] pt-[26px] px-[40px] pb-[50px] rounded bg-[#fefefe] border border-[#c3c4c4];
+      @apply flex_xBetween gap-[50px] w-full h-[832px] pt-[26px] px-[40px] pb-[50px] rounded bg-[#fefefe] border border-[#c3c4c4];
 
       .scriptWrite_box {
         @apply flex_xBetween flex-col w-[775px] h-full;
@@ -54,14 +54,18 @@ main.main_container {
             @apply w-full h-[520px] p-[16px] my-[16px] text-[16px] leading-[40px] bg-[#fefefe] border border-[#C4C4C4] rounded;
           }
 
-          .copy {
-            @apply flex justify-end gap-[4px];
-            .icon {
-              @apply w-[24px] bg-gray-300;
-            }
+          .copy_box {
+            @apply justify-end flex_vertical_center;
 
-            p {
-              @apply text-[18px] gray_colorTxt;
+            > div {
+              @apply flex_vertical_center justify-end gap-[4px] pl-[10px] cursor-pointer py-[4px];
+              .icon {
+                @apply w-[24px] aspect-square bg-gray-300;
+              }
+
+              p {
+                @apply text-[18px] gray_colorTxt;
+              }
             }
           }
         }
@@ -70,7 +74,7 @@ main.main_container {
           @apply flex items-start px-[9px] py-[17px] border border-[#C4C4C4] rounded;
 
           span {
-            @apply text-[16px] tracking-tight;
+            @apply text-[16px] font-medium tracking-tight;
           }
 
           > div {
@@ -96,18 +100,13 @@ main.main_container {
       }
 
       .scriptSetting_box {
-        @apply flex-col flex-1 h-full flex_xBetween;
+        @apply flex-col w-[498px] h-full flex_xBetween;
 
         .detailSetting {
           @apply flex flex-col gap-[40px] w-full h-[520px];
 
           p {
             @apply mb-[12px] text-[18px] font-medium gray_colorTxt;
-          }
-
-          input[type='radio'],
-          input[type='checkbox'] {
-            @apply hidden;
           }
 
           .purposeCheck,
@@ -120,20 +119,28 @@ main.main_container {
           }
 
           > div:first-of-type {
-            textarea {
-              @apply w-full h-[132px] p-[16px] text-[16px] border border-[#C4C4C4];
+            .subject_box {
+              @apply relative w-full h-[132px] border border-[#C4C4C4] rounded overflow-hidden;
+              textarea {
+                @apply w-full h-full p-[16px] text-[16px];
+              }
+
+              .subject_charCount {
+                @apply absolute bottom-[4px] right-[16px] font-medium text-[16px];
+              }
             }
           }
 
           .repeat_box {
-            @apply flex gap-[12px];
-            label.checkboxCustom {
-              @apply flex_center w-[24px] aspect-square rounded cursor-pointer bg-[#EDEDED];
-              user-select: none;
-            }
+            > div {
+              @apply flex_vertical_center gap-[12px] w-[250px] cursor-pointer;
+              .checkbox {
+                @apply flex_center w-[24px] h-[24px] rounded cursor-pointer;
+              }
 
-            label.checkboxTxt {
-              @apply flex gap-[12px] text-[18px] font-medium gray_colorTxt;
+              > p {
+                @apply text-[18px] !mb-0 select-none font-medium gray_colorTxt;
+              }
             }
           }
         }
@@ -141,7 +148,7 @@ main.main_container {
         .btn_box {
           @apply flex_xBetween gap-[34px] w-full h-[60px];
           button {
-            @apply flex_center flex-1 h-full text-[16px] font-medium rounded gray_colorTxt bg-[#EDEDED];
+            @apply flex_center flex-1 h-full text-[16px] font-medium rounded;
           }
         }
       }
@@ -153,16 +160,63 @@ main.main_container {
     @apply w-full mt-[60px];
 
     .ask_box {
-      @apply flex_center w-full h-[665px];
+      @apply w-full min-h-[665px];
 
-      .none_ask {
-        @apply flex-col flex_center gap-[44px];
-        .illust_box {
-          @apply w-[254px] aspect-square bg-gray-300;
+      /* 교정 전 예상질문 X */
+      .askNone {
+        @apply min-h-[665px] h-full flex_center;
+        > div {
+          @apply flex-col flex_center gap-[44px];
+          .illust_box {
+            @apply w-[254px] aspect-square bg-gray-300;
+          }
+
+          p {
+            @apply text-center text-[20px] leading-[32px] gray_colorTxt;
+          }
+        }
+      }
+
+      /* 교정 후 예상질문 O */
+      .askList {
+        @apply w-full;
+
+        ul {
+          @apply w-full border border-[#c4c4c3];
+          li {
+            @apply px-[20px] border-b border-[#c4c4c3] cursor-pointer bg-[#fefefe];
+
+            .list_ask {
+              @apply w-full h-[100px] flex_xBetween;
+
+              span {
+                @apply px-[16px] gray_colorTxt font-medium text-[20px];
+              }
+
+              .list_arrow {
+                @apply w-[20px] h-[20px] bg-gray-300;
+              }
+            }
+
+            .list_answer {
+              @apply invisible overflow-hidden transition-all duration-300 max-h-0;
+              &.on {
+                @apply pb-[30px] visible max-h-[300px];
+              }
+
+              > div {
+                @apply w-full px-[16px] py-[14px] gray_colorTxt font-medium text-[20px] border border-[#C4C4C4];
+              }
+            }
+
+            &:last-of-type {
+              @apply border-b-0;
+            }
+          }
         }
 
-        p {
-          @apply text-center text-[20px] leading-[32px] gray_colorTxt;
+        .askCopy {
+          @apply flex_center w-[180px] h-[60px] mt-[52px] ml-auto cursor-pointer rounded font-medium text-[16px] text-white main_colorBg;
         }
       }
     }
