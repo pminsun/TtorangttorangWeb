@@ -1,10 +1,19 @@
 import GuideMent from '@/components/GuideMent';
-import { cls } from '@/utils/config';
-import { useState } from 'react';
+import { cls, formatNumber } from '@/utils/config';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+  const [script, setScript] = useState('');
+  const [charCount, setCharCount] = useState(0);
+  const [subject, setSubject] = useState('');
+  const [subjectCharCount, setSubjectCharCount] = useState(0);
   const [presentPurpose, setpresentPurpose] = useState('');
   const [endingTxt, setEndingTxt] = useState('');
+  const [modifyBtn, setModifyBtn] = useState(false);
+  const [estimatedPresentTime, setEstimatedPresentTime] = useState('0분 0초'); // 예상 발표 시간
+  const [repeat, setRepeat] = useState(false);
+  const [askListState, setAskListState] = useState([false, false, false]);
+  const [test, setTest] = useState(false);
 
   const selectPurpose = (purpose) => {
     setpresentPurpose(purpose);
@@ -12,6 +21,60 @@ export default function Home() {
 
   const selectEndingTxt = (txt) => {
     setEndingTxt(txt);
+  };
+
+  const writeScript = (event) => {
+    const MAX_LENGTH = 3000;
+    let draft = event.target.value;
+
+    if (draft.length > MAX_LENGTH) {
+      draft = event.target.value.slice(0, MAX_LENGTH);
+    }
+    setScript(draft);
+    setCharCount(draft.length);
+  };
+
+  const writeSubject = (event) => {
+    const MAX_LENGTH = 100;
+    let draft = event.target.value;
+
+    if (draft.length > MAX_LENGTH) {
+      draft = event.target.value.slice(0, MAX_LENGTH);
+    }
+    setSubject(draft);
+    setSubjectCharCount(draft.length);
+  };
+
+  // 교정하기 버튼 활성화
+  useEffect(() => {
+    setModifyBtn(script && subject && presentPurpose && endingTxt);
+  }, [script, subject, presentPurpose, endingTxt]);
+
+  // script 초기화
+  const deleteAllScript = () => {
+    setScript('');
+    setSubject('');
+    setCharCount(0);
+    setSubjectCharCount(0);
+    setEstimatedPresentTime('0분 0초');
+  };
+
+  // 예상 발표 시간
+  useEffect(() => {
+    const estimatedTime = Math.ceil(charCount / 3.33); // 초 단위
+    const minutes = Math.floor(estimatedTime / 60);
+    const seconds = estimatedTime % 60;
+    setEstimatedPresentTime(`${minutes < 10 ? '0' + minutes : minutes}분 ${seconds < 10 ? '0' + seconds : seconds}초`);
+  }, [charCount, script]);
+
+  // 클릭 시 질문 펼침/접기 처리
+  const toggleItem = (index) => {
+    setAskListState((prevState) => prevState.map((item, i) => (i === index ? !item : item)));
+  };
+
+  //  교정하기
+  const modifyScript = () => {
+    setTest(true);
   };
 
   return (
@@ -30,22 +93,28 @@ export default function Home() {
               </p>
               <textarea
                 placeholder="발표문 초안을 작성해주세요"
-                maxLength="5000"
+                maxLength="3000"
+                value={script}
+                onChange={writeScript}
               />
-              <div className="copy">
-                <div className="icon"></div>
-                <p>복사하기</p>
+              <div className="copy_box">
+                <div>
+                  <div className="icon"></div>
+                  <p>복사하기</p>
+                </div>
               </div>
             </div>
             <div className="script_info">
               <div>
-                <span>5,000 / 5,000 (글자수)</span>
+                <span>{formatNumber(charCount)} / 3,000 (글자수)</span>
               </div>
               <div>
-                <span>99분 99초 (예상 발표 시간)</span>
+                <span>{estimatedPresentTime} (예상 발표 시간)</span>
               </div>
               <div>
-                <span>개선 내용: 핵심 요점을 짚고 논리적 흐름을 개선했어요</span>
+                <span>
+                  개선 내용: <span className="main_colorTxt">핵심 요점을 짚고 논리적 흐름을 개선했어요</span>
+                </span>
               </div>
             </div>
           </div>
@@ -55,10 +124,15 @@ export default function Home() {
                 <p>
                   1. <span className="required">*</span>발표의 주제에 대해 간략히 설명해 주세요
                 </p>
-                <textarea
-                  placeholder="ex : 생활 속에서 실천할 수 있는 환경 보호 방안"
-                  maxLength="100"
-                />
+                <div className="subject_box">
+                  <textarea
+                    placeholder="ex : 생활 속에서 실천할 수 있는 환경 보호 방안"
+                    maxLength="100"
+                    value={subject}
+                    onChange={writeSubject}
+                  />
+                  <span className="subject_charCount">{subjectCharCount} / 100</span>
+                </div>
               </div>
               <div>
                 <p>
@@ -105,26 +179,28 @@ export default function Home() {
                 </div>
               </div>
               <div className="repeat_box">
-                <input
-                  type="checkbox"
-                  value=""
-                  id="repeat"
-                />
-                <label
-                  htmlFor="repeat"
-                  className="checkboxCustom"
-                ></label>
-                <label
-                  htmlFor="repeat"
-                  className="checkboxTxt"
-                >
-                  중복 표현을 제거할게요
-                </label>
+                <div onClick={() => setRepeat(!repeat)}>
+                  <div className={cls('checkbox', repeat ? 'active_color' : 'disabled_color')}></div>
+                  <p>중복 표현을 제거할게요</p>
+                </div>
               </div>
             </div>
             <div className="btn_box">
-              <button>초기화</button>
-              <button>교정하기</button>
+              <button
+                type="button"
+                onClick={deleteAllScript}
+                className={cls(script.length > 0 || subject.length > 0 ? 'active_color' : 'disabled_color')}
+              >
+                초기화
+              </button>
+              <button
+                type="button"
+                onClick={modifyScript}
+                className={cls(modifyBtn ? 'active_color' : 'disabled_color')}
+              >
+                교정하기
+              </button>
+              {/* 임시 type button */}
             </div>
           </div>
         </div>
@@ -135,13 +211,42 @@ export default function Home() {
           secondMent={'또랑또랑이 준비한 예상 질문과 답변으로, 발표를 더욱 완성도 있게 만들어 보세요'}
         />
         <div className="ask_box">
-          <div className="none_ask">
-            <div className="illust_box"></div>
-            <p>
-              아직 발표문을 분석하지 못했어요.
-              <br /> 발표문 초안을 작성한 후, 교정하기 버튼을 눌러주세요
-            </p>
-          </div>
+          {test ? (
+            <div className="askList">
+              <ul>
+                {[1, 2, 3].map((item, index) => (
+                  <li key={index}>
+                    <div
+                      className="list_ask"
+                      onClick={() => toggleItem(index)}
+                    >
+                      <span>디자인 프로세스를 설명해 주세요. 프로젝트의 시작부터 끝까지 어떤 단계들을 거치나요?</span>
+                      <div className="list_arrow"></div>
+                    </div>
+                    <div className={cls('list_answer', askListState[index] ? 'on' : '')}>
+                      <div>
+                        <p>
+                          디자인 프로세스는 체계적이고 단계적으로 진행됩니다. 먼저 요구사항을 분석하고 시장 조사를 통해 사용자 페르소나를 정의합니다. 그런 다음 브레인스토밍을 통해 다양한 아이디어를
+                          구상하고, 와이어프레임을 작성하여 기본 구조를 시각화합니다. 이후 디지털 프로토타입을 제작해 사용자 테스트를 진행하고, 피드백을 반영하여 디자인을 개선합니다.
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <div className="askCopy">질문 복사하기</div>
+            </div>
+          ) : (
+            <div className="askNone">
+              <div>
+                <div className="illust_box"></div>
+                <p>
+                  아직 발표문을 분석하지 못했어요.
+                  <br /> 발표문 초안을 작성한 후, 교정하기 버튼을 눌러주세요
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </main>
