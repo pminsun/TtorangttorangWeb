@@ -1,8 +1,10 @@
 export default function GuideMent(props) {
-  const { firstMent, secondMent } = props;
+  const { order, firstMent, secondMent } = props;
   return (
     <div className="guideMent">
-      <div className="character_box"></div>
+      <div className="order_box">
+        <p>{order}</p>
+      </div>
       <div className="ment_box">
         <p>{firstMent}</p>
         <p>{secondMent}</p>

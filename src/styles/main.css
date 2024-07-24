@@ -1,16 +1,24 @@
 main.main_container {
-  @apply pt-[40px];
+  @apply pt-[16px];
 
   /* common */
   .required {
     @apply main_colorTxt pr-[4px];
   }
 
-  .guideMent {
-    @apply flex items-end gap-[20px] h-[100px] mb-[55px];
+  .indentTxt {
+    @apply indent-[36px];
+  }
 
-    .character_box {
-      @apply h-full w-[80px] bg-gray-300;
+  .guideMent {
+    @apply flex items-end gap-[20px] mb-[55px];
+
+    .order_box {
+      @apply flex_center h-[80px] w-[80px] p-[10px];
+
+      > p {
+        @apply flex_center w-full h-full rounded text-[40px] font-bold !font-NotoSansKR text-white main_colorBg;
+      }
     }
 
     .ment_box {
@@ -28,12 +36,12 @@ main.main_container {
 
   /* banner */
   section.topBanner_area {
-    @apply w-full h-[496px] rounded-md main_colorBg overflow-hidden;
+    @apply w-full h-[300px] rounded-md bg-[#3D6BE1] overflow-hidden;
   }
 
   /* 발표 대본 교정 */
   section.correction_area {
-    @apply w-full mt-[60px];
+    @apply w-full mt-[52px];
 
     .scriptModify_box {
       @apply flex_xBetween gap-[50px] w-full h-[832px] pt-[26px] px-[40px] pb-[50px] rounded bg-[#fefefe] border border-[#c3c4c4];
@@ -53,15 +61,29 @@ main.main_container {
           .scriptText_box {
             @apply relative w-full h-[520px] my-[16px] overflow-hidden border border-[#C4C4C4] rounded;
 
-            textarea {
-              @apply w-full h-full p-[16px] text-[16px] leading-[40px] bg-[#fefefe];
+            .scriptToggle_btn {
+              @apply absolute left-[16px] top-[24px] z-20 w-[24px] h-[24px] cursor-pointer bg-gray-300;
             }
 
-            .skeleton_box {
-              @apply absolute top-0 left-0 w-full h-auto overflow-y-auto overflow-x-hidden py-[18px] px-[16px];
+            > div {
+              @apply absolute_fullPage;
 
-              > div {
-                @apply w-full;
+              textarea {
+                @apply w-full h-full p-[16px] text-[16px] leading-[40px] bg-[#fefefe];
+              }
+
+              &.newScript {
+                textarea {
+                  @apply indent-[36px];
+                }
+              }
+
+              .skeleton_box {
+                @apply absolute top-0 left-0 w-full h-auto overflow-y-auto overflow-x-hidden py-[18px] px-[16px];
+
+                > div {
+                  @apply w-full;
+                }
               }
             }
           }

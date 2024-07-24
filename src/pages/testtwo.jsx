@@ -53,46 +53,40 @@ export default function TestTwo() {
   //     .join('');
   // };
 
-  const highlightDiffs = (oldStr, newStr) => {
-    const diff = diffWords(oldStr, newStr);
-    const highlights = [];
-
-    diff.forEach((part) => {
-      if (part.added) {
-        highlights.push(part.value.trim());
-      }
-    });
-
-    // diff
-    //   .map((part) => {
-    //     if (part.added) {
-    //       highlights.push(part.value.trim());
-    //     }
-    //     if (!part.removed) {
-    //       return part.value;
-    //     }
-    //   })
-    //   .join('');
-
-    console.log('highlights', highlights);
-
-    return highlights;
-  };
-
   const [originalText, setOriginalText] = useState('');
   const [correctedText, setCorrectedText] = useState('');
   const [highlightedText, setHighlightedText] = useState([]);
 
+  const highlightDiffs = (oldStr, newStr) => {
+    const diff = diffWords(oldStr, newStr);
+    const highlights = [];
+
+    // diff.forEach((part) => {
+    //   if (part.added) {
+    //     highlights.push(part.value.trim());
+    //   }
+    // });
+
+    diff
+      .map((part) => {
+        if (part.added) {
+          highlights.push(part.value.trim());
+        }
+        if (!part.removed) {
+          return part.value;
+        }
+      })
+      .join('');
+
+    setHighlightedText(highlights);
+  };
+  console.log('highlightedText', highlightedText);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    highlightDiffs(originalText, correctedText);
     setCorrectedText(testTxt);
   };
-
-  useEffect(() => {
-    if (correctedText) {
-      setHighlightedText(highlightDiffs(originalText, correctedText));
-    }
-  }, [correctedText, originalText]);
 
   return (
     <main className="w-full flex_center h-[1000px] bg-gray-200">
