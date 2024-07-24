@@ -221,6 +221,7 @@ export default function Home() {
                   >
                     <span>- 해요체</span>
                   </div>
+                  <div className="!cursor-default"></div>
                 </div>
               </div>
               <div className="repeat_box">
