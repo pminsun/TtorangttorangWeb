@@ -1,6 +1,6 @@
-export default function SkeletonLoading({ lineWidths }) {
+export default function SkeletonLoading({ lineWidths, containerWidth }) {
   const SkeletonLine = ({ width }) => {
-    const MAX_WIDTH = 725;
+    const MAX_WIDTH = containerWidth - 50;
     const totalWidth = Math.ceil(width);
     const bars = Math.floor(totalWidth / MAX_WIDTH);
     const remainder = Math.ceil(totalWidth - MAX_WIDTH * bars);
