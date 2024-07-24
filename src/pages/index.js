@@ -3,18 +3,24 @@ import SkeletonLoading from '@/components/SkeletonLoading';
 import { cls, formatNumber, measureTextWidth } from '@/utils/config';
 import { useEffect, useState, useRef } from 'react';
 
+const testTxt =
+  "안녕하세요, 여러분. 오늘은 디자인 프로세스에서 중요한 역할을 하는 퍼소나(Persona)에 대해 이야기해보겠습니다. 퍼소나는 디자인 작업을 진행할 때 필수적인 도구 중 하나예요. 퍼소나는 우리의 제품이나 서비스를 사용할 가상의 사용자를 대표하는 캐릭터로, 실제 사용자 데이터를 기반으로 만들어집니다. 이를 통해 디자이너는 사용자 중심의 디자인을 구현할 수 있어요. 퍼소나를 만드는 과정은 다음과 같습니다. 먼저, 사용자 리서치를 통해 목표 사용자의 행동, 동기, 요구사항 등을 파악해요. 이때 인터뷰, 설문조사, 사용성 테스트 등의 방법을 사용합니다. 수집된 데이터를 분석하여 공통된 특성과 패턴을 찾아내고, 이를 바탕으로 하나 이상의 퍼소나를 정의해요.퍼소나는 예를 들어, 우리의 목표 사용자가 30대 직장인이라면, 그들의 하루 일과, 주요 관심사, 직장에서 겪는 문제점 등을 자세히 기록하는 편이에요. 퍼소나는 디자인 과정에서 여러 가지 중요한 역할을 합니다. 첫째, 팀원들이 사용자에 대한 공통된 이해를 갖게 해요. 이는 의사소통을 원활하게 하고, 팀원들이 같은 방향을 바라보도록 도와줍니다. 둘째, 디자인 결정 시 사용자 관점을 유지해 사용자에게 실제로 필요한 기능과 경험을 제공할 수 있습니다. 셋째, 사용자의 요구와 목표를 구체적으로 함으로써, 디자이너가 더 창의적이고 효율적으로 문제를 해결할 수 있도록 해줘요. 예를 들어, 우리는 '김지훈'이라는 퍼소나를 만들 수 있습니다. 지훈은 35세의 마케팅 매니저로, 바쁜 업무 일정 속에서 효율적으";
+
 export default function Home() {
-  const [script, setScript] = useState('');
+  const [originScript, setOriginScript] = useState('');
+  const [newScript, setNewScript] = useState('');
   const [charCount, setCharCount] = useState(0);
   const [subject, setSubject] = useState('');
   const [subjectCharCount, setSubjectCharCount] = useState(0);
-  const [presentPurpose, setpresentPurpose] = useState('');
-  const [endingTxt, setEndingTxt] = useState('');
+  const [presentPurpose, setpresentPurpose] = useState('company');
+  const [endingTxt, setEndingTxt] = useState('hapnida');
   const [modifyBtn, setModifyBtn] = useState(false);
   const [estimatedPresentTime, setEstimatedPresentTime] = useState('0분 0초'); // 예상 발표 시간
   const [repeat, setRepeat] = useState(false);
   const [askListState, setAskListState] = useState([false, false, false]);
-  const [test, setTest] = useState(false);
+  const [askList, setAskList] = useState(false);
+
+  const [scriptToggle, setScriptToggle] = useState(false);
 
   //
   const scriptTextareaRef = useRef(null);
@@ -30,14 +36,25 @@ export default function Home() {
     setEndingTxt(txt);
   };
 
-  const writeScript = (event) => {
+  const writeOriginScript = (event) => {
     const MAX_LENGTH = 3000;
     let draft = event.target.value;
 
     if (draft.length > MAX_LENGTH) {
       draft = event.target.value.slice(0, MAX_LENGTH);
     }
-    setScript(draft);
+    setOriginScript(draft);
+    setCharCount(draft.length);
+  };
+
+  const writeNewScript = (event) => {
+    const MAX_LENGTH = 3000;
+    let draft = event.target.value;
+
+    if (draft.length > MAX_LENGTH) {
+      draft = event.target.value.slice(0, MAX_LENGTH);
+    }
+    setNewScript(draft);
     setCharCount(draft.length);
   };
 
@@ -54,25 +71,28 @@ export default function Home() {
 
   // 교정하기 버튼 활성화
   useEffect(() => {
-    setModifyBtn(script && subject && presentPurpose && endingTxt);
-  }, [script, subject, presentPurpose, endingTxt]);
+    setModifyBtn(originScript && subject && presentPurpose && endingTxt);
+  }, [originScript, subject, presentPurpose, endingTxt]);
 
   // script 초기화
   const deleteAllScript = () => {
-    setScript('');
+    setOriginScript('');
     setSubject('');
     setCharCount(0);
     setSubjectCharCount(0);
+    setpresentPurpose('company');
+    setEndingTxt('hapnida');
+    setRepeat(false);
     setEstimatedPresentTime('0분 0초');
   };
 
   // 예상 발표 시간
   useEffect(() => {
-    const estimatedTime = Math.ceil(charCount / 3.33); // 초 단위
+    const estimatedTime = Math.ceil(charCount / 5); // 초 단위
     const minutes = Math.floor(estimatedTime / 60);
     const seconds = estimatedTime % 60;
     setEstimatedPresentTime(`${minutes < 10 ? '0' + minutes : minutes}분 ${seconds < 10 ? '0' + seconds : seconds}초`);
-  }, [charCount, script]);
+  }, [charCount, originScript]);
 
   // 클릭 시 질문 펼침/접기 처리
   const toggleItem = (index) => {
@@ -86,16 +106,18 @@ export default function Home() {
     setTimeout(() => {
       setShowSkeleton(false);
       scriptTextareaRef.current.style.opacity = '1';
-      setTest(true);
+      setAskList(true);
+      setScriptToggle(true);
+      setNewScript(testTxt);
     }, 3000);
   };
 
   // 스켈레톤 로딩
   useEffect(() => {
-    const lines = script.split('\n');
+    const lines = originScript.split('\n');
     const newLineWidths = lines.map((line) => measureTextWidth(line, '16px NotoSansKR'));
     setLineWidths(newLineWidths);
-  }, [script]);
+  }, [originScript]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -117,6 +139,7 @@ export default function Home() {
       <section className="topBanner_area"></section>
       <section className="correction_area">
         <GuideMent
+          order={1}
           firstMent={'아무리 해도 익숙해지지 않는 발표! 또랑또랑이 도와드릴게요'}
           secondMent={'또랑또랑의 세심한 교정으로 더욱 명확하고 논리적인 메시지를 전달해 보세요'}
         />
@@ -127,20 +150,42 @@ export default function Home() {
                 <span className="required">*</span>발표 내용
               </p>
               <div className="scriptText_box">
-                <textarea
-                  ref={scriptTextareaRef}
-                  placeholder="발표문 초안을 작성해주세요"
-                  maxLength="3000"
-                  value={script}
-                  onChange={writeScript}
-                />
-                <div
-                  ref={skeletonRef}
-                  className="skeleton_box"
-                  style={{ pointerEvents: 'none' }}
-                >
-                  {showSkeleton && <SkeletonLoading lineWidths={lineWidths} />}
-                </div>
+                {newScript.length > 0 && (
+                  <button
+                    type="button"
+                    className="scriptToggle_btn"
+                    onClick={() => setScriptToggle(!scriptToggle)}
+                  ></button>
+                )}
+                {!scriptToggle && (
+                  <div>
+                    <textarea
+                      ref={scriptTextareaRef}
+                      placeholder="발표문 초안을 작성해주세요"
+                      maxLength="3000"
+                      value={originScript}
+                      onChange={writeOriginScript}
+                      className={cls(newScript.length > 0 ? 'indentTxt' : '')}
+                    />
+                    <div
+                      ref={skeletonRef}
+                      className="skeleton_box"
+                      style={{ pointerEvents: 'none' }}
+                    >
+                      {showSkeleton && <SkeletonLoading lineWidths={lineWidths} />}
+                    </div>
+                  </div>
+                )}
+                {scriptToggle && (
+                  <div className="newScript">
+                    <textarea
+                      placeholder="발표문 초안을 작성해주세요"
+                      maxLength="3000"
+                      value={newScript}
+                      onChange={writeOriginScript}
+                    />
+                  </div>
+                )}
               </div>
               <div className="copy_box">
                 <div>
@@ -235,7 +280,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={deleteAllScript}
-                className={cls(script.length > 0 || subject.length > 0 ? 'active_color cursor-pointer' : 'disabled_color cursor-default')}
+                className={cls(originScript.length > 0 || subject.length > 0 ? 'active_color cursor-pointer' : 'disabled_color cursor-default')}
               >
                 초기화
               </button>
@@ -253,11 +298,12 @@ export default function Home() {
       </section>
       <section className="ask_area">
         <GuideMent
+          order={2}
           firstMent={'예상되는 질문들을 모아봤어요'}
           secondMent={'또랑또랑이 준비한 예상 질문과 답변으로, 발표를 더욱 완성도 있게 만들어 보세요'}
         />
         <div className="ask_box">
-          {test ? (
+          {askList ? (
             <div className="askList">
               <ul>
                 {[1, 2, 3].map((item, index) => (

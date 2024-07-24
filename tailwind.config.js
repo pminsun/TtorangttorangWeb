@@ -63,10 +63,10 @@ module.exports = {
       };
       const colorUtilities = {
         '.main_colorBg': {
-          backgroundColor: '#FD8889',
+          backgroundColor: '#509BF8',
         },
         '.main_colorTxt': {
-          color: '#FD8889',
+          color: '#509BF8',
         },
         '.gray_colorTxt': {
           color: '#757575',
@@ -76,7 +76,7 @@ module.exports = {
           color: '#757575',
         },
         '.active_color': {
-          backgroundColor: '#FD8889',
+          backgroundColor: '#509BF8',
           color: '#FEFEFE',
         },
       };
