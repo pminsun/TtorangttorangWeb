@@ -123,7 +123,7 @@ main.main_container {
 
           .purposeCheck,
           .endingTxtCheck {
-            @apply flex_vertical_center gap-[32px] w-full h-[52px];
+            @apply flex_xBetween gap-[24px] w-full h-[52px];
 
             > div {
               @apply flex_center flex-1 max-w-[160px] h-full rounded cursor-pointer;
