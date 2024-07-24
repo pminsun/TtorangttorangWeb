@@ -44,10 +44,10 @@ main.main_container {
     @apply w-full mt-[52px];
 
     .scriptModify_box {
-      @apply flex_xBetween gap-[50px] w-full h-[832px] pt-[26px] px-[40px] pb-[50px] rounded bg-[#fefefe] border border-[#c3c4c4];
+      @apply flex_xBetween gap-[6.5%] w-full h-[832px] pt-[26px] px-[40px] pb-[50px] rounded bg-[#fefefe] border border-[#c3c4c4];
 
       .scriptWrite_box {
-        @apply flex_xBetween flex-col w-[775px] h-full;
+        @apply flex_xBetween flex-col flex-1 w-[51%] h-full;
 
         > div {
           @apply w-full;
@@ -73,8 +73,19 @@ main.main_container {
               }
 
               &.newScript {
-                textarea {
-                  @apply indent-[36px];
+                @apply w-full h-full p-[16px] overflow-y-auto;
+                span {
+                  @apply text-[16px] leading-[40px];
+                }
+
+                div {
+                  mark:nth-child(1) {
+                    > span {
+                      span {
+                        @apply inline-block ml-[36px];
+                      }
+                    }
+                  }
                 }
               }
 
@@ -134,7 +145,7 @@ main.main_container {
       }
 
       .scriptSetting_box {
-        @apply flex-col w-[498px] h-full flex_xBetween;
+        @apply flex-col w-[33%] h-full flex_xBetween;
 
         .detailSetting {
           @apply flex flex-col gap-[40px] w-full h-[520px];
@@ -148,7 +159,7 @@ main.main_container {
             @apply flex_xBetween gap-[24px] w-full h-[52px];
 
             > div {
-              @apply flex_center flex-1 max-w-[160px] h-full rounded cursor-pointer;
+              @apply flex-1 h-full rounded cursor-pointer flex_center;
             }
           }
 
