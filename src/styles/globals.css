@@ -72,6 +72,27 @@ footer {
   }
 }
 
+/* mobile */
+.moblie_container {
+  @apply flex_center flex-col gap-[6px] w-full h-screen;
+
+  .logo_area {
+    @apply w-[205px] h-[72px] bg-gray-300;
+  }
+
+  .character_area {
+    @apply w-[205px] h-[205px] bg-gray-300;
+  }
+
+  .guide_area {
+    @apply text-center;
+
+    > p:first-of-type {
+      @apply mb-[7px] text-[20px] font-medium text-[#424242];
+    }
+  }
+}
+
 /* SkeletonLoading */
 .skeletonLine {
   @apply relative mb-[8px] rounded-[5px] h-[32px] overflow-hidden bg-[#d6d6d6];

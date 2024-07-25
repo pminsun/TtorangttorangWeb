@@ -19,8 +19,8 @@ export default function Home() {
   const [charCountNew, setCharCountNew] = useState(0);
   const [subject, setSubject] = useState('');
   const [subjectCharCount, setSubjectCharCount] = useState(0);
-  const [presentPurpose, setpresentPurpose] = useState('company');
-  const [endingTxt, setEndingTxt] = useState('hapnida');
+  const [presentPurpose, setpresentPurpose] = useState('회사 컨퍼런스');
+  const [endingTxt, setEndingTxt] = useState('합니다체');
   const [modifyBtn, setModifyBtn] = useState(false);
   const [estimatedPresentTime, setEstimatedPresentTime] = useState('0분 0초'); // 예상 발표 시간
   const [repeat, setRepeat] = useState(false);
@@ -35,8 +35,6 @@ export default function Home() {
 
   const scriptWriteBoxRef = useRef(null);
   const [containerWidth, setContainerWidth] = useState(725);
-
-  let clickModify = false;
 
   //skeleton
   const scriptTextareaRef = useRef(null);
@@ -110,8 +108,8 @@ export default function Home() {
     setSubject('');
     setCharCount(0);
     setSubjectCharCount(0);
-    setpresentPurpose('company');
-    setEndingTxt('hapnida');
+    setpresentPurpose('회사 컨퍼런스');
+    setEndingTxt('합니다체');
     setRepeat(false);
     setEstimatedPresentTime('0분 0초');
     setAskLisTotalShow(false);
@@ -131,6 +129,10 @@ export default function Home() {
   const toggleItem = (index) => {
     setAskListState((prevState) => prevState.map((item, i) => (i === index ? !item : item)));
   };
+  // 질문 펼침 초기화
+  useEffect(() => {
+    setAskListState([false, false, false]);
+  }, []);
 
   const highlightDiffs = (oldStr, newStr) => {
     const diff = diffWords(oldStr, newStr);
@@ -152,7 +154,6 @@ export default function Home() {
 
   //  교정하기
   const modifyScript = () => {
-    clickModify = true;
     if (scriptTextareaRef.current || scriptUpdateTextareaRef.current) {
       // 스켈레톤 표시
       if (scriptTextareaRef.current) {
@@ -196,6 +197,7 @@ export default function Home() {
           // 나머지 상태 업데이트
           setAskLisTotalShow(true);
           setScriptToggle(true);
+          setAskListState([false, false, false]);
         } else {
           // 첫 번째 교정
           setNewScript(testTxt);
@@ -215,7 +217,7 @@ export default function Home() {
           // 나머지 상태 업데이트
           setAskLisTotalShow(true);
           setScriptToggle(true);
-          clickModify = false;
+          setAskListState([false, false, false]);
         }
       }, 3000);
     } else {
@@ -269,7 +271,7 @@ export default function Home() {
   const askCopyTxt = (totalAsk) => {
     return totalAsk
       ?.map((item, index) => {
-        const numberedQuestion = `${index + 1}.\n질문: ${item.ask}\n답변: ${item.answer}\n\n`;
+        const numberedQuestion = `${index + 1}.질문: ${item.ask}\n답변: ${item.answer}\n\n`;
         return numberedQuestion;
       })
       .join('\n');
@@ -309,7 +311,6 @@ export default function Home() {
                       maxLength="3000"
                       value={originScript}
                       onChange={writeOriginScript}
-                      className={cls(newScript.length > 0 ? 'indentTxt' : '')}
                     />
                     <div
                       ref={skeletonRef}
@@ -332,7 +333,7 @@ export default function Home() {
                         highlight={[
                           {
                             highlight: highlightedText,
-                            className: 'bg-[#509BF8]/30',
+                            className: 'bg-[#cbeaff]',
                           },
                         ]}
                         value={newScript}
@@ -364,24 +365,35 @@ export default function Home() {
                   </div>
                 )}
               </div>
-              <div className="copy_box">
-                {originScript.length === 0 ? (
-                  <div>
-                    <div className="icon"></div>
-                    <p className="gray_colorTxt">복사하기</p>
-                  </div>
-                ) : (
-                  <CopyToClipboard
-                    className="copyClipboard"
-                    text={scriptToggle ? newScript : originScript}
-                    onCopy={() => alert('클립보드에 복사되었습니다.')}
+              <div className="scriptRef_btns">
+                {newScript.length > 0 && (
+                  <div
+                    className="scriptToggle_btn"
+                    onClick={() => setScriptToggle(!scriptToggle)}
                   >
+                    <div className="icon"></div>
+                    <p>{scriptToggle ? '원문 보기' : '교정문 보기'}</p>
+                  </div>
+                )}
+                <div className="copy_box">
+                  {originScript.length === 0 ? (
                     <div>
                       <div className="icon"></div>
-                      <p className="main_colorTxt">복사하기</p>
+                      <p>복사하기</p>
                     </div>
-                  </CopyToClipboard>
-                )}
+                  ) : (
+                    <CopyToClipboard
+                      className="copyClipboard"
+                      text={scriptToggle ? newScript : originScript}
+                      onCopy={() => alert('발표문을 복사했어요')}
+                    >
+                      <div>
+                        <div className="icon"></div>
+                        <p>복사하기</p>
+                      </div>
+                    </CopyToClipboard>
+                  )}
+                </div>
               </div>
             </div>
             <div className="script_info">
@@ -418,20 +430,20 @@ export default function Home() {
                 </p>
                 <div className="purposeCheck">
                   <div
-                    onClick={() => selectPurpose('company')}
-                    className={cls(presentPurpose === 'company' ? 'active_color' : 'disabled_color')}
+                    onClick={() => selectPurpose('회사 컨퍼런스')}
+                    className={cls(presentPurpose === '회사 컨퍼런스' ? 'active_color' : 'disabled_color')}
                   >
                     <span>회사 컨퍼런스</span>
                   </div>
                   <div
-                    onClick={() => selectPurpose('school')}
-                    className={cls(presentPurpose === 'school' ? 'active_color' : 'disabled_color')}
+                    onClick={() => selectPurpose('학교 발표')}
+                    className={cls(presentPurpose === '학교 발표' ? 'active_color' : 'disabled_color')}
                   >
                     <span>학교 발표</span>
                   </div>
                   <div
-                    onClick={() => selectPurpose('club')}
-                    className={cls(presentPurpose === 'club' ? 'active_color' : 'disabled_color')}
+                    onClick={() => selectPurpose('소모임')}
+                    className={cls(presentPurpose === '소모임' ? 'active_color' : 'disabled_color')}
                   >
                     <span>소모임</span>
                   </div>
@@ -443,13 +455,13 @@ export default function Home() {
                 </p>
                 <div className="endingTxtCheck">
                   <div
-                    onClick={() => selectEndingTxt('hapnida')}
-                    className={cls(endingTxt === 'hapnida' ? 'active_color' : 'disabled_color')}
+                    onClick={() => selectEndingTxt('합니다체')}
+                    className={cls(endingTxt === '합니다체' ? 'active_color' : 'disabled_color')}
                   >
-                    <span>- 합니다체</span>
+                    <span>합니다체</span>
                   </div>
                   <div
-                    onClick={() => selectEndingTxt('haeyo')}
+                    onClick={() => selectEndingTxt('해요체')}
                     className={cls(endingTxt === 'haeyo' ? 'active_color' : 'disabled_color')}
                   >
                     <span>- 해요체</span>
@@ -500,7 +512,7 @@ export default function Home() {
                       className="list_ask"
                       onClick={() => toggleItem(index)}
                     >
-                      <span>{item.ask}</span>
+                      <span className={cls(askListState[index] ? 'font-semibold' : 'font-medium')}>{item.ask}</span>
                       <div className="list_arrow"></div>
                     </div>
                     <div className={cls('list_answer', askListState[index] ? 'on' : '')}>
@@ -515,7 +527,7 @@ export default function Home() {
                 <CopyToClipboard
                   className="copyAskClipboard"
                   text={askCopyTxt(askListArray)}
-                  onCopy={() => alert('예상 질문이 클립보드에 복사되었습니다.')}
+                  onCopy={() => alert('예상 질문과 답변을 복사했어요')}
                 >
                   <span>질문 복사하기</span>
                 </CopyToClipboard>
