@@ -81,8 +81,13 @@ main.main_container {
                 div {
                   mark:nth-child(1) {
                     > span {
+                      @apply relative;
+                      &::before {
+                        @apply content-[''] inline-block absolute top-0 left-0 w-[30px] h-[24px] bg-[#fefefe];
+                      }
+
                       span {
-                        @apply inline-block ml-[36px];
+                        @apply relative inline-block ml-[36px];
                       }
                     }
                   }
@@ -109,7 +114,7 @@ main.main_container {
               }
 
               p {
-                @apply text-[18px] gray_colorTxt;
+                @apply text-[18px];
               }
             }
           }
@@ -261,7 +266,11 @@ main.main_container {
         }
 
         .askCopy {
-          @apply flex_center w-[180px] h-[60px] mt-[52px] ml-auto cursor-pointer rounded font-medium text-[16px] text-white main_colorBg;
+          @apply flex_center w-[180px] h-[60px] mt-[52px] ml-auto cursor-pointer rounded main_colorBg;
+
+          span {
+            @apply flex_center w-full h-full font-medium text-[16px] text-white;
+          }
         }
       }
     }

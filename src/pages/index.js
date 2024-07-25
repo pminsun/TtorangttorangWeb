@@ -1,15 +1,16 @@
 import GuideMent from '@/components/GuideMent';
 import SkeletonLoading from '@/components/SkeletonLoading';
-import { cls, formatNumber, measureTextWidth } from '@/utils/config';
+import { askListArray, cls, formatNumber, measureTextWidth } from '@/utils/config';
 import { diffWords } from 'diff';
 import { useEffect, useState, useRef } from 'react';
 import HighlightWithinTextarea from 'react-highlight-within-textarea';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const testTxt =
   "안녕하세요, 여러분. 오늘은 디자인 프로세스에서 중요한 역할을 하는 퍼소나(Persona)에 대해 이야기해보겠습니다. 퍼소나는 디자인 작업을 진행할 때 필수적인 도구 중 하나예요. 퍼소나는 우리의 제품이나 서비스를 사용할 가상의 사용자를 대표하는 캐릭터로, 실제 사용자 데이터를 기반으로 만들어집니다. 이를 통해 디자이너는 사용자 중심의 디자인을 구현할 수 있어요. 퍼소나를 만드는 과정은 다음과 같습니다. 먼저, 사용자 리서치를 통해 목표 사용자의 행동, 동기, 요구사항 등을 파악해요. 이때 인터뷰, 설문조사, 사용성 테스트 등의 방법을 사용합니다. 수집된 데이터를 분석하여 공통된 특성과 패턴을 찾아내고, 이를 바탕으로 하나 이상의 퍼소나를 정의해요.퍼소나는 예를 들어, 우리의 목표 사용자가 30대 직장인이라면, 그들의 하루 일과, 주요 관심사, 직장에서 겪는 문제점 등을 자세히 기록하는 편이에요. 퍼소나는 디자인 과정에서 여러 가지 중요한 역할을 합니다. 첫째, 팀원들이 사용자에 대한 공통된 이해를 갖게 해요. 이는 의사소통을 원활하게 하고, 팀원들이 같은 방향을 바라보도록 도와줍니다. 둘째, 디자인 결정 시 사용자 관점을 유지해 사용자에게 실제로 필요한 기능과 경험을 제공할 수 있습니다. 셋째, 사용자의 요구와 목표를 구체적으로 함으로써, 디자이너가 더 창의적이고 효율적으로 문제를 해결할 수 있도록 해줘요. 예를 들어, 우리는 '김지훈'이라는 퍼소나를 만들 수 있습니다. 지훈은 35세의 마케팅 매니저로, 바쁜 업무 일정 속에서 효율적으";
 
 const testTxt2 =
-  "반갑습니다, 여러분. 오늘은 디자인 프로세스에서 중요한 역할을 하는 퍼소나(Persona)에 대해 이야기해보겠습니다. 퍼소나는 디자인 작업을 진행할 때 필수적인 도구 중 하나예요. 퍼소나는 우리의 제품이나 서비스를 사용할 가상의 사용자를 대표하는 캐릭터로, 실제 사용자 데이터를 기반으로 만들어집니다. 이를 통해 디자이너는 사용자 중심의 디자인을 구현할 수 있어요. 퍼소나를 만드는 과정은 다음과 같습니다. 먼저, 사용자 리서치를 통해 목표 사용자의 행동, 동기, 요구사항 등을 파악해요. 이때 인터뷰, 설문조사, 사용성 테스트 등의 방법을 사용합니다. 수집된 데이터를 분석하여 공통된 특성과 패턴을 찾아내고, 이를 바탕으로 하나 이상의 퍼소나를 만듭니다.퍼소나는 예를 들어, 우리의 목표 사용자가 30대 직장인이라면, 그들의 하루 일과, 주요 관심사, 직장에서 겪는 문제점 등을 자세히 기록하는 편이에요. 퍼소나는 디자인 과정에서 여러 가지 중요한 역할을 합니다. 첫째, 팀원들이 사용자에 대한 공통된 이해를 갖게 해요. 이는 의사소통을 원활하게 하고, 팀원들이 같은 방향을 바라보도록 도와줍니다. 둘째, 디자인 결정 시 사용자 관점을 유지해 사용자에게제로 필요한 기능과 경험을 제공할 수 있습니다. 셋째, 사용자의 요구와 목표를 구체적으로 함으로써, 디자이너가 더 창의적이고 효율적으로 문제를 해결할 수 있도록 해줘요. 예를 들어, 우리는 '김지훈'이라는 퍼소나를 만들 수 있습니다. 지훈은 35세의 마케팅 매니저로, 바쁜 업무 일정 속에서 효율적으로 관리한니다";
+  "반갑습니다!!!, 여러분. 오늘은 디자인 프로세스에서 중요한 역할을 하는 퍼소나(Persona)에 대해 이야기해보겠습니다. 퍼소나는 디자인 작업을 진행할 때 필수적인 도구 중 하나예요. 퍼소나는 우리의 제품이나 서비스를 사용할 가상의 사용자를 대표하는 캐릭터로, 실제 사용자 데이터를 기반으로 만들어집니다. 이를 통해 디자이너는 사용자 중심의 디자인을 구현할 수 있어요. 퍼소나를 만드는 과정은 다음과 같습니다. 먼저, 사용자 리서치를 통해 목표 사용자의 행동, 동기, 요구사항 등을 파악해요. 이때 인터뷰, 설문조사, 사용성 테스트 등의 방법을 사용합니다. 수집된 데이터를 분석하여 공통된 특성과 패턴을 찾아내고, 이를 바탕으로 하나 이상의 퍼소나를 만듭니다.퍼소나는 예를 들어, 우리의 목표 사용자가 30대 직장인이라면, 그들의 하루 일과, 주요 관심사, 직장에서 겪는 문제점 등을 자세히 기록하는 편이에요. 퍼소나는 디자인 과정에서 여러 가지 중요한 역할을 합니다. 첫째, 팀원들이 사용자에 대한 공통된 이해를 갖게 해요. 이는 의사소통을 원활하게 하고, 팀원들이 같은 방향을 바라보도록 도와줍니다. 둘째, 디자인 결정 시 사용자 관점을 유지해 사용자에게제로 필요한 기능과 경험을 제공할 수 있습니다. 셋째, 사용자의 요구와 목표를 구체적으로 함으로써, 디자이너가 더 창의적이고 효율적으로 문제를 해결할 수 있도록 해줘요. 예를 들어, 우리는 '김지훈'이라는 퍼소나를 만들 수 있습니다. 지훈은 35세의 마케팅 매니저로, 바쁜 업무 일정 속에서 효율적으로 관리한니다";
 
 export default function Home() {
   const [originScript, setOriginScript] = useState('');
@@ -24,20 +25,26 @@ export default function Home() {
   const [estimatedPresentTime, setEstimatedPresentTime] = useState('0분 0초'); // 예상 발표 시간
   const [repeat, setRepeat] = useState(false);
   const [askListState, setAskListState] = useState([false, false, false]);
-  const [askList, setAskList] = useState(false);
+  const [askListTotalShow, setAskLisTotalShow] = useState(false);
 
+  // 교정본 수정 여부 확인용 state
   const [retryScriptCompareTxt, setRetryScriptCompareTxt] = useState('');
 
   const [scriptToggle, setScriptToggle] = useState(false);
   const [highlightedText, setHighlightedText] = useState([]);
-  const [isFirstCorrection, setIsFirstCorrection] = useState(true);
+
   const scriptWriteBoxRef = useRef(null);
   const [containerWidth, setContainerWidth] = useState(725);
 
+  let clickModify = false;
+
   //skeleton
   const scriptTextareaRef = useRef(null);
+  const scriptUpdateTextareaRef = useRef(null);
   const skeletonRef = useRef(null);
+  const skeletonNewScriptRef = useRef(null);
   const [showSkeleton, setShowSkeleton] = useState(false);
+  const [showNewSkeleton, setShowNewSkeleton] = useState(false);
   const [lineWidths, setLineWidths] = useState([]);
 
   const selectPurpose = (purpose) => {
@@ -59,16 +66,22 @@ export default function Home() {
     setCharCount(draft.length);
   };
 
-  const writeNewScript = (value) => {
-    const MAX_LENGTH = 3000;
-    let draft = value;
+  // const writeNewScript = (value) => {
+  //   const MAX_LENGTH = 3000;
 
-    if (draft.length > MAX_LENGTH) {
-      draft = value.slice(0, MAX_LENGTH);
-    }
-    setNewScript(draft);
-    setCharCountNew(draft.length);
-  };
+  //   if (value != retryScriptCompareTxt) {
+  //     setModifyBtn(true);
+  //   }
+
+  //   if (value.length <= MAX_LENGTH) {
+  //     setNewScript(value);
+  //     setCharCountNew(value.length);
+  //   } else {
+  //     const truncatedValue = value.slice(0, MAX_LENGTH);
+  //     setNewScript(truncatedValue);
+  //     setCharCountNew(truncatedValue.length);
+  //   }
+  // };
 
   const writeSubject = (event) => {
     const MAX_LENGTH = 100;
@@ -101,7 +114,7 @@ export default function Home() {
     setEndingTxt('hapnida');
     setRepeat(false);
     setEstimatedPresentTime('0분 0초');
-    setAskList(false);
+    setAskLisTotalShow(false);
     setScriptToggle(false);
     setNewScript('');
   };
@@ -139,29 +152,71 @@ export default function Home() {
 
   //  교정하기
   const modifyScript = () => {
-    if (scriptTextareaRef.current) {
-      //스켈레톤 표시
-      setShowSkeleton(true);
-      scriptTextareaRef.current.style.opacity = '0';
+    clickModify = true;
+    if (scriptTextareaRef.current || scriptUpdateTextareaRef.current) {
+      // 스켈레톤 표시
+      if (scriptTextareaRef.current) {
+        setShowSkeleton(true);
+        scriptTextareaRef.current.style.opacity = '0';
+      }
+
+      if (newScript.length > 0 && modifyBtn && scriptToggle && scriptUpdateTextareaRef.current) {
+        setShowNewSkeleton(true);
+        scriptUpdateTextareaRef.current.style.opacity = '0';
+      }
 
       // 3초 후 처리
       setTimeout(() => {
-        setShowSkeleton(false);
-        if (scriptTextareaRef.current) {
-          scriptTextareaRef.current.style.opacity = '1';
+        // 재교정 시 (2회차 이상)
+        if (newScript.length > 0 && modifyBtn && scriptToggle) {
+          const oldScript = newScript;
+          const updatedScript = testTxt2;
+          // 1회차 교정본을 originScript로 설정
+          setOriginScript(oldScript);
+
+          // 2회차 새로운 교정본을 newScript로 설정
+          // retryScriptCompareTxt 업데이트
+          setRetryScriptCompareTxt(updatedScript);
+          setNewScript(updatedScript);
+
+          // 여기서 비교할 값을 로컬 변수에 저장
+
+          // 스켈레톤 표시 제거
+          setShowNewSkeleton(false);
+          if (scriptUpdateTextareaRef.current) {
+            scriptUpdateTextareaRef.current.style.opacity = '1';
+          }
+          // 새 스크립트로 업데이트
+          // setNewScript(testTxt);
+          setCharCountNew(updatedScript.length);
+
+          // 원본과 새 스크립트 비교
+          highlightDiffs(oldScript, updatedScript);
+
+          // 나머지 상태 업데이트
+          setAskLisTotalShow(true);
+          setScriptToggle(true);
+        } else {
+          // 첫 번째 교정
+          setNewScript(testTxt);
+          setRetryScriptCompareTxt(testTxt);
+          setCharCountNew(testTxt.length);
+
+          // 스켈레톤 표시 제거
+          setShowSkeleton(false);
+
+          // 원본과 새 스크립트 비교
+          highlightDiffs(originScript, testTxt);
+
+          if (scriptTextareaRef.current) {
+            scriptTextareaRef.current.style.opacity = '1';
+          }
+
+          // 나머지 상태 업데이트
+          setAskLisTotalShow(true);
+          setScriptToggle(true);
+          clickModify = false;
         }
-
-        // 새 스크립트로 업데이트
-        setNewScript(testTxt);
-        setRetryScriptCompareTxt(testTxt);
-        setCharCountNew(testTxt.length);
-
-        // 원본과 새 스크립트 비교
-        highlightDiffs(originScript, testTxt);
-
-        // 나머지 상태 업데이트
-        setAskList(true);
-        setScriptToggle(true);
       }, 3000);
     } else {
       console.error('scriptTextareaRef is null');
@@ -170,11 +225,12 @@ export default function Home() {
 
   // 스켈레톤 로딩
   useEffect(() => {
-    const lines = originScript.split('\n');
-    const newLineWidths = lines.map((line) => measureTextWidth(line, '16px NotoSansKR'));
-    setLineWidths(newLineWidths);
-  }, [originScript]);
+    const lines = scriptToggle ? newScript.split('\n') : originScript.split('\n');
+    const skeletonLineWidths = lines.map((line) => measureTextWidth(line, '16px NotoSansKR'));
+    setLineWidths(skeletonLineWidths);
+  }, [newScript, originScript, scriptToggle]);
 
+  // script box width 동적
   useEffect(() => {
     const updateWidth = () => {
       if (scriptWriteBoxRef.current) {
@@ -209,6 +265,16 @@ export default function Home() {
     };
   }, []);
 
+  // 예상질문 Copy용
+  const askCopyTxt = (totalAsk) => {
+    return totalAsk
+      ?.map((item, index) => {
+        const numberedQuestion = `${index + 1}.\n질문: ${item.ask}\n답변: ${item.answer}\n\n`;
+        return numberedQuestion;
+      })
+      .join('\n');
+  };
+
   return (
     <main className="main_container">
       <section className="topBanner_area"></section>
@@ -218,7 +284,7 @@ export default function Home() {
           firstMent={'아무리 해도 익숙해지지 않는 발표! 또랑또랑이 도와드릴게요'}
           secondMent={'또랑또랑의 세심한 교정으로 더욱 명확하고 논리적인 메시지를 전달해 보세요'}
         />
-        <div className="scriptModify_box">
+        <form className="scriptModify_box">
           <div
             ref={scriptWriteBoxRef}
             className="scriptWrite_box"
@@ -261,24 +327,61 @@ export default function Home() {
                 )}
                 {scriptToggle && (
                   <div className="newScript">
-                    <HighlightWithinTextarea
-                      highlight={[
-                        {
-                          highlight: highlightedText,
-                          className: 'bg-[#509BF8]/30',
-                        },
-                      ]}
-                      value={newScript}
-                      onChange={writeNewScript}
-                    />
+                    <div ref={scriptUpdateTextareaRef}>
+                      <HighlightWithinTextarea
+                        highlight={[
+                          {
+                            highlight: highlightedText,
+                            className: 'bg-[#509BF8]/30',
+                          },
+                        ]}
+                        value={newScript}
+                        onChange={(value) => {
+                          const MAX_LENGTH = 3000;
+                          let draft = value;
+                          if (draft.length > MAX_LENGTH) {
+                            setNewScript(draft.slice(0, MAX_LENGTH));
+                            setCharCountNew(3000);
+                          } else {
+                            setNewScript(value);
+                            setCharCountNew(value.length);
+                          }
+                        }}
+                      />
+                    </div>
+                    <div
+                      ref={skeletonNewScriptRef}
+                      className="skeleton_box"
+                      style={{ pointerEvents: 'none' }}
+                    >
+                      {showNewSkeleton && (
+                        <SkeletonLoading
+                          lineWidths={lineWidths}
+                          containerWidth={containerWidth}
+                        />
+                      )}
+                    </div>
                   </div>
                 )}
               </div>
               <div className="copy_box">
-                <div>
-                  <div className="icon"></div>
-                  <p>복사하기</p>
-                </div>
+                {originScript.length === 0 ? (
+                  <div>
+                    <div className="icon"></div>
+                    <p className="gray_colorTxt">복사하기</p>
+                  </div>
+                ) : (
+                  <CopyToClipboard
+                    className="copyClipboard"
+                    text={scriptToggle ? newScript : originScript}
+                    onCopy={() => alert('클립보드에 복사되었습니다.')}
+                  >
+                    <div>
+                      <div className="icon"></div>
+                      <p className="main_colorTxt">복사하기</p>
+                    </div>
+                  </CopyToClipboard>
+                )}
               </div>
             </div>
             <div className="script_info">
@@ -379,7 +482,7 @@ export default function Home() {
               {/* 임시 type button */}
             </div>
           </div>
-        </div>
+        </form>
       </section>
       <section className="ask_area">
         <GuideMent
@@ -388,30 +491,35 @@ export default function Home() {
           secondMent={'또랑또랑이 준비한 예상 질문과 답변으로, 발표를 더욱 완성도 있게 만들어 보세요'}
         />
         <div className="ask_box">
-          {askList ? (
+          {askListTotalShow ? (
             <div className="askList">
               <ul>
-                {[1, 2, 3].map((item, index) => (
+                {askListArray.map((item, index) => (
                   <li key={index}>
                     <div
                       className="list_ask"
                       onClick={() => toggleItem(index)}
                     >
-                      <span>디자인 프로세스를 설명해 주세요. 프로젝트의 시작부터 끝까지 어떤 단계들을 거치나요?</span>
+                      <span>{item.ask}</span>
                       <div className="list_arrow"></div>
                     </div>
                     <div className={cls('list_answer', askListState[index] ? 'on' : '')}>
                       <div>
-                        <p>
-                          디자인 프로세스는 체계적이고 단계적으로 진행됩니다. 먼저 요구사항을 분석하고 시장 조사를 통해 사용자 페르소나를 정의합니다. 그런 다음 브레인스토밍을 통해 다양한 아이디어를
-                          구상하고, 와이어프레임을 작성하여 기본 구조를 시각화합니다. 이후 디지털 프로토타입을 제작해 사용자 테스트를 진행하고, 피드백을 반영하여 디자인을 개선합니다.
-                        </p>
+                        <p>{item.answer}</p>
                       </div>
                     </div>
                   </li>
                 ))}
               </ul>
-              <div className="askCopy">질문 복사하기</div>
+              <div className="askCopy">
+                <CopyToClipboard
+                  className="copyAskClipboard"
+                  text={askCopyTxt(askListArray)}
+                  onCopy={() => alert('예상 질문이 클립보드에 복사되었습니다.')}
+                >
+                  <span>질문 복사하기</span>
+                </CopyToClipboard>
+              </div>
             </div>
           ) : (
             <div className="askNone">
