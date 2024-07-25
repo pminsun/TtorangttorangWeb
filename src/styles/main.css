@@ -5,11 +5,6 @@ main.main_container {
   .required {
     @apply main_colorTxt pr-[4px];
   }
-
-  .indentTxt {
-    @apply indent-[36px];
-  }
-
   .guideMent {
     @apply flex items-end gap-[20px] mb-[55px];
 
@@ -61,10 +56,6 @@ main.main_container {
           .scriptText_box {
             @apply relative w-full h-[520px] my-[16px] overflow-hidden border border-[#C4C4C4] rounded;
 
-            .scriptToggle_btn {
-              @apply absolute left-[16px] top-[24px] z-20 w-[24px] h-[24px] cursor-pointer bg-gray-300;
-            }
-
             > div {
               @apply absolute_fullPage;
 
@@ -76,21 +67,6 @@ main.main_container {
                 @apply w-full h-full p-[16px] overflow-y-auto;
                 span {
                   @apply text-[16px] leading-[40px];
-                }
-
-                div {
-                  mark:nth-child(1) {
-                    > span {
-                      @apply relative;
-                      &::before {
-                        @apply content-[''] inline-block absolute top-0 left-0 w-[30px] h-[24px] bg-[#fefefe];
-                      }
-
-                      span {
-                        @apply relative inline-block ml-[36px];
-                      }
-                    }
-                  }
                 }
               }
 
@@ -104,17 +80,30 @@ main.main_container {
             }
           }
 
-          .copy_box {
-            @apply justify-end flex_vertical_center;
+          .scriptRef_btns {
+            @apply justify-end flex_vertical_center gap-[10px];
 
-            > div {
-              @apply flex_vertical_center justify-end gap-[4px] pl-[10px] cursor-pointer py-[4px];
-              .icon {
-                @apply w-[24px] aspect-square bg-gray-300;
-              }
+            .icon {
+              @apply w-[24px] aspect-square bg-gray-300;
+            }
 
-              p {
-                @apply text-[18px];
+            p {
+              @apply text-[18px] gray_colorTxt;
+            }
+
+            .scriptToggle_btn {
+              @apply flex_vertical_center justify-start gap-[4px] w-[115px] py-[4px]  cursor-pointer;
+            }
+
+            .copy_box {
+              @apply justify-end flex_vertical_center;
+
+              > div {
+                @apply flex_vertical_center justify-end gap-[4px] cursor-pointer py-[4px];
+
+                p {
+                  @apply text-[18px] gray_colorTxt;
+                }
               }
             }
           }
@@ -164,7 +153,7 @@ main.main_container {
             @apply flex_xBetween gap-[24px] w-full h-[52px];
 
             > div {
-              @apply flex-1 h-full rounded cursor-pointer flex_center;
+              @apply flex-1 h-full text-center rounded cursor-pointer flex_center;
             }
           }
 
@@ -240,7 +229,7 @@ main.main_container {
               @apply w-full h-[100px] flex_xBetween;
 
               span {
-                @apply px-[16px] gray_colorTxt font-medium text-[20px];
+                @apply px-[16px] gray_colorTxt text-[20px];
               }
 
               .list_arrow {
