@@ -81,10 +81,14 @@ main.main_container {
           }
 
           .scriptRef_btns {
-            @apply justify-end flex_vertical_center gap-[10px];
+            @apply justify-end flex_vertical_center gap-[24px];
 
             .icon {
-              @apply w-[24px] aspect-square bg-gray-300;
+              @apply w-[24px] h-[24px];
+
+              img {
+                @apply object-cover w-full h-full;
+              }
             }
 
             p {
@@ -205,9 +209,13 @@ main.main_container {
       .askNone {
         @apply min-h-[665px] h-full flex_center;
         > div {
-          @apply flex-col flex_center gap-[44px];
+          @apply flex-col flex_center gap-[40px];
           .illust_box {
-            @apply w-[254px] aspect-square bg-gray-300;
+            @apply w-[254px] h-[254px];
+
+            img {
+              @apply object-cover w-full h-full;
+            }
           }
 
           p {
@@ -233,7 +241,11 @@ main.main_container {
               }
 
               .list_arrow {
-                @apply w-[20px] h-[20px] bg-gray-300;
+                @apply w-[24px] h-[24px];
+
+                img {
+                  @apply object-cover w-full h-full;
+                }
               }
             }
 

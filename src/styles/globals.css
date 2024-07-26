@@ -42,7 +42,11 @@ header {
   @apply flex_center w-full h-[84px] bg-white;
 
   .logo_area {
-    @apply py-[14px] px-[42px] text-[white] main_colorBg rounded-[100px];
+    @apply w-[120px] h-[52px];
+
+    img {
+      @apply w-full h-full object-cover;
+    }
   }
 }
 
@@ -64,7 +68,11 @@ footer {
         > div {
           @apply flex_center gap-[6px];
           .ftIcon_box {
-            @apply w-[24px] aspect-square bg-gray-300;
+            @apply w-[24px] h-[24px];
+
+            img {
+              @apply object-cover w-full h-full;
+            }
           }
         }
       }
