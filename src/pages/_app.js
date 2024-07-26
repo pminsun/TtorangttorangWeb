@@ -4,7 +4,6 @@ import '@/styles/main.css';
 import '@/styles/gateway.css';
 import '@/styles/fonts/notoSansKR.css';
 import '@/styles/fonts/tmoneyRoundWind.css';
-import '@/styles/fonts/appleSDGothicNeoB.css';
 
 export default function App({ Component, pageProps }) {
   return (

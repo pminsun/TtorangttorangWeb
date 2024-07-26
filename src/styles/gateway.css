@@ -7,8 +7,40 @@
       @apply object-cover w-full h-full;
     }
 
+    .topIntroTxt_area {
+      @apply absolute left-0 bottom-[189px] pl-[11%];
+
+      p.intro_small {
+        @apply mb-[24px] text-[24px] font-medium gray_colorTxt;
+      }
+
+      .introBig_area {
+        @apply leading-[100px];
+
+        > div {
+          @apply relative;
+
+          .star {
+            @apply absolute top-[-13px] right-[-10px];
+          }
+
+          .text_round {
+            @apply absolute top-[-30px] left-[-110px];
+          }
+        }
+
+        h3,
+        span {
+          @apply text-[52px] font-medium text-[#424242];
+
+          span {
+          }
+        }
+      }
+    }
+
     .moveToAnnounce_btnArea {
-      @apply absolute left-0 bottom-[189px] pl-[11%] w-full h-[107px];
+      @apply w-full h-[107px] mt-[24px];
       .moveToAnnounce_btn {
         @apply flex_center w-[412px] h-[107px] font-medium text-[32px] cursor-pointer rounded-[12px] bg-[#419AFF] text-white;
       }
