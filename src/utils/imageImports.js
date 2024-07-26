@@ -15,7 +15,7 @@ import ImageIconSyncAlt from '../../public/images/icon_sync_alt.svg';
 
 import ImageGatewayBenner from '../../public/images/gatewayBanner.svg';
 import ImageGatewayDetailInfo from '../../public/images/gate_detailInfo.svg';
-import ImageGatewayAskBG from '../../public/images/gateway_askBg.svg';
+import ImageGatewayAskBG from '../../public/images/gateway_askBG.svg';
 import ImageGatewayAskPoint from '../../public/images/gateway_askPoint.svg';
 import ImageGatewayFeedback from '../../public/images/gateway_feedback.svg';
 import ImageGatewayModify from '../../public/images/gateway_modify.svg';
