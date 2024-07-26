@@ -5,6 +5,8 @@ import { diffWords } from 'diff';
 import { useEffect, useState, useRef } from 'react';
 import HighlightWithinTextarea from 'react-highlight-within-textarea';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import Image from 'next/image';
+import * as LocalImages from '@/utils/imageImports';
 
 const testTxt =
   "안녕하세요, 여러분. 오늘은 디자인 프로세스에서 중요한 역할을 하는 퍼소나(Persona)에 대해 이야기해보겠습니다. 퍼소나는 디자인 작업을 진행할 때 필수적인 도구 중 하나예요. 퍼소나는 우리의 제품이나 서비스를 사용할 가상의 사용자를 대표하는 캐릭터로, 실제 사용자 데이터를 기반으로 만들어집니다. 이를 통해 디자이너는 사용자 중심의 디자인을 구현할 수 있어요. 퍼소나를 만드는 과정은 다음과 같습니다. 먼저, 사용자 리서치를 통해 목표 사용자의 행동, 동기, 요구사항 등을 파악해요. 이때 인터뷰, 설문조사, 사용성 테스트 등의 방법을 사용합니다. 수집된 데이터를 분석하여 공통된 특성과 패턴을 찾아내고, 이를 바탕으로 하나 이상의 퍼소나를 정의해요.퍼소나는 예를 들어, 우리의 목표 사용자가 30대 직장인이라면, 그들의 하루 일과, 주요 관심사, 직장에서 겪는 문제점 등을 자세히 기록하는 편이에요. 퍼소나는 디자인 과정에서 여러 가지 중요한 역할을 합니다. 첫째, 팀원들이 사용자에 대한 공통된 이해를 갖게 해요. 이는 의사소통을 원활하게 하고, 팀원들이 같은 방향을 바라보도록 도와줍니다. 둘째, 디자인 결정 시 사용자 관점을 유지해 사용자에게 실제로 필요한 기능과 경험을 제공할 수 있습니다. 셋째, 사용자의 요구와 목표를 구체적으로 함으로써, 디자이너가 더 창의적이고 효율적으로 문제를 해결할 수 있도록 해줘요. 예를 들어, 우리는 '김지훈'이라는 퍼소나를 만들 수 있습니다. 지훈은 35세의 마케팅 매니저로, 바쁜 업무 일정 속에서 효율적으";
@@ -351,14 +353,28 @@ export default function Home() {
                     className="scriptToggle_btn"
                     onClick={() => setScriptToggle(!scriptToggle)}
                   >
-                    <div className="icon"></div>
+                    <div className="icon">
+                      <Image
+                        src={LocalImages.ImageIconSyncAlt}
+                        alt="ImageIconSyncAlt"
+                        width={24}
+                        height={24}
+                      />
+                    </div>
                     <p>{scriptToggle ? '원문 보기' : '교정문 보기'}</p>
                   </div>
                 )}
                 <div className="copy_box">
                   {originScript.length === 0 ? (
                     <div>
-                      <div className="icon"></div>
+                      <div className="icon">
+                        <Image
+                          src={LocalImages.ImageIconCopy}
+                          alt="ImageIconCopy"
+                          width={24}
+                          height={24}
+                        />
+                      </div>
                       <p>복사하기</p>
                     </div>
                   ) : (
@@ -368,7 +384,14 @@ export default function Home() {
                       onCopy={() => alert('발표문을 복사했어요')}
                     >
                       <div>
-                        <div className="icon"></div>
+                        <div className="icon">
+                          <Image
+                            src={LocalImages.ImageIconCopy}
+                            alt="ImageIconCopy"
+                            width={24}
+                            height={24}
+                          />
+                        </div>
                         <p>복사하기</p>
                       </div>
                     </CopyToClipboard>
@@ -451,7 +474,16 @@ export default function Home() {
               </div>
               <div className="repeat_box">
                 <div onClick={() => setRepeat(!repeat)}>
-                  <div className={cls('checkbox', repeat ? 'active_color' : 'disabled_color')}></div>
+                  <div className={cls('checkbox', repeat ? 'active_color' : 'disabled_color')}>
+                    {repeat && (
+                      <Image
+                        src={LocalImages.ImageIconCheckboxArrow}
+                        alt="ImageIconCheckboxArrow"
+                        width={11}
+                        height={10}
+                      />
+                    )}
+                  </div>
                   <p>중복 표현을 제거할게요</p>
                 </div>
               </div>
@@ -483,7 +515,7 @@ export default function Home() {
           secondMent={'또랑또랑이 준비한 예상 질문과 답변으로, 발표를 더욱 완성도 있게 만들어 보세요'}
         />
         <div className="ask_box">
-          {askListTotalShow ? (
+          {!askListTotalShow ? (
             <div className="askList">
               <ul>
                 {askListArray.map((item, index) => (
@@ -493,7 +525,14 @@ export default function Home() {
                       onClick={() => toggleItem(index)}
                     >
                       <span className={cls(askListState[index] ? 'font-semibold' : 'font-medium')}>{item.ask}</span>
-                      <div className="list_arrow"></div>
+                      <div className={cls('list_arrow', askListState[index] ? 'scale-y-[-1]' : 'scale-y-[1]')}>
+                        <Image
+                          src={LocalImages.ImageIconArrow}
+                          alt="ImageIconArrow"
+                          width={24}
+                          height={24}
+                        />
+                      </div>
                     </div>
                     <div className={cls('list_answer', askListState[index] ? 'on' : '')}>
                       <div>
@@ -516,7 +555,14 @@ export default function Home() {
           ) : (
             <div className="askNone">
               <div>
-                <div className="illust_box"></div>
+                <div className="illust_box">
+                  <Image
+                    src={LocalImages.ImageTtorangNote}
+                    alt="ImageTtorangNote"
+                    width={254}
+                    height={254}
+                  />
+                </div>
                 <p>
                   아직 발표문을 분석하지 못했어요.
                   <br /> 발표문 초안을 작성한 후, 교정하기 버튼을 눌러주세요
