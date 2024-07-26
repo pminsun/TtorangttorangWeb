@@ -64,23 +64,6 @@ export default function Home() {
     setCharCount(draft.length);
   };
 
-  // const writeNewScript = (value) => {
-  //   const MAX_LENGTH = 3000;
-
-  //   if (value != retryScriptCompareTxt) {
-  //     setModifyBtn(true);
-  //   }
-
-  //   if (value.length <= MAX_LENGTH) {
-  //     setNewScript(value);
-  //     setCharCountNew(value.length);
-  //   } else {
-  //     const truncatedValue = value.slice(0, MAX_LENGTH);
-  //     setNewScript(truncatedValue);
-  //     setCharCountNew(truncatedValue.length);
-  //   }
-  // };
-
   const writeSubject = (event) => {
     const MAX_LENGTH = 100;
     let draft = event.target.value;
@@ -170,7 +153,7 @@ export default function Home() {
       setTimeout(() => {
         // 재교정 시 (2회차 이상)
         if (newScript.length > 0 && modifyBtn && scriptToggle) {
-          const oldScript = newScript;
+          const oldScript = newScript.slice(0, 3000);
           const updatedScript = testTxt2;
           // 1회차 교정본을 originScript로 설정
           setOriginScript(oldScript);
@@ -338,14 +321,11 @@ export default function Home() {
                         ]}
                         value={newScript}
                         onChange={(value) => {
-                          const MAX_LENGTH = 3000;
-                          let draft = value;
-                          if (draft.length > MAX_LENGTH) {
-                            setNewScript(draft.slice(0, MAX_LENGTH));
+                          setNewScript(value);
+                          setCharCountNew(value.length);
+
+                          if (value.length > 3000) {
                             setCharCountNew(3000);
-                          } else {
-                            setNewScript(value);
-                            setCharCountNew(value.length);
                           }
                         }}
                       />
