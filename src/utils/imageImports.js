@@ -13,7 +13,9 @@ import ImageIconDescription from '../../public/images/icon_description.svg';
 import ImageIconHelp from '../../public/images/icon_help.svg';
 import ImageIconSyncAlt from '../../public/images/icon_sync_alt.svg';
 
-import ImageGatewayBenner from '../../public/images/gatewayBanner.svg';
+import ImageGatewayIntro from '../../public/images/gatway_intro.svg';
+import ImageGatewayIntroStar from '../../public/images/text_star.svg';
+import ImageGatewayIntroRound from '../../public/images/text_round.svg';
 import ImageGatewayDetailInfo from '../../public/images/gate_detailInfo.svg';
 import ImageGatewayAskBG from '../../public/images/gateway_askBG.svg';
 import ImageGatewayAskPoint from '../../public/images/gateway_askPoint.svg';
@@ -29,6 +31,6 @@ export { ImageLogo, ImageMobileLogo, ImageVarLogo, ImageBenner, ImageTtorangArch
 
 export { ImageIconCheckboxArrow, ImageIconArrow, ImageIconCopy, ImageIconDescription, ImageIconHelp, ImageIconSyncAlt };
 
-export { ImageGatewayBenner, ImageGatewayDetailInfo, ImageGatewayAskBG, ImageGatewayAskPoint, ImageGatewayFeedback, ImageGatewayModify };
+export { ImageGatewayIntro, ImageGatewayIntroStar, ImageGatewayIntroRound, ImageGatewayDetailInfo, ImageGatewayAskBG, ImageGatewayAskPoint, ImageGatewayFeedback, ImageGatewayModify };
 
 export { ImageGatewayOctagon, ImageGatewayRound, ImageGatewayFlower, ImageGatewayHexagon };
