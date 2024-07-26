@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -10,7 +11,10 @@ export default function Footer() {
           <p className="text-[12px]">비사이드 407기 </p>
         </div>
         <div>
-          <div>
+          <Link
+            href={'/'}
+            target="_blank"
+          >
             <div className="ftIcon_box">
               <Image
                 src={LocalImages.ImageIconHelp}
@@ -20,8 +24,11 @@ export default function Footer() {
               />
             </div>
             <span>문의하기</span>
-          </div>
-          <div>
+          </Link>
+          <Link
+            href={'/'}
+            target="_blank"
+          >
             <div className="ftIcon_box">
               <Image
                 src={LocalImages.ImageIconDescription}
@@ -31,7 +38,7 @@ export default function Footer() {
               />
             </div>
             <span>서비스 소개</span>
-          </div>
+          </Link>
         </div>
       </div>
     </footer>
