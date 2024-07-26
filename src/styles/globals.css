@@ -69,7 +69,7 @@ footer {
       &:last-of-type {
         @apply flex_center gap-[30px];
 
-        > div {
+        a {
           @apply flex_center gap-[6px];
           .ftIcon_box {
             @apply w-[24px] h-[24px];
