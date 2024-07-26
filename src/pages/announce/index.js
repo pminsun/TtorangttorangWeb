@@ -481,7 +481,7 @@ export default function Announce() {
                     onClick={() => selectEndingTxt('합니다체')}
                     className={cls(endingTxt === '합니다체' ? 'active_color' : 'disabled_color')}
                   >
-                    <span>합니다체</span>
+                    <span>- 합니다체</span>
                   </div>
                   <div
                     onClick={() => selectEndingTxt('해요체')}
