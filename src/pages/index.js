@@ -515,7 +515,7 @@ export default function Home() {
           secondMent={'또랑또랑이 준비한 예상 질문과 답변으로, 발표를 더욱 완성도 있게 만들어 보세요'}
         />
         <div className="ask_box">
-          {!askListTotalShow ? (
+          {askListTotalShow ? (
             <div className="askList">
               <ul>
                 {askListArray.map((item, index) => (
