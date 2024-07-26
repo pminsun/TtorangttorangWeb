@@ -74,7 +74,7 @@ footer {
 
 /* mobile */
 .moblie_container {
-  @apply flex_center flex-col w-full h-screen;
+  @apply flex_center flex-col w-full h-screen bg-[#FEFEFE];
 
   .logo_area {
     @apply w-[196px] h-[72px] mb-[32px];
