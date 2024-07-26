@@ -1,5 +1,5 @@
 main.main_container {
-  @apply pt-[16px];
+  @apply w-[78%] mx-auto pt-[16px] pb-[140px];
 
   /* common */
   .required {
@@ -31,7 +31,33 @@ main.main_container {
 
   /* banner */
   section.topBanner_area {
-    @apply w-full h-[300px] rounded-md bg-[#3D6BE1] overflow-hidden;
+    @apply relative w-full h-[300px] rounded-md bg-[#3D6BE1] overflow-hidden;
+
+    img {
+      @apply object-cover w-full h-full;
+    }
+
+    .topBanner_ment {
+      @apply flex_center flex-col absolute_center w-[800px];
+
+      .topBanner_mentArea {
+        p {
+          @apply text-center font-[800] text-[32px] text-white font-tmoneyRoundWind;
+
+          &:last-of-type {
+            @apply text-[28px] my-[12px];
+          }
+        }
+      }
+
+      .topBanner_logo {
+        @apply w-[188px] h-[92px];
+
+        img {
+          @apply object-cover w-full h-full;
+        }
+      }
+    }
   }
 
   /* 발표 대본 교정 */

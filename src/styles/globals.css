@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+article {
+  @apply w-full overflow-y-auto;
+
+  b {
+    @apply font-normal;
+  }
+
+  i {
+    @apply not-italic;
+  }
+}
+
 /* reset */
 * {
   margin: 0;
@@ -29,20 +41,12 @@ textarea {
   resize: none;
 }
 
-/* .root_layout {
-  @apply w-full max-w-[1493px] mx-auto px-[90px] pb-[140px];
-} */
-
-.root_layout {
-  @apply w-[78%] mx-auto pb-[140px];
-}
-
 /* header */
 header {
   @apply flex_center w-full h-[84px] bg-white;
 
   .logo_area {
-    @apply w-[120px] h-[52px];
+    @apply block w-[120px] h-[52px];
 
     img {
       @apply w-full h-full object-cover;
