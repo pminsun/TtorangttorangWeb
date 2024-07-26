@@ -74,21 +74,33 @@ footer {
 
 /* mobile */
 .moblie_container {
-  @apply flex_center flex-col gap-[6px] w-full h-screen;
+  @apply flex_center flex-col w-full h-screen;
 
   .logo_area {
-    @apply w-[205px] h-[72px] bg-gray-300;
+    @apply w-[196px] h-[72px] mb-[32px];
+
+    img {
+      @apply w-full h-full object-cover;
+    }
   }
 
   .character_area {
-    @apply w-[205px] h-[205px] bg-gray-300;
+    @apply w-[208px] h-[204px] mb-[8px];
+
+    img {
+      @apply w-full h-full object-cover;
+    }
   }
 
   .guide_area {
     @apply text-center;
 
     > p:first-of-type {
-      @apply mb-[7px] text-[20px] font-medium text-[#424242];
+      @apply mb-[4px] text-[20px] font-medium text-[#424242];
+    }
+
+    > p:last-of-type {
+      @apply text-[16px] font-normal text-[#757575];
     }
   }
 }
