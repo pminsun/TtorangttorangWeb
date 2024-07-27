@@ -11,7 +11,7 @@ module.exports = {
       },
       fontFamily: {
         NotoSansKR: ['NotoSansKR'],
-        tmoneyRoundWind: ['tmoneyRoundWind'],
+        TmoneyRoundWind: ['TmoneyRoundWind'],
       },
     },
   },
