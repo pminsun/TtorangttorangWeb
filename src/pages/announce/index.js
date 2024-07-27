@@ -189,21 +189,23 @@ export default function Announce() {
       });
 
       const finaldata = dataArray.join('');
+
       const scriptStartIndex = finaldata.indexOf('1. 발표 대본');
       const scriptEndIndex = finaldata.indexOf('2. 개선 내용');
-      const improveEndIndex = finaldata.indexOf('3. 예상 질문');
+      const improveEndIndex = finaldata.indexOf('3. 예상 질문, 답변');
       const lastIndex = finaldata.length;
 
       const extractedScriptText = finaldata.substring(scriptStartIndex, scriptEndIndex).trim();
       const extractedImproveEText = finaldata.substring(scriptEndIndex, improveEndIndex).trim();
       const extractedOAText = finaldata.substring(improveEndIndex, lastIndex).trim();
       const removeOne = extractedScriptText.replace(/^1\.\s+/m, '').replace('발표 대본', '');
-      const removeTwo = extractedImproveEText.replace(/^2\.\s+/m, '');
+      const removeTwo = extractedImproveEText.replace(/^2\.\s+/m, '').replace('개선 내용', '');
 
       const improveLlines = removeTwo.split('\n');
-      const removeWord = improveLlines.map((item) => item.replace('개선 내용 : ', ''));
+      const removeWord = improveLlines.map((item) => item.replace(/[-:]/g, ''));
+      const filterWord = removeWord.filter((item) => item.length > 0);
 
-      setImprovements(removeWord);
+      setImprovements(filterWord);
 
       // qa 배열화
       const qAcleanText = extractedOAText.replace(/^3\. 예상 질문, 답변\s+/m, '').trim();
@@ -213,13 +215,13 @@ export default function Announce() {
       let currentObject = {};
 
       lines.forEach((line) => {
-        if (line.startsWith('Q :')) {
+        if (line.startsWith('Q :') || line.startsWith('질문 :')) {
           if (currentObject.Q) {
             askListArray.push(currentObject);
             currentObject = {};
           }
           currentObject.Q = line.slice(2).trim();
-        } else if (line.startsWith('A :')) {
+        } else if (line.startsWith('A :') || line.startsWith('답변 :')) {
           currentObject.A = line.slice(2).trim();
         } else if (line.trim() === '' && currentObject.Q && currentObject.A) {
           askListArray.push(currentObject);
@@ -493,7 +495,7 @@ export default function Announce() {
                 <span>{estimatedPresentTime} (예상 발표 시간)</span>
               </div>
               <div>
-                <span>개선 내용: {scriptToggle && <span className="main_colorTxt">{improvements[0] === '개선 내용' ? improvements[1] : improvements[0]}</span>}</span>
+                <span>개선 내용: {scriptToggle && <span className="main_colorTxt">{improvements[0]}</span>}</span>
               </div>
             </div>
           </div>
@@ -612,29 +614,34 @@ export default function Announce() {
           {askListTotalShow ? (
             <div className="askList">
               <ul>
-                {qaArray.map((item, index) => (
-                  <li key={index}>
-                    <div
-                      className="list_ask"
-                      onClick={() => toggleItem(index)}
-                    >
-                      <span className={cls(askListState[index] ? 'font-semibold' : 'font-medium')}>{item.Q.replace(':', '')}</span>
-                      <div className={cls('list_arrow', askListState[index] ? 'scale-y-[-1]' : 'scale-y-[1]')}>
-                        <Image
-                          src={LocalImages.ImageIconArrow}
-                          alt="ImageIconArrow"
-                          width={24}
-                          height={24}
-                        />
+                {qaArray.map((item, index) => {
+                  const question = item.Q || item.질문 || '';
+                  const answer = item.A || item.답변 || '';
+
+                  return (
+                    <li key={index}>
+                      <div
+                        className="list_ask"
+                        onClick={() => toggleItem(index)}
+                      >
+                        <span className={cls(askListState[index] ? 'font-semibold' : 'font-medium')}>{question.replace(':', '')}</span>
+                        <div className={cls('list_arrow', askListState[index] ? 'scale-y-[-1]' : 'scale-y-[1]')}>
+                          <Image
+                            src={LocalImages.ImageIconArrow}
+                            alt="ImageIconArrow"
+                            width={24}
+                            height={24}
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className={cls('list_answer', askListState[index] ? 'on' : '')}>
-                      <div>
-                        <p>{item.A.replace(':', '')}</p>
+                      <div className={cls('list_answer', askListState[index] ? 'on' : '')}>
+                        <div>
+                          <p>{answer.replace(':', '')}</p>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                ))}
+                    </li>
+                  );
+                })}
               </ul>
               <div className="askCopy">
                 <CopyToClipboard
