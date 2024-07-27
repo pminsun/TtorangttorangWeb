@@ -12,10 +12,10 @@ export default function Home() {
     <main className="gateway_container">
       <section className="topIntro_area">
         <Image
-          src={LocalImages.ImageGatewayIntro}
-          alt="ImageGatewayIntro"
-          width={1920}
-          height={740}
+          src={LocalImages.ImageGBenner}
+          alt="ImageGBenner"
+          width={1484}
+          height={449}
         />
 
         <div className="topIntroTxt_area">
@@ -25,7 +25,7 @@ export default function Home() {
               <h3>
                 AI 발표 도우미 <span>또랑또랑과 함께</span>
               </h3>
-              <h3>쉽고 빠르게 발표를 준비해요</h3>
+              <h3 className="mt-[-40px]">쉽고 빠르게 발표를 준비해요</h3>
               <div className="star">
                 <Image
                   src={LocalImages.ImageGatewayIntroStar}
@@ -38,7 +38,7 @@ export default function Home() {
                 <Image
                   src={LocalImages.ImageGatewayIntroRound}
                   alt="ImageGatewayIntroRound"
-                  width={490}
+                  width={390}
                   height={180}
                 />
               </div>
@@ -112,14 +112,13 @@ export default function Home() {
           </div>
         </div>
       </section>
-     
-        <div
-          onClick={moveToTop}
-          className="moveToTop_area"
-        >
-          TOP
-        </div>
 
+      <div
+        onClick={moveToTop}
+        className="moveToTop_area"
+      >
+        TOP
+      </div>
     </main>
   );
 }

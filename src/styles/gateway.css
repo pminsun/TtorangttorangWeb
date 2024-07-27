@@ -1,14 +1,14 @@
 .gateway_container {
   @apply relative;
   .topIntro_area {
-    @apply relative w-full h-[740px] bg-[#ebf2fa];
+    @apply relative w-[1484px] h-[449px] mx-auto bg-[#ebf2fa];
 
     img {
-      @apply object-cover w-full h-full;
+      @apply h-full;
     }
 
     .topIntroTxt_area {
-      @apply absolute left-0 bottom-[189px] pl-[11%];
+      @apply absolute left-0 bottom-[50px] pl-[8%];
 
       p.intro_small {
         @apply mb-[24px] text-[24px] font-medium gray_colorTxt;
@@ -21,17 +21,17 @@
           @apply relative;
 
           .star {
-            @apply absolute top-[-13px] right-[-10px];
+            @apply absolute top-[-5px] right-[-40px];
           }
 
           .text_round {
-            @apply absolute top-[-30px] left-[-110px];
+            @apply absolute top-[-20px] left-[-90px];
           }
         }
 
         h3,
         span {
-          @apply text-[52px] font-medium text-[#424242];
+          @apply text-[40px] font-medium text-[#424242];
 
           span {
           }
@@ -42,7 +42,7 @@
     .moveToAnnounce_btnArea {
       @apply w-full h-[107px] mt-[24px];
       .moveToAnnounce_btn {
-        @apply flex_center w-[412px] h-[107px] font-medium text-[32px] cursor-pointer rounded-[12px] bg-[#419AFF] text-white;
+        @apply flex_center w-[233px] h-[75px] font-medium text-[20px] cursor-pointer rounded-[12px] bg-[#419AFF] text-white;
       }
     }
   }
