@@ -12,7 +12,7 @@ export default function Footer() {
         </div>
         <div>
           <Link
-            href={'/'}
+            href={'https://forms.gle/9X6VLT9aFX65U3E5A'}
             target="_blank"
           >
             <div className="ftIcon_box">
@@ -26,7 +26,7 @@ export default function Footer() {
             <span>문의하기</span>
           </Link>
           <Link
-            href={'/'}
+            href={'https://angry-mice-e3f.notion.site/395866ff990148659ec20768bfe2c084?pvs=4'}
             target="_blank"
           >
             <div className="ftIcon_box">
