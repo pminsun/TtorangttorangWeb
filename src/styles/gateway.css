@@ -1,17 +1,17 @@
 .gateway_container {
-  @apply relative;
+  @apply relative bg-[#fff] pt-[16px];
   .topIntro_area {
-    @apply relative w-[1484px] h-[449px] mx-auto bg-[#ebf2fa];
+    @apply relative w-[70%] h-[350px] mx-auto bg-[#ebf2fa];
 
     img {
-      @apply h-full;
+      @apply w-full h-full object-cover;
     }
 
     .topIntroTxt_area {
-      @apply absolute left-0 bottom-[50px] pl-[8%];
+      @apply absolute left-0 top-[40px] pl-[8%];
 
       p.intro_small {
-        @apply mb-[24px] text-[24px] font-medium gray_colorTxt;
+        @apply mb-[0px] text-[18px] font-medium gray_colorTxt;
       }
 
       .introBig_area {
@@ -21,17 +21,17 @@
           @apply relative;
 
           .star {
-            @apply absolute top-[-5px] right-[-40px];
+            @apply absolute top-[-5px] right-[-30px];
           }
 
           .text_round {
-            @apply absolute top-[-20px] left-[-90px];
+            @apply absolute top-[-40px] left-[-170px];
           }
         }
 
         h3,
         span {
-          @apply text-[40px] font-medium text-[#424242];
+          @apply text-[28px] font-medium text-[#424242];
 
           span {
           }
@@ -40,9 +40,9 @@
     }
 
     .moveToAnnounce_btnArea {
-      @apply w-full h-[107px] mt-[24px];
+      @apply mt-[0px];
       .moveToAnnounce_btn {
-        @apply flex_center w-[233px] h-[75px] font-medium text-[20px] cursor-pointer rounded-[12px] bg-[#419AFF] text-white;
+        @apply flex_center w-[146px] h-[36px] font-medium text-[16px] cursor-pointer rounded-[4px] bg-[#419AFF] text-white;
       }
     }
   }
@@ -79,13 +79,13 @@
   }
 
   .bottomDetail_area {
-    @apply relative z-10 w-[80%] mx-auto pt-[28px] pb-[140px];
+    @apply relative z-10 w-[80%] mx-auto pt-[40px] pb-[140px];
 
     .character_area {
       @apply flex-col flex_center mb-[120px];
 
       > div {
-        @apply w-[254px] h-[254px];
+        @apply w-[100px] h-[100px];
 
         img {
           @apply object-cover w-full h-full;
@@ -93,16 +93,19 @@
       }
 
       > p {
-        @apply relative pb-[10px] text-[32px] font-medium text-[#424242];
+        @apply relative pb-[10px] text-[24px] font-medium text-[#424242];
 
-        &::after {
-          @apply content-[''] absolute_xHalf bottom-0 w-[81px] h-[6px] main_colorBg;
+        > span {
+          @apply relative pb-[10px] text-[24px] font-medium text-[#424242];
+          &::after {
+            @apply content-[''] absolute_xHalf bottom-[0px] w-[100px] h-[4px] main_colorBg;
+          }
         }
       }
     }
 
     .detailInfo_area {
-      @apply w-full;
+      @apply w-[80%] mx-auto;
     }
   }
 
