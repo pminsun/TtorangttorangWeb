@@ -486,7 +486,7 @@ export default function Announce() {
             </div>
             <div className="script_info">
               <div>
-                <span>{scriptToggle ? formatNumber(charCountNew) : formatNumber(charCount)} / 3,000 (글자수)</span>
+                <span className={cls(charCountNew > 3000 ? 'text-red-600' : 'gray_colorTxt')}>{scriptToggle ? formatNumber(charCountNew) : formatNumber(charCount)} / 3,000 (글자수)</span>
               </div>
               <div>
                 <span>{estimatedPresentTime} (예상 발표 시간)</span>
