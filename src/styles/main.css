@@ -1,5 +1,5 @@
 main.main_container {
-  @apply w-[78%] mx-auto pt-[16px] pb-[140px];
+  @apply w-[70%] mx-auto pt-[16px] pb-[140px];
 
   /* common */
   .required {

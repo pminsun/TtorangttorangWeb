@@ -4,6 +4,8 @@ import ImageVarLogo from '../../public/images/Logo_var.svg';
 import ImageBenner from '../../public/images/Benner.svg';
 import ImageMainBenner from '../../public/images/main_banner.svg';
 
+import ImageGBenner from '../../public/images/g_banner.svg';
+
 import ImageTtorangArch from '../../public/images/ttorang_arch.svg';
 import ImageTtorangNote from '../../public/images/ttorang_note.svg';
 
@@ -28,7 +30,7 @@ import ImageGatewayRound from '../../public/images/gatway_round.svg';
 import ImageGatewayFlower from '../../public/images/gatway_flower.svg';
 import ImageGatewayHexagon from '../../public/images/gateway_hexagon.svg';
 
-export { ImageMainBenner, ImageLogo, ImageMobileLogo, ImageVarLogo, ImageBenner, ImageTtorangArch, ImageTtorangNote };
+export { ImageGBenner, ImageMainBenner, ImageLogo, ImageMobileLogo, ImageVarLogo, ImageBenner, ImageTtorangArch, ImageTtorangNote };
 
 export { ImageIconCheckboxArrow, ImageIconArrow, ImageIconCopy, ImageIconDescription, ImageIconHelp, ImageIconSyncAlt };
 
