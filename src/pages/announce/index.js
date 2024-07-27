@@ -135,10 +135,6 @@ export default function Announce() {
     setHighlightedText(highlights);
   };
 
-  function extractContents(data) {
-    return data.map((item) => item.message.content).join('');
-  }
-
   //  교정하기
   const modifyScript = async () => {
     // Skeleton loading start
@@ -193,7 +189,6 @@ export default function Announce() {
       });
 
       const finaldata = dataArray.join('');
-
       const scriptStartIndex = finaldata.indexOf('1. 발표 대본');
       const scriptEndIndex = finaldata.indexOf('2. 개선 내용');
       const improveEndIndex = finaldata.indexOf('3. 예상 질문');
