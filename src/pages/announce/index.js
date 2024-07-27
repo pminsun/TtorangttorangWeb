@@ -27,7 +27,6 @@ export default function Announce() {
   const [improvements, setImprovements] = useState('');
 
   const [qaArray, setQaArray] = useState([]);
-  //let qaArray = [];
 
   // 교정본 수정 여부 확인용 state
   const [retryScriptCompareTxt, setRetryScriptCompareTxt] = useState('');
@@ -189,7 +188,6 @@ export default function Announce() {
       });
 
       const finaldata = dataArray.join('');
-
       const scriptStartIndex = finaldata.indexOf('1. 발표 대본');
       const scriptEndIndex = finaldata.indexOf('2. 개선 내용');
       const improveEndIndex = finaldata.indexOf('3. 예상 질문, 답변');
@@ -489,13 +487,13 @@ export default function Announce() {
             </div>
             <div className="script_info">
               <div>
-                <span className={cls(charCountNew > 3000 ? 'text-red-600' : 'text-black')}>{scriptToggle ? formatNumber(charCountNew) : formatNumber(charCount)} / 3,000 (글자수)</span>
+                <span className={cls(charCountNew > 3000 ? 'text-red-600' : 'gray_colorTxt')}>{scriptToggle ? formatNumber(charCountNew) : formatNumber(charCount)} / 3,000 (글자수)</span>
               </div>
               <div>
-                <span>{estimatedPresentTime} (예상 발표 시간)</span>
+                <span className="gray_colorTxt">{estimatedPresentTime} (예상 발표 시간)</span>
               </div>
               <div>
-                <span>개선 내용: {scriptToggle && <span className="main_colorTxt">{improvements[0]}</span>}</span>
+                <span className="gray_colorTxt">개선 내용: {scriptToggle && <span className="main_colorTxt">{improvements[0]}</span>}</span>
               </div>
             </div>
           </div>
