@@ -243,6 +243,7 @@ export default function Announce() {
         setNewScript(updatedScript);
         setCharCountNew(updatedScript.length);
 
+        setQaArray(askListArray);
         // 원본과 새 스크립트 비교
         highlightDiffs(oldScript, updatedScript);
 
