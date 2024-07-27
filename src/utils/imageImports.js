@@ -30,7 +30,12 @@ import ImageGatewayRound from '../../public/images/gatway_round.svg';
 import ImageGatewayFlower from '../../public/images/gatway_flower.svg';
 import ImageGatewayHexagon from '../../public/images/gateway_hexagon.svg';
 
-export { ImageGBenner, ImageMainBenner, ImageLogo, ImageMobileLogo, ImageVarLogo, ImageBenner, ImageTtorangArch, ImageTtorangNote };
+import ImageGatewayBannerTxt from '../../public/images/banner_txt.svg';
+import ImageGatewayNewBanner from '../../public/images/new_bannerBG.svg';
+
+import ImageGatewayNewInfo from '../../public/images/new_gatewayInfo.svg';
+
+export { ImageGatewayNewInfo, ImageGatewayNewBanner, ImageGatewayBannerTxt, ImageGBenner, ImageMainBenner, ImageLogo, ImageMobileLogo, ImageVarLogo, ImageBenner, ImageTtorangArch, ImageTtorangNote };
 
 export { ImageIconCheckboxArrow, ImageIconArrow, ImageIconCopy, ImageIconDescription, ImageIconHelp, ImageIconSyncAlt };
 

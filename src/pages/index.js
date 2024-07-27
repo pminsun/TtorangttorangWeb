@@ -12,8 +12,8 @@ export default function Home() {
     <main className="gateway_container">
       <section className="topIntro_area">
         <Image
-          src={LocalImages.ImageGBenner}
-          alt="ImageGBenner"
+          src={LocalImages.ImageGatewayNewBanner}
+          alt="ImageGatewayNewBanner"
           width={1484}
           height={449}
         />
@@ -38,18 +38,20 @@ export default function Home() {
                 <Image
                   src={LocalImages.ImageGatewayIntroRound}
                   alt="ImageGatewayIntroRound"
-                  width={390}
-                  height={180}
+                  width={200}
+                  height={50}
+                  className="scale-[62%]"
                 />
               </div>
             </div>
           </div>
+
           <div className="moveToAnnounce_btnArea">
             <Link
               href={'/announce'}
               className="moveToAnnounce_btn"
             >
-              완벽한 발표 준비 시작하기
+              지금 시작하기
             </Link>
           </div>
         </div>
@@ -99,12 +101,14 @@ export default function Home() {
                 height={254}
               />
             </div>
-            <p>완벽한 발표 준비 방법을 알아볼까요?</p>
+            <p>
+              완벽한 발표 <span>준비 방법</span>을 알아볼까요?
+            </p>
           </div>
           <div className="detailInfo_area">
             <Image
-              src={LocalImages.ImageGatewayDetailInfo}
-              alt="ImageGatewayDetailInfo"
+              src={LocalImages.ImageGatewayNewInfo}
+              alt="ImageGatewayNewInfo"
               width={1543}
               height={1543}
               className="mx-auto"
