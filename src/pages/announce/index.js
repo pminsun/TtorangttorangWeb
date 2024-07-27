@@ -243,7 +243,6 @@ export default function Announce() {
         setNewScript(updatedScript);
         setCharCountNew(updatedScript.length);
 
-        setQaArray(askListArray);
         // 원본과 새 스크립트 비교
         highlightDiffs(oldScript, updatedScript);
 
@@ -322,7 +321,7 @@ export default function Announce() {
   const askCopyTxt = (totalAsk) => {
     return totalAsk
       ?.map((item, index) => {
-        const numberedQuestion = `${index + 1}.질문: ${item.Q}\n답변: ${item.A}\n\n`;
+        const numberedQuestion = `${index + 1}.질문: ${item.ask}\n답변: ${item.answer}\n\n`;
         return numberedQuestion;
       })
       .join('\n');
@@ -412,6 +411,9 @@ export default function Announce() {
                         onChange={(value) => {
                           setNewScript(value);
                           setCharCountNew(value.length);
+                          if (value.length > 3000) {
+                            setCharCountNew(3000);
+                          }
                         }}
                       />
                     </div>
@@ -484,7 +486,7 @@ export default function Announce() {
             </div>
             <div className="script_info">
               <div>
-                <span className={cls(charCountNew > 3000 ? 'text-red-600' : 'gray_colorTxt')}>{scriptToggle ? formatNumber(charCountNew) : formatNumber(charCount)} / 3,000 (글자수)</span>
+                <span>{scriptToggle ? formatNumber(charCountNew) : formatNumber(charCount)} / 3,000 (글자수)</span>
               </div>
               <div>
                 <span>{estimatedPresentTime} (예상 발표 시간)</span>
