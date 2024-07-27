@@ -86,7 +86,7 @@ main.main_container {
               @apply absolute_fullPage;
 
               textarea {
-                @apply w-full h-full p-[16px] text-[16px] leading-[40px] bg-[#fefefe];
+                @apply leading-normal w-full h-full p-[16px] text-[16px] leading-[40px] bg-[#fefefe];
               }
 
               &.newScript {
