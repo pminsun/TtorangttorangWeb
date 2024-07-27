@@ -321,7 +321,7 @@ export default function Announce() {
   const askCopyTxt = (totalAsk) => {
     return totalAsk
       ?.map((item, index) => {
-        const numberedQuestion = `${index + 1}.질문: ${item.ask}\n답변: ${item.answer}\n\n`;
+        const numberedQuestion = `${index + 1}.질문: ${item.Q}\n답변: ${item.A}\n\n`;
         return numberedQuestion;
       })
       .join('\n');
