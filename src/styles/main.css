@@ -87,6 +87,12 @@ main.main_container {
 
               textarea {
                 @apply w-full h-full p-[16px] text-[16px] leading-[40px] bg-[#fefefe];
+                &::-webkit-input-placeholder {
+                  font-size: 16px;
+                }
+                &::-webkit-textarea {
+                  font-size: 16px;
+                }
               }
 
               &.newScript {
