@@ -8,7 +8,6 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
 import { fetchAnnounceData } from '@/api/fetchData';
-import axios from 'axios';
 
 export default function Announce() {
   const [originScript, setOriginScript] = useState('');
@@ -116,6 +115,7 @@ export default function Announce() {
     setAskListState([false, false, false]);
   }, []);
 
+  const filterOut = ['-', '"', '"', '!.', '!', '['];
   const highlightDiffs = (oldStr, newStr) => {
     const diff = diffWords(oldStr, newStr);
     const highlights = [];
@@ -404,7 +404,7 @@ export default function Announce() {
                       <HighlightWithinTextarea
                         highlight={[
                           {
-                            highlight: highlightedText,
+                            highlight: highlightedText.filter((item) => !filterOut.includes(item)),
                             className: 'bg-[#cbeaff]',
                           },
                         ]}
