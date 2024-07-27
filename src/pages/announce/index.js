@@ -1,18 +1,14 @@
 import GuideMent from '@/components/GuideMent';
 import SkeletonLoading from '@/components/SkeletonLoading';
-import { askListArray, cls, formatNumber, measureTextWidth } from '@/utils/config';
+import { cls, formatNumber, measureTextWidth, temData, dataT } from '@/utils/config';
 import { diffWords } from 'diff';
 import { useEffect, useState, useRef } from 'react';
 import HighlightWithinTextarea from 'react-highlight-within-textarea';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
-
-const testTxt =
-  "안녕하세요, 여러분. 오늘은 디자인 프로세스에서 중요한 역할을 하는 퍼소나(Persona)에 대해 이야기해보겠습니다. 퍼소나는 디자인 작업을 진행할 때 필수적인 도구 중 하나예요. 퍼소나는 우리의 제품이나 서비스를 사용할 가상의 사용자를 대표하는 캐릭터로, 실제 사용자 데이터를 기반으로 만들어집니다. 이를 통해 디자이너는 사용자 중심의 디자인을 구현할 수 있어요. 퍼소나를 만드는 과정은 다음과 같습니다. 먼저, 사용자 리서치를 통해 목표 사용자의 행동, 동기, 요구사항 등을 파악해요. 이때 인터뷰, 설문조사, 사용성 테스트 등의 방법을 사용합니다. 수집된 데이터를 분석하여 공통된 특성과 패턴을 찾아내고, 이를 바탕으로 하나 이상의 퍼소나를 정의해요.퍼소나는 예를 들어, 우리의 목표 사용자가 30대 직장인이라면, 그들의 하루 일과, 주요 관심사, 직장에서 겪는 문제점 등을 자세히 기록하는 편이에요. 퍼소나는 디자인 과정에서 여러 가지 중요한 역할을 합니다. 첫째, 팀원들이 사용자에 대한 공통된 이해를 갖게 해요. 이는 의사소통을 원활하게 하고, 팀원들이 같은 방향을 바라보도록 도와줍니다. 둘째, 디자인 결정 시 사용자 관점을 유지해 사용자에게 실제로 필요한 기능과 경험을 제공할 수 있습니다. 셋째, 사용자의 요구와 목표를 구체적으로 함으로써, 디자이너가 더 창의적이고 효율적으로 문제를 해결할 수 있도록 해줘요. 예를 들어, 우리는 '김지훈'이라는 퍼소나를 만들 수 있습니다. 지훈은 35세의 마케팅 매니저로, 바쁜 업무 일정 속에서 효율적으";
-
-const testTxt2 =
-  "반갑습니다!!!, 여러분. 오늘은 디자인 프로세스에서 중요한 역할을 하는 퍼소나(Persona)에 대해 이야기해보겠습니다. 퍼소나는 디자인 작업을 진행할 때 필수적인 도구 중 하나예요. 퍼소나는 우리의 제품이나 서비스를 사용할 가상의 사용자를 대표하는 캐릭터로, 실제 사용자 데이터를 기반으로 만들어집니다. 이를 통해 디자이너는 사용자 중심의 디자인을 구현할 수 있어요. 퍼소나를 만드는 과정은 다음과 같습니다. 먼저, 사용자 리서치를 통해 목표 사용자의 행동, 동기, 요구사항 등을 파악해요. 이때 인터뷰, 설문조사, 사용성 테스트 등의 방법을 사용합니다. 수집된 데이터를 분석하여 공통된 특성과 패턴을 찾아내고, 이를 바탕으로 하나 이상의 퍼소나를 만듭니다.퍼소나는 예를 들어, 우리의 목표 사용자가 30대 직장인이라면, 그들의 하루 일과, 주요 관심사, 직장에서 겪는 문제점 등을 자세히 기록하는 편이에요. 퍼소나는 디자인 과정에서 여러 가지 중요한 역할을 합니다. 첫째, 팀원들이 사용자에 대한 공통된 이해를 갖게 해요. 이는 의사소통을 원활하게 하고, 팀원들이 같은 방향을 바라보도록 도와줍니다. 둘째, 디자인 결정 시 사용자 관점을 유지해 사용자에게제로 필요한 기능과 경험을 제공할 수 있습니다. 셋째, 사용자의 요구와 목표를 구체적으로 함으로써, 디자이너가 더 창의적이고 효율적으로 문제를 해결할 수 있도록 해줘요. 예를 들어, 우리는 '김지훈'이라는 퍼소나를 만들 수 있습니다. 지훈은 35세의 마케팅 매니저로, 바쁜 업무 일정 속에서 효율적으로 관리한니다";
+import { fetchAnnounceData } from '@/api/fetchData';
+import axios from 'axios';
 
 export default function Announce() {
   const [originScript, setOriginScript] = useState('');
@@ -21,24 +17,26 @@ export default function Announce() {
   const [charCountNew, setCharCountNew] = useState(0);
   const [subject, setSubject] = useState('');
   const [subjectCharCount, setSubjectCharCount] = useState(0);
-  const [presentPurpose, setpresentPurpose] = useState('회사 컨퍼런스');
+  const [presentPurpose, setPresentPurpose] = useState('회사 컨퍼런스');
   const [endingTxt, setEndingTxt] = useState('합니다체');
   const [modifyBtn, setModifyBtn] = useState(false);
   const [estimatedPresentTime, setEstimatedPresentTime] = useState('0분 0초'); // 예상 발표 시간
   const [repeat, setRepeat] = useState(false);
   const [askListState, setAskListState] = useState([false, false, false]);
   const [askListTotalShow, setAskLisTotalShow] = useState(false);
+  const [improvements, setImprovements] = useState('');
+
+  const [qaArray, setQaArray] = useState([]);
+  //let qaArray = [];
 
   // 교정본 수정 여부 확인용 state
   const [retryScriptCompareTxt, setRetryScriptCompareTxt] = useState('');
-
   const [scriptToggle, setScriptToggle] = useState(false);
   const [highlightedText, setHighlightedText] = useState([]);
-
   const scriptWriteBoxRef = useRef(null);
-  const [containerWidth, setContainerWidth] = useState(725);
 
   //skeleton
+  const [containerWidth, setContainerWidth] = useState(725);
   const scriptTextareaRef = useRef(null);
   const scriptUpdateTextareaRef = useRef(null);
   const skeletonRef = useRef(null);
@@ -48,7 +46,7 @@ export default function Announce() {
   const [lineWidths, setLineWidths] = useState([]);
 
   const selectPurpose = (purpose) => {
-    setpresentPurpose(purpose);
+    setPresentPurpose(purpose);
   };
 
   const selectEndingTxt = (txt) => {
@@ -93,7 +91,7 @@ export default function Announce() {
     setSubject('');
     setCharCount(0);
     setSubjectCharCount(0);
-    setpresentPurpose('회사 컨퍼런스');
+    setPresentPurpose('회사 컨퍼런스');
     setEndingTxt('합니다체');
     setRepeat(false);
     setEstimatedPresentTime('0분 0초');
@@ -137,76 +135,148 @@ export default function Announce() {
     setHighlightedText(highlights);
   };
 
+  function extractContents(data) {
+    return data.map((item) => item.message.content).join('');
+  }
+
   //  교정하기
-  const modifyScript = () => {
-    if (scriptTextareaRef.current || scriptUpdateTextareaRef.current) {
-      // 스켈레톤 표시
-      if (scriptTextareaRef.current) {
-        setShowSkeleton(true);
-        scriptTextareaRef.current.style.opacity = '0';
-      }
+  const modifyScript = async () => {
+    // Skeleton loading start
+    if (scriptTextareaRef.current) {
+      setShowSkeleton(true);
+      scriptTextareaRef.current.style.opacity = '0';
+    }
 
-      if (newScript.length > 0 && modifyBtn && scriptToggle && scriptUpdateTextareaRef.current) {
-        setShowNewSkeleton(true);
-        scriptUpdateTextareaRef.current.style.opacity = '0';
-      }
+    if (newScript.length > 0 && modifyBtn && scriptToggle && scriptUpdateTextareaRef.current) {
+      setShowNewSkeleton(true);
+      scriptUpdateTextareaRef.current.style.opacity = '0';
+    }
 
-      // 3초 후 처리
-      setTimeout(() => {
-        // 재교정 시 (2회차 이상)
-        if (newScript.length > 0 && modifyBtn && scriptToggle) {
-          const oldScript = newScript.slice(0, 3000);
-          const updatedScript = testTxt2;
-          // 1회차 교정본을 originScript로 설정
-          setOriginScript(oldScript);
+    try {
+      const data = {
+        topic: subject,
+        purpose: presentPurpose,
+        content: newScript.length > 0 && modifyBtn && scriptToggle ? newScript.slice(0, 3000) : originScript,
+        word: endingTxt,
+        duplicate: repeat === true ? 'Y' : 'N',
+      };
 
-          // 2회차 새로운 교정본을 newScript로 설정
-          // retryScriptCompareTxt 업데이트
-          setRetryScriptCompareTxt(updatedScript);
-          setNewScript(updatedScript);
+      let jsonStringArray = [];
+      let dataArray = [];
 
-          // 여기서 비교할 값을 로컬 변수에 저장
+      const response = await fetchAnnounceData(data);
+      jsonStringArray.push(response.data);
 
-          // 스켈레톤 표시 제거
-          setShowNewSkeleton(false);
-          if (scriptUpdateTextareaRef.current) {
-            scriptUpdateTextareaRef.current.style.opacity = '1';
+      jsonStringArray.forEach((jsonString) => {
+        // 문자열을 줄 단위로 분리
+        const lines = jsonString.split('\n');
+
+        // 각 줄을 처리하여 JSON 객체로 변환
+        lines.forEach((line) => {
+          // 'data:' 접두사 제거
+          const jsonString = line.replace(/^data:/, '').trim();
+
+          // JSON 문자열이 비어 있지 않은 경우
+          if (jsonString) {
+            try {
+              const parsedObject = JSON.parse(jsonString);
+
+              // 'message'와 'content'가 있는 경우에만 추출
+              if (parsedObject.message && parsedObject.message.content) {
+                dataArray.push(parsedObject.message.content);
+              }
+            } catch (e) {
+              console.error('Error parsing JSON string:', e);
+            }
           }
-          // 새 스크립트로 업데이트
-          // setNewScript(testTxt);
-          setCharCountNew(updatedScript.length);
+        });
+      });
 
-          // 원본과 새 스크립트 비교
-          highlightDiffs(oldScript, updatedScript);
+      const finaldata = dataArray.join('');
 
-          // 나머지 상태 업데이트
-          setAskLisTotalShow(true);
-          setScriptToggle(true);
-          setAskListState([false, false, false]);
-        } else {
-          // 첫 번째 교정
-          setNewScript(testTxt);
-          setRetryScriptCompareTxt(testTxt);
-          setCharCountNew(testTxt.length);
+      const scriptStartIndex = finaldata.indexOf('1. 발표 대본');
+      const scriptEndIndex = finaldata.indexOf('2. 개선 내용');
+      const improveEndIndex = finaldata.indexOf('3. 예상 질문');
+      const lastIndex = finaldata.length;
 
-          // 스켈레톤 표시 제거
-          setShowSkeleton(false);
+      const extractedScriptText = finaldata.substring(scriptStartIndex, scriptEndIndex).trim();
+      const extractedImproveEText = finaldata.substring(scriptEndIndex, improveEndIndex).trim();
+      const extractedOAText = finaldata.substring(improveEndIndex, lastIndex).trim();
+      const removeOne = extractedScriptText.replace(/^1\.\s+/m, '').replace('발표 대본', '');
+      const removeTwo = extractedImproveEText.replace(/^2\.\s+/m, '');
 
-          // 원본과 새 스크립트 비교
-          highlightDiffs(originScript, testTxt);
+      const improveLlines = removeTwo.split('\n');
+      const removeWord = improveLlines.map((item) => item.replace('개선 내용 : ', ''));
 
-          if (scriptTextareaRef.current) {
-            scriptTextareaRef.current.style.opacity = '1';
+      setImprovements(removeWord);
+
+      // qa 배열화
+      const qAcleanText = extractedOAText.replace(/^3\. 예상 질문, 답변\s+/m, '').trim();
+      const lines = qAcleanText.split('\n');
+      const askListArray = [];
+
+      let currentObject = {};
+
+      lines.forEach((line) => {
+        if (line.startsWith('Q :')) {
+          if (currentObject.Q) {
+            askListArray.push(currentObject);
+            currentObject = {};
           }
-
-          // 나머지 상태 업데이트
-          setAskLisTotalShow(true);
-          setScriptToggle(true);
-          setAskListState([false, false, false]);
+          currentObject.Q = line.slice(2).trim();
+        } else if (line.startsWith('A :')) {
+          currentObject.A = line.slice(2).trim();
+        } else if (line.trim() === '' && currentObject.Q && currentObject.A) {
+          askListArray.push(currentObject);
+          currentObject = {};
         }
-      }, 3000);
-    } else {
-      console.error('scriptTextareaRef is null');
+      });
+
+      // Push the last object if it exists
+      if (currentObject.Q && currentObject.A) {
+        askListArray.push(currentObject);
+      }
+
+      if (newScript.length > 0 && modifyBtn && scriptToggle) {
+        // 재교정 시 (2회차 이상)
+        const oldScript = newScript.slice(0, 3000);
+        const updatedScript = removeOne;
+
+        // 2회차 새로운 교정본을 newScript로 설정 1회차는 구
+        setOriginScript(oldScript);
+        setRetryScriptCompareTxt(updatedScript);
+        setNewScript(updatedScript);
+        setCharCountNew(updatedScript.length);
+
+        // 원본과 새 스크립트 비교
+        highlightDiffs(oldScript, updatedScript);
+
+        setShowNewSkeleton(false);
+        if (scriptUpdateTextareaRef.current) {
+          scriptUpdateTextareaRef.current.style.opacity = '1';
+        }
+      } else {
+        // 첫 번째 교정
+        setNewScript(removeOne);
+        setCharCountNew(removeOne.length);
+
+        setRetryScriptCompareTxt(removeOne);
+
+        setQaArray(askListArray);
+        // 원본과 새 스크립트 비교
+        highlightDiffs(originScript, removeOne);
+        if (scriptTextareaRef.current) {
+          scriptTextareaRef.current.style.opacity = '1';
+        }
+        setShowSkeleton(false);
+      }
+      // 나머지 상태 업데이트
+      setAskLisTotalShow(true);
+      setScriptToggle(true);
+      setAskListState([false, false, false]);
+    } catch (error) {
+      console.error('Error fetching modified script:', error);
+      setShowSkeleton(false);
     }
   };
 
@@ -427,7 +497,7 @@ export default function Announce() {
                 <span>{estimatedPresentTime} (예상 발표 시간)</span>
               </div>
               <div>
-                <span>개선 내용: {scriptToggle && <span className="main_colorTxt">핵심 요점을 짚고 논리적 흐름을 개선했어요</span>}</span>
+                <span>개선 내용: {scriptToggle && <span className="main_colorTxt">{improvements[0] === '개선 내용' ? improvements[1] : improvements[0]}</span>}</span>
               </div>
             </div>
           </div>
@@ -485,7 +555,7 @@ export default function Announce() {
                   </div>
                   <div
                     onClick={() => selectEndingTxt('해요체')}
-                    className={cls(endingTxt === 'haeyo' ? 'active_color' : 'disabled_color')}
+                    className={cls(endingTxt === '해요체' ? 'active_color' : 'disabled_color')}
                   >
                     <span>- 해요체</span>
                   </div>
@@ -511,14 +581,22 @@ export default function Announce() {
             <div className="btn_box">
               <button
                 type="button"
-                onClick={deleteAllScript}
+                onClick={() => {
+                  if (originScript.length > 0 || subject.length > 0) {
+                    deleteAllScript();
+                  }
+                }}
                 className={cls(originScript.length > 0 || subject.length > 0 ? 'active_color cursor-pointer' : 'disabled_color cursor-default')}
               >
                 초기화
               </button>
               <button
                 type="button"
-                onClick={modifyScript}
+                onClick={() => {
+                  if (modifyBtn) {
+                    modifyScript();
+                  }
+                }}
                 className={cls(modifyBtn ? 'active_color cursor-pointer' : 'disabled_color cursor-default')}
               >
                 교정하기
@@ -538,13 +616,13 @@ export default function Announce() {
           {askListTotalShow ? (
             <div className="askList">
               <ul>
-                {askListArray.map((item, index) => (
+                {qaArray.map((item, index) => (
                   <li key={index}>
                     <div
                       className="list_ask"
                       onClick={() => toggleItem(index)}
                     >
-                      <span className={cls(askListState[index] ? 'font-semibold' : 'font-medium')}>{item.ask}</span>
+                      <span className={cls(askListState[index] ? 'font-semibold' : 'font-medium')}>{item.Q.replace(':', '')}</span>
                       <div className={cls('list_arrow', askListState[index] ? 'scale-y-[-1]' : 'scale-y-[1]')}>
                         <Image
                           src={LocalImages.ImageIconArrow}
@@ -556,7 +634,7 @@ export default function Announce() {
                     </div>
                     <div className={cls('list_answer', askListState[index] ? 'on' : '')}>
                       <div>
-                        <p>{item.answer}</p>
+                        <p>{item.A.replace(':', '')}</p>
                       </div>
                     </div>
                   </li>
@@ -565,7 +643,7 @@ export default function Announce() {
               <div className="askCopy">
                 <CopyToClipboard
                   className="copyAskClipboard"
-                  text={askCopyTxt(askListArray)}
+                  text={askCopyTxt(qaArray)}
                   onCopy={() => alert('예상 질문과 답변을 복사했어요')}
                 >
                   <span>질문 복사하기</span>
