@@ -3,7 +3,7 @@ import axios from 'axios';
 export const fetchAnnounceData = async (data) => {
   return await axios({
     method: 'post',
-    url: `https://ttorang.site/api/clova/script`,
+    url: `https://api.ttorang.site/api/clova/script`,
     data: {
       topic: data.topic,
       purpose: data.purpose,
