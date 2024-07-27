@@ -65,7 +65,7 @@ main.main_container {
     @apply w-full mt-[52px];
 
     .scriptModify_box {
-      @apply flex_xBetween gap-[6.5%] w-full h-[832px] pt-[26px] px-[40px] pb-[50px] rounded bg-[#fefefe] border border-[#c3c4c4];
+      @apply flex_xBetween gap-[6.5%] w-full h-[752px] pt-[26px] px-[40px] pb-[50px] rounded bg-[#fefefe] border border-[#c3c4c4];
 
       .scriptWrite_box {
         @apply flex_xBetween flex-col flex-1 w-[51%] h-full;
