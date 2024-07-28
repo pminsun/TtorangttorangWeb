@@ -518,7 +518,7 @@ export default function Announce() {
                 <span className="gray_colorTxt">{estimatedPresentTime} (예상 발표 시간)</span>
               </div>
               <div>
-                <span className="gray_colorTxt">개선 내용: {scriptToggle && <span className="main_colorTxt">{improvements[0].length === 0 ? improvements[1] : improvements[0]}</span>}</span>
+                <span className="gray_colorTxt">개선 내용: {scriptToggle && <span className="main_colorTxt">{improvements[0]}</span>}</span>
               </div>
             </div>
           </div>
