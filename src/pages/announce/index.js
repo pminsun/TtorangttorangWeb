@@ -221,7 +221,6 @@ export default function Announce() {
       const filterWord = removeWord.filter((item) => item.length > 0);
 
       setImprovements(filterWord);
-
       // qa 배열화
       const qAcleanText = extractedOAText.replace(/^3\. 예상 질문, 답변\s+/m, '').trim();
       const lines = qAcleanText.split('\n');
@@ -348,7 +347,7 @@ export default function Announce() {
   const askCopyTxt = (totalAsk) => {
     return totalAsk
       ?.map((item, index) => {
-        const numberedQuestion = `${index + 1}.질문: ${item.Q}\n답변: ${item.A}\n\n`;
+        const numberedQuestion = `${index + 1}.질문 ${item.Q}\n답변 ${item.A}\n\n`;
         return numberedQuestion;
       })
       .join('\n');
