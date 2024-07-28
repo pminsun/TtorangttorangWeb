@@ -178,7 +178,7 @@ main.main_container {
         @apply flex-col w-[33%] h-full flex_xBetween;
 
         .detailSetting {
-          @apply flex flex-col gap-[40px] w-full h-[520px];
+          @apply flex flex-col gap-[40px] w-full h-[520px] gray_colorTxt;
 
           p {
             @apply mb-[12px] text-[1vw] font-medium gray_colorTxt;

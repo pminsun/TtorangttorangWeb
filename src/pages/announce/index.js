@@ -15,12 +15,19 @@ export default function Announce() {
   const [charCount, setCharCount] = useState(0);
   const [charCountNew, setCharCountNew] = useState(0);
   const [subject, setSubject] = useState('');
+  const [retrysubject, setRetrySubject] = useState('');
+
   const [subjectCharCount, setSubjectCharCount] = useState(0);
   const [presentPurpose, setPresentPurpose] = useState('회사 컨퍼런스');
+  const [retryPresentPurpose, setRetrPresentPurpose] = useState('회사 컨퍼런스');
+
   const [endingTxt, setEndingTxt] = useState('합니다체');
+  const [retryEndingTxt, setRetryEndingTxt] = useState('합니다체');
+
   const [modifyBtn, setModifyBtn] = useState(false);
   const [estimatedPresentTime, setEstimatedPresentTime] = useState('0분 0초'); // 예상 발표 시간
   const [repeat, setRepeat] = useState(false);
+  const [retryRepeat, setRetryRepeat] = useState(false);
   const [askListState, setAskListState] = useState([false, false, false]);
   const [askListTotalShow, setAskLisTotalShow] = useState(false);
   const [improvements, setImprovements] = useState('');
@@ -77,11 +84,15 @@ export default function Announce() {
   // 교정하기 버튼 활성화
   useEffect(() => {
     if (scriptToggle) {
-      setModifyBtn(originScript && newScript && subject && presentPurpose && endingTxt && retryScriptCompareTxt !== newScript);
+      setModifyBtn(
+        originScript &&
+          newScript &&
+          (retryRepeat !== repeat || retryPresentPurpose !== presentPurpose || retryEndingTxt !== endingTxt || retrysubject !== subject || retryScriptCompareTxt !== newScript),
+      );
     } else {
       setModifyBtn(originScript && subject && presentPurpose && endingTxt);
     }
-  }, [originScript, subject, newScript, retryScriptCompareTxt, presentPurpose, endingTxt, scriptToggle]);
+  }, [originScript, subject, newScript, retryRepeat, repeat, retryPresentPurpose, retryScriptCompareTxt, retryEndingTxt, presentPurpose, endingTxt, scriptToggle, retrysubject]);
 
   // script 초기화
   const deleteAllScript = () => {
@@ -156,6 +167,12 @@ export default function Announce() {
         duplicate: repeat === true ? 'Y' : 'N',
       };
 
+      setRetrySubject(data.topic);
+      setRetrPresentPurpose(data.purpose);
+      setRetryEndingTxt(data.word);
+      const changeValue = data.duplicate === 'Y' ? true : false;
+      setRetryRepeat(changeValue);
+
       let jsonStringArray = [];
       let dataArray = [];
 
@@ -200,7 +217,7 @@ export default function Announce() {
       const removeTwo = extractedImproveEText.replace(/^2\.\s+/m, '').replace('개선 내용', '');
 
       const improveLlines = removeTwo.split('\n');
-      const removeWord = improveLlines.map((item) => item.replace(/[-:]/g, ''));
+      const removeWord = improveLlines.map((item) => item.replace(/[-:]/g, '').trim());
       const filterWord = removeWord.filter((item) => item.length > 0);
 
       setImprovements(filterWord);
@@ -213,15 +230,24 @@ export default function Announce() {
       let currentObject = {};
 
       lines.forEach((line) => {
+        // Check for lines that start with 'Q :' or '질문 :'
         if (line.startsWith('Q :') || line.startsWith('질문 :')) {
-          if (currentObject.Q) {
+          // If a previous Q&A pair exists, push it to the array
+          if (currentObject.Q && currentObject.A) {
             askListArray.push(currentObject);
             currentObject = {};
           }
-          currentObject.Q = line.slice(2).trim();
-        } else if (line.startsWith('A :') || line.startsWith('답변 :')) {
+          // Handle case where Q and A are in the same line
+          const splitLine = line.split(/(A :|답변 :|답 :)/);
+          currentObject.Q = splitLine[0].slice(2).trim();
+          if (splitLine[1] && splitLine[2]) {
+            currentObject.A = splitLine[2].trim();
+          }
+        } else if (line.startsWith('A :') || line.startsWith('답변 :|답 :')) {
+          // If we encounter an answer, add it to the current object
           currentObject.A = line.slice(2).trim();
         } else if (line.trim() === '' && currentObject.Q && currentObject.A) {
+          // If we encounter a blank line and we have a complete Q&A, push it
           askListArray.push(currentObject);
           currentObject = {};
         }
@@ -493,7 +519,7 @@ export default function Announce() {
                 <span className="gray_colorTxt">{estimatedPresentTime} (예상 발표 시간)</span>
               </div>
               <div>
-                <span className="gray_colorTxt">개선 내용: {scriptToggle && <span className="main_colorTxt">{improvements[0]}</span>}</span>
+                <span className="gray_colorTxt">개선 내용: {scriptToggle && <span className="main_colorTxt">{improvements[0].length === 0 ? improvements[1] : improvements[0]}</span>}</span>
               </div>
             </div>
           </div>
