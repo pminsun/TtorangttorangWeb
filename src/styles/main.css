@@ -43,7 +43,7 @@ main.main_container {
           @apply text-center font-[800] text-[28px] text-white font-TmoneyRoundWind;
 
           &:last-of-type {
-            @apply text-[28px] my-[12px];
+            @apply text-[25px] my-[12px];
           }
         }
       }
