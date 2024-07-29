@@ -204,63 +204,55 @@ export default function Announce() {
         });
       });
 
+      // 전체 단락
       const finaldata = dataArray.join('');
-      const scriptStartIndex = finaldata.indexOf('1. 발표 대본');
-      const scriptEndIndex = finaldata.indexOf('2. 개선 내용');
-      const improveEndIndex = finaldata.indexOf('3. 예상 질문, 답변');
+      const improveIndex = finaldata.indexOf('개선 내용');
+      const QAIndex = finaldata.indexOf('예상 질문');
       const lastIndex = finaldata.length;
 
-      const extractedScriptText = finaldata.substring(scriptStartIndex, scriptEndIndex).trim();
-      const extractedImproveEText = finaldata.substring(scriptEndIndex, improveEndIndex).trim();
-      const extractedOAText = finaldata.substring(improveEndIndex, lastIndex).trim();
-      const removeOne = extractedScriptText.replace(/^1\.\s+/m, '').replace('발표 대본', '');
-      const removeTwo = extractedImproveEText.replace(/^2\.\s+/m, '').replace('개선 내용', '');
+      // === 교정문 === //
+      let extractedScriptText = finaldata.substring(0, improveIndex).replace('발표 대본', '').trim();
+      const twoNum = extractedScriptText.slice(extractedScriptText.length - 2);
+      const oneNum = extractedScriptText.slice(0, 2);
 
-      const improveLlines = removeTwo.split('\n');
-      const removeWord = improveLlines.map((item) => item.replace(/[-:]/g, '').trim());
-      const filterWord = removeWord.filter((item) => item.length > 0);
-
-      setImprovements(filterWord);
-      // qa 배열화
-      const qAcleanText = extractedOAText.replace(/^3\. 예상 질문, 답변\s+/m, '').trim();
-      const lines = qAcleanText.split('\n');
-      const askListArray = [];
-
-      let currentObject = {};
-
-      lines.forEach((line) => {
-        // Check for lines that start with 'Q :' or '질문 :'
-        if (line.startsWith('Q :') || line.startsWith('질문 :')) {
-          // If a previous Q&A pair exists, push it to the array
-          if (currentObject.Q && currentObject.A) {
-            askListArray.push(currentObject);
-            currentObject = {};
-          }
-          // Handle case where Q and A are in the same line
-          const splitLine = line.split(/(A :|답변 :|답 :)/);
-          currentObject.Q = splitLine[0].slice(2).trim();
-          if (splitLine[1] && splitLine[2]) {
-            currentObject.A = splitLine[2].trim();
-          }
-        } else if (line.startsWith('A :') || line.startsWith('답변 :|답 :')) {
-          // If we encounter an answer, add it to the current object
-          currentObject.A = line.slice(2).trim();
-        } else if (line.trim() === '' && currentObject.Q && currentObject.A) {
-          // If we encounter a blank line and we have a complete Q&A, push it
-          askListArray.push(currentObject);
-          currentObject = {};
-        }
-      });
-
-      // Push the last object if it exists
-      if (currentObject.Q && currentObject.A) {
-        askListArray.push(currentObject);
+      // 교정문 마지막에 2. 가 있을 경우 2. 제거
+      if (twoNum === '2.') {
+        extractedScriptText = extractedScriptText.slice(0, -2).trim();
       }
+      // 교정문 첫번쨰에 1. 가 있을 경우 1. 제거
+      if (oneNum === '1.') {
+        extractedScriptText = extractedScriptText.slice(2).trim();
+      }
+
+      // === 개선내용 === //
+      let extractedImproveEText = finaldata.substring(improveIndex, QAIndex).replace('개선 내용', '').replace(/[-:*]/g, '').trim();
+      const threeNum = extractedImproveEText.slice(extractedImproveEText.length - 2);
+      // 예상 질문 앞에 3. 이 붙어있을경우 마지막 3. 제거
+      if (threeNum === '3.') {
+        extractedImproveEText = extractedImproveEText.slice(0, -2).trim();
+      }
+      // 개선내용 여러개일 경우
+      const improveLlines = extractedImproveEText.split('\n');
+      setImprovements(improveLlines);
+
+      // === 예상 질문 === //
+      let extractedOAText = finaldata.substring(QAIndex, lastIndex).replace('예상 질문,', '').replace('답', '').replace('변', '').trim();
+      // qa 배열화
+      const regex = /(?:Q\s*:\s*|질문\s*:\s*)([^?]+?)\?\s*(?:A\s*:\s*|답변\s*:\s*|답\s*:\s*)([^?]+?)(?=\s*(?:Q\s*:\s*|질문\s*:\s*|$))/g;
+      let match;
+      const askListArray = [];
+      while ((match = regex.exec(extractedOAText)) !== null) {
+        askListArray.push({
+          question: match[1].trim(),
+          answer: match[2].trim(),
+        });
+      }
+      setQaArray(askListArray);
 
       if (newScript.length > 0 && modifyBtn && scriptToggle) {
         // 재교정 시 (2회차 이상)
         const oldScript = newScript.slice(0, 3000);
-        const updatedScript = removeOne;
+        const updatedScript = extractedScriptText;
 
         // 2회차 새로운 교정본을 newScript로 설정 1회차는 구
         setOriginScript(oldScript);
@@ -268,33 +260,33 @@ export default function Announce() {
         setNewScript(updatedScript);
         setCharCountNew(updatedScript.length);
 
-        setQaArray(askListArray);
         // 원본과 새 스크립트 비교
         highlightDiffs(oldScript, updatedScript);
 
         setShowNewSkeleton(false);
-        if (scriptUpdateTextareaRef.current) {
-          scriptUpdateTextareaRef.current.style.opacity = '1';
-        }
       } else {
         // 첫 번째 교정
-        setNewScript(removeOne);
-        setCharCountNew(removeOne.length);
+        setNewScript(extractedScriptText);
+        setCharCountNew(extractedScriptText.length);
 
-        setRetryScriptCompareTxt(removeOne);
+        setRetryScriptCompareTxt(extractedScriptText);
 
-        setQaArray(askListArray);
         // 원본과 새 스크립트 비교
-        highlightDiffs(originScript, removeOne);
-        if (scriptTextareaRef.current) {
-          scriptTextareaRef.current.style.opacity = '1';
-        }
+        highlightDiffs(originScript, extractedScriptText);
+
         setShowSkeleton(false);
       }
       // 나머지 상태 업데이트
       setAskLisTotalShow(true);
       setScriptToggle(true);
       setAskListState([false, false, false]);
+
+      if (scriptUpdateTextareaRef.current) {
+        scriptUpdateTextareaRef.current.style.opacity = '1';
+      }
+      if (scriptTextareaRef.current) {
+        scriptTextareaRef.current.style.opacity = '1';
+      }
     } catch (error) {
       console.error('Error fetching modified script:', error);
       setShowSkeleton(false);
@@ -638,16 +630,13 @@ export default function Announce() {
             <div className="askList">
               <ul>
                 {qaArray.map((item, index) => {
-                  const question = item.Q || item.질문 || '';
-                  const answer = item.A || item.답변 || '';
-
                   return (
                     <li key={index}>
                       <div
                         className="list_ask"
                         onClick={() => toggleItem(index)}
                       >
-                        <span className={cls(askListState[index] ? 'font-semibold' : 'font-medium')}>{question.replace(':', '')}</span>
+                        <span className={cls(askListState[index] ? 'font-semibold' : 'font-medium')}>{item.question}</span>
                         <div className={cls('list_arrow', askListState[index] ? 'scale-y-[-1]' : 'scale-y-[1]')}>
                           <Image
                             src={LocalImages.ImageIconArrow}
@@ -659,7 +648,7 @@ export default function Announce() {
                       </div>
                       <div className={cls('list_answer', askListState[index] ? 'on' : '')}>
                         <div>
-                          <p>{answer.replace(':', '')}</p>
+                          <p>{item.answer}</p>
                         </div>
                       </div>
                     </li>
