@@ -9,7 +9,7 @@ main.main_container {
     @apply flex items-end gap-[20px] mb-[55px];
 
     .order_box {
-      @apply flex_center h-[80px] w-[80px] p-[10px];
+      @apply flex_center h-[60px] w-[60px];
 
       > p {
         @apply flex_center w-full h-full rounded text-[40px] font-bold !font-NotoSansKR text-white main_colorBg;
@@ -17,13 +17,11 @@ main.main_container {
     }
 
     .ment_box {
-      @apply pb-[4px];
-
       p {
-        @apply gray_colorTxt text-[20px];
+        @apply gray_colorTxt text-[18px];
 
         &:first-of-type {
-          @apply font-bold text-[24px];
+          @apply font-bold text-[21px];
         }
       }
     }
@@ -42,7 +40,7 @@ main.main_container {
 
       .topBanner_mentArea {
         p {
-          @apply text-center font-[800] text-[32px] text-white font-TmoneyRoundWind;
+          @apply text-center font-[800] text-[28px] text-white font-TmoneyRoundWind;
 
           &:last-of-type {
             @apply text-[28px] my-[12px];
@@ -65,10 +63,10 @@ main.main_container {
     @apply w-full mt-[52px];
 
     .scriptModify_box {
-      @apply flex_xBetween gap-[6.5%] w-full h-[752px] pt-[26px] px-[40px] pb-[50px] rounded bg-[#fefefe] border border-[#c3c4c4];
+      @apply flex_xBetween gap-[6.43%] w-full h-[716px] pt-[26px] px-[40px] pb-[50px] rounded bg-[#fefefe] border border-[#c3c4c4];
 
       .scriptWrite_box {
-        @apply flex_xBetween flex-col flex-1 w-[51%] h-full;
+        @apply flex_xBetween flex-col w-[55.1%] h-full;
 
         > div {
           @apply w-full;
@@ -76,11 +74,11 @@ main.main_container {
 
         .script {
           > p {
-            @apply text-[1vw] gray_colorTxt;
+            @apply text-[16px] gray_colorTxt;
           }
 
           .scriptText_box {
-            @apply relative w-full h-[520px] my-[16px] overflow-hidden border border-[#C4C4C4] rounded;
+            @apply relative w-full h-[468px] my-[16px] overflow-hidden border border-[#C4C4C4] rounded;
 
             > div {
               @apply absolute_fullPage;
@@ -124,7 +122,7 @@ main.main_container {
             }
 
             p {
-              @apply text-[18px] gray_colorTxt;
+              @apply text-[16px] gray_colorTxt;
             }
 
             .scriptToggle_btn {
@@ -138,7 +136,7 @@ main.main_container {
                 @apply flex_vertical_center justify-end gap-[4px] cursor-pointer py-[4px];
 
                 p {
-                  @apply text-[18px] gray_colorTxt;
+                  @apply text-[16px] gray_colorTxt;
                 }
               }
             }
@@ -149,7 +147,7 @@ main.main_container {
           @apply flex items-center px-[9px] py-[17px] border border-[#C4C4C4] rounded;
 
           span {
-            @apply text-[0.9vw] font-medium tracking-tight;
+            @apply text-[14px] font-medium tracking-tight;
           }
 
           > div {
@@ -175,37 +173,45 @@ main.main_container {
       }
 
       .scriptSetting_box {
-        @apply flex-col w-[33%] h-full flex_xBetween;
+        @apply flex-col w-[38.1%] h-full flex_xBetween;
 
         .detailSetting {
           @apply flex flex-col gap-[40px] w-full h-[520px] gray_colorTxt;
 
           p {
-            @apply mb-[12px] text-[1vw] font-medium gray_colorTxt;
+            @apply mb-[12px] text-[16px] font-medium gray_colorTxt;
           }
 
           .purposeCheck,
           .endingTxtCheck {
-            @apply flex_xBetween gap-[24px] w-full h-[52px];
+            @apply flex_vertical_center gap-[21px] w-full h-[45px];
+
+            @media (max-width: 1200px) {
+              @apply gap-[12px];
+            }
 
             > div {
-              @apply flex-1 h-full text-center rounded cursor-pointer flex_center;
+              @apply w-[126px] h-full text-center rounded cursor-pointer flex_center;
 
               span {
-                @apply text-[1vw];
+                @apply text-[14px];
+
+                @media (max-width: 1200px) {
+                  @apply text-[12px];
+                }
               }
             }
           }
 
           > div:first-of-type {
             .subject_box {
-              @apply relative w-full h-[132px] border border-[#C4C4C4] rounded overflow-hidden;
+              @apply relative w-full h-[118px] border border-[#C4C4C4] rounded overflow-hidden;
               textarea {
                 @apply w-full h-full p-[16px] text-[16px];
               }
 
               .subject_charCount {
-                @apply absolute bottom-[4px] right-[16px] font-medium text-[16px];
+                @apply absolute bottom-[4px] right-[16px] font-medium text-[14px];
               }
             }
           }
@@ -218,7 +224,7 @@ main.main_container {
               }
 
               > p {
-                @apply text-[18px] !mb-0 select-none font-medium gray_colorTxt;
+                @apply text-[16px] !mb-0 select-none font-medium gray_colorTxt;
               }
             }
           }
@@ -227,7 +233,7 @@ main.main_container {
         .btn_box {
           @apply flex_xBetween gap-[34px] w-full h-[60px];
           button {
-            @apply flex_center flex-1 h-full text-[16px] font-medium rounded;
+            @apply flex_center flex-1 h-full text-[14px] font-medium rounded;
           }
         }
       }
@@ -255,7 +261,7 @@ main.main_container {
           }
 
           p {
-            @apply text-center text-[20px] leading-[32px] gray_colorTxt;
+            @apply text-center text-[18px] leading-[32px] gray_colorTxt;
           }
         }
       }
@@ -273,7 +279,7 @@ main.main_container {
               @apply w-full h-[100px] flex_xBetween;
 
               span {
-                @apply px-[16px] gray_colorTxt text-[20px];
+                @apply px-[16px] gray_colorTxt text-[18px];
               }
 
               .list_arrow {
@@ -292,7 +298,7 @@ main.main_container {
               }
 
               > div {
-                @apply w-full px-[16px] py-[14px] gray_colorTxt font-medium text-[20px] border border-[#C4C4C4];
+                @apply w-full px-[16px] py-[14px] gray_colorTxt font-medium text-[18px] border border-[#C4C4C4];
               }
             }
 
