@@ -2,16 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-article {
-  @apply w-full overflow-y-auto;
+.test {
+  user-select: text;
 
-  b {
-    @apply font-normal;
+  &::selection {
+    background: yellow;
   }
+}
 
-  i {
-    @apply not-italic;
-  }
+.highlighttest {
+  background-color: yellow;
 }
 
 /* reset */
