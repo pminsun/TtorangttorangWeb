@@ -49,12 +49,14 @@ header {
     @apply flex_xBetween w-[66.67%] h-full;
 
     .header_menu {
-      @apply flex_vertical_center h-full;
-      .logo_area {
-        @apply block w-[118px] h-[53px];
+      @apply h-full flex_vertical_center;
+      h1 {
+        .logo_area {
+          @apply block w-[118px] h-[53px];
 
-        img {
-          @apply w-full h-full object-cover;
+          img {
+            @apply object-cover w-full h-full;
+          }
         }
       }
 
@@ -64,12 +66,17 @@ header {
       }
 
       nav {
+        @apply ml-[116px];
         ul {
           @apply flex_vertical_center gap-[24px] h-full;
 
           a,
           button {
-            @apply flex_center w-[132px] h-full;
+            @apply relative flex_center w-[132px] h-full font-medium text-[24px] text-[#FEFEFE];
+
+            &.on::after {
+              @apply content-[''] absolute bottom-0 left-0 w-full h-[8px] bg-[#FEFEFE];
+            }
           }
         }
       }
@@ -79,7 +86,7 @@ header {
       @apply h-full;
       button,
       a {
-        @apply flex_center px-[11px] h-full;
+        @apply flex_center px-[11px] h-full font-medium text-[24px] text-white;
       }
     }
   }
@@ -97,6 +104,22 @@ footer {
     }
 
     > div {
+      &:first-of-type {
+        @apply flex_vertical_center;
+
+        p {
+          @apply relative pr-[12px] font-medium text-[16px] gray_colorTxt;
+
+          &:first-of-type::after {
+            @apply content-[''] absolute_yHalf right-[0px] mt-[2px] w-[1px] h-[14px] gray_colorBg;
+          }
+
+          &:last-of-type {
+            @apply px-[12px];
+          }
+        }
+      }
+
       &:last-of-type {
         @apply flex_center gap-[30px];
 
@@ -123,7 +146,7 @@ footer {
     @apply w-[196px] h-[72px] mb-[32px];
 
     img {
-      @apply w-full h-full object-cover;
+      @apply object-cover w-full h-full;
     }
   }
 
@@ -131,7 +154,7 @@ footer {
     @apply w-[208px] h-[204px] mb-[8px];
 
     img {
-      @apply w-full h-full object-cover;
+      @apply object-cover w-full h-full;
     }
   }
 
