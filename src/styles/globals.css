@@ -43,13 +43,43 @@ textarea {
 
 /* header */
 header {
-  @apply flex_center w-full h-[84px] bg-white;
+  @apply flex_center w-full h-[80px] main_colorBg;
 
-  .logo_area {
-    @apply block w-[120px] h-[52px];
+  > .header_container {
+    @apply flex_xBetween w-[66.67%] h-full;
 
-    img {
-      @apply w-full h-full object-cover;
+    .header_menu {
+      @apply flex_vertical_center h-full;
+      .logo_area {
+        @apply block w-[118px] h-[53px];
+
+        img {
+          @apply w-full h-full object-cover;
+        }
+      }
+
+      nav,
+      li {
+        @apply h-full;
+      }
+
+      nav {
+        ul {
+          @apply flex_vertical_center gap-[24px] h-full;
+
+          a {
+            @apply flex_center w-[132px] h-full;
+          }
+        }
+      }
+    }
+
+    .header_user {
+      @apply h-full;
+      button,
+      a {
+        @apply flex_center px-[11px] h-full;
+      }
     }
   }
 }
