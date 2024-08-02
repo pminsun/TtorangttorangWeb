@@ -11,5 +11,8 @@ export const fetchAnnounceData = async (data) => {
       content: data.content,
       duplicate: data.duplicate,
     },
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+    },
   });
 };
