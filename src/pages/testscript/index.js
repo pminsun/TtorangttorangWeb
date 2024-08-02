@@ -115,6 +115,7 @@ export default function TestScript() {
   }, [charCount, charCountNew, originScript, scriptToggle]);
 
   const [testScript, setTestScript] = useState([]);
+  const [testScriptt, setTestScriptt] = useState([]);
 
   //const testScript = [];
   //  교정하기
@@ -135,7 +136,8 @@ export default function TestScript() {
       jsonStringArray.push(response.data);
 
       const redData = response.data.replace(/data:/g, '');
-      console.log(response);
+      console.log('데이터!!!!!', response);
+      console.log('데이터!!!!!', response.data);
 
       const events = redData.split('\n\n'); // 이벤트 분리
       const newContentQueue = [];
@@ -144,7 +146,6 @@ export default function TestScript() {
           try {
             const jsonData = JSON.parse(event);
             const content = jsonData.message?.content || '';
-            console.log('content', content);
 
             if (content) {
               // 상태를 업데이트하여 새 content 값을 배열에 추가
@@ -156,8 +157,8 @@ export default function TestScript() {
         }
       });
 
-      // setTestScript(newContentQueue);
-      setDisplayText((prevText) => prevText + newContentQueue.join(''));
+      setTestScriptt(newContentQueue);
+      //setDisplayText((prevText) => prevText + newContentQueue.join(''));
       setTestScript((prevQueue) => [...prevQueue, ...newContentQueue]);
 
       jsonStringArray.forEach((jsonString) => {
@@ -187,8 +188,6 @@ export default function TestScript() {
 
       // 전체 단락
       const finaldata = dataArray.join('');
-
-      console.log(finaldata);
 
       // 첫 번째 교정
       setScriptToggle(true);
@@ -223,31 +222,56 @@ export default function TestScript() {
   //   }
   // }, [testScript]);
 
-  useEffect(() => {
-    if (testScript.length > 0) {
-      const currentContent = testScript[0];
+  // useEffect(() => {
+  //   if (testScriptt.length > 0) {
+  //     const currentContent = testScriptt[0];
 
-      console.log('currentContent', currentContent);
+  //     console.log('currentContent', currentContent);
+  //     if (currentContent && currentContent.length > 0) {
+  //       let index = 0;
+  //       let timer;
+
+  //       const typeEffect = () => {
+  //         if (index < currentContent.length) {
+  //           setDisplayText((prev) => prev + (currentContent[index] || ' ')); // 인덱스가 범위를 초과할 경우 공백 추가
+  //           index += 1;
+  //           timer = setTimeout(typeEffect, 100); // 100ms마다 글자 추가
+  //         } else {
+  //           setTestScriptt((prevQueue) => prevQueue); // 큐에서 현재 처리한 항목 제거
+  //         }
+  //       };
+
+  //       typeEffect();
+
+  //       return () => clearTimeout(timer); // cleanup
+  //     }
+  //   }
+  // }, [testScriptt]);
+
+  useEffect(() => {
+    if (testScriptt.length > 0) {
+      const currentContent = testScriptt[0];
+
       if (currentContent && currentContent.length > 0) {
         let index = 0;
         let timer;
 
         const typeEffect = () => {
           if (index < currentContent.length) {
-            setDisplayText((prev) => prev + (currentContent[index] || ' ')); // 인덱스가 범위를 초과할 경우 공백 추가
+            setDisplayText((prev) => prev + (currentContent[index] || ' '));
             index += 1;
-            timer = setTimeout(typeEffect, 100); // 100ms마다 글자 추가
+            timer = setTimeout(typeEffect, 100);
           } else {
-            setTestScript((prevQueue) => prevQueue); // 큐에서 현재 처리한 항목 제거
+            setTestScriptt((prevQueue) => prevQueue.slice(1));
           }
         };
 
         typeEffect();
 
-        return () => clearTimeout(timer); // cleanup
+        return () => clearTimeout(timer);
       }
     }
-  }, [testScript]);
+  }, [testScriptt]);
 
   // console.log(displayText);
 
@@ -515,18 +539,28 @@ export default function TestScript() {
           </div>
         </form>
 
-        <div>
-          {/* {displayText.split('').map((char, index) => (
+        {/* <div>
+          {displayText.split('').map((char, index) => (
             <span
               key={index}
               className="text-char"
             >
               {char}
             </span>
-          ))} */}
+          ))}
           {testScript.join('')}
+        </div> */}
+        <div className="mt-2">{testScript}</div>
+        <div className="mt-2">
+          {displayText.split('').map((char, index) => (
+            <span
+              key={index}
+              className="text-green-600 text-char"
+            >
+              {char}
+            </span>
+          ))}
         </div>
-        <div className="mt-2">{displayText}</div>
       </section>
     </main>
   );
