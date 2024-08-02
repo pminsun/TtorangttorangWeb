@@ -197,6 +197,7 @@ export default function TestScript() {
       setShowSkeleton(false);
     }
   };
+  
   const [displayText, setDisplayText] = useState('');
   // useEffect(() => {
   //   if (testScript.length > 0) {

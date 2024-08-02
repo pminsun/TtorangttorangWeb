@@ -14,7 +14,7 @@ export default function Layout({ children }) {
 
   return (
     <>
-      {/* {isMobileDevice ? (
+      {isMobileDevice ? (
         <div className="moblie_container">
           <div className="logo_area">
             <Image
@@ -46,10 +46,7 @@ export default function Layout({ children }) {
           <section className="root_layout">{children}</section>
           <Footer />
         </>
-      )} */}
-      <Header />
-      <section className="root_layout">{children}</section>
-      <Footer />
+      )}
     </>
   );
 }
