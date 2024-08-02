@@ -67,7 +67,8 @@ header {
         ul {
           @apply flex_vertical_center gap-[24px] h-full;
 
-          a {
+          a,
+          button {
             @apply flex_center w-[132px] h-full;
           }
         }
