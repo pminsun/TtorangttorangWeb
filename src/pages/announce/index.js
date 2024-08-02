@@ -45,10 +45,6 @@ export default function Announce() {
   const scriptTextareaRef = useRef(null);
   const scriptUpdateTextareaRef = useRef(null);
   const skeletonRef = useRef(null);
-  const skeletonNewScriptRef = useRef(null);
-  const [showSkeleton, setShowSkeleton] = useState(false);
-  const [showNewSkeleton, setShowNewSkeleton] = useState(false);
-  const [lineWidths, setLineWidths] = useState([]);
 
   const selectPurpose = (purpose) => {
     setPresentPurpose(purpose);
@@ -401,18 +397,6 @@ export default function Announce() {
                       value={originScript}
                       onChange={writeOriginScript}
                     />
-                    <div
-                      ref={skeletonRef}
-                      className="skeleton_box"
-                      style={{ pointerEvents: 'none' }}
-                    >
-                      {showSkeleton && (
-                        <SkeletonLoading
-                          lineWidths={lineWidths}
-                          containerWidth={containerWidth}
-                        />
-                      )}
-                    </div>
                   </div>
                 )}
                 {scriptToggle && (
@@ -434,18 +418,6 @@ export default function Announce() {
                           }
                         }}
                       />
-                    </div>
-                    <div
-                      ref={skeletonNewScriptRef}
-                      className="skeleton_box"
-                      style={{ pointerEvents: 'none' }}
-                    >
-                      {showNewSkeleton && (
-                        <SkeletonLoading
-                          lineWidths={lineWidths}
-                          containerWidth={containerWidth}
-                        />
-                      )}
                     </div>
                   </div>
                 )}

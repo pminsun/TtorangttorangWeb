@@ -30,9 +30,6 @@ export default function TestScript() {
   const [retryRepeat, setRetryRepeat] = useState(false);
   const [askListState, setAskListState] = useState([false, false, false]);
   const [askListTotalShow, setAskLisTotalShow] = useState(false);
-  const [improvements, setImprovements] = useState('');
-
-  const [qaArray, setQaArray] = useState([]);
 
   // 교정본 수정 여부 확인용 state
   const [retryScriptCompareTxt, setRetryScriptCompareTxt] = useState('');
@@ -117,41 +114,16 @@ export default function TestScript() {
     setEstimatedPresentTime(`${minutes < 10 ? '0' + minutes : minutes}분 ${seconds < 10 ? '0' + seconds : seconds}초`);
   }, [charCount, charCountNew, originScript, scriptToggle]);
 
-  // 클릭 시 질문 펼침/접기 처리
-  const toggleItem = (index) => {
-    setAskListState((prevState) => prevState.map((item, i) => (i === index ? !item : item)));
-  };
-  // 질문 펼침 초기화
-  useEffect(() => {
-    setAskListState([false, false, false]);
-  }, []);
+  const [testScript, setTestScript] = useState([]);
 
-  const filterOut = ['-', '"', '"', '!.', '!', '['];
-  const highlightDiffs = (oldStr, newStr) => {
-    const diff = diffWords(oldStr, newStr);
-    const highlights = [];
-
-    diff
-      .map((part) => {
-        if (part.added) {
-          highlights.push(part.value.trim());
-        }
-        if (!part.removed) {
-          return part.value;
-        }
-      })
-      .join('');
-
-    setHighlightedText(highlights);
-  };
-
+  //const testScript = [];
   //  교정하기
   const modifyScript = async () => {
     try {
       const data = {
         topic: subject,
         purpose: presentPurpose,
-        content: newScript.length > 0 && modifyBtn && scriptToggle ? newScript.slice(0, 3000) : originScript,
+        content: originScript,
         word: endingTxt,
         duplicate: repeat === true ? 'Y' : 'N',
       };
@@ -161,6 +133,32 @@ export default function TestScript() {
 
       const response = await fetchAnnounceData(data);
       jsonStringArray.push(response.data);
+
+      const redData = response.data.replace(/data:/g, '');
+      console.log(response);
+
+      const events = redData.split('\n\n'); // 이벤트 분리
+      const newContentQueue = [];
+      events.forEach((event) => {
+        if (event.trim()) {
+          try {
+            const jsonData = JSON.parse(event);
+            const content = jsonData.message?.content || '';
+            console.log('content', content);
+
+            if (content) {
+              // 상태를 업데이트하여 새 content 값을 배열에 추가
+              newContentQueue.push(content);
+            }
+          } catch (error) {
+            console.error('Failed to parse JSON:', error);
+          }
+        }
+      });
+
+      // setTestScript(newContentQueue);
+      setDisplayText((prevText) => prevText + newContentQueue.join(''));
+      setTestScript((prevQueue) => [...prevQueue, ...newContentQueue]);
 
       jsonStringArray.forEach((jsonString) => {
         // 문자열을 줄 단위로 분리
@@ -190,55 +188,68 @@ export default function TestScript() {
       // 전체 단락
       const finaldata = dataArray.join('');
 
+      console.log(finaldata);
+
       // 첫 번째 교정
+      setScriptToggle(true);
       setNewScript(finaldata);
     } catch (error) {
       console.error('Error fetching modified script:', error);
       setShowSkeleton(false);
     }
   };
+  const [displayText, setDisplayText] = useState('');
+  // useEffect(() => {
+  //   if (testScript.length > 0) {
+  //     const currentContent = testScript[0];
 
-  // 스켈레톤 로딩
-  useEffect(() => {
-    const lines = scriptToggle ? newScript.split('\n') : originScript.split('\n');
-    const skeletonLineWidths = lines.map((line) => measureTextWidth(line, '16px NotoSansKR'));
-    setLineWidths(skeletonLineWidths);
-  }, [newScript, originScript, scriptToggle]);
+  //     let index = 0;
+  //     let timer;
 
-  // script box width 동적
+  //     const typeEffect = () => {
+  //       console.log('index', index);
+  //       setDisplayText((prev) => prev + currentContent[index]);
+  //       index += 1;
+  //       if (index < currentContent.length) {
+  //         timer = setTimeout(typeEffect, 100); // 100ms마다 글자 추가
+  //       } else {
+  //         setTestScript((prevQueue) => prevQueue.slice(1)); // 큐에서 현재 처리한 항목 제거
+  //       }
+  //     };
+
+  //     typeEffect();
+
+  //     return () => clearTimeout(timer); // cleanup
+  //   }
+  // }, [testScript]);
+
   useEffect(() => {
-    const updateWidth = () => {
-      if (scriptWriteBoxRef.current) {
-        setContainerWidth(scriptWriteBoxRef.current.offsetWidth);
+    if (testScript.length > 0) {
+      const currentContent = testScript[0];
+
+      console.log('currentContent', currentContent);
+      if (currentContent && currentContent.length > 0) {
+        let index = 0;
+        let timer;
+
+        const typeEffect = () => {
+          if (index < currentContent.length) {
+            setDisplayText((prev) => prev + (currentContent[index] || ' ')); // 인덱스가 범위를 초과할 경우 공백 추가
+            index += 1;
+            timer = setTimeout(typeEffect, 100); // 100ms마다 글자 추가
+          } else {
+            setTestScript((prevQueue) => prevQueue); // 큐에서 현재 처리한 항목 제거
+          }
+        };
+
+        typeEffect();
+
+        return () => clearTimeout(timer); // cleanup
       }
-    };
-
-    // Update width on mount and on resize
-    updateWidth();
-    window.addEventListener('resize', updateWidth);
-
-    return () => {
-      window.removeEventListener('resize', updateWidth);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (skeletonRef.current) {
-        skeletonRef.current.style.top = `-${scriptTextareaRef.current.scrollTop}px`;
-      }
-    };
-
-    const textarea = scriptTextareaRef.current;
-    if (textarea) {
-      textarea.addEventListener('scroll', handleScroll);
     }
-    return () => {
-      if (textarea) {
-        textarea.removeEventListener('scroll', handleScroll);
-      }
-    };
-  }, []);
+  }, [testScript]);
+
+  // console.log(displayText);
 
   return (
     <main className="main_container">
@@ -345,6 +356,57 @@ export default function TestScript() {
                   </div>
                 )}
               </div>
+              <div className="scriptRef_btns">
+                {newScript.length > 0 && (
+                  <div
+                    className="scriptToggle_btn"
+                    onClick={() => setScriptToggle(!scriptToggle)}
+                  >
+                    <div className="icon">
+                      <Image
+                        src={LocalImages.ImageIconSyncAlt}
+                        alt="ImageIconSyncAlt"
+                        width={24}
+                        height={24}
+                      />
+                    </div>
+                    <p>{scriptToggle ? '원문 보기' : '교정문 보기'}</p>
+                  </div>
+                )}
+                <div className="copy_box">
+                  {originScript.length === 0 ? (
+                    <div>
+                      <div className="icon">
+                        <Image
+                          src={LocalImages.ImageIconCopy}
+                          alt="ImageIconCopy"
+                          width={24}
+                          height={24}
+                        />
+                      </div>
+                      <p>복사하기</p>
+                    </div>
+                  ) : (
+                    <CopyToClipboard
+                      className="copyClipboard"
+                      text={scriptToggle ? newScript : originScript}
+                      onCopy={() => alert('발표문을 복사했어요')}
+                    >
+                      <div>
+                        <div className="icon">
+                          <Image
+                            src={LocalImages.ImageIconCopy}
+                            alt="ImageIconCopy"
+                            width={24}
+                            height={24}
+                          />
+                        </div>
+                        <p>복사하기</p>
+                      </div>
+                    </CopyToClipboard>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
           <div className="scriptSetting_box">
@@ -436,6 +498,7 @@ export default function TestScript() {
               >
                 초기화
               </button>
+
               <button
                 type="button"
                 onClick={() => {
@@ -451,6 +514,19 @@ export default function TestScript() {
             </div>
           </div>
         </form>
+
+        <div>
+          {/* {displayText.split('').map((char, index) => (
+            <span
+              key={index}
+              className="text-char"
+            >
+              {char}
+            </span>
+          ))} */}
+          {testScript.join('')}
+        </div>
+        <div className="mt-2">{displayText}</div>
       </section>
     </main>
   );
