@@ -72,6 +72,9 @@ module.exports = {
         '.gray_colorTxt': {
           color: '#757575',
         },
+        '.gray_colorBg': {
+          backgroundColor: '#757575',
+        },
         '.disabled_color': {
           backgroundColor: '#EDEDED',
           color: '#757575',

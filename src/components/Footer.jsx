@@ -7,8 +7,8 @@ export default function Footer() {
     <footer>
       <div className="ft_container">
         <div>
-          <p className="font-bold">발표명장</p>
-          <p className="text-[12px]">비사이드 407기 </p>
+          <p>발표명장</p>
+          <p>비사이드 407기 </p>
         </div>
         <div>
           <Link

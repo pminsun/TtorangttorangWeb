@@ -2,11 +2,13 @@ import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
 import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import { usePathname } from 'next/navigation';
+import { cls } from '@/utils/config';
 
 export default function Header() {
   const { data: session } = useSession();
+  const pathname = usePathname();
 
-  console.log(session);
   return (
     <header>
       <div className="header_container">
@@ -27,10 +29,20 @@ export default function Header() {
           <nav>
             <ul>
               <li>
-                <Link href={'/'}>메인 홈</Link>
+                <Link
+                  href={'/'}
+                  className={cls(pathname === '/' ? 'on' : '')}
+                >
+                  메인 홈
+                </Link>
               </li>
               <li>
-                <Link href={'/'}>교정하기</Link>
+                <Link
+                  href={'/announce'}
+                  className={cls(pathname === '/announce' ? 'on' : '')}
+                >
+                  교정하기
+                </Link>
               </li>
               <li>
                 <button onClick={() => signOut('kakao')}>로그아웃</button>
