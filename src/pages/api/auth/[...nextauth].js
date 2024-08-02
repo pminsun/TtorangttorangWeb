@@ -18,8 +18,8 @@ export default NextAuth({
       if (account) {
         token.accessToken = account.access_token;
         // JWT 만료 시간을 현재 시간 + 1시간으로 설정
-        //token.exp = Math.floor(Date.now() / 1000) + 60 * 60;
-        token.exp = Math.floor(Date.now() / 1000) + 60;
+        token.exp = Math.floor(Date.now() / 1000) + 60 * 60;
+        //token.exp = Math.floor(Date.now() / 1000) + 60;
       }
       return token;
     },
@@ -27,8 +27,8 @@ export default NextAuth({
   session: {
     // 세션 전략을 JWT로 설정
     strategy: 'jwt',
-    //maxAge: 60 * 60, // 1시간
-    maxAge: 60,
+    maxAge: 60 * 60, // 1시간
+    //maxAge: 60,
   },
   secret: process.env.NEXTAUTH_SECRET,
 });
