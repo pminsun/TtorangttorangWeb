@@ -1,8 +1,26 @@
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import GuideMent from './GuideMent';
 import * as LocalImages from '@/utils/imageImports';
+import { useFinalScriptStore } from '@/store/store';
+import { cls, formatNumber } from '@/utils/config';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 export default function SaveAnnounce() {
+  const { finalScript, setFinalScript } = useFinalScriptStore();
+  const [charCountFinal, setCharCountFinal] = useState(0);
+
+  const userModifyScript = (event) => {
+    const MAX_LENGTH = 3000;
+    let draft = event.target.value;
+
+    if (draft.length > MAX_LENGTH) {
+      draft = event.target.value.slice(0, MAX_LENGTH);
+    }
+    setFinalScript(draft);
+    setCharCountFinal(draft.length);
+  };
+
   return (
     <section className="main_container">
       <div className="progress_bar"></div>
@@ -19,20 +37,28 @@ export default function SaveAnnounce() {
                 <textarea
                   placeholder="발표문 초안을 작성해 주세요. 꼼꼼히 작성할수록 세심한 교정과 정확한 예상 질문을 받을 수 있어요."
                   maxLength="3000"
+                  value={finalScript}
+                  onChange={userModifyScript}
                 />
-                <p>3000 / 3000</p>
+                <p>{formatNumber(charCountFinal)}/ 3000</p>
               </div>
-              <div className="copy_area">
-                <div className="icon">
-                  <Image
-                    src={LocalImages.ImageIconCopy}
-                    alt="ImageIconCopy"
-                    width={24}
-                    height={24}
-                  />
-                </div>
-                <p>복사하기</p>
-              </div>
+               <CopyToClipboard
+                  className="copyClipboard"
+                  text={finalScript}
+                  onCopy={() => alert('완성된 발표문을 복사했어요')}
+                >
+                 <div className="copy_area">
+                   <div className="icon">
+                     <Image
+                      src={LocalImages.ImageIconCopy}
+                      alt="ImageIconCopy"
+                      width={24}
+                      height={24}
+                     />
+                   </div>
+                   <p>복사하기</p>
+                 </div>
+              </CopyToClipboard>
             </div>
           </div>
           <div className="qa_box">
@@ -70,3 +96,4 @@ export default function SaveAnnounce() {
     </section>
   );
 }
+

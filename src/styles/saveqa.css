@@ -37,8 +37,10 @@
         }
       }
 
+      .copyClipboard {
+        @apply flex_vertical_center gap-[4px] w-[100px] mt-[13px] cursor-pointer;
+      }
       .copy_area {
-        @apply flex_vertical_center gap-[4px] mt-[13px] cursor-pointer;
         .icon {
           @apply w-[24px] h-[24px];
 
