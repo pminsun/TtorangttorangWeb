@@ -1,5 +1,63 @@
+.progress_container {
+  @apply z-50 fixed left-1/2 -translate-x-1/2 top-[106px] w-[66.67%] h-[66px];
+
+  .progress_barLine {
+    @apply absolute_center w-full h-[2px] bg-[#EDEDED];
+  }
+
+  .progress_barLine_active {
+    @apply absolute_yHalf left-0 h-[2px] main_colorBg;
+  }
+
+  .page_infoList {
+    @apply w-full h-full;
+    > div {
+      @apply absolute flex-col flex_center;
+
+      &:first-of-type {
+        @apply z-20 h-full flex_center absolute_center;
+      }
+
+      &:last-of-type {
+        @apply flex_center absolute right-[20%] -translate-x-1/2 h-full z-20;
+      }
+
+      p:first-of-type {
+        @apply w-[16px] h-[16px] rounded-full bg-[#EDEDED];
+
+        span {
+          @apply hidden;
+        }
+      }
+
+      p:last-of-type {
+        @apply hidden main_colorTxt text-[14px] font-bold;
+      }
+
+      &.on {
+        @apply mt-[10px];
+        > p:first-of-type {
+          @apply flex_center w-[40px] h-[40px] rounded-full bg-[#f9f9f9] main_colorTxt border border-[#509BF8];
+
+          span {
+            @apply block;
+          }
+        }
+
+        > p:last-of-type {
+          @apply block;
+        }
+      }
+    }
+  }
+}
+
 .slider-container {
-  @apply w-full h-[calc(100vh-160px)] overflow-hidden;
+  @apply relative w-full h-[calc(100vh-160px)] overflow-hidden;
+
+  .slick-slider {
+    @apply relative;
+  }
 
   .slick-slider.slick-initialized,
   .slick-list,
@@ -13,9 +71,20 @@
     }
   }
 
-  .slick-arrow.slick-prev,
-  .slick-arrow.slick-next {
-    @apply !hidden;
+  .slick-arrow {
+    @apply absolute_yHalf w-[80px] h-[80px];
+
+    &.slick-prev {
+      @apply left-[10%];
+    }
+
+    &.slick-next {
+      @apply right-[10%];
+    }
+
+    &.slick-disabled {
+      @apply !hidden;
+    }
   }
 
   .slick-track {
@@ -38,6 +107,14 @@ section.main_container {
       &:first-of-type {
         @apply font-bold text-[24px];
       }
+    }
+  }
+
+  .skeleton_box {
+    @apply absolute top-0 left-0 w-full h-auto overflow-y-auto overflow-x-hidden p-[20px];
+
+    > div {
+      @apply w-full;
     }
   }
 
@@ -73,7 +150,7 @@ section.main_container {
   }
 
   .progress_bar {
-    @apply w-full h-[66px] bg-red-300;
+    @apply w-full h-[66px];
   }
 
   /* 발표 대본 교정 */
@@ -98,7 +175,8 @@ section.main_container {
 
           /* 33px h-[374px] */
           .scriptTxt {
-            @apply w-full h-[calc(100%-33px)] p-[20px]  area_border;
+            @apply relative w-full h-[calc(100%-33px)] p-[20px]  area_border;
+
             textarea {
               @apply w-full h-[calc(100%-21px)] text-[14px] leading-[31px] font-medium gray_colorTxt bg-[#fbfbfb];
               &::-webkit-input-placeholder {
@@ -112,6 +190,14 @@ section.main_container {
             > p {
               @apply flex justify-end text-[14px] font-medium gray_colorTxt;
             }
+
+            .newScript {
+              @apply w-full h-[calc(100%-21px)] overflow-y-auto;
+
+              span {
+                @apply text-[14px] leading-[31px] font-medium gray_colorTxt bg-[#fbfbfb];
+              }
+            }
           }
 
           .contentInfo_area {
@@ -119,6 +205,12 @@ section.main_container {
 
             .script_fun {
               @apply w-full flex_vertical_center gap-[24px] h-[26px] mb-[11px];
+
+              .copy_box {
+                > div {
+                  @apply flex_vertical_center gap-[4px] cursor-pointer;
+                }
+              }
 
               > div {
                 @apply flex_vertical_center gap-[4px] cursor-pointer;
@@ -152,6 +244,10 @@ section.main_container {
 
                 &:last-of-type {
                   @apply pl-[16px];
+                }
+
+                > span {
+                  @apply text-[14px] font-medium main_colorTxt;
                 }
               }
             }
@@ -191,7 +287,7 @@ section.main_container {
               @apply flex_vertical_center gap-[19px] w-full h-[41px];
 
               > p {
-                @apply flex_center w-[111px] h-full text-[14px] disabled_color font-medium text-center rounded cursor-pointer;
+                @apply flex_center w-[111px] h-full text-[14px] font-medium text-center rounded cursor-pointer;
               }
             }
 

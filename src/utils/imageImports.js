@@ -35,6 +35,9 @@ import ImageGatewayNewBanner from '../../public/images/new_bannerBG.svg';
 
 import ImageGatewayNewInfo from '../../public/images/new_gatewayInfo.svg';
 
+import ImageMainStepArrowLeft from '../../public/images/mainStepArrowLeft.svg';
+import ImageMainStepArrowRight from '../../public/images/mainStepArrowRight.svg';
+
 export { ImageGatewayNewInfo, ImageGatewayNewBanner, ImageGatewayBannerTxt, ImageGBenner, ImageMainBenner, ImageLogo, ImageMobileLogo, ImageVarLogo, ImageBenner, ImageTtorangArch, ImageTtorangNote };
 
 export { ImageIconCheckboxArrow, ImageIconArrow, ImageIconCopy, ImageIconDescription, ImageIconHelp, ImageIconSyncAlt };
@@ -42,3 +45,5 @@ export { ImageIconCheckboxArrow, ImageIconArrow, ImageIconCopy, ImageIconDescrip
 export { ImageGatewayIntro, ImageGatewayIntroStar, ImageGatewayIntroRound, ImageGatewayDetailInfo, ImageGatewayAskBG, ImageGatewayAskPoint, ImageGatewayFeedback, ImageGatewayModify };
 
 export { ImageGatewayOctagon, ImageGatewayRound, ImageGatewayFlower, ImageGatewayHexagon };
+
+export { ImageMainStepArrowLeft, ImageMainStepArrowRight };
