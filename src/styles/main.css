@@ -111,11 +111,7 @@ section.main_container {
   }
 
   .skeleton_box {
-    @apply absolute top-0 left-0 w-full h-auto overflow-y-auto overflow-x-hidden p-[20px];
-
-    > div {
-      @apply w-full;
-    }
+    @apply absolute top-0 left-0 w-full h-auto overflow-y-auto overflow-x-hidden;
   }
 
   /* banner */
@@ -175,10 +171,13 @@ section.main_container {
 
           /* 33px h-[374px] */
           .scriptTxt {
-            @apply relative w-full h-[calc(100%-33px)] p-[20px]  area_border;
+            @apply relative w-full h-[calc(100%-33px)] p-[20px] overflow-hidden area_border;
 
+            .textSize {
+              @apply relative w-full h-[calc(100%-21px)] overflow-hidden;
+            }
             textarea {
-              @apply w-full h-[calc(100%-21px)] text-[14px] leading-[31px] font-medium gray_colorTxt bg-[#fbfbfb];
+              @apply w-full h-full text-[14px] leading-[31px] pr-[14px] font-medium gray_colorTxt bg-[#fbfbfb];
               &::-webkit-input-placeholder {
                 font-size: 14px;
               }
@@ -192,10 +191,10 @@ section.main_container {
             }
 
             .newScript {
-              @apply w-full h-[calc(100%-21px)] overflow-y-auto;
+              @apply w-full h-full overflow-y-auto;
 
               span {
-                @apply text-[14px] leading-[31px] font-medium gray_colorTxt bg-[#fbfbfb];
+                @apply text-[14px] leading-[31px] font-medium gray_colorTxt;
               }
             }
           }
