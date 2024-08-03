@@ -9,6 +9,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 export default function SaveAnnounce() {
   const { finalScript, setFinalScript } = useFinalScriptStore();
   const [charCountFinal, setCharCountFinal] = useState(0);
+  const [qaArray, setQaArray] = useState([]);
 
   const userModifyScript = (event) => {
     const MAX_LENGTH = 3000;
@@ -32,7 +33,7 @@ export default function SaveAnnounce() {
               secondMent={'완성된 발표문을 분석하여 예상 질문과 답변을 받아보세요'}
             />
             <div className="scriptFinal_area">
-              <p className="title">발표 내용</p>
+              <p className="title">발표 대본</p>
               <div className="scriptTxt">
                 <textarea
                   placeholder="발표문 초안을 작성해 주세요. 꼼꼼히 작성할수록 세심한 교정과 정확한 예상 질문을 받을 수 있어요."
@@ -42,22 +43,22 @@ export default function SaveAnnounce() {
                 />
                 <p>{formatNumber(charCountFinal)}/ 3000</p>
               </div>
-               <CopyToClipboard
-                  className="copyClipboard"
-                  text={finalScript}
-                  onCopy={() => alert('완성된 발표문을 복사했어요')}
-                >
-                 <div className="copy_area">
-                   <div className="icon">
-                     <Image
+              <CopyToClipboard
+                className="copyClipboard"
+                text={finalScript}
+                onCopy={() => alert('완성된 발표문을 복사했어요')}
+              >
+                <div className="copy_area">
+                  <div className="icon">
+                    <Image
                       src={LocalImages.ImageIconCopy}
                       alt="ImageIconCopy"
                       width={24}
                       height={24}
-                     />
-                   </div>
-                   <p>복사하기</p>
-                 </div>
+                    />
+                  </div>
+                  <p>복사하기</p>
+                </div>
               </CopyToClipboard>
             </div>
           </div>
@@ -68,26 +69,49 @@ export default function SaveAnnounce() {
             />
             <div>
               <div className="qa_area">
-                <ul>
-                  {[1, 2, 3, 4].map((item, index) => (
-                    <li key={index}>
-                      <p>질문</p>
-                      <p>디자인 소프트웨어나 도구 중에 즐겨 사용하는 것이 있나요?</p>
-                      <div className="list_arrow">
-                        <Image
-                          src={LocalImages.ImageIconArrow}
-                          alt="ImageIconArrow"
-                          width={24}
-                          height={24}
-                        />
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+                {qaArray ? (
+                  <div className="none_qa">
+                    <div>
+                      <Image
+                        src={LocalImages.ImageTtorangNote}
+                        alt="ImageTtorangNote"
+                        width={254}
+                        height={254}
+                      />
+                    </div>
+                    <p>
+                      아직 발표문을 분석하지 못했어요
+                      <br />
+                      아래의 [예상 질문 받기] 버튼을 눌러주세요
+                    </p>
+                  </div>
+                ) : (
+                  <ul>
+                    {[1, 2, 3, 4].map((item, index) => (
+                      <li key={index}>
+                        <p>질문</p>
+                        <p>디자인 소프트웨어나 도구 중에 즐겨 사용하는 것이 있나요?</p>
+                        <div className="list_arrow">
+                          <Image
+                            src={LocalImages.ImageIconArrow}
+                            alt="ImageIconArrow"
+                            width={24}
+                            height={24}
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
               <div className="finalBtn_box">
-                <button type="button">질문 다시 받기</button>
-                <button type="submit">저장하기</button>
+                <button
+                  type="button"
+                  className={cls(finalScript.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
+                >
+                  질문 다시 받기
+                </button>
+                <button type="button">저장하기</button>
               </div>
             </div>
           </div>
@@ -96,4 +120,3 @@ export default function SaveAnnounce() {
     </section>
   );
 }
-

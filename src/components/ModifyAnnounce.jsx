@@ -243,7 +243,7 @@ export default function ModifyAnnounce() {
                           />
                         </div>
                       </div>
-                      <p className="mt-[5px]">{formatNumber(charCountNew)} / 3000</p>
+                      <p>{formatNumber(charCountNew)} / 3000</p>
                     </>
                   )}
                 </div>
