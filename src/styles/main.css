@@ -1,28 +1,42 @@
-main.main_container {
-  @apply w-[70%] mx-auto pt-[16px] pb-[140px];
+.slider-container {
+  @apply w-full h-[calc(100vh-160px)] overflow-hidden;
+
+  .slick-slider.slick-initialized,
+  .slick-list,
+  .slick-track {
+    @apply h-full;
+  }
+
+  .slick-track {
+    > div > div {
+      @apply h-full;
+    }
+  }
+
+  .slick-arrow.slick-prev,
+  .slick-arrow.slick-next {
+    @apply !hidden;
+  }
+
+  .slick-track {
+    @apply flex;
+  }
+}
+section.main_container {
+  @apply !block !w-[66.67%] h-full overflow-hidden mx-auto pt-[26px] pb-[85px] bg-[#fbfbfb];
 
   /* common */
   .required {
-    @apply main_colorTxt pr-[4px];
+    @apply text-[#FD8889] pr-[4px];
   }
-  .guideMent {
-    @apply flex items-end gap-[20px] mb-[55px];
 
-    .order_box {
-      @apply flex_center h-[60px] w-[60px];
+  .ment_box {
+    @apply w-full pb-[13px];
+    p {
+      @apply gray_colorTxt font-normal text-[18px];
 
-      > p {
-        @apply flex_center w-full h-full rounded text-[40px] font-bold !font-NotoSansKR text-white main_colorBg;
-      }
-    }
-
-    .ment_box {
-      p {
-        @apply gray_colorTxt text-[18px];
-
-        &:first-of-type {
-          @apply font-bold text-[21px];
-        }
+      &:first-of-type {
+        @apply font-bold text-[24px];
       }
     }
   }
@@ -58,12 +72,154 @@ main.main_container {
     }
   }
 
+  .progress_bar {
+    @apply w-full h-[66px] bg-red-300;
+  }
+
   /* 발표 대본 교정 */
   section.correction_area {
-    @apply w-full mt-[52px];
+    @apply w-full h-[calc(100%-66px)];
 
-    .scriptModify_box {
-      @apply flex_xBetween gap-[6.43%] w-full h-[716px] pt-[26px] px-[40px] pb-[50px] rounded bg-[#fefefe] border border-[#c3c4c4];
+    > form {
+      @apply flex items-start justify-between w-full h-full pt-[31px];
+      > .scriptWrite_box {
+        @apply w-[59.4%] h-full;
+
+        > div:last-of-type {
+          @apply w-full h-[77.5%] py-[20px] px-[30px] area_border;
+
+          .scriptMain_area {
+            @apply h-[calc(100%-97px)];
+          }
+
+          p.title {
+            @apply mb-[12px] text-[14px] font-medium gray_colorTxt;
+          }
+
+          /* 33px h-[374px] */
+          .scriptTxt {
+            @apply w-full h-[calc(100%-33px)] p-[20px]  area_border;
+            textarea {
+              @apply w-full h-[calc(100%-21px)] text-[14px] leading-[31px] font-medium gray_colorTxt bg-[#fbfbfb];
+              &::-webkit-input-placeholder {
+                font-size: 14px;
+              }
+              &::-webkit-textarea {
+                font-size: 14px;
+              }
+            }
+
+            > p {
+              @apply flex justify-end text-[14px] font-medium gray_colorTxt;
+            }
+          }
+
+          .contentInfo_area {
+            @apply w-full mt-[12px];
+
+            .script_fun {
+              @apply w-full flex_vertical_center gap-[24px] h-[26px] mb-[11px];
+
+              > div {
+                @apply flex_vertical_center gap-[4px] cursor-pointer;
+                .icon {
+                  @apply w-[24px] h-[24px];
+
+                  img {
+                    @apply object-cover w-full h-full;
+                  }
+                }
+
+                p {
+                  @apply text-[14px] font-medium gray_colorTxt;
+                }
+              }
+            }
+
+            .script_info {
+              @apply flex_vertical_center w-full h-[48px] px-[5px] pt-[9px] pb-[13px] area_border;
+
+              p {
+                @apply text-[14px] font-medium gray_colorTxt;
+
+                &:first-of-type {
+                  @apply relative pr-[16px];
+
+                  &::after {
+                    @apply content-[''] absolute_yHalf right-0 w-[1px] h-[14px] bg-[#757575];
+                  }
+                }
+
+                &:last-of-type {
+                  @apply pl-[16px];
+                }
+              }
+            }
+          }
+        }
+      }
+
+      > .scriptSetting_box {
+        @apply w-[39.1%] h-full;
+
+        > div:last-of-type {
+          @apply w-full h-full;
+
+          .detailSetting {
+            @apply flex flex-col gap-[7.5%] w-full h-[77.5%] py-[21px] px-[36px] area_border;
+
+            p.title {
+              @apply mb-[12px] text-[14px] font-medium gray_colorTxt;
+            }
+
+            > div:first-of-type {
+              @apply h-[32.5%];
+              .subject_box {
+                @apply relative w-full h-[calc(100%-33px)] area_border rounded overflow-hidden;
+                textarea {
+                  @apply w-full h-full p-[20px] text-[14px] font-medium bg-[#fbfbfb];
+                }
+
+                .subject_charCount {
+                  @apply absolute bottom-[20px] right-[13px] font-medium text-[14px] gray_colorTxt;
+                }
+              }
+            }
+
+            .purposeCheck,
+            .endingTxtCheck {
+              @apply flex_vertical_center gap-[19px] w-full h-[41px];
+
+              > p {
+                @apply flex_center w-[111px] h-full text-[14px] disabled_color font-medium text-center rounded cursor-pointer;
+              }
+            }
+
+            .repeat_box {
+              > div {
+                @apply flex_vertical_center gap-[12px] w-[250px] cursor-pointer;
+                .checkbox {
+                  @apply flex_center w-[24px] h-[24px] rounded cursor-pointer;
+                }
+
+                > p {
+                  @apply text-[14px] select-none font-medium gray_colorTxt;
+                }
+              }
+            }
+          }
+
+          .modifyBtn_box {
+            @apply flex_xBetween gap-[20px] w-full h-[60px] mt-[20px];
+            button {
+              @apply flex_center flex-1 h-full area_border text-[16px] font-medium rounded;
+            }
+          }
+        }
+      }
+    }
+    /* form.scriptModify_box {
+      @apply flex w-full h-[58.43%] mt-[13px] rounded bg-[#fefefe] border border-[#c3c4c4];
 
       .scriptWrite_box {
         @apply flex_xBetween flex-col w-[55.1%] h-full;
@@ -237,7 +393,7 @@ main.main_container {
           }
         }
       }
-    }
+    } */
   }
 
   /* 예상질문 */

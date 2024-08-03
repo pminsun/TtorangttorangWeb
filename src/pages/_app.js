@@ -2,6 +2,7 @@ import Layout from '@/components/Layout';
 import '@/styles/globals.css';
 import '@/styles/main.css';
 import '@/styles/gateway.css';
+import '@/styles/saveqa.css';
 import '@/styles/fonts/notoSansKR.css';
 import '@/styles/fonts/tmoneyRoundWind.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';

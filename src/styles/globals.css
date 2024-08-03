@@ -94,7 +94,7 @@ header {
 
 /* footer */
 footer {
-  @apply w-full h-[128px] bg-white;
+  @apply w-full h-[80px] bg-white;
 
   .ft_container {
     @apply flex_xBetween w-[66%] h-full mx-auto;
