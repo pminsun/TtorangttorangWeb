@@ -1,0 +1,97 @@
+.saveQa_area {
+  @apply w-full h-full;
+
+  form {
+    @apply flex_xBetween w-full h-full pt-[31px];
+
+    > div {
+      @apply h-full;
+    }
+
+    .userModify_box {
+      @apply w-[51.5%];
+
+      .scriptFinal_area {
+        @apply w-full h-[71%] area_border px-[31px] py-[12px];
+
+        > p.title {
+          @apply mb-[12px] text-[14px] font-medium gray_colorTxt;
+        }
+
+        .scriptTxt {
+          @apply relative w-full h-[calc(100%-72px)] pt-[12px] pl-[13px] pr-[37px] pb-[51px] area_border;
+
+          textarea {
+            @apply w-full h-full text-[14px] leading-[31px] font-medium gray_colorTxt bg-[#fbfbfb];
+            &::-webkit-input-placeholder {
+              font-size: 14px;
+            }
+            &::-webkit-textarea {
+              font-size: 14px;
+            }
+          }
+
+          > p {
+            @apply absolute bottom-[7px] right-[37px] flex justify-end text-[14px] font-medium gray_colorTxt;
+          }
+        }
+      }
+
+      .copy_area {
+        @apply flex_vertical_center gap-[4px] mt-[13px] cursor-pointer;
+        .icon {
+          @apply w-[24px] h-[24px];
+
+          img {
+            @apply object-cover w-full h-full;
+          }
+        }
+
+        p {
+          @apply text-[14px] font-medium gray_colorTxt;
+        }
+      }
+    }
+
+    .qa_box {
+      @apply w-[39.5%];
+
+      > div:last-of-type {
+        @apply w-full h-full;
+        .qa_area {
+          @apply w-full h-[71%];
+          ul {
+            @apply w-full h-full;
+            li {
+              @apply flex_vertical_center gap-[16px] w-full h-1/4 cursor-pointer border-b border-[#C4C4C4];
+
+              &:first-of-type {
+                @apply border-t border-[#C4C4C4];
+              }
+
+              > p:first-of-type {
+                @apply text-[18px] font-bold text-[#424242];
+              }
+
+              .list_arrow {
+                @apply w-[24px] h-[24px];
+
+                img {
+                  @apply object-cover w-full h-full;
+                }
+              }
+            }
+          }
+        }
+
+        .finalBtn_box {
+          @apply flex_xBetween gap-[20px] w-full h-[60px] mt-[21px];
+
+          button {
+            @apply flex_center flex-1 h-full area_border text-[16px] gray_colorTxt font-medium rounded;
+          }
+        }
+      }
+    }
+  }
+}

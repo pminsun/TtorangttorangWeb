@@ -83,6 +83,10 @@ module.exports = {
           backgroundColor: '#509BF8',
           color: '#FEFEFE',
         },
+        '.area_border': {
+          border: '1px solid #C4C4C4',
+          borderRadius: '4px',
+        },
       };
       addUtilities(newCssUtilities, ['responsive', 'hover']);
       addUtilities(colorUtilities, ['responsive', 'hover']);
