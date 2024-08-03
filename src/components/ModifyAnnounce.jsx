@@ -7,11 +7,12 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { fetchAnnounceData } from '@/api/fetchData';
 import HighlightWithinTextarea from 'react-highlight-within-textarea';
 import { diffWords } from 'diff';
-import { useNextMoveBtnStore, useSettingStore, useFinalScriptStore } from '@/store/store';
+import { useNextMoveBtnStore, useSettingStore, useFinalScriptStore, useScriptLoadingStore } from '@/store/store';
 
 export default function ModifyAnnounce() {
-  const { nextMoveBtn, setNextMoveBtn } = useNextMoveBtnStore();
-  const { finalScript, setFinalScript } = useFinalScriptStore();
+  const { setNextMoveBtn } = useNextMoveBtnStore();
+  const { setFinalScript } = useFinalScriptStore();
+  const { setScriptLoading } = useScriptLoadingStore();
   // setting
   const { presentPurpose, setPresentPurpose, endingTxt, setEndingTxt, repeat, setRepeat } = useSettingStore();
   useEffect(() => {
@@ -127,7 +128,7 @@ export default function ModifyAnnounce() {
 
   //  교정하기 버튼
   const modifyScript = async () => {
-    setLoading(true);
+    setScriptLoading(true);
     try {
       const data = {
         topic: subject,
@@ -181,11 +182,11 @@ export default function ModifyAnnounce() {
 
       setCharCountNew(finaldata.length);
       setcompareScriptToggle(true);
-      setLoading(false);
+      setScriptLoading(false);
       setNextMoveBtn(true);
     } catch (error) {
       console.error('Error fetching modified script:', error);
-      setLoading(false);
+      setScriptLoading(false);
     }
   };
 

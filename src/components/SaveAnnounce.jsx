@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import GuideMent from './GuideMent';
 import * as LocalImages from '@/utils/imageImports';
-import { useFinalScriptStore } from '@/store/store';
-import { cls, formatNumber } from '@/utils/config';
+import { useFinalScriptStore, useQaLoadingStore } from '@/store/store';
+import { askListArray, cls, formatNumber } from '@/utils/config';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 export default function SaveAnnounce() {
   const { finalScript, setFinalScript } = useFinalScriptStore();
   const [charCountFinal, setCharCountFinal] = useState(0);
   const [qaArray, setQaArray] = useState([]);
+  const [askListState, setAskListState] = useState([false, false, false, false]);
+  // 로딩
+  const { qaLoading, setQaLoading } = useQaLoadingStore();
 
   const userModifyScript = (event) => {
     const MAX_LENGTH = 3000;
@@ -20,6 +23,25 @@ export default function SaveAnnounce() {
     }
     setFinalScript(draft);
     setCharCountFinal(draft.length);
+  };
+
+  // 클릭 시 질문 펼침/접기 처리
+  const toggleQAItem = (index) => {
+    setAskListState((prevState) => prevState.map((item, i) => (i === index ? !item : item)));
+  };
+
+  // 질문 펼침 초기화
+  useEffect(() => {
+    setAskListState([false, false, false, false]);
+    setCharCountFinal(finalScript.length);
+  }, []);
+
+  const getQAList = () => {
+    setQaLoading(true);
+    setTimeout(() => {
+      setQaArray(askListArray);
+      setQaLoading(false);
+    }, 3000);
   };
 
   return (
@@ -69,7 +91,7 @@ export default function SaveAnnounce() {
             />
             <div>
               <div className="qa_area">
-                {qaArray ? (
+                {qaArray.length === 0 ? (
                   <div className="none_qa">
                     <div>
                       <Image
@@ -87,17 +109,26 @@ export default function SaveAnnounce() {
                   </div>
                 ) : (
                   <ul>
-                    {[1, 2, 3, 4].map((item, index) => (
-                      <li key={index}>
-                        <p>질문</p>
-                        <p>디자인 소프트웨어나 도구 중에 즐겨 사용하는 것이 있나요?</p>
-                        <div className="list_arrow">
-                          <Image
-                            src={LocalImages.ImageIconArrow}
-                            alt="ImageIconArrow"
-                            width={24}
-                            height={24}
-                          />
+                    {qaArray.map((item, index) => (
+                      <li
+                        key={index}
+                        onClick={() => toggleQAItem(index)}
+                      >
+                        <div className="question_area">
+                          <p>질문</p>
+                          <p className="question">{item.ask}</p>
+                          <div className={cls('list_arrow', askListState[index] ? 'scale-y-[-1]' : 'scale-y-[1]')}>
+                            <Image
+                              src={LocalImages.ImageIconArrow}
+                              alt="ImageIconArrow"
+                              width={24}
+                              height={24}
+                            />
+                          </div>
+                        </div>
+                        <div className={cls('answer_area', askListState[index] ? 'on' : '')}>
+                          <p>답변</p>
+                          <p className="answer">{item.answer}</p>
                         </div>
                       </li>
                     ))}
@@ -107,11 +138,17 @@ export default function SaveAnnounce() {
               <div className="finalBtn_box">
                 <button
                   type="button"
+                  onClick={getQAList}
                   className={cls(finalScript.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
                 >
                   질문 다시 받기
                 </button>
-                <button type="button">저장하기</button>
+                <button
+                  type="button"
+                  className={cls(qaArray.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
+                >
+                  저장하기
+                </button>
               </div>
             </div>
           </div>

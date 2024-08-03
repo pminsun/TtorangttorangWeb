@@ -26,3 +26,13 @@ export const useFinalScriptStore = create((set) => ({
   finalScript: '',
   setFinalScript: (value) => set({ finalScript: value }),
 }));
+
+// Loading
+export const useScriptLoadingStore = create((set) => ({
+  scriptLoading: false,
+  setScriptLoading: (value) => set({ scriptLoading: value }),
+}));
+export const useQaLoadingStore = create((set) => ({
+  qaLoading: false,
+  setQaLoading: (value) => set({ qaLoading: value }),
+}));
