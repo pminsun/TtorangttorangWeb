@@ -6,10 +6,12 @@ import Slider from 'react-slick';
 import ModifyAnnounce from '@/components/ModifyAnnounce';
 import SaveAnnounce from '@/components/SaveAnnounce';
 import ProgressBar from '@/components/ProgressBar';
-import { useNextMoveBtnStore } from '@/store/store';
+import { useNextMoveBtnStore, useScriptLoadingStore, useQaLoadingStore } from '@/store/store';
 
 export default function Announce() {
   const { nextMoveBtn } = useNextMoveBtnStore();
+  const { qaLoading } = useQaLoadingStore();
+  const { scriptLoading } = useScriptLoadingStore();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   function NextArrow(props) {
@@ -71,20 +73,42 @@ export default function Announce() {
       if (!nextMoveBtn) {
         return false; // nextMoveBtn이 false일 경우 슬라이드 변경을 막음
       }
-    },
-    afterChange: (next) => {
-      // 슬라이드가 변경된 후 상태 업데이트
       setCurrentSlide(next);
     },
+    // afterChange: (next) => {
+    //   // 슬라이드가 변경된 후 상태 업데이트
+    //   setCurrentSlide(next);
+    // },
   };
 
   return (
-    <div className="slider-container">
-      <ProgressBar currentSlide={currentSlide} />
-      <Slider {...settings}>
-        <ModifyAnnounce />
-        <SaveAnnounce />
-      </Slider>
-    </div>
+    <>
+      <div className="slider-container">
+        <ProgressBar currentSlide={currentSlide} />
+        <Slider {...settings}>
+          <ModifyAnnounce />
+          <SaveAnnounce />
+        </Slider>
+      </div>
+      {/* loading */}
+      {scriptLoading && (
+        <div className="modalBlackBg">
+          <div className="modal_box">
+            <div className="character_box"></div>
+            <p>초안 정보를 불러오고 있어요</p>
+            <span className="loader"></span>
+          </div>
+        </div>
+      )}
+      {qaLoading && (
+        <div className="modalBlackBg">
+          <div className="modal_box">
+            <div className="character_box"></div>
+            <p>예상 질문을 받아오고 있어요</p>
+            <span className="loader"></span>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

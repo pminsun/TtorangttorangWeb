@@ -78,7 +78,7 @@
           @apply w-full h-[71%];
 
           .none_qa {
-            @apply flex_center flex-col w-full h-full;
+            @apply flex-col w-full h-full flex_center;
 
             > div:first-of-type {
               @apply w-[254px] h-[254px] mb-[24px];
@@ -94,23 +94,61 @@
           }
 
           ul {
-            @apply w-full h-full;
+            @apply w-full h-full overflow-y-auto;
+
+            /* scrollbar */
+            &::-webkit-scrollbar {
+              width: 9.5px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background: #509bf8;
+            }
+
+            &::-webkit-scrollbar-track {
+              background: #ededed;
+            }
+
             li {
-              @apply flex_vertical_center gap-[16px] w-full h-1/4 cursor-pointer border-b border-[#C4C4C4];
+              @apply flex_center flex-col w-full py-[37px] pr-[29px] cursor-pointer border-b border-[#C4C4C4];
 
               &:first-of-type {
                 @apply border-t border-[#C4C4C4];
               }
 
-              > p:first-of-type {
-                @apply text-[18px] font-bold text-[#424242];
+              .question_area {
+                @apply w-full h-full flex_xBetween;
+
+                > p:first-of-type {
+                  @apply text-[18px] font-bold text-[#424242];
+                }
+
+                > p.question {
+                  @apply max-w-[380px] break-words text-[16px] gray_colorTxt font-medium leading-[32px];
+                }
+
+                .list_arrow {
+                  @apply w-[24px] h-[24px];
+
+                  img {
+                    @apply object-cover w-full h-full;
+                  }
+                }
               }
 
-              .list_arrow {
-                @apply w-[24px] h-[24px];
+              .answer_area {
+                @apply flex items-start gap-[16px] invisible w-full overflow-hidden transition-all duration-300 max-h-0;
 
-                img {
-                  @apply object-cover w-full h-full;
+                &.on {
+                  @apply visible max-h-[300px] mt-[64px];
+                }
+
+                > p:first-of-type {
+                  @apply text-[18px] font-bold text-[#424242];
+                }
+
+                > p.answer {
+                  @apply max-w-[380px] break-words text-[16px] gray_colorTxt font-medium leading-[32px];
                 }
               }
             }
