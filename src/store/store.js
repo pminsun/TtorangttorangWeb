@@ -4,6 +4,8 @@ import { persist } from 'zustand/middleware';
 export const useSettingStore = create(
   persist(
     (set) => ({
+      originScript: '',
+      setOriginScript: (value) => set({ originScript: value }),
       subject: '',
       setSubject: (value) => set({ subject: value }),
       presentPurpose: '회사 컨퍼런스',
@@ -12,6 +14,8 @@ export const useSettingStore = create(
       setEndingTxt: (value) => set({ endingTxt: value }),
       repeat: false,
       setRepeat: (value) => set({ repeat: value }),
+      newScript: '',
+      setNewScript: (value) => set({ newScript: value }),
     }),
     {
       name: 'settings', // 로컬 스토리지 키
@@ -42,10 +46,19 @@ export const useNextMoveBtnStore = create((set) => ({
   setNextMoveBtn: (value) => set({ nextMoveBtn: value }),
 }));
 
-export const useFinalScriptStore = create((set) => ({
-  finalScript: '',
-  setFinalScript: (value) => set({ finalScript: value }),
-}));
+export const useFinalScriptStore = create(
+  persist(
+    (set) => ({
+      finalScript: '',
+      setFinalScript: (value) => set({ finalScript: value }),
+      qaArray: [],
+      setQaArray: (value) => set({ qaArray: value }),
+    }),
+    {
+      name: 'final', // 로컬 스토리지 키
+    },
+  ),
+);
 
 // Loading
 export const useScriptLoadingStore = create((set) => ({
@@ -55,4 +68,10 @@ export const useScriptLoadingStore = create((set) => ({
 export const useQaLoadingStore = create((set) => ({
   qaLoading: false,
   setQaLoading: (value) => set({ qaLoading: value }),
+}));
+
+// login
+export const useLoginModalStore = create((set) => ({
+  login: false,
+  setLogin: (value) => set({ login: value }),
 }));

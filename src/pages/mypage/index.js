@@ -83,7 +83,7 @@ export default function Mypage() {
             </div>
             <button
               type="button"
-              onClick={() => signOut('kakao', { callbackUrl: '/'})}
+              onClick={() => signOut('kakao', { callbackUrl: '/' })}
             >
               로그아웃
             </button>

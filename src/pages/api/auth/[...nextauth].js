@@ -12,9 +12,14 @@ export default NextAuth({
     async session({ session, token, user }) {
       // Send properties to the client, like an access_token from a provider.
       session.user.id = token.sub;
-      // console.log("token", token);
       return session;
     },
+    // async jwt(token, user, account) {
+    //   if (account) {
+    //     token.accessToken = account.accessToken;
+    //   }
+    //   return token;
+    // },
   },
   secret: process.env.NEXTAUTH_SECRET,
 });
