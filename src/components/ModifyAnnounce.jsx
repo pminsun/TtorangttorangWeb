@@ -7,7 +7,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { fetchAnnounceData } from '@/api/fetchData';
 import HighlightWithinTextarea from 'react-highlight-within-textarea';
 import { diffWords } from 'diff';
-import { useNextMoveBtnStore, useSettingStore, useFinalScriptStore, useScriptLoadingStore } from '@/store/store';
+import { useNextMoveBtnStore, useSettingStore, useInitialSettingStore, useFinalScriptStore, useScriptLoadingStore } from '@/store/store';
 
 export default function ModifyAnnounce() {
   const { setNextMoveBtn } = useNextMoveBtnStore();
@@ -15,6 +15,7 @@ export default function ModifyAnnounce() {
   const { setScriptLoading } = useScriptLoadingStore();
   // setting
   const { presentPurpose, setPresentPurpose, endingTxt, setEndingTxt, repeat, setRepeat } = useSettingStore();
+  const { initialPresentPurpose, setInitialPresentPurpose, initialEndingTxt, setInitialEndingTxt, initialrepeat, setInitialRepeat } = useInitialSettingStore();
   useEffect(() => {
     setPresentPurpose('회사 컨퍼런스');
     setEndingTxt('합니다체');
@@ -27,19 +28,19 @@ export default function ModifyAnnounce() {
   const [modifyBtn, setModifyBtn] = useState(false);
   // 주제
   const [subject, setSubject] = useState('');
+  const [initialSubject, setInitialSubject] = useState('');
   const [subjectCharCount, setSubjectCharCount] = useState(0);
   // 개선내용
   const [improvementMent, setImprovementMent] = useState('없음');
   //교정문
   const [newScript, setNewScript] = useState('');
+  const [initialNewScript, setInitialNewScript] = useState('');
   const [charCountNew, setCharCountNew] = useState(0);
   const [compareScriptToggle, setcompareScriptToggle] = useState(false);
   const [highlightedText, setHighlightedText] = useState([]);
   const scriptWriteBoxRef = useRef(null);
   // 예상 발표 시간
   const [estimatedPresentTime, setEstimatedPresentTime] = useState('0분 0초');
-  // 로딩
-  const [loading, setLoading] = useState(false);
 
   // 초안 작성
   const writeOriginScript = (event) => {
@@ -101,11 +102,19 @@ export default function ModifyAnnounce() {
   // 교정하기 버튼 활성화
   useEffect(() => {
     if (compareScriptToggle) {
-      setModifyBtn(originScript && newScript);
+      // 초안, 교정문 변경,세팅값 변경 있을경우 true
+      setModifyBtn(
+        (originScript && newScript && initialNewScript !== newScript) ||
+          initialSubject !== subject ||
+          initialPresentPurpose !== presentPurpose ||
+          initialEndingTxt !== endingTxt ||
+          initialrepeat !== repeat,
+      );
     } else {
+      // 초안, 주제 있을경우 true
       setModifyBtn(originScript && subject);
     }
-  }, [originScript, subject, newScript, compareScriptToggle]);
+  }, [originScript, subject, newScript, initialNewScript, initialSubject, compareScriptToggle, initialPresentPurpose, presentPurpose, initialEndingTxt, endingTxt, initialrepeat, repeat]);
 
   const filterOut = ['-', '"', '"', '!.', '!', '[', ']', ':'];
   const highlightDiffs = (oldStr, newStr) => {
@@ -138,6 +147,12 @@ export default function ModifyAnnounce() {
         duplicate: repeat === true ? 'Y' : 'N',
       };
 
+      // 비교값 저장
+      setInitialSubject(subject);
+      setInitialPresentPurpose(presentPurpose);
+      setInitialEndingTxt(endingTxt);
+      setInitialRepeat(repeat);
+      //data
       const response = await fetchAnnounceData(data);
       const redData = response.data.replace(/data:/g, '');
       const events = redData.split('\n\n'); // 이벤트 분리
@@ -167,12 +182,14 @@ export default function ModifyAnnounce() {
 
         // 2회차 새로운 교정본을 newScript로 설정 1회차는 구
         setOriginScript(oldScript);
+        setInitialNewScript(updatedScript);
         setNewScript(updatedScript);
         setFinalScript(updatedScript);
         highlightDiffs(oldScript, updatedScript);
       } else {
         // 첫 번째 교정
         highlightDiffs(originScript, finaldata);
+        setInitialNewScript(finaldata);
         setNewScript(finaldata);
         setFinalScript(finaldata);
       }
@@ -233,6 +250,7 @@ export default function ModifyAnnounce() {
                             value={newScript}
                             onChange={(value) => {
                               setNewScript(value);
+                              setFinalScript(value);
                               setCharCountNew(value.length);
                               if (value.length > 3000) {
                                 setCharCountNew(3000);
