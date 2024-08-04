@@ -79,7 +79,7 @@ export default function SaveAnnounce() {
       setSaveAnnounceCharCount(testScript.length);
       setQaArray(askListArray);
     }
-  }, []);
+  }, [announcePage]);
 
   // 저장한 내 발표문 제목
   const userModifyTitle = (event) => {
@@ -127,7 +127,7 @@ export default function SaveAnnounce() {
                   maxLength="3000"
                   value={announcePage ? finalScript : saveAnnounce}
                   onChange={userModifyScript}
-                  disabled={modifySaveAnnounce ? false : true}
+                  disabled={modifySaveAnnounce || announcePage ? false : true}
                 />
                 <p>{announcePage ? formatNumber(charCountFinal) : formatNumber(saveAnnounceCharCount)}/ 3000</p>
               </div>
