@@ -19,8 +19,8 @@ export default function Announce() {
 
     const dynamicStyle = {
       ...style,
-      display: nextMoveBtn ? 'block' : 'none',
-      cursor: 'pointer',
+      display: 'block',
+      cursor: nextMoveBtn ? 'pointer' : 'default',
       zIndex: 50,
     };
 
@@ -30,12 +30,21 @@ export default function Announce() {
         style={dynamicStyle}
         onClick={onClick}
       >
-        <Image
-          src={LocalImages.ImageMainStepArrowRight}
-          alt="ImageMainStepArrowRight"
-          width={80}
-          height={80}
-        />
+        {nextMoveBtn ? (
+          <Image
+            src={LocalImages.ImageMainStepArrowActive}
+            alt="ImageMainStepArrowActive"
+            width={80}
+            height={80}
+          />
+        ) : (
+          <Image
+            src={LocalImages.ImageMainStepArrowRight}
+            alt="ImageMainStepArrowRight"
+            width={80}
+            height={80}
+          />
+        )}
       </div>
     );
   }
@@ -49,10 +58,11 @@ export default function Announce() {
         onClick={onClick}
       >
         <Image
-          src={LocalImages.ImageMainStepArrowLeft}
-          alt="ImageMainStepArrowLeft"
+          src={LocalImages.ImageMainStepArrowActive}
+          alt="ImageMainStepArrowActive"
           width={80}
           height={80}
+          className="-scale-x-100"
         />
       </div>
     );
