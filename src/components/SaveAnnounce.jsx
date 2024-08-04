@@ -3,14 +3,15 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import GuideMent from './GuideMent';
 import * as LocalImages from '@/utils/imageImports';
-import { useFinalScriptStore, useQaLoadingStore } from '@/store/store';
+import { useFinalScriptStore, useSettingStore, useQaLoadingStore } from '@/store/store';
 import { askListArray, cls, formatNumber, testScript, testScriptTitle } from '@/utils/config';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'next/link';
-import { fetchQnAData } from '@/api/fetchData';
+import { fetchQnAData, fetchSaveScript } from '@/api/fetchData';
 
-export default function SaveAnnounce() {
+export default function SaveAnnounce({session}) {
   const pathname = usePathname();
+  const { subject, presentPurpose, endingTxt } = useSettingStore();
   const [announcePage, setAnnouncePage] = useState(true);
   const { finalScript, setFinalScript } = useFinalScriptStore();
   const [charCountFinal, setCharCountFinal] = useState(0);
@@ -63,6 +64,7 @@ export default function SaveAnnounce() {
     setCharCountFinal(finalScript.length);
   }, []);
 
+  // 예상질문 답변
   const getQAList = async () => {
     setQaLoading(true);
     try {
@@ -121,6 +123,23 @@ export default function SaveAnnounce() {
     } catch (error) {
       console.error('Error fetching modified script:', error);
       setQaLoading(false);
+    }
+  };
+
+  // 저장
+  const saveScriptToAccount = async () => {
+    try {
+      const data = {
+        topic: subject,
+        purpose: presentPurpose,
+        word: endingTxt,
+        content: finalScript.replace(/\n/g, ''),
+        qnaList: qaArray,
+      };
+      const response = await fetchSaveScript(data);
+      console.log('response', response);
+    } catch (error) {
+      console.error('Error fetching save script:', error);
     }
   };
 
@@ -276,6 +295,7 @@ export default function SaveAnnounce() {
                   </button>
                   <button
                     type="button"
+                    onClick={saveScriptToAccount}
                     className={cls(qaArray.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
                   >
                     저장하기

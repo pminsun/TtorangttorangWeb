@@ -8,26 +8,13 @@ export default NextAuth({
       clientSecret: process.env.NEXT_PUBLIC_KAKAO_CLIENT_SECRET || '',
     }),
   ],
-
+  callbacks: {
+    async session({ session, token, user }) {
+      // Send properties to the client, like an access_token from a provider.
+      session.user.id = token.sub;
+      // console.log("token", token);
+      return session;
+    },
+  },
   secret: process.env.NEXTAUTH_SECRET,
 });
-// callbacks: {
-//   async session({ session, token, user }) {
-//     // 세션 만료 시간 설정
-//     session.expires = token.exp * 1000;
-//     return session;
-//   },
-//   async jwt({ token, user, account, profile, isNewUser }) {
-//     if (account) {
-//       token.accessToken = account.access_token;
-//       // JWT 만료 시간을 현재 시간 + 1시간으로 설정
-//       token.exp = Math.floor(Date.now() / 1000) + 60 * 60;
-//     }
-//     return token;
-//   },
-// },
-// session: {
-//   // 세션 전략을 JWT로 설정
-//   strategy: 'jwt',
-//   maxAge: 60 * 60, // 1시간
-// },

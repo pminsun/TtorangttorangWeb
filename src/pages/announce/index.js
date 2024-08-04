@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
+import { useSession } from 'next-auth/react';
 import Slider from 'react-slick';
 import ModifyAnnounce from '@/components/ModifyAnnounce';
 import SaveAnnounce from '@/components/SaveAnnounce';
@@ -8,13 +9,13 @@ import ProgressBar from '@/components/ProgressBar';
 import { useNextMoveBtnStore, useScriptLoadingStore, useQaLoadingStore } from '@/store/store';
 
 export default function Announce() {
+  const { data: session } = useSession();
   const { nextMoveBtn } = useNextMoveBtnStore();
   const { qaLoading } = useQaLoadingStore();
   const { scriptLoading } = useScriptLoadingStore();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   function NextArrow(props) {
-    const { nextMoveBtn } = useNextMoveBtnStore();
     const { className, style, onClick } = props;
 
     const dynamicStyle = {
@@ -22,6 +23,7 @@ export default function Announce() {
       display: 'block',
       cursor: nextMoveBtn ? 'pointer' : 'default',
       zIndex: 50,
+      pointerEvents: nextMoveBtn ? 'auto' : 'none',
     };
 
     return (
@@ -91,8 +93,8 @@ export default function Announce() {
       <div className="slider-container">
         <ProgressBar currentSlide={currentSlide} />
         <Slider {...settings}>
-          <ModifyAnnounce />
-          <SaveAnnounce />
+          <ModifyAnnounce session={session} />
+          <SaveAnnounce session={session} />
         </Slider>
       </div>
       {/* loading */}
