@@ -124,7 +124,7 @@
                 }
 
                 > p.question {
-                  @apply max-w-[380px] break-words text-[16px] gray_colorTxt font-medium leading-[32px];
+                  @apply max-w-[350px] break-words text-[16px] gray_colorTxt font-medium leading-[32px];
                 }
 
                 .list_arrow {
@@ -137,7 +137,7 @@
               }
 
               .answer_area {
-                @apply flex items-start gap-[16px] invisible w-full overflow-hidden transition-all duration-300 max-h-0;
+                @apply flex items-start gap-[28px] invisible w-full overflow-hidden transition-all duration-300 max-h-0;
 
                 &.on {
                   @apply visible max-h-[300px] mt-[64px];
@@ -148,7 +148,7 @@
                 }
 
                 > p.answer {
-                  @apply max-w-[380px] break-words text-[16px] gray_colorTxt font-medium leading-[32px];
+                  @apply max-w-[350px] break-words text-[16px] gray_colorTxt font-medium leading-[32px];
                 }
               }
             }
