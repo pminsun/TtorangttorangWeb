@@ -7,6 +7,7 @@ import { useFinalScriptStore, useQaLoadingStore } from '@/store/store';
 import { askListArray, cls, formatNumber, testScript, testScriptTitle } from '@/utils/config';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'next/link';
+import { fetchQnAData } from '@/api/fetchData';
 
 export default function SaveAnnounce() {
   const pathname = usePathname();
@@ -62,12 +63,65 @@ export default function SaveAnnounce() {
     setCharCountFinal(finalScript.length);
   }, []);
 
-  const getQAList = () => {
+  const getQAList = async () => {
     setQaLoading(true);
-    setTimeout(() => {
-      setQaArray(askListArray);
+    try {
+      const data = {
+        content: finalScript.replace(/\n/g, ''),
+      };
+
+      //data
+      const response = await fetchQnAData(data);
+      const redData = response.data.replace(/data:/g, '');
+      const events = redData.split('\n\n'); // 이벤트 분리
+      const newQnaContentQueue = [];
+      events.forEach((event) => {
+        if (event.trim()) {
+          try {
+            const jsonData = JSON.parse(event);
+            const content = jsonData.message?.content || '';
+
+            if (content) {
+              // 상태를 업데이트하여 새 content 값을 배열에 추가
+              newQnaContentQueue.push(content);
+            }
+          } catch (error) {
+            console.error('Failed to parse JSON:', error);
+          }
+        }
+      });
+      const finaldata = newQnaContentQueue.join('');
+
+      // Q&A 데이터 파싱
+      const qnaArray = [];
+      const qnaPairs = finaldata.split('\n\n');
+      qnaPairs.forEach((pair) => {
+        const [question, answer] = pair.split('\nA');
+        if (question && answer) {
+          qnaArray.push({
+            question: question
+              .trim()
+              .replace('Q', '')
+              .replace(/^\d+\.\s*/, '')
+              .trim(),
+            answer: answer
+              .trim()
+              .replace('A', '')
+              .replace(/^\d+\.\s*/, '')
+              .trim(),
+          });
+        }
+      });
+
+      if (qnaArray.length > 0) {
+        setQaArray(qnaArray);
+      }
       setQaLoading(false);
-    }, 3000);
+      setAskListState([false, false, false, false]);
+    } catch (error) {
+      console.error('Error fetching modified script:', error);
+      setQaLoading(false);
+    }
   };
 
   // 최초로 저장된 발표문
@@ -192,7 +246,7 @@ export default function SaveAnnounce() {
                       >
                         <div className="question_area">
                           <p>질문</p>
-                          <p className="question">{item.ask}</p>
+                          <p className="question">{item.question}</p>
                           <div className={cls('list_arrow', askListState[index] ? 'scale-y-[-1]' : 'scale-y-[1]')}>
                             <Image
                               src={LocalImages.ImageIconArrow}

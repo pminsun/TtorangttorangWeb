@@ -110,21 +110,21 @@
             }
 
             li {
-              @apply flex_center flex-col w-full min-h-[25%] py-[37px] pr-[29px] cursor-pointer border-b border-[#C4C4C4];
+              @apply flex_center flex-col w-full cursor-pointer border-b border-[#C4C4C4];
 
               &:first-of-type {
                 @apply border-t border-[#C4C4C4];
               }
 
               .question_area {
-                @apply w-full h-full flex_xBetween;
+                @apply w-full min-h-[152px] py-[37px] pr-[29px] flex_xBetween;
 
                 > p:first-of-type {
                   @apply text-[18px] font-bold text-[#424242];
                 }
 
                 > p.question {
-                  @apply max-w-[350px] break-words text-[16px] gray_colorTxt font-medium leading-[32px];
+                  @apply w-[350px] text-left break-words text-[16px] gray_colorTxt font-medium leading-[32px];
                 }
 
                 .list_arrow {
@@ -140,7 +140,7 @@
                 @apply flex items-start gap-[28px] invisible w-full overflow-hidden transition-all duration-300 max-h-0;
 
                 &.on {
-                  @apply visible max-h-[300px] mt-[64px];
+                  @apply visible max-h-[300px] mt-[27px]  pb-[37px];
                 }
 
                 > p:first-of-type {

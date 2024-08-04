@@ -16,3 +16,16 @@ export const fetchAnnounceData = async (data) => {
     },
   });
 };
+
+export const fetchQnAData = async (data) => {
+  return await axios({
+    method: 'post',
+    url: `https://api.ttorang.site/api/clova/qna`,
+    data: {
+      content: data.content,
+    },
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+  });
+};
