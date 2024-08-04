@@ -137,7 +137,7 @@
               }
 
               .answer_area {
-                @apply flex items-start gap-[28px] invisible w-full overflow-hidden transition-all duration-300 max-h-0;
+                @apply flex items-start gap-[55px] invisible w-full overflow-hidden transition-all duration-300 max-h-0;
 
                 &.on {
                   @apply visible max-h-[300px] mt-[27px]  pb-[37px];
