@@ -29,3 +29,28 @@ export const fetchQnAData = async (data) => {
     },
   });
 };
+
+export const fetchKakaoLogin = async () => {
+  return await axios({
+    method: 'get',
+    url: `https://api.ttorang.site/kakao`,
+  });
+};
+
+export const fetchSaveScript = async (data) => {
+  console.log(data);
+  return await axios({
+    method: 'post',
+    url: `https://api.ttorang.site/api/script`,
+    data: {
+      topic: data.topic,
+      purpose: data.purpose,
+      word: data.word,
+      content: data.content,
+      qnaList: data.qnaList,
+    },
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+  });
+};

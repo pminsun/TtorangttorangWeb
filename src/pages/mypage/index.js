@@ -79,11 +79,11 @@ export default function Mypage() {
           <div>
             <div className="user">
               <div className="userIcon"></div>
-              <p>dkanrjsk12@naver.com</p>
+              <p>{session && session.user.email}</p>
             </div>
             <button
               type="button"
-              onClick={() => signOut('kakao', { callbackUrl: '/', redirect: true })}
+              onClick={() => signOut('kakao', { callbackUrl: '/'})}
             >
               로그아웃
             </button>

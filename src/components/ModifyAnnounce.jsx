@@ -9,17 +9,20 @@ import HighlightWithinTextarea from 'react-highlight-within-textarea';
 import { diffWords } from 'diff';
 import { useNextMoveBtnStore, useSettingStore, useInitialSettingStore, useFinalScriptStore, useScriptLoadingStore } from '@/store/store';
 
-export default function ModifyAnnounce() {
+export default function ModifyAnnounce({ session }) {
+  console.log(session);
   const { setNextMoveBtn } = useNextMoveBtnStore();
   const { setFinalScript } = useFinalScriptStore();
   const { setScriptLoading } = useScriptLoadingStore();
   // setting
-  const { presentPurpose, setPresentPurpose, endingTxt, setEndingTxt, repeat, setRepeat } = useSettingStore();
-  const { initialPresentPurpose, setInitialPresentPurpose, initialEndingTxt, setInitialEndingTxt, initialrepeat, setInitialRepeat } = useInitialSettingStore();
+  const { subject, setSubject, presentPurpose, setPresentPurpose, endingTxt, setEndingTxt, repeat, setRepeat } = useSettingStore();
+  const { initialSubject, setInitialSubject, initialPresentPurpose, setInitialPresentPurpose, initialEndingTxt, setInitialEndingTxt, initialrepeat, setInitialRepeat } = useInitialSettingStore();
   useEffect(() => {
+    setSubject('');
     setPresentPurpose('회사 컨퍼런스');
     setEndingTxt('합니다체');
     setRepeat(false);
+    setNextMoveBtn(false);
   }, []);
 
   // 초안
@@ -27,8 +30,6 @@ export default function ModifyAnnounce() {
   const [charCountOrigin, setCharCountOrigin] = useState(0);
   const [modifyBtn, setModifyBtn] = useState(false);
   // 주제
-  const [subject, setSubject] = useState('');
-  const [initialSubject, setInitialSubject] = useState('');
   const [subjectCharCount, setSubjectCharCount] = useState(0);
   // 개선내용
   const [improvementMent, setImprovementMent] = useState('없음');

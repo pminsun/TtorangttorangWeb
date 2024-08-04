@@ -4,6 +4,8 @@ import { persist } from 'zustand/middleware';
 export const useSettingStore = create(
   persist(
     (set) => ({
+      subject: '',
+      setSubject: (value) => set({ subject: value }),
       presentPurpose: '회사 컨퍼런스',
       setPresentPurpose: (value) => set({ presentPurpose: value }),
       endingTxt: '합니다체',
@@ -20,6 +22,8 @@ export const useSettingStore = create(
 export const useInitialSettingStore = create(
   persist(
     (set) => ({
+      initialSubject: '',
+      setInitialSubject: (value) => set({ initialSubject: value }),
       initialPresentPurpose: '회사 컨퍼런스',
       setInitialPresentPurpose: (value) => set({ initialPresentPurpose: value }),
       initialEndingTxt: '합니다체',
