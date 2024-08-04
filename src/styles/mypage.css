@@ -1,0 +1,173 @@
+.mypage_container {
+  @apply relative flex justify-between flex-col w-[66.67%] h-[calc(100vh-160px)] mx-auto pt-[62px] bg-[#fbfbfb] pb-[66px];
+
+  .mypage_title {
+    @apply mb-[40px] text-[28px] font-bold gray_colorTxt;
+  }
+
+  .userInfo_area {
+    > div {
+      @apply flex_xBetween w-full py-[24px] pl-[28px] pr-[45px] area_border;
+
+      > div.user {
+        @apply flex_vertical_center gap-[40px];
+        .userIcon {
+          @apply w-[72px] h-[72px] rounded-full bg-[#EBF2FA];
+        }
+
+        > p {
+          @apply text-[28px] font-medium gray_colorTxt;
+        }
+      }
+
+      > button {
+        @apply w-[148px] h-[62px] text-[20px] font-medium area_border;
+      }
+    }
+  }
+
+  .myAnnounce_area {
+    @apply flex flex-col h-[49.8%];
+    .myAnnounce_slide {
+      @apply relative flex-1;
+      .slick-track {
+        @apply flex overflow-hidden;
+      }
+      .slick-slide {
+        margin-right: 20px;
+
+        > div {
+          @apply h-full;
+        }
+      }
+      .slick-list {
+        margin-right: -20px; /* 오른쪽 여백을 제거 */
+        overflow: hidden;
+      }
+      .slick-arrow {
+        @apply absolute_yHalf w-[80px] h-[80px];
+
+        &.slick-prev {
+          @apply left-[-120px];
+        }
+
+        &.slick-next {
+          @apply right-[-120px];
+        }
+
+        &.slick-disabled {
+          @apply !hidden;
+        }
+      }
+
+      .dots_custom {
+        @apply w-full flex_center mt-[20px];
+
+        ul {
+          @apply flex_vertical_center gap-[24px];
+          li {
+            @apply w-[16px] h-[16px] rounded-full bg-[#D9D9D9];
+
+            &.slick-active {
+              @apply bg-[#509BF8];
+            }
+
+            button {
+              @apply opacity-0;
+            }
+          }
+        }
+      }
+
+      .myAnnounce {
+        @apply block w-[240px] h-full area_border cursor-pointer;
+
+        .announce_title {
+          @apply flex_xBetween w-full h-[54px] px-[14px] main_colorBg;
+
+          > p {
+            @apply text-[20px] font-medium text-[#FEFEFE];
+          }
+
+          .delteBtn {
+            @apply flex_center w-[24px] h-[24px] cursor-pointer;
+          }
+        }
+
+        .announce_content {
+          @apply flex_center flex-col h-[calc(100%-54px)] px-[14px] pt-[8px] pb-[14px] overflow-hidden;
+
+          > p:first-of-type {
+            @apply text-[14px] font-medium leading-[32px] pb-[4px] gray_colorTxt;
+          }
+          > p.date {
+            @apply flex justify-end w-full pt-[8px] border-t border-[#C4C4C4] text-[14px] font-medium gray_colorTxt;
+          }
+
+          > div.plusBtn {
+            @apply w-[64px] h-[64px] cursor-pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .other_area {
+    > ul {
+      @apply flex_xBetween;
+
+      li {
+        a {
+          @apply flex_center w-[168px] h-[62px] text-[20px] font-medium gray_colorTxt area_border;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1750px) {
+  .mypage_container {
+    @apply pt-[32px]  pb-[36px];
+
+    .mypage_title {
+      @apply mb-[20px] text-[24px];
+    }
+
+    .userInfo_area {
+      > div {
+        @apply py-[14px];
+
+        > div.user {
+          .userIcon {
+            @apply w-[62px] h-[62px] rounded-full bg-[#EBF2FA];
+          }
+
+          > p {
+            @apply text-[24px];
+          }
+        }
+
+        > button {
+          @apply w-[148px] h-[42px] text-[18px] font-medium area_border;
+        }
+      }
+    }
+    .myAnnounce_area {
+      .myAnnounce_slide {
+        .myAnnounce {
+          .announce_title {
+            > p {
+              @apply text-[18px] font-medium text-[#FEFEFE];
+            }
+          }
+
+          .announce_content {
+            > p:first-of-type {
+              @apply text-[12px] leading-[28px];
+            }
+          }
+        }
+      }
+    }
+  }
+}

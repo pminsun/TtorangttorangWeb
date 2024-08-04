@@ -44,9 +44,6 @@ export default function Header() {
                   교정하기
                 </Link>
               </li>
-              <li>
-                <button onClick={() => signOut('kakao')}>로그아웃</button>
-              </li>
             </ul>
           </nav>
         </div>

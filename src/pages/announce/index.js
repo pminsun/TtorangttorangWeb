@@ -1,7 +1,6 @@
-import { useEffect, useState, useRef } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
-
 import Slider from 'react-slick';
 import ModifyAnnounce from '@/components/ModifyAnnounce';
 import SaveAnnounce from '@/components/SaveAnnounce';
@@ -75,10 +74,6 @@ export default function Announce() {
       }
       setCurrentSlide(next);
     },
-    // afterChange: (next) => {
-    //   // 슬라이드가 변경된 후 상태 업데이트
-    //   setCurrentSlide(next);
-    // },
   };
 
   return (
