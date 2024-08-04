@@ -272,7 +272,7 @@ export default function SaveAnnounce() {
                     onClick={getQAList}
                     className={cls(finalScript.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
                   >
-                    질문 다시 받기
+                    {qaArray.length > 0 ? '질문 다시 받기' : '예상 질문 받기'}
                   </button>
                   <button
                     type="button"
