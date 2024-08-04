@@ -17,6 +17,22 @@ export const useSettingStore = create(
   ),
 );
 
+export const useInitialSettingStore = create(
+  persist(
+    (set) => ({
+      initialPresentPurpose: '회사 컨퍼런스',
+      setInitialPresentPurpose: (value) => set({ initialPresentPurpose: value }),
+      initialEndingTxt: '합니다체',
+      setInitialEndingTxt: (value) => set({ initialEndingTxt: value }),
+      initialrepeat: false,
+      setInitialRepeat: (value) => set({ initialrepeat: value }),
+    }),
+    {
+      name: 'initialSettings', // 로컬 스토리지 키
+    },
+  ),
+);
+
 export const useNextMoveBtnStore = create((set) => ({
   nextMoveBtn: false,
   setNextMoveBtn: (value) => set({ nextMoveBtn: value }),
