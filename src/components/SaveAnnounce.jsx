@@ -72,11 +72,13 @@ export default function SaveAnnounce() {
 
   // 최초로 저장된 발표문
   useEffect(() => {
-    setModifyTitle(testScriptTitle);
-    setModifyTitleCharCount(testScriptTitle.length);
-    setSaveAnnounce(testScript);
-    setSaveAnnounceCharCount(testScript.length);
-    setQaArray(askListArray);
+    if (!announcePage) {
+      setModifyTitle(testScriptTitle);
+      setModifyTitleCharCount(testScriptTitle.length);
+      setSaveAnnounce(testScript);
+      setSaveAnnounceCharCount(testScript.length);
+      setQaArray(askListArray);
+    }
   }, []);
 
   // 저장한 내 발표문 제목
