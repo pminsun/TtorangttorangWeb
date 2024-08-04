@@ -26,7 +26,7 @@ export default function SaveAnnounce() {
 
   // 교정하기 페이지 = true / 마이 발표문 상세 = false
   useEffect(() => {
-    if (pathname === 'announce') {
+    if (pathname === '/announce') {
       setAnnouncePage(true);
     } else {
       setAnnouncePage(false);
@@ -161,7 +161,7 @@ export default function SaveAnnounce() {
             <GuideMent
               firstMent={announcePage ? '예상 질문과 답변' : '타이틀'}
               secondMent={announcePage ? '반복 연습으로 더욱 완벽한 발표를 만들어 보세요!' : '타이틀 설명 가이드 텍스트'}
-              saveMentStyle={'saveMentStyle'}
+              saveMentStyle={announcePage ? '' : 'saveMentStyle'}
             />
             <div>
               <div className="qa_area">
