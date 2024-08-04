@@ -101,6 +101,11 @@ section.main_container {
 
   .ment_box {
     @apply w-full pb-[13px];
+
+    &.saveMentStyle {
+      @apply flex_horizontal_center flex-col h-[88px] mb-[21px] pb-[0];
+    }
+
     p {
       @apply gray_colorTxt font-normal text-[18px];
 
@@ -208,18 +213,18 @@ section.main_container {
                 @apply text-[14px] leading-[31px] font-medium gray_colorTxt;
               }
 
-                /* scrollbar */
-            &::-webkit-scrollbar {
-              width: 9.5px;
-            }
+              /* scrollbar */
+              &::-webkit-scrollbar {
+                width: 9.5px;
+              }
 
-            &::-webkit-scrollbar-thumb {
-              background: #509bf8;
-            }
+              &::-webkit-scrollbar-thumb {
+                background: #509bf8;
+              }
 
-            &::-webkit-scrollbar-track {
-              background: #ededed;
-            }
+              &::-webkit-scrollbar-track {
+                background: #ededed;
+              }
             }
           }
 

@@ -1,18 +1,37 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import GuideMent from './GuideMent';
 import * as LocalImages from '@/utils/imageImports';
 import { useFinalScriptStore, useQaLoadingStore } from '@/store/store';
-import { askListArray, cls, formatNumber } from '@/utils/config';
+import { askListArray, cls, formatNumber, testScript, testScriptTitle } from '@/utils/config';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import Link from 'next/link';
 
 export default function SaveAnnounce() {
+  const pathname = usePathname();
+  const [announcePage, setAnnouncePage] = useState(true);
   const { finalScript, setFinalScript } = useFinalScriptStore();
   const [charCountFinal, setCharCountFinal] = useState(0);
   const [qaArray, setQaArray] = useState([]);
   const [askListState, setAskListState] = useState([false, false, false, false]);
   // 로딩
-  const { qaLoading, setQaLoading } = useQaLoadingStore();
+  const { setQaLoading } = useQaLoadingStore();
+  // 저장한 발표문
+  const [modifySaveAnnounce, setModifySaveAnnounce] = useState(false);
+  const [saveAnnounce, setSaveAnnounce] = useState('');
+  const [saveAnnounceCharCount, setSaveAnnounceCharCount] = useState(0);
+  const [modifyTitle, setModifyTitle] = useState('');
+  const [modifyTitleCharCount, setModifyTitleCharCount] = useState(0);
+
+  // 교정하기 페이지 = true / 마이 발표문 상세 = false
+  useEffect(() => {
+    if (pathname === 'announce') {
+      setAnnouncePage(true);
+    } else {
+      setAnnouncePage(false);
+    }
+  }, [pathname]);
 
   const userModifyScript = (event) => {
     const MAX_LENGTH = 3000;
@@ -21,8 +40,15 @@ export default function SaveAnnounce() {
     if (draft.length > MAX_LENGTH) {
       draft = event.target.value.slice(0, MAX_LENGTH);
     }
-    setFinalScript(draft);
-    setCharCountFinal(draft.length);
+
+    // 교정하기, 저장본 페이지 구분
+    if (announcePage) {
+      setFinalScript(draft);
+      setCharCountFinal(draft.length);
+    } else {
+      setSaveAnnounce(draft);
+      setSaveAnnounceCharCount(draft.length);
+    }
   };
 
   // 클릭 시 질문 펼침/접기 처리
@@ -44,30 +70,68 @@ export default function SaveAnnounce() {
     }, 3000);
   };
 
+  // 최초로 저장된 발표문
+  useEffect(() => {
+    setModifyTitle(testScriptTitle);
+    setModifyTitleCharCount(testScriptTitle.length);
+    setSaveAnnounce(testScript);
+    setSaveAnnounceCharCount(testScript.length);
+    setQaArray(askListArray);
+  }, []);
+
+  // 저장한 내 발표문 제목
+  const userModifyTitle = (event) => {
+    const MAX_LENGTH = 30;
+    let title = event.target.value;
+
+    if (title.length > MAX_LENGTH) {
+      title = event.target.value.slice(0, MAX_LENGTH);
+    }
+    setModifyTitle(title);
+    setModifyTitleCharCount(title.length);
+  };
+
+  const sliceTitleOverThirty = (text) => {
+    return text.length > 30 ? text.slice(0, 30) + '...' : text;
+  };
+
   return (
-    <section className="main_container">
-      <div className="progress_bar"></div>
+    <section className={cls('main_container', announcePage ? '' : 'myAnnounce_detail_container')}>
+      {announcePage && <div className="progress_bar"></div>}
       <section className="saveQa_area">
         <form>
           <div className="userModify_box">
-            <GuideMent
-              firstMent={'완성 발표문'}
-              secondMent={'완성된 발표문을 분석하여 예상 질문과 답변을 받아보세요'}
-            />
+            {announcePage && (
+              <GuideMent
+                firstMent={'완성 발표문'}
+                secondMent={'완성된 발표문을 분석하여 예상 질문과 답변을 받아보세요'}
+              />
+            )}
+            {!announcePage && (
+              <div className="scriptTitle_area">
+                <p>({modifyTitleCharCount}/30)</p>
+                <input
+                  maxLength="30"
+                  value={sliceTitleOverThirty(modifyTitle)}
+                  onChange={userModifyTitle}
+                />
+              </div>
+            )}
             <div className="scriptFinal_area">
               <p className="title">발표 대본</p>
               <div className="scriptTxt">
                 <textarea
                   placeholder="발표문 초안을 작성해 주세요. 꼼꼼히 작성할수록 세심한 교정과 정확한 예상 질문을 받을 수 있어요."
                   maxLength="3000"
-                  value={finalScript}
+                  value={announcePage ? finalScript : saveAnnounce}
                   onChange={userModifyScript}
+                  disabled={modifySaveAnnounce ? false : true}
                 />
-                <p>{formatNumber(charCountFinal)}/ 3000</p>
+                <p>{announcePage ? formatNumber(charCountFinal) : formatNumber(saveAnnounceCharCount)}/ 3000</p>
               </div>
               <CopyToClipboard
                 className="copyClipboard"
-                text={finalScript}
+                text={announcePage ? finalScript : saveAnnounce}
                 onCopy={() => alert('완성된 발표문을 복사했어요')}
               >
                 <div className="copy_area">
@@ -83,15 +147,25 @@ export default function SaveAnnounce() {
                 </div>
               </CopyToClipboard>
             </div>
+            {!announcePage && (
+              <button
+                type="button"
+                className={cls('scriptSave_btn', modifySaveAnnounce ? 'active_color' : 'gray_colorTxt area_border')}
+                onClick={() => setModifySaveAnnounce(!modifySaveAnnounce)}
+              >
+                {modifySaveAnnounce ? '저장하기' : '수정하기'}
+              </button>
+            )}
           </div>
           <div className="qa_box">
             <GuideMent
-              firstMent={'예상 질문과 답변'}
-              secondMent={'반복 연습으로 더욱 완벽한 발표를 만들어 보세요! '}
+              firstMent={announcePage ? '예상 질문과 답변' : '타이틀'}
+              secondMent={announcePage ? '반복 연습으로 더욱 완벽한 발표를 만들어 보세요!' : '타이틀 설명 가이드 텍스트'}
+              saveMentStyle={'saveMentStyle'}
             />
             <div>
               <div className="qa_area">
-                {qaArray.length === 0 ? (
+                {qaArray.length === 0 && announcePage ? (
                   <div className="none_qa">
                     <div>
                       <Image
@@ -135,21 +209,32 @@ export default function SaveAnnounce() {
                   </ul>
                 )}
               </div>
-              <div className="finalBtn_box">
-                <button
+              {announcePage && (
+                <div className="finalBtn_box">
+                  <button
+                    type="button"
+                    onClick={getQAList}
+                    className={cls(finalScript.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
+                  >
+                    질문 다시 받기
+                  </button>
+                  <button
+                    type="button"
+                    className={cls(qaArray.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
+                  >
+                    저장하기
+                  </button>
+                </div>
+              )}
+              {!announcePage && (
+                <Link
+                  href={'/mypage'}
                   type="button"
-                  onClick={getQAList}
-                  className={cls(finalScript.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
+                  className="back_btn"
                 >
-                  질문 다시 받기
-                </button>
-                <button
-                  type="button"
-                  className={cls(qaArray.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
-                >
-                  저장하기
-                </button>
-              </div>
+                  뒤로가기
+                </Link>
+              )}
             </div>
           </div>
         </form>

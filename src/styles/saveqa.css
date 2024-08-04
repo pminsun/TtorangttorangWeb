@@ -110,7 +110,7 @@
             }
 
             li {
-              @apply flex_center flex-col w-full py-[37px] pr-[29px] cursor-pointer border-b border-[#C4C4C4];
+              @apply flex_center flex-col w-full min-h-[25%] py-[37px] pr-[29px] cursor-pointer border-b border-[#C4C4C4];
 
               &:first-of-type {
                 @apply border-t border-[#C4C4C4];
