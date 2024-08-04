@@ -3,19 +3,19 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import GuideMent from './GuideMent';
 import * as LocalImages from '@/utils/imageImports';
-import { useFinalScriptStore, useSettingStore, useQaLoadingStore } from '@/store/store';
+import { useFinalScriptStore, useSettingStore, useQaLoadingStore, useLoginModalStore } from '@/store/store';
 import { askListArray, cls, formatNumber, testScript, testScriptTitle } from '@/utils/config';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'next/link';
 import { fetchQnAData, fetchSaveScript } from '@/api/fetchData';
 
-export default function SaveAnnounce({session}) {
+export default function SaveAnnounce({ session }) {
   const pathname = usePathname();
   const { subject, presentPurpose, endingTxt } = useSettingStore();
+  const { setLogin } = useLoginModalStore();
   const [announcePage, setAnnouncePage] = useState(true);
-  const { finalScript, setFinalScript } = useFinalScriptStore();
+  const { finalScript, setFinalScript, qaArray, setQaArray } = useFinalScriptStore();
   const [charCountFinal, setCharCountFinal] = useState(0);
-  const [qaArray, setQaArray] = useState([]);
   const [askListState, setAskListState] = useState([false, false, false, false]);
   // 로딩
   const { setQaLoading } = useQaLoadingStore();
@@ -34,6 +34,22 @@ export default function SaveAnnounce({session}) {
       setAnnouncePage(false);
     }
   }, [pathname]);
+
+  useEffect(() => {
+    // 선 작성 후 로그인 시 작성문 유지
+    if (session) {
+      const savedData = localStorage.getItem('final');
+      const data = JSON.parse(savedData);
+      setFinalScript(data.state.finalScript);
+      setQaArray(data.state.qaArray);
+    }
+
+    if (session === null) {
+      setQaArray([]);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session]);
 
   const userModifyScript = (event) => {
     const MAX_LENGTH = 3000;
@@ -61,8 +77,12 @@ export default function SaveAnnounce({session}) {
   // 질문 펼침 초기화
   useEffect(() => {
     setAskListState([false, false, false, false]);
-    setCharCountFinal(finalScript.length);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    setCharCountFinal(finalScript.length);
+  }, [finalScript]);
 
   // 예상질문 답변
   const getQAList = async () => {
@@ -96,9 +116,10 @@ export default function SaveAnnounce({session}) {
 
       // Q&A 데이터 파싱
       const qnaArray = [];
-      const qnaPairs = finaldata.split('\n\n');
+      const qnaPairs = finaldata.split(/\n{2,}|\\n{2,}/);
+
       qnaPairs.forEach((pair) => {
-        const [question, answer] = pair.split('\nA');
+        const [question, answer] = pair.split(/\nA|\\nA/);
         if (question && answer) {
           qnaArray.push({
             question: question
@@ -152,7 +173,7 @@ export default function SaveAnnounce({session}) {
       setSaveAnnounceCharCount(testScript.length);
       setQaArray(askListArray);
     }
-  }, [announcePage]);
+  }, [announcePage, setQaArray]);
 
   // 저장한 내 발표문 제목
   const userModifyTitle = (event) => {
@@ -295,7 +316,7 @@ export default function SaveAnnounce({session}) {
                   </button>
                   <button
                     type="button"
-                    onClick={saveScriptToAccount}
+                    onClick={() => (session ? saveScriptToAccount : setLogin(true))}
                     className={cls(qaArray.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
                   >
                     저장하기

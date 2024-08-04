@@ -136,8 +136,6 @@ export default function TestScript() {
       jsonStringArray.push(response.data);
 
       const redData = response.data.replace(/data:/g, '');
-      console.log('데이터!!!!!', response);
-      console.log('데이터!!!!!', response.data);
 
       const events = redData.split('\n\n'); // 이벤트 분리
       const newContentQueue = [];
@@ -197,57 +195,8 @@ export default function TestScript() {
       setShowSkeleton(false);
     }
   };
-  
+
   const [displayText, setDisplayText] = useState('');
-  // useEffect(() => {
-  //   if (testScript.length > 0) {
-  //     const currentContent = testScript[0];
-
-  //     let index = 0;
-  //     let timer;
-
-  //     const typeEffect = () => {
-  //       console.log('index', index);
-  //       setDisplayText((prev) => prev + currentContent[index]);
-  //       index += 1;
-  //       if (index < currentContent.length) {
-  //         timer = setTimeout(typeEffect, 100); // 100ms마다 글자 추가
-  //       } else {
-  //         setTestScript((prevQueue) => prevQueue.slice(1)); // 큐에서 현재 처리한 항목 제거
-  //       }
-  //     };
-
-  //     typeEffect();
-
-  //     return () => clearTimeout(timer); // cleanup
-  //   }
-  // }, [testScript]);
-
-  // useEffect(() => {
-  //   if (testScriptt.length > 0) {
-  //     const currentContent = testScriptt[0];
-
-  //     console.log('currentContent', currentContent);
-  //     if (currentContent && currentContent.length > 0) {
-  //       let index = 0;
-  //       let timer;
-
-  //       const typeEffect = () => {
-  //         if (index < currentContent.length) {
-  //           setDisplayText((prev) => prev + (currentContent[index] || ' ')); // 인덱스가 범위를 초과할 경우 공백 추가
-  //           index += 1;
-  //           timer = setTimeout(typeEffect, 100); // 100ms마다 글자 추가
-  //         } else {
-  //           setTestScriptt((prevQueue) => prevQueue); // 큐에서 현재 처리한 항목 제거
-  //         }
-  //       };
-
-  //       typeEffect();
-
-  //       return () => clearTimeout(timer); // cleanup
-  //     }
-  //   }
-  // }, [testScriptt]);
 
   useEffect(() => {
     if (testScriptt.length > 0) {
@@ -273,8 +222,6 @@ export default function TestScript() {
       }
     }
   }, [testScriptt]);
-
-  // console.log(displayText);
 
   return (
     <main className="main_container">

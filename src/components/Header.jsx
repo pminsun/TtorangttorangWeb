@@ -6,12 +6,13 @@ import { signIn, useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import { cls } from '@/utils/config';
 import { useRouter } from 'next/router';
+import { useLoginModalStore } from '@/store/store';
 
 export default function Header() {
   const { data: session } = useSession();
   const pathname = usePathname();
   const router = useRouter();
-  const [login, setLogin] = useState(false);
+  const { login, setLogin } = useLoginModalStore();
 
   return (
     <>

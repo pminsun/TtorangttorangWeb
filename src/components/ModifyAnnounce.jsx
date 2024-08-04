@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import GuideMent from './GuideMent';
 import * as LocalImages from '@/utils/imageImports';
-import { cls, formatNumber, measureTextWidth } from '@/utils/config';
+import { cls, formatNumber } from '@/utils/config';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { fetchAnnounceData } from '@/api/fetchData';
 import HighlightWithinTextarea from 'react-highlight-within-textarea';
@@ -10,23 +10,45 @@ import { diffWords } from 'diff';
 import { useNextMoveBtnStore, useSettingStore, useInitialSettingStore, useFinalScriptStore, useScriptLoadingStore } from '@/store/store';
 
 export default function ModifyAnnounce({ session }) {
-  console.log(session);
   const { setNextMoveBtn } = useNextMoveBtnStore();
   const { setFinalScript } = useFinalScriptStore();
   const { setScriptLoading } = useScriptLoadingStore();
   // setting
-  const { subject, setSubject, presentPurpose, setPresentPurpose, endingTxt, setEndingTxt, repeat, setRepeat } = useSettingStore();
+  const { originScript, setOriginScript, newScript, setNewScript, subject, setSubject, presentPurpose, setPresentPurpose, endingTxt, setEndingTxt, repeat, setRepeat } = useSettingStore();
   const { initialSubject, setInitialSubject, initialPresentPurpose, setInitialPresentPurpose, initialEndingTxt, setInitialEndingTxt, initialrepeat, setInitialRepeat } = useInitialSettingStore();
+
   useEffect(() => {
-    setSubject('');
-    setPresentPurpose('회사 컨퍼런스');
-    setEndingTxt('합니다체');
-    setRepeat(false);
-    setNextMoveBtn(false);
-  }, []);
+    // 선 작성 후 로그인 시 작성문 유지
+    if (session) {
+      const savedData = localStorage.getItem('settings');
+      const data = JSON.parse(savedData);
+      setOriginScript(data.state.originScript);
+      setSubject(data.state.subject);
+      setPresentPurpose(data.state.presentPurpose);
+      setEndingTxt(data.state.endingTxt);
+      setRepeat(data.state.repeat);
+      setNewScript(data.state.newScript);
+
+      if (newScript) {
+        setNextMoveBtn(true);
+      } else {
+        setNextMoveBtn(false);
+      }
+    }
+
+    if (session === null) {
+      setOriginScript('');
+      setSubject('');
+      setPresentPurpose('회사 컨퍼런스');
+      setEndingTxt('합니다체');
+      setRepeat(false);
+      setNewScript('');
+      setNextMoveBtn(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session]);
 
   // 초안
-  const [originScript, setOriginScript] = useState('');
   const [charCountOrigin, setCharCountOrigin] = useState(0);
   const [modifyBtn, setModifyBtn] = useState(false);
   // 주제
@@ -34,7 +56,7 @@ export default function ModifyAnnounce({ session }) {
   // 개선내용
   const [improvementMent, setImprovementMent] = useState('없음');
   //교정문
-  const [newScript, setNewScript] = useState('');
+  // const [newScript, setNewScript] = useState('');
   const [initialNewScript, setInitialNewScript] = useState('');
   const [charCountNew, setCharCountNew] = useState(0);
   const [compareScriptToggle, setcompareScriptToggle] = useState(false);
