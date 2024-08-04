@@ -171,3 +171,24 @@
     }
   }
 }
+
+.myAnnounce_detail_container {
+  .scriptTitle_area {
+    @apply w-full mb-[21px];
+
+    p {
+      @apply flex justify-end mb-[4px] text-[14px] font-medium gray_colorTxt;
+    }
+
+    input {
+      @apply w-full h-[63px] py-[12px] px-[20px] text-[20px] area_border font-medium gray_colorTxt;
+    }
+  }
+
+  .scriptSave_btn {
+    @apply flex_center w-[240px] h-[60px] ml-auto mt-[40px] text-[16px] font-medium;
+  }
+  .back_btn {
+    @apply flex_center w-[240px] h-[60px] ml-auto mt-[40px] text-[16px] font-medium active_color;
+  }
+}
