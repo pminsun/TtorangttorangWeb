@@ -207,40 +207,68 @@ footer {
       @apply w-[80px] h-[80px] mb-[32px] bg-[#EBF2FA];
     }
 
+    &.login_box {
+      @apply w-[400px] h-[348px] px-[20px];
+
+      .login_ment {
+        > p {
+          @apply text-[20px] font-medium text-center text-[#424242];
+        }
+      }
+
+      .modalBtn_area {
+        @apply flex flex-col w-full;
+        .kakoLogin {
+          @apply flex_center relative w-full h-[62px] my-[24px] bg-[#FEE404];
+
+          .kakoLogo {
+            @apply absolute_yHalf left-[17px] w-[21px] h-[21px];
+          }
+          span {
+            @apply text-[17px] font-normal text-[#000000];
+          }
+        }
+
+        .noneLogin {
+          @apply cursor-pointer text-[18px] font-medium gray_colorTxt;
+        }
+      }
+    }
+
     &.withdrawal_box {
       @apply w-[400px] h-[348px];
       .character_box {
         @apply mb-[24px];
       }
+
+      .withdrawalMent_box {
+        p:first-of-type {
+          @apply mb-[12px] text-[24px] font-medium text-center text-[#424242];
+        }
+        p:last-of-type {
+          @apply text-[18px] font-medium text-center gray_colorTxt;
+        }
+      }
+
+      .modalBtn_area {
+        @apply flex gap-[13px] mt-[28px];
+
+        button {
+          @apply flex_center w-[141px] h-[60px];
+
+          &:first-of-type {
+            @apply active_color;
+          }
+
+          &:last-of-type {
+            @apply area_border;
+          }
+        }
+      }
     }
 
     > p {
       @apply text-[18px] font-medium text-center gray_colorTxt;
-    }
-
-    .withdrawalMent_box {
-      p:first-of-type {
-        @apply mb-[12px] text-[24px] font-medium text-center text-[#424242];
-      }
-      p:last-of-type {
-        @apply text-[18px] font-medium text-center gray_colorTxt;
-      }
-    }
-
-    .modalBtn_area {
-      @apply flex gap-[13px] mt-[28px];
-
-      button {
-        @apply flex_center w-[141px] h-[60px];
-
-        &:first-of-type {
-          @apply active_color;
-        }
-
-        &:last-of-type {
-          @apply area_border;
-        }
-      }
     }
 
     .loader {

@@ -37,8 +37,10 @@ import ImageGatewayNewInfo from '../../public/images/new_gatewayInfo.svg';
 
 import ImageMainStepArrowLeft from '../../public/images/mainStepArrowLeft.svg';
 import ImageMainStepArrowRight from '../../public/images/mainStepArrowRight.svg';
+import ImageMainStepArrowActive from '../../public/images/mainArrowActive.svg';
 import ImageDeleteX from '../../public/images/deleteX.svg';
 import ImageAddPlus from '../../public/images/addPlus.svg';
+import ImageKakoLogo from '../../public/images/kakoLogo.svg';
 
 export { ImageGatewayNewInfo, ImageGatewayNewBanner, ImageGatewayBannerTxt, ImageGBenner, ImageMainBenner, ImageLogo, ImageMobileLogo, ImageVarLogo, ImageBenner, ImageTtorangArch, ImageTtorangNote };
 
@@ -48,4 +50,4 @@ export { ImageGatewayIntro, ImageGatewayIntroStar, ImageGatewayIntroRound, Image
 
 export { ImageGatewayOctagon, ImageGatewayRound, ImageGatewayFlower, ImageGatewayHexagon };
 
-export { ImageMainStepArrowLeft, ImageMainStepArrowRight, ImageDeleteX, ImageAddPlus };
+export { ImageMainStepArrowActive, ImageKakoLogo, ImageMainStepArrowLeft, ImageMainStepArrowRight, ImageDeleteX, ImageAddPlus };
