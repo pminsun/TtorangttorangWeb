@@ -160,14 +160,11 @@ export default function ModifyAnnounce() {
 
       const finaldata = newContentQueue.join('');
 
-      console.log(finaldata);
-
       // 재교정 시 (2회차 이상)
       if (newScript.length > 0 && modifyBtn && compareScriptToggle) {
         const oldScript = newScript.slice(0, 3000);
         const updatedScript = finaldata;
-        console.log('Old Script:', oldScript); // 로그 추가
-        console.log('Updated Script:', updatedScript); // 로그 추가
+
         // 2회차 새로운 교정본을 newScript로 설정 1회차는 구
         setOriginScript(oldScript);
         setNewScript(updatedScript);

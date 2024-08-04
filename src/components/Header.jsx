@@ -47,7 +47,7 @@ export default function Header() {
             </ul>
           </nav>
         </div>
-        <div className="header_user">{session?.user.name ? <Link href={'/'}>마이페이지</Link> : <button onClick={() => signIn('kakao')}>로그인</button>}</div>
+        <div className="header_user">{session?.user.name ? <Link href={'/mypage'}>마이페이지</Link> : <button onClick={() => signIn('kakao')}>로그인</button>}</div>
       </div>
     </header>
   );
