@@ -174,11 +174,21 @@ export default function ModifyAnnounce() {
       });
 
       const finaldata = newContentQueue.join('');
+      const improveIndex = finaldata.indexOf('개선 내용');
+
+      // === 교정문 === //
+      let extractedScriptText = finaldata.substring(0, improveIndex).replace('발표 대본', '').trim().replace(/[-:*]/g, '').trim();
+
+      // === 개선내용 === //
+      let extractedImproveEText = finaldata.substring(improveIndex).replace('개선 내용', '').replace(/[-:*]/g, '').trim();
+      const improvementSections = extractedImproveEText.split('\n\n');
+      const improvementPairs = improvementSections.flatMap((section) => section.split(',').map((item) => item.trim()));
+      setImprovementMent(improvementPairs[0]);
 
       // 재교정 시 (2회차 이상)
       if (newScript.length > 0 && modifyBtn && compareScriptToggle) {
         const oldScript = newScript.slice(0, 3000);
-        const updatedScript = finaldata;
+        const updatedScript = extractedScriptText;
 
         // 2회차 새로운 교정본을 newScript로 설정 1회차는 구
         setOriginScript(oldScript);
@@ -188,13 +198,13 @@ export default function ModifyAnnounce() {
         highlightDiffs(oldScript, updatedScript);
       } else {
         // 첫 번째 교정
-        highlightDiffs(originScript, finaldata);
-        setInitialNewScript(finaldata);
-        setNewScript(finaldata);
-        setFinalScript(finaldata);
+        highlightDiffs(originScript, extractedScriptText);
+        setInitialNewScript(extractedScriptText);
+        setNewScript(extractedScriptText);
+        setFinalScript(extractedScriptText);
       }
 
-      setCharCountNew(finaldata.length);
+      setCharCountNew(extractedScriptText.length);
       setcompareScriptToggle(true);
       setScriptLoading(false);
       setNextMoveBtn(true);
@@ -316,7 +326,7 @@ export default function ModifyAnnounce() {
                 <div className="script_info">
                   <p>{estimatedPresentTime} (예상 발표 시간)</p>
                   <p>
-                    개선 내용: <span>{improvementMent}</span>
+                    개선 내용: <span>{compareScriptToggle ? improvementMent : '없음'}</span>
                   </p>
                 </div>
               </div>
