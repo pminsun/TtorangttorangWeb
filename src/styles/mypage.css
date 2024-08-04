@@ -117,7 +117,8 @@
       @apply flex_xBetween;
 
       li {
-        a {
+        a,
+        button {
           @apply flex_center w-[168px] h-[62px] text-[20px] font-medium gray_colorTxt area_border;
         }
       }

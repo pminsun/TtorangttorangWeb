@@ -7,6 +7,7 @@ import { signOut, useSession } from 'next-auth/react';
 
 export default function Mypage() {
   const { data: session } = useSession();
+  const [withdrawal, setWithdrawal] = useState(false);
 
   function NextArrow(props) {
     const { className, style, onClick } = props;
@@ -71,86 +72,114 @@ export default function Mypage() {
   };
 
   return (
-    <section className="mypage_container">
-      <div className="userInfo_area">
-        <p className="mypage_title">내 정보</p>
-        <div>
-          <div className="user">
-            <div className="userIcon"></div>
-            <p>dkanrjsk12@naver.com</p>
-          </div>
-          <button
-            type="button"
-            onClick={() => signOut('kakao', { callbackUrl: '/', redirect: true })}
-          >
-            로그아웃
-          </button>
-        </div>
-      </div>
-      <div className="myAnnounce_area">
-        <p className="mypage_title">나의 발표문</p>
-        <div className="myAnnounce_slide">
-          <Slider {...settings}>
-            <Link
-              href={'/mypage/announce/1'}
-              className="myAnnounce"
+    <>
+      <section className="mypage_container">
+        <div className="userInfo_area">
+          <p className="mypage_title">내 정보</p>
+          <div>
+            <div className="user">
+              <div className="userIcon"></div>
+              <p>dkanrjsk12@naver.com</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => signOut('kakao', { callbackUrl: '/', redirect: true })}
             >
-              <div className="announce_title">
-                <p>가나다라마가나</p>
-                <div className="delteBtn">
-                  <Image
-                    src={LocalImages.ImageDeleteX}
-                    alt="ImageDeleteX"
-                    width={14}
-                    height={14}
-                  />
-                </div>
-              </div>
-              <div className="announce_content">
-                <p>디자인 프로세스를 설명해 주세요. 프로젝트의 시작부터 끝까지 어떤 단계들을 거치나요?디자인 프로세스를 설명해 주세요. 텍스트 예시 텍스트 예시텍스트 예시 텍스트 아무...</p>
-                <p className="date">2023.8.19</p>
-              </div>
-            </Link>
-            {[1, 2, 3, 4, 5, 6].map((item, index) => (
-              <div
-                key={index}
+              로그아웃
+            </button>
+          </div>
+        </div>
+        <div className="myAnnounce_area">
+          <p className="mypage_title">나의 발표문</p>
+          <div className="myAnnounce_slide">
+            <Slider {...settings}>
+              <Link
+                href={'/mypage/announce/1'}
                 className="myAnnounce"
               >
                 <div className="announce_title">
-                  <p>새 발표문 쓰기</p>
-                </div>
-                <div className="announce_content">
-                  <div className="plusBtn">
+                  <p>가나다라마가나</p>
+                  <div className="delteBtn">
                     <Image
-                      src={LocalImages.ImageAddPlus}
-                      alt="ImageAddPlus"
-                      width={64}
-                      height={64}
+                      src={LocalImages.ImageDeleteX}
+                      alt="ImageDeleteX"
+                      width={14}
+                      height={14}
                     />
                   </div>
                 </div>
-              </div>
-            ))}
-          </Slider>
+                <div className="announce_content">
+                  <p>디자인 프로세스를 설명해 주세요. 프로젝트의 시작부터 끝까지 어떤 단계들을 거치나요?디자인 프로세스를 설명해 주세요. 텍스트 예시 텍스트 예시텍스트 예시 텍스트 아무...</p>
+                  <p className="date">2023.8.19</p>
+                </div>
+              </Link>
+              {[1, 2, 3, 4, 5, 6].map((item, index) => (
+                <div
+                  key={index}
+                  className="myAnnounce"
+                >
+                  <div className="announce_title">
+                    <p>새 발표문 쓰기</p>
+                  </div>
+                  <div className="announce_content">
+                    <div className="plusBtn">
+                      <Image
+                        src={LocalImages.ImageAddPlus}
+                        alt="ImageAddPlus"
+                        width={64}
+                        height={64}
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          </div>
         </div>
-      </div>
-      <div className="other_area">
-        <p className="mypage_title">기타</p>
-        <ul>
-          <li>
-            <Link href={'/'}>공지사항</Link>
-          </li>
-          <li>
-            <Link href={'/'}>개인정보처리방침</Link>
-          </li>
-          <li>
-            <Link href={'/'}>이용약관</Link>
-          </li>
-          <li>
-            <Link href={'/'}>회원탈퇴</Link>
-          </li>
-        </ul>
-      </div>
-    </section>
+        <div className="other_area">
+          <p className="mypage_title">기타</p>
+          <ul>
+            <li>
+              <Link href={'/'}>공지사항</Link>
+            </li>
+            <li>
+              <Link href={'/'}>개인정보처리방침</Link>
+            </li>
+            <li>
+              <Link href={'/'}>이용약관</Link>
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={() => setWithdrawal(true)}
+              >
+                회원탈퇴
+              </button>
+            </li>
+          </ul>
+        </div>
+      </section>
+      {/* 탈퇴 모달 */}
+      {withdrawal && (
+        <div className="modalBlackBg">
+          <div className="modal_box withdrawal_box">
+            <div className="character_box"></div>
+            <div className="withdrawalMent_box">
+              <p>정말 탈퇴하시겠어요?</p>
+              <p>탈퇴하시면 모든 정보를 잃게 돼요</p>
+            </div>
+            <div className="modalBtn_area">
+              <button
+                type="button"
+                onClick={() => setWithdrawal(false)}
+              >
+                아니요
+              </button>
+              <button type="button">네</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
