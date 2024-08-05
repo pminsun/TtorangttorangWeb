@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
 import { useSession } from 'next-auth/react';
@@ -7,6 +7,7 @@ import ModifyAnnounce from '@/components/ModifyAnnounce';
 import SaveAnnounce from '@/components/SaveAnnounce';
 import ProgressBar from '@/components/ProgressBar';
 import { useNextMoveBtnStore, useScriptLoadingStore, useQaLoadingStore } from '@/store/store';
+import ShapeBg from '@/components/ShapeBg';
 
 export default function Announce() {
   const { data: session } = useSession();
@@ -91,6 +92,7 @@ export default function Announce() {
   return (
     <>
       <div className="slider-container">
+        <ShapeBg />
         <ProgressBar currentSlide={currentSlide} />
         <Slider {...settings}>
           <ModifyAnnounce session={session} />

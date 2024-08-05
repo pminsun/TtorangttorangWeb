@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 import GuideMent from './GuideMent';
 import * as LocalImages from '@/utils/imageImports';
 import { cls, formatNumber } from '@/utils/config';
@@ -11,7 +10,6 @@ import { diffWords } from 'diff';
 import { useNextMoveBtnStore, useSettingStore, useInitialSettingStore, useFinalScriptStore, useScriptLoadingStore } from '@/store/store';
 
 export default function ModifyAnnounce({ session }) {
-  const pathname = usePathname();
   const { setNextMoveBtn } = useNextMoveBtnStore();
   const { setFinalScript } = useFinalScriptStore();
   const { setScriptLoading } = useScriptLoadingStore();
@@ -49,20 +47,6 @@ export default function ModifyAnnounce({ session }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session]);
-
-  useEffect(() => {
-    // 경로가 변경될 때 상태 초기화
-    if (session && pathname !== '/announce') {
-      setOriginScript('');
-      setSubject('');
-      setPresentPurpose('회사 컨퍼런스');
-      setEndingTxt('합니다체');
-      setRepeat(false);
-      setNewScript('');
-      setNextMoveBtn(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname, session]);
 
   // 초안
   const [charCountOrigin, setCharCountOrigin] = useState(0);

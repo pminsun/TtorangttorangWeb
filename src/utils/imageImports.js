@@ -42,11 +42,25 @@ import ImageDeleteX from '../../public/images/deleteX.svg';
 import ImageAddPlus from '../../public/images/addPlus.svg';
 import ImageKakoLogo from '../../public/images/kakoLogo.svg';
 
+import ImageGatewayMain from '../../public/images/gatewayMain.svg';
+import ImageGatewayArrow from '../../public/images/gatwayArrow.svg';
+
 export { ImageGatewayNewInfo, ImageGatewayNewBanner, ImageGatewayBannerTxt, ImageGBenner, ImageMainBenner, ImageLogo, ImageMobileLogo, ImageVarLogo, ImageBenner, ImageTtorangArch, ImageTtorangNote };
 
 export { ImageIconCheckboxArrow, ImageIconArrow, ImageIconCopy, ImageIconDescription, ImageIconHelp, ImageIconSyncAlt };
 
-export { ImageGatewayIntro, ImageGatewayIntroStar, ImageGatewayIntroRound, ImageGatewayDetailInfo, ImageGatewayAskBG, ImageGatewayAskPoint, ImageGatewayFeedback, ImageGatewayModify };
+export {
+  ImageGatewayMain,
+  ImageGatewayArrow,
+  ImageGatewayIntro,
+  ImageGatewayIntroStar,
+  ImageGatewayIntroRound,
+  ImageGatewayDetailInfo,
+  ImageGatewayAskBG,
+  ImageGatewayAskPoint,
+  ImageGatewayFeedback,
+  ImageGatewayModify,
+};
 
 export { ImageGatewayOctagon, ImageGatewayRound, ImageGatewayFlower, ImageGatewayHexagon };
 

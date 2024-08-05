@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
 import Link from 'next/link';
@@ -5,13 +6,39 @@ import { signIn, useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import { cls } from '@/utils/config';
 import { useRouter } from 'next/router';
-import { useLoginModalStore } from '@/store/store';
+import { useLoginModalStore, useSettingStore } from '@/store/store';
 
 export default function Header() {
   const { data: session } = useSession();
   const pathname = usePathname();
   const router = useRouter();
   const { login, setLogin } = useLoginModalStore();
+  const { setOriginScript, setNewScript, setSubject, setPresentPurpose, setEndingTxt, repeat, setRepeat } = useSettingStore();
+
+  console.log(session);
+
+  // useEffect(() => {
+  //   console.log('Effect triggered');
+  //   console.log('pathname:', router.pathname);
+  //   console.log('session:', session);
+  //   // 경로가 변경될 때 상태 초기화
+  //   if (session && (router.pathname === '/' || router.pathname.startsWith('/mypage'))) {
+  //     console.log('pathnamecccc:', router.pathname);
+  //     setOriginScript('');
+  //     setNewScript('');
+  //     setSubject('');
+  //     setPresentPurpose('회사 컨퍼런스');
+  //     setEndingTxt('합니다체');
+  //     setRepeat(false);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [router, session]);
+
+  // const link = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}&redirect_uri=http://localhost:3000/oauth/callback/kakao&response_type=code`;
+
+  // const loginHandler = () => {
+  //   window.location.href = link;
+  // };
 
   return (
     <>
@@ -64,6 +91,14 @@ export default function Header() {
               </button>
             )}
           </div>
+          {/* <div className="header_user">
+            <button
+              type="button"
+              onClick={() => setLogin(true)}
+            >
+              로그인
+            </button>
+          </div> */}
         </div>
       </header>
       {/* login Modal */}
@@ -90,6 +125,21 @@ export default function Header() {
                 </div>
                 <span>카카오로 시작하기</span>
               </button>
+              {/* <button
+                type="button"
+                className="kakoLogin"
+                onClick={loginHandler}
+              >
+                <div className="kakoLogo">
+                  <Image
+                    src={LocalImages.ImageKakoLogo}
+                    alt="ImageKakoLogo"
+                    width={21}
+                    height={21}
+                  />
+                </div>
+                <span>카카오로 시작하기</span>
+              </button> */}
               <button
                 type="button"
                 className="noneLogin"

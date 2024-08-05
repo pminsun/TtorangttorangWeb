@@ -301,3 +301,40 @@ footer {
       24px 0 #509bf8;
   }
 }
+
+
+.shape_bg {
+  @apply absolute_fullPage;
+
+  > div:first-of-type {
+    @apply absolute left-0 w-[16.66%] h-full;
+
+    .bg_flower {
+      @apply absolute -top-[25%] left-[-20px];
+
+      img {
+        @apply scale-95;
+      }
+    }
+
+    .bg_round {
+      @apply absolute -bottom-[53%] left-[-20px] -scale-x-100;
+
+      img {
+        @apply scale-95;
+      }
+    }
+  }
+
+  > div:last-of-type {
+    @apply absolute right-0 w-[16.66%] h-full;
+
+    .bg_hexagon {
+      @apply absolute -top-[18%] right-[-15px] -scale-y-100;
+    }
+
+    .bg_octagon {
+      @apply absolute -bottom-[40%] right-[-50%] -scale-x-100;
+    }
+  }
+}
