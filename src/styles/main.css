@@ -116,7 +116,7 @@ section.main_container {
   }
 
   .skeleton_box {
-    @apply absolute top-0 left-0 w-full h-auto overflow-y-auto overflow-x-hidden;
+    @apply absolute top-0 left-0 w-full h-auto overflow-x-hidden overflow-y-auto;
   }
 
   /* banner */

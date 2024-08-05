@@ -14,8 +14,12 @@ export default NextAuth({
       session.user.id = token.sub;
       return session;
     },
+
     // async jwt(token, user, account) {
     //   if (account) {
+    //     console.log('============');
+    //     console.log('token 2  =======', token);
+    //     console.log('account', account);
     //     token.accessToken = account.accessToken;
     //   }
     //   return token;
