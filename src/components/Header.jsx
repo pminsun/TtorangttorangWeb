@@ -5,18 +5,18 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cls } from '@/utils/config';
 import { useRouter } from 'next/router';
-import { useLoginModalStore, useSettingStore } from '@/store/store';
+import { useLoginModalStore, useSettingStore, useUserStore } from '@/store/store';
+import { authorizationCodeLink } from '@/api/fetchData';
 
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const { login, setLogin } = useLoginModalStore();
+  const { userEmail } = useUserStore();
   const { setOriginScript, setNewScript, setSubject, setPresentPurpose, setEndingTxt, repeat, setRepeat } = useSettingStore();
 
-  const link = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}&redirect_uri=http://localhost:3000/oauth/kakao/callback&response_type=code`;
-
   const loginHandler = () => {
-    window.location.href = link;
+    router.push(authorizationCodeLink);
   };
 
   return (
@@ -58,14 +58,17 @@ export default function Header() {
               </ul>
             </nav>
           </div>
-
           <div className="header_user">
-            <button
-              type="button"
-              onClick={() => setLogin(true)}
-            >
-              로그인
-            </button>
+            {userEmail ? (
+              <Link href={'/mypage'}>마이페이지</Link>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setLogin(true)}
+              >
+                로그인
+              </button>
+            )}
           </div>
         </div>
       </header>

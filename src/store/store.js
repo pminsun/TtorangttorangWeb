@@ -75,3 +75,18 @@ export const useLoginModalStore = create((set) => ({
   login: false,
   setLogin: (value) => set({ login: value }),
 }));
+
+export const useUserStore = create(
+  persist(
+    (set) => ({
+      userEmail: '',
+      setUserEmail: (value) => set({ userEmail: value }),
+      accessToken: '',
+      setAccessToken: (value) => set({ accessToken: value }),
+      clearUser: () => set({ userEmail: '', accessToken: '' }),
+    }),
+    {
+      name: 'user', // 로컬 스토리지 키
+    },
+  ),
+);

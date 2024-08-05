@@ -9,7 +9,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'next/link';
 import { fetchQnAData, fetchSaveScript } from '@/api/fetchData';
 
-export default function SaveAnnounce({ session }) {
+export default function SaveAnnounce({ userEmail }) {
   const pathname = usePathname();
   const { subject, presentPurpose, endingTxt } = useSettingStore();
   const { setLogin } = useLoginModalStore();
@@ -37,19 +37,19 @@ export default function SaveAnnounce({ session }) {
 
   useEffect(() => {
     // 선 작성 후 로그인 시 작성문 유지
-    if (session) {
+    if (userEmail) {
       const savedData = localStorage.getItem('final');
       const data = JSON.parse(savedData);
       setFinalScript(data.state.finalScript);
       setQaArray(data.state.qaArray);
     }
 
-    if (session === null) {
+    if (userEmail === '') {
       setQaArray([]);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session]);
+  }, [userEmail]);
 
   const userModifyScript = (event) => {
     const MAX_LENGTH = 3000;
@@ -158,7 +158,6 @@ export default function SaveAnnounce({ session }) {
         qnaList: qaArray,
       };
       const response = await fetchSaveScript(data);
-      console.log('response', response);
     } catch (error) {
       console.error('Error fetching save script:', error);
     }
@@ -316,7 +315,7 @@ export default function SaveAnnounce({ session }) {
                   </button>
                   <button
                     type="button"
-                    onClick={() => (session ? saveScriptToAccount : setLogin(true))}
+                    onClick={() => (userEmail ? saveScriptToAccount : setLogin(true))}
                     className={cls(qaArray.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
                   >
                     저장하기
