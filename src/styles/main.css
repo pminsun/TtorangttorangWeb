@@ -1,5 +1,5 @@
 .progress_container {
-  @apply z-50 fixed left-1/2 -translate-x-1/2 top-[106px] w-[66.67%] h-[66px];
+  @apply z-50 fixed left-1/2 -translate-x-1/2 top-[78px] w-[66.67%] h-[66px];
 
   .progress_barLine {
     @apply absolute_center w-full h-[2px] bg-[#EDEDED];
@@ -53,7 +53,7 @@
 }
 
 .slider-container {
-  @apply relative w-full h-[calc(100vh-160px)] overflow-hidden;
+  @apply relative w-full h-full overflow-hidden;
 
   .slick-slider {
     @apply relative;

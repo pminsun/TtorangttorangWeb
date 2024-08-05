@@ -1,8 +1,8 @@
 .mypage_container {
-  @apply relative w-full h-[calc(100vh-160px)] overflow-hidden bg-[#fbfbfb];
+  @apply relative w-full h-full overflow-hidden bg-[#fbfbfb];
 
   .content_area {
-    @apply relative flex justify-between flex-col w-[66.67%] h-full mx-auto pt-[62px] pb-[66px];
+    @apply relative flex justify-between flex-col w-[66.67%] h-full mx-auto pt-[20px] pb-[20px];
   }
   .mypage_title {
     @apply mb-[40px] text-[28px] font-bold gray_colorTxt;
@@ -86,7 +86,7 @@
         @apply block w-[240px] h-full area_border cursor-pointer;
 
         .announce_title {
-          @apply flex_xBetween w-full h-[54px] px-[14px] main_colorBg;
+          @apply flex_xBetween w-full h-[54px] px-[14px] cursor-default main_colorBg;
 
           > p {
             @apply text-[20px] font-medium text-[#FEFEFE];

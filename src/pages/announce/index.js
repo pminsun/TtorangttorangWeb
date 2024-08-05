@@ -101,22 +101,24 @@ export default function Announce() {
       </div>
       {/* loading */}
       {scriptLoading && (
-        <div className="modalBlackBg">
+        <>
+          <div className="modalBlackBg"></div>
           <div className="modal_box">
             <div className="character_box"></div>
             <p>초안 정보를 불러오고 있어요</p>
             <span className="loader"></span>
           </div>
-        </div>
+        </>
       )}
       {qaLoading && (
-        <div className="modalBlackBg">
+        <>
+          <div className="modalBlackBg"></div>
           <div className="modal_box">
             <div className="character_box"></div>
             <p>예상 질문을 받아오고 있어요</p>
             <span className="loader"></span>
           </div>
-        </div>
+        </>
       )}
     </>
   );
