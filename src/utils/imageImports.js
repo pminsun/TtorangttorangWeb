@@ -1,6 +1,7 @@
 import ImageLogo from '../../public/images/Logo.svg';
 import ImageMobileLogo from '../../public/images/mobile_logo.svg';
 import ImageVarLogo from '../../public/images/Logo_var.svg';
+import ImageLogoWhite from '../../public/images/Logo_white.svg';
 import ImageBenner from '../../public/images/Benner.svg';
 import ImageMainBenner from '../../public/images/main_banner.svg';
 
@@ -45,9 +46,11 @@ import ImageKakoLogo from '../../public/images/kakoLogo.svg';
 import ImageGatewayMain from '../../public/images/gatewayMain.svg';
 import ImageGatewayArrow from '../../public/images/gatwayArrow.svg';
 
+import ImageModalDelete from '../../public/images/modal_delete.svg';
+
 export { ImageGatewayNewInfo, ImageGatewayNewBanner, ImageGatewayBannerTxt, ImageGBenner, ImageMainBenner, ImageLogo, ImageMobileLogo, ImageVarLogo, ImageBenner, ImageTtorangArch, ImageTtorangNote };
 
-export { ImageIconCheckboxArrow, ImageIconArrow, ImageIconCopy, ImageIconDescription, ImageIconHelp, ImageIconSyncAlt };
+export { ImageLogoWhite, ImageIconCheckboxArrow, ImageIconArrow, ImageIconCopy, ImageIconDescription, ImageIconHelp, ImageIconSyncAlt };
 
 export {
   ImageGatewayMain,
@@ -65,3 +68,5 @@ export {
 export { ImageGatewayOctagon, ImageGatewayRound, ImageGatewayFlower, ImageGatewayHexagon };
 
 export { ImageMainStepArrowActive, ImageKakoLogo, ImageMainStepArrowLeft, ImageMainStepArrowRight, ImageDeleteX, ImageAddPlus };
+
+export { ImageModalDelete };

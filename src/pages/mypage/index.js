@@ -10,6 +10,7 @@ import { fetchKakaoLogOut } from '@/api/fetchData';
 
 export default function Mypage() {
   const router = useRouter();
+  const [deleteAnnounce, setDeleteAnnounce] = useState(false);
   const [withdrawal, setWithdrawal] = useState(false);
   const { userEmail, setUserEmail, accessToken, setAccessToken, clearUser } = useUserStore();
 
@@ -114,13 +115,13 @@ export default function Mypage() {
             <p className="mypage_title">나의 발표문</p>
             <div className="myAnnounce_slide">
               <Slider {...settings}>
-                <Link
-                  href={'/mypage/announce/1'}
-                  className="myAnnounce"
-                >
+                <div className="myAnnounce">
                   <div className="announce_title">
                     <p>가나다라마가나</p>
-                    <div className="delteBtn">
+                    <div
+                      onClick={() => setDeleteAnnounce(true)}
+                      className="delteBtn"
+                    >
                       <Image
                         src={LocalImages.ImageDeleteX}
                         alt="ImageDeleteX"
@@ -129,11 +130,14 @@ export default function Mypage() {
                       />
                     </div>
                   </div>
-                  <div className="announce_content">
+                  <Link
+                    href={'/mypage/announce/1'}
+                    className="announce_content"
+                  >
                     <p>디자인 프로세스를 설명해 주세요. 프로젝트의 시작부터 끝까지 어떤 단계들을 거치나요?디자인 프로세스를 설명해 주세요. 텍스트 예시 텍스트 예시텍스트 예시 텍스트 아무...</p>
                     <p className="date">2023.8.19</p>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
                 {[1, 2, 3, 4, 5, 6].map((item, index) => (
                   <div
                     key={index}
@@ -181,9 +185,46 @@ export default function Mypage() {
           </div>
         </div>
       </section>
+      {/* 삭제 모달 */}
+      {deleteAnnounce && (
+        <>
+          <div
+            className="modalBlackBg"
+            onClick={() => setDeleteAnnounce(false)}
+          ></div>
+          <div className="modal_box withdrawal_box">
+            <div className="character_box">
+              <Image
+                src={LocalImages.ImageModalDelete}
+                alt="ImageModalDelete"
+                width={120}
+                height={120}
+                className="scale-125"
+              />
+            </div>
+            <div className="withdrawalMent_box">
+              <p>정말 삭제를 진행하시겠어요?</p>
+              <p>삭제 시 복구가 불가능해요</p>
+            </div>
+            <div className="modalBtn_area">
+              <button
+                type="button"
+                onClick={() => setDeleteAnnounce(false)}
+              >
+                아니요
+              </button>
+              <button type="button">네</button>
+            </div>
+          </div>
+        </>
+      )}
       {/* 탈퇴 모달 */}
       {withdrawal && (
-        <div className="modalBlackBg">
+        <>
+          <div
+            className="modalBlackBg"
+            onClick={() => setWithdrawal(false)}
+          ></div>
           <div className="modal_box withdrawal_box">
             <div className="character_box"></div>
             <div className="withdrawalMent_box">
@@ -200,7 +241,7 @@ export default function Mypage() {
               <button type="button">네</button>
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );

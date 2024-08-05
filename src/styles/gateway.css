@@ -1,7 +1,8 @@
 .gateway_container {
-  @apply relative w-full h-[calc(100vh-160px)] overflow-hidden bg-[#fefefe];
+  @apply relative w-full h-full overflow-hidden bg-[#fefefe];
   > section {
-    @apply w-[66.67%] mx-auto;
+    /* @apply w-[66.67%] mx-auto; */
+    @apply absolute_fullPage flex_center;
   }
 
   .moveToTop_area {

@@ -2,18 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.test {
-  user-select: text;
-
-  &::selection {
-    background: yellow;
-  }
-}
-
-.highlighttest {
-  background-color: yellow;
-}
-
 /* reset */
 * {
   margin: 0;
@@ -25,11 +13,11 @@
 html,
 body,
 #__next {
-  @apply w-full h-full font-NotoSansKR bg-[#f9f9f9];
+  @apply w-full h-screen font-NotoSansKR bg-[#f9f9f9];
 }
 
 .root_layout {
-  @apply py-[80px] w-full h-full;
+  @apply py-[52px] w-full h-full;
 }
 
 input,
@@ -48,7 +36,7 @@ textarea {
 
 /* header */
 header {
-  @apply absolute top-0 left-0 right-0  flex_center w-full h-[80px] main_colorBg;
+  @apply absolute top-0 left-0 right-0 flex_center w-full h-[52px] main_colorBg;
 
   > .header_container {
     @apply flex_xBetween w-[66.67%] h-full;
@@ -57,10 +45,10 @@ header {
       @apply h-full flex_vertical_center;
       h1 {
         .logo_area {
-          @apply block w-[118px] h-[53px];
+          @apply block w-[98px] h-[33px];
 
           img {
-            @apply object-cover w-full h-full;
+            @apply w-full h-full;
           }
         }
       }
@@ -80,7 +68,7 @@ header {
             @apply relative flex_center w-[132px] h-full font-medium text-[24px] text-[#FEFEFE];
 
             &.on::after {
-              @apply content-[''] absolute bottom-0 left-0 w-full h-[8px] bg-[#FEFEFE];
+              @apply content-[''] absolute bottom-0 left-0 w-full h-[4px] bg-[#FEFEFE];
             }
           }
         }
@@ -99,7 +87,7 @@ header {
 
 /* footer */
 footer {
-  @apply absolute bottom-0 left-0 right-0  w-full h-[80px] bg-white;
+  @apply absolute bottom-0 left-0 right-0  w-full h-[52px] bg-white;
 
   .ft_container {
     @apply flex_xBetween w-[66%] h-full mx-auto;
@@ -203,86 +191,90 @@ footer {
 
 /* modal */
 .modalBlackBg {
-  @apply absolute_fullPage bg-[#757575]/40 z-[60];
+  @apply absolute_fullPage bg-[#757575]/40 z-[60] cursor-pointer;
+}
 
-  .modal_box {
-    @apply flex_center flex-col absolute_center w-[318px] h-[213px] rounded bg-white;
+.modal_box {
+  @apply flex_center flex-col absolute_center z-[80] w-[318px] h-[213px] rounded bg-white;
 
+  .character_box {
+    @apply flex_center w-[80px] h-[80px] mb-[32px] bg-[#EBF2FA];
+
+    img {
+      @apply w-full h-full object-cover;
+    }
+  }
+
+  &.login_box {
+    @apply w-[400px] h-[348px] px-[20px];
+
+    .login_ment {
+      > p {
+        @apply text-[20px] font-medium text-center text-[#424242];
+      }
+    }
+
+    .modalBtn_area {
+      @apply flex flex-col w-full;
+      .kakoLogin {
+        @apply flex_center relative w-full h-[62px] my-[24px] bg-[#FEE404];
+
+        .kakoLogo {
+          @apply absolute_yHalf left-[17px] w-[21px] h-[21px];
+        }
+        span {
+          @apply text-[17px] font-normal text-[#000000];
+        }
+      }
+
+      .noneLogin {
+        @apply cursor-pointer text-[18px] font-medium gray_colorTxt;
+      }
+    }
+  }
+
+  &.withdrawal_box {
+    @apply w-[400px] h-[348px];
     .character_box {
-      @apply w-[80px] h-[80px] mb-[32px] bg-[#EBF2FA];
+      @apply mb-[24px];
     }
 
-    &.login_box {
-      @apply w-[400px] h-[348px] px-[20px];
-
-      .login_ment {
-        > p {
-          @apply text-[20px] font-medium text-center text-[#424242];
-        }
+    .withdrawalMent_box {
+      p:first-of-type {
+        @apply mb-[12px] text-[24px] font-medium text-center text-[#424242];
       }
-
-      .modalBtn_area {
-        @apply flex flex-col w-full;
-        .kakoLogin {
-          @apply flex_center relative w-full h-[62px] my-[24px] bg-[#FEE404];
-
-          .kakoLogo {
-            @apply absolute_yHalf left-[17px] w-[21px] h-[21px];
-          }
-          span {
-            @apply text-[17px] font-normal text-[#000000];
-          }
-        }
-
-        .noneLogin {
-          @apply cursor-pointer text-[18px] font-medium gray_colorTxt;
-        }
+      p:last-of-type {
+        @apply text-[18px] font-medium text-center gray_colorTxt;
       }
     }
 
-    &.withdrawal_box {
-      @apply w-[400px] h-[348px];
-      .character_box {
-        @apply mb-[24px];
-      }
+    .modalBtn_area {
+      @apply flex gap-[13px] mt-[28px];
 
-      .withdrawalMent_box {
-        p:first-of-type {
-          @apply mb-[12px] text-[24px] font-medium text-center text-[#424242];
+      button {
+        @apply flex_center w-[141px] h-[60px];
+
+        &:first-of-type {
+          @apply active_color;
         }
-        p:last-of-type {
-          @apply text-[18px] font-medium text-center gray_colorTxt;
-        }
-      }
 
-      .modalBtn_area {
-        @apply flex gap-[13px] mt-[28px];
-
-        button {
-          @apply flex_center w-[141px] h-[60px];
-
-          &:first-of-type {
-            @apply active_color;
-          }
-
-          &:last-of-type {
-            @apply area_border;
-          }
+        &:last-of-type {
+          @apply area_border;
         }
       }
     }
+  }
 
-    > p {
-      @apply text-[18px] font-medium text-center gray_colorTxt;
-    }
+  > p {
+    @apply text-[18px] font-medium text-center gray_colorTxt;
+  }
 
-    .loader {
-      @apply block relative w-[12px] h-[12px] my-[15px] mx-auto rounded-full bg-[#EDEDED];
-      box-shadow:
-        -24px 0 #ededed,
-        24px 0 #ededed;
-      animation: shadowPulse 2s linear infinite;
-    }
+  .loader {
+    @apply block relative w-[12px] h-[12px] my-[15px] mx-auto rounded-full bg-[#EDEDED];
+    box-shadow:
+      -24px 0 #ededed,
+      24px 0 #ededed;
+    animation: shadowPulse 2s linear infinite;
   }
 }
 

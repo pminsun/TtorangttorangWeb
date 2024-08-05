@@ -32,8 +32,8 @@ export default function Header() {
                 <Image
                   src={LocalImages.ImageVarLogo}
                   alt="ImageVarLogo"
-                  width={118}
-                  height={53}
+                  width={98}
+                  height={33}
                 />
               </Link>
             </h1>
@@ -74,7 +74,10 @@ export default function Header() {
       </header>
       {/* login Modal */}
       {login && (
-        <div className="modalBlackBg">
+        <div
+          className="modalBlackBg"
+          onClick={() => setLogin(false)}
+        >
           <div className="modal_box login_box">
             <div className="character_box"></div>
             <div className="login_ment">
