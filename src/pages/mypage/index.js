@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
 import Slider from 'react-slick';
-import { signOut, useSession } from 'next-auth/react';
 import ShapeBg from '@/components/ShapeBg';
-import { useSettingStore } from '@/store/store';
+import { useSettingStore, useUserStore } from '@/store/store';
+import { fetchKakaoLogOut } from '@/api/fetchData';
 
 export default function Mypage() {
-  const { data: session } = useSession();
+  const router = useRouter();
   const [withdrawal, setWithdrawal] = useState(false);
+  const { userEmail, setUserEmail, accessToken, setAccessToken, clearUser } = useUserStore();
 
   function NextArrow(props) {
     const { className, style, onClick } = props;
@@ -73,6 +75,21 @@ export default function Mypage() {
     dotsClass: 'dots_custom',
   };
 
+  const kakaoLogOut = async () => {
+    try {
+      await fetchKakaoLogOut(accessToken);
+      clearUser();
+      router.push('/');
+    } catch (e) {
+      // 이미 만료된 토큰일 경우
+      if (e.response && e.response.data && e.response.data.code === -401) {
+        window.location.href = '/';
+      } else {
+        console.error('Error LogOut:', e);
+      }
+    }
+  };
+
   return (
     <>
       <section className="mypage_container">
@@ -83,11 +100,11 @@ export default function Mypage() {
             <div>
               <div className="user">
                 <div className="userIcon"></div>
-                <p>{session && session.user.email}</p>
+                <p>{userEmail}</p>
               </div>
               <button
                 type="button"
-                onClick={() => signOut({ callbackUrl: '/' })}
+                onClick={kakaoLogOut}
               >
                 로그아웃
               </button>

@@ -9,7 +9,7 @@ import HighlightWithinTextarea from 'react-highlight-within-textarea';
 import { diffWords } from 'diff';
 import { useNextMoveBtnStore, useSettingStore, useInitialSettingStore, useFinalScriptStore, useScriptLoadingStore } from '@/store/store';
 
-export default function ModifyAnnounce({ session }) {
+export default function ModifyAnnounce({ userEmail }) {
   const { setNextMoveBtn } = useNextMoveBtnStore();
   const { setFinalScript } = useFinalScriptStore();
   const { setScriptLoading } = useScriptLoadingStore();
@@ -19,7 +19,7 @@ export default function ModifyAnnounce({ session }) {
 
   useEffect(() => {
     // 선 작성 후 로그인 시 작성문 유지
-    if (session) {
+    if (userEmail) {
       const savedData = localStorage.getItem('settings');
       const data = JSON.parse(savedData);
       setOriginScript(data.state.originScript);
@@ -36,7 +36,7 @@ export default function ModifyAnnounce({ session }) {
       }
     }
 
-    if (session === null) {
+    if (userEmail === '') {
       setOriginScript('');
       setSubject('');
       setPresentPurpose('회사 컨퍼런스');
@@ -46,7 +46,7 @@ export default function ModifyAnnounce({ session }) {
       setNextMoveBtn(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session]);
+  }, [userEmail]);
 
   // 초안
   const [charCountOrigin, setCharCountOrigin] = useState(0);

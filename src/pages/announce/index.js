@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
-import { useSession } from 'next-auth/react';
+
 import Slider from 'react-slick';
 import ModifyAnnounce from '@/components/ModifyAnnounce';
 import SaveAnnounce from '@/components/SaveAnnounce';
 import ProgressBar from '@/components/ProgressBar';
-import { useNextMoveBtnStore, useScriptLoadingStore, useQaLoadingStore } from '@/store/store';
+import { useNextMoveBtnStore, useScriptLoadingStore, useQaLoadingStore, useUserStore } from '@/store/store';
 import ShapeBg from '@/components/ShapeBg';
 
 export default function Announce() {
-  const { data: session } = useSession();
+  const { userEmail } = useUserStore();
   const { nextMoveBtn } = useNextMoveBtnStore();
   const { qaLoading } = useQaLoadingStore();
   const { scriptLoading } = useScriptLoadingStore();
@@ -95,8 +95,8 @@ export default function Announce() {
         <ShapeBg />
         <ProgressBar currentSlide={currentSlide} />
         <Slider {...settings}>
-          <ModifyAnnounce session={session} />
-          <SaveAnnounce session={session} />
+          <ModifyAnnounce userEmail={userEmail} />
+          <SaveAnnounce userEmail={userEmail} />
         </Slider>
       </div>
       {/* loading */}
