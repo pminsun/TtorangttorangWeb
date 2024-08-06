@@ -156,8 +156,8 @@ export default function Home() {
           </div>
           <div className="gate_mainImg">
             <Image
-              src={LocalImages.ImageGatwayMain}
-              alt="ImageGatwayMain"
+              src={LocalImages.ImageGatewayMainBg}
+              alt="ImageGatewayMainBg"
               width={609}
               height={714}
             />

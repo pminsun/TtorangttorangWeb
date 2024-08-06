@@ -55,6 +55,9 @@ import ImageGatwayMain from '../../public/images/gatwayMain.svg';
 import ImageTtorangHi from '../../public/images/ttorang_hi.svg';
 import ImageModalClose from '../../public/images/modal_close.svg';
 
+import ImageGatewayMainBg from '../../public/images/gateway_mainBg.svg';
+import ImageGatewayTtorang from '../../public/images/ttorang_gatway.svg';
+
 export { ImageGatewayNewInfo, ImageGatewayNewBanner, ImageGatewayBannerTxt, ImageGBenner, ImageMainBenner, ImageLogo, ImageMobileLogo, ImageVarLogo, ImageBenner, ImageTtorangArch, ImageTtorangNote };
 
 export { ImageLogoWhite, ImageIconCheckboxArrow, ImageIconArrow, ImageIconCopy, ImageIconDescription, ImageIconHelp, ImageIconSyncAlt };
@@ -69,6 +72,8 @@ export {
   ImageGatewayAskPoint,
   ImageGatewayFeedback,
   ImageGatewayModify,
+  ImageGatewayMainBg,
+  ImageGatewayTtorang,
 };
 
 export { ImageGatewayOctagon, ImageGatewayRound, ImageGatewayFlower, ImageGatewayHexagon };
