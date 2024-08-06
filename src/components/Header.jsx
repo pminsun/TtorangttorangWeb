@@ -27,7 +27,8 @@ export default function Header() {
       setFinalScript('');
       setQaArray([]);
     }
-  }, [pathname, setEndingTxt, setNewScript, setOriginScript, setPresentPurpose, setRepeat, setSubject, userEmail]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname, userEmail]);
 
   const loginHandler = () => {
     router.push(authorizationCodeLink);
