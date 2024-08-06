@@ -211,7 +211,23 @@ footer {
   }
 
   &.login_box {
-    @apply w-[37.04vmin] h-[348px] px-[1.85vmin];
+    @apply w-[37.04vmin] h-[32.22vmin] px-[1.85vmin];
+
+    .modal_close {
+      @apply absolute top-[1.30vmin] right-[1.57vmin] z-10 w-[2.22vmin] h-[2.22vmin] cursor-pointer;
+
+      img {
+        @apply w-full h-full object-cover;
+      }
+    }
+
+    .character_box {
+      @apply w-[11.11vmin] h-[11.11vmin];
+
+      img {
+        @apply w-full h-full object-cover;
+      }
+    }
 
     .login_ment {
       > p {
