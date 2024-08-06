@@ -11,7 +11,7 @@ import { fetchQnAData, fetchSaveScript } from '@/api/fetchData';
 
 export default function SaveAnnounce({ userEmail, userAccessToken }) {
   const pathname = usePathname();
-  const { subject, presentPurpose, endingTxt } = useSettingStore();
+  const { subject } = useSettingStore();
   const { setLogin } = useLoginModalStore();
   const [announcePage, setAnnouncePage] = useState(true);
   const { finalScript, setFinalScript, qaArray, setQaArray } = useFinalScriptStore();
@@ -35,19 +35,16 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
     }
   }, [pathname]);
 
+  // 선 작성 후 로그인 시 작성문 유지
   useEffect(() => {
-    // 선 작성 후 로그인 시 작성문 유지
-    if (userEmail) {
-      const savedData = localStorage.getItem('final');
-      const data = JSON.parse(savedData);
-      setFinalScript(data.state.finalScript);
-      setQaArray(data.state.qaArray);
-    }
+    const savedFinals = localStorage.getItem('final');
+    if (userEmail && savedFinals) {
+      // 로컬 스토리지에서 설정을 불러오기
+      const { finalScript = '', qaArray = [] } = JSON.parse(savedFinals);
 
-    if (userEmail === '') {
-      setQaArray([]);
+      setFinalScript(finalScript);
+      setQaArray(qaArray);
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userEmail]);
 
@@ -152,6 +149,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
     try {
       const data = {
         content: finalScript.replace(/\n/g, ''),
+        topic: subject,
         qnaList: qaArray,
       };
       await fetchSaveScript(data, userAccessToken);

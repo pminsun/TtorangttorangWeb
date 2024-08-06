@@ -16,38 +16,6 @@ export default function ModifyAnnounce({ userEmail }) {
   // setting
   const { originScript, setOriginScript, newScript, setNewScript, subject, setSubject, presentPurpose, setPresentPurpose, endingTxt, setEndingTxt, repeat, setRepeat } = useSettingStore();
   const { initialSubject, setInitialSubject, initialPresentPurpose, setInitialPresentPurpose, initialEndingTxt, setInitialEndingTxt, initialrepeat, setInitialRepeat } = useInitialSettingStore();
-
-  useEffect(() => {
-    // 선 작성 후 로그인 시 작성문 유지
-    if (userEmail) {
-      const savedData = localStorage.getItem('settings');
-      const data = JSON.parse(savedData);
-      setOriginScript(data.state.originScript);
-      setSubject(data.state.subject);
-      setPresentPurpose(data.state.presentPurpose);
-      setEndingTxt(data.state.endingTxt);
-      setRepeat(data.state.repeat);
-      setNewScript(data.state.newScript);
-
-      if (newScript) {
-        setNextMoveBtn(true);
-      } else {
-        setNextMoveBtn(false);
-      }
-    }
-
-    if (userEmail === '') {
-      setOriginScript('');
-      setSubject('');
-      setPresentPurpose('회사 컨퍼런스');
-      setEndingTxt('합니다체');
-      setRepeat(false);
-      setNewScript('');
-      setNextMoveBtn(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userEmail]);
-
   // 초안
   const [charCountOrigin, setCharCountOrigin] = useState(0);
   const [modifyBtn, setModifyBtn] = useState(false);
@@ -64,6 +32,27 @@ export default function ModifyAnnounce({ userEmail }) {
   const scriptWriteBoxRef = useRef(null);
   // 예상 발표 시간
   const [estimatedPresentTime, setEstimatedPresentTime] = useState('0분 0초');
+
+  // 선 작성 후 로그인 시 작성문 유지
+  useEffect(() => {
+    const savedSettings = localStorage.getItem('settings');
+    if (userEmail && savedSettings) {
+      // 로컬 스토리지에서 설정을 불러오기
+      const { originScript = '', subject = '', newScript = '', presentPurpose = '회사 컨퍼런스', endingTxt = '합니다체', repeat = false } = JSON.parse(savedSettings);
+
+      setOriginScript(originScript);
+      setSubject(subject);
+      setNewScript(newScript);
+      setPresentPurpose(presentPurpose);
+      setEndingTxt(endingTxt);
+      setRepeat(repeat);
+
+      if (newScript) {
+        setNextMoveBtn(true);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userEmail]);
 
   // 초안 작성
   const writeOriginScript = (event) => {

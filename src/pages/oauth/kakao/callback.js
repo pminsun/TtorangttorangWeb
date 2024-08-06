@@ -6,7 +6,7 @@ import { fetchKakaoAccessToken, fetchKakaoUserInfo, fetchSaveKakaoLoginDb } from
 const KakaoCallback = () => {
   const router = useRouter();
   const { setUserEmail, setAccessToken, setUserAccessToken } = useUserStore();
-  const { originScript, subject, newScript } = useSettingStore();
+  const { originScript, subject, newScript, presentPurpose, endingTxt, repeat } = useSettingStore();
   const { finalScript, qaArray } = useFinalScriptStore();
 
   useEffect(() => {
@@ -29,17 +29,29 @@ const KakaoCallback = () => {
                   .then((dbRes) => {
                     setUserAccessToken(dbRes.data.data.accessToken);
 
-                    if (originScript || subject || newScript || finalScript || qaArray) {
-                      localStorage.setItem('originScript', originScript);
-                      localStorage.setItem('subject', subject);
-                      localStorage.setItem('newScript', newScript);
-                      localStorage.setItem('finalScript', finalScript);
-                      localStorage.setItem('qaArray', JSON.stringify(qaArray));
+                    if (originScript || subject || newScript || presentPurpose || endingTxt || repeat || finalScript || qaArray) {
+                      // 선 작성 후 로그인 시 작성문 유지
+                      const settings = {
+                        originScript,
+                        subject,
+                        newScript,
+                        presentPurpose,
+                        endingTxt,
+                        repeat,
+                      };
+
+                      const finals = {
+                        finalScript,
+                        qaArray,
+                      };
+
+                      localStorage.setItem('settings', JSON.stringify(settings));
+                      localStorage.setItem('final', JSON.stringify(finals));
 
                       // Navigate to /announce
                       router.push('/announce');
                     } else {
-                      // Navigate to home
+                      // 일반 로그인
                       router.push('/');
                     }
                   })
