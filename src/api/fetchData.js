@@ -39,6 +39,7 @@ export const fetchSaveScript = async (data, userAccessToken) => {
     url: `${api_base_uri}/api/script`,
     data: {
       content: data.content,
+      topic: data.topic,
       qnaList: data.qnaList,
     },
     headers: {
