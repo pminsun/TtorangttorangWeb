@@ -74,12 +74,31 @@ export default function Header() {
       </header>
       {/* login Modal */}
       {login && (
-        <div
-          className="modalBlackBg"
-          onClick={() => setLogin(false)}
-        >
+        <>
+          <div
+            className="modalBlackBg"
+            onClick={() => setLogin(false)}
+          ></div>
           <div className="modal_box login_box">
-            <div className="character_box"></div>
+            <div
+              className="modal_close"
+              onClick={() => setLogin(false)}
+            >
+              <Image
+                src={LocalImages.ImageModalClose}
+                alt="ImageModalClose"
+                width={24}
+                height={24}
+              />
+            </div>
+            <div className="character_box">
+              <Image
+                src={LocalImages.ImageTtorangHi}
+                alt="ImageTtorangHi"
+                width={120}
+                height={120}
+              />
+            </div>
             <div className="login_ment">
               <p>로그인을 진행해주세요</p>
             </div>
@@ -111,7 +130,7 @@ export default function Header() {
               </button>
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );
