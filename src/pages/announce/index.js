@@ -10,7 +10,7 @@ import { useNextMoveBtnStore, useScriptLoadingStore, useQaLoadingStore, useUserS
 import ShapeBg from '@/components/ShapeBg';
 
 export default function Announce() {
-  const { userEmail } = useUserStore();
+  const { userEmail, accessToken, userAccessToken } = useUserStore();
   const { nextMoveBtn } = useNextMoveBtnStore();
   const { qaLoading } = useQaLoadingStore();
   const { scriptLoading } = useScriptLoadingStore();
@@ -96,7 +96,10 @@ export default function Announce() {
         <ProgressBar currentSlide={currentSlide} />
         <Slider {...settings}>
           <ModifyAnnounce userEmail={userEmail} />
-          <SaveAnnounce userEmail={userEmail} />
+          <SaveAnnounce
+            userEmail={userEmail}
+            userAccessToken={userAccessToken}
+          />
         </Slider>
       </div>
       {/* loading */}

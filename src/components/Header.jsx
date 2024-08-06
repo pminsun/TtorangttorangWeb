@@ -15,6 +15,17 @@ export default function Header() {
   const { userEmail } = useUserStore();
   const { setOriginScript, setNewScript, setSubject, setPresentPurpose, setEndingTxt, repeat, setRepeat } = useSettingStore();
 
+  useEffect(() => {
+    if (userEmail && pathname !== '/announce') {
+      setOriginScript('');
+      setNewScript('');
+      setSubject('');
+      setPresentPurpose('회사 컨퍼런스');
+      setEndingTxt('합니다체');
+      setRepeat(false);
+    }
+  }, [pathname, setEndingTxt, setNewScript, setOriginScript, setPresentPurpose, setRepeat, setSubject, userEmail]);
+
   const loginHandler = () => {
     router.push(authorizationCodeLink);
   };

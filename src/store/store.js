@@ -83,7 +83,9 @@ export const useUserStore = create(
       setUserEmail: (value) => set({ userEmail: value }),
       accessToken: '',
       setAccessToken: (value) => set({ accessToken: value }),
-      clearUser: () => set({ userEmail: '', accessToken: '' }),
+      userAccessToken: '',
+      setUserAccessToken: (value) => set({ userAccessToken: value }),
+      clearUser: () => set({ userEmail: '', accessToken: '', userAccessToken: '' }),
     }),
     {
       name: 'user', // 로컬 스토리지 키
