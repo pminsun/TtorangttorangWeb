@@ -37,16 +37,16 @@ textarea {
 
 /* header */
 header {
-  @apply absolute top-0 left-0 right-0 z-20 flex_center w-full h-[52px] main_colorBg;
+  @apply absolute top-0 left-0 right-0 z-20 flex_center w-full h-[4.81vmin] main_colorBg;
 
   > .header_container {
-    @apply flex_xBetween w-[66.67%] h-full;
+    @apply flex_xBetween content_w_size h-full;
 
     .header_menu {
       @apply h-full flex_vertical_center;
       h1 {
         .logo_area {
-          @apply block w-[98px] h-[33px];
+          @apply block w-[9.07vmin] h-[3.06vmin];
 
           img {
             @apply w-full h-full;
@@ -60,16 +60,16 @@ header {
       }
 
       nav {
-        @apply ml-[116px];
+        @apply ml-[10.74vmin];
         ul {
-          @apply flex_vertical_center gap-[24px] h-full;
+          @apply flex_vertical_center gap-[2.22vmin] h-full;
 
           a,
           button {
-            @apply relative flex_center w-[132px] h-full font-medium text-[24px] text-[#FEFEFE];
+            @apply relative flex_center w-[12.22vmin] h-full font-medium text-[2.22vmin] text-[#FEFEFE];
 
             &.on::after {
-              @apply content-[''] absolute bottom-0 left-0 w-full h-[4px] bg-[#FEFEFE];
+              @apply content-[''] absolute bottom-0 left-0 w-full h-[0.37vmin] bg-[#FEFEFE];
             }
           }
         }
@@ -80,7 +80,7 @@ header {
       @apply h-full;
       button,
       a {
-        @apply flex_center px-[11px] h-full font-medium text-[24px] text-white;
+        @apply flex_center px-[1.02vmin] h-full font-medium text-[2.22vmin] text-white;
       }
     }
   }
@@ -88,13 +88,13 @@ header {
 
 /* footer */
 footer {
-  @apply absolute bottom-0 left-0 right-0  w-full h-[52px] bg-white;
+  @apply absolute bottom-0 left-0 right-0 w-full h-[4.81vmin] bg-white;
 
   .ft_container {
-    @apply flex_xBetween w-[66%] h-full mx-auto;
+    @apply flex_xBetween content_w_size h-full mx-auto;
 
     p {
-      @apply gray_colorTxt font-medium text-[16px];
+      @apply gray_colorTxt font-medium text-[1.48vmin];
     }
 
     > div {
@@ -102,29 +102,33 @@ footer {
         @apply flex_vertical_center;
 
         p {
-          @apply relative pr-[12px] font-medium text-[16px] gray_colorTxt;
+          @apply relative pr-[1.11vmin] font-medium text-[1.48vmin] gray_colorTxt;
 
           &:first-of-type::after {
             @apply content-[''] absolute_yHalf right-[0px] mt-[2px] w-[1px] h-[14px] gray_colorBg;
           }
 
           &:last-of-type {
-            @apply px-[12px];
+            @apply px-[1.11vmin];
           }
         }
       }
 
       &:last-of-type {
-        @apply flex_center gap-[30px];
+        @apply flex_center gap-[2.78vmin];
 
         a {
-          @apply flex_center gap-[6px];
+          @apply flex_center gap-[0.56vmin];
           .ftIcon_box {
-            @apply w-[24px] h-[24px];
+            @apply w-[2.22vmin] h-[2.22vmin];
 
             img {
               @apply object-cover w-full h-full;
             }
+          }
+
+          span {
+            @apply text-[1.48vmin];
           }
         }
       }
@@ -160,7 +164,7 @@ footer {
     }
 
     > p:last-of-type {
-      @apply text-[16px] font-normal text-[#757575];
+      @apply text-[1.48vmin] font-normal text-[#757575];
     }
   }
 }
@@ -196,10 +200,10 @@ footer {
 }
 
 .modal_box {
-  @apply flex_center flex-col absolute_center z-[80] w-[318px] h-[213px] rounded bg-white;
+  @apply flex_center flex-col absolute_center z-[80] w-[29.44vmin] h-[19.72vmin] rounded bg-white;
 
   .character_box {
-    @apply flex_center w-[80px] h-[80px] mb-[32px] bg-[#EBF2FA];
+    @apply flex_center w-[7.41vmin] h-[7.41vmin] mb-[2.96vmin] bg-[#EBF2FA];
 
     img {
       @apply w-full h-full object-cover;
@@ -207,53 +211,53 @@ footer {
   }
 
   &.login_box {
-    @apply w-[400px] h-[348px] px-[20px];
+    @apply w-[37.04vmin] h-[348px] px-[1.85vmin];
 
     .login_ment {
       > p {
-        @apply text-[20px] font-medium text-center text-[#424242];
+        @apply text-[1.85vmin] font-medium text-center text-[#424242];
       }
     }
 
     .modalBtn_area {
       @apply flex flex-col w-full;
       .kakoLogin {
-        @apply flex_center relative w-full h-[62px] my-[24px] bg-[#FEE404];
+        @apply flex_center relative w-full h-[5.74vmin] my-[2.22vmin] bg-[#FEE404];
 
         .kakoLogo {
-          @apply absolute_yHalf left-[17px] w-[21px] h-[21px];
+          @apply absolute_yHalf left-[1.57vmin] w-[1.94vmin] h-[1.94vmin];
         }
         span {
-          @apply text-[17px] font-normal text-[#000000];
+          @apply text-[1.57vmin] font-normal text-[#000000];
         }
       }
 
       .noneLogin {
-        @apply cursor-pointer text-[18px] font-medium gray_colorTxt;
+        @apply cursor-pointer text-[1.67vmin] font-medium gray_colorTxt;
       }
     }
   }
 
   &.withdrawal_box {
-    @apply w-[400px] h-[348px];
+    @apply w-[37.04vmin] h-[32.22vmin];
     .character_box {
-      @apply mb-[24px];
+      @apply mb-[2.22vmin];
     }
 
     .withdrawalMent_box {
       p:first-of-type {
-        @apply mb-[12px] text-[24px] font-medium text-center text-[#424242];
+        @apply mb-[1.11vmin] text-[2.22vmin] font-medium text-center text-[#424242];
       }
       p:last-of-type {
-        @apply text-[18px] font-medium text-center gray_colorTxt;
+        @apply text-[1.67vmin] font-medium text-center gray_colorTxt;
       }
     }
 
     .modalBtn_area {
-      @apply flex gap-[13px] mt-[28px];
+      @apply flex gap-[1.20vmin] mt-[2.59vmin];
 
       button {
-        @apply flex_center w-[141px] h-[60px];
+        @apply flex_center w-[13.06vmin] h-[5.56vmin];
 
         &:first-of-type {
           @apply active_color;
@@ -267,14 +271,14 @@ footer {
   }
 
   > p {
-    @apply text-[18px] font-medium text-center gray_colorTxt;
+    @apply text-[1.67vmin] font-medium text-center gray_colorTxt;
   }
 
   .loader {
-    @apply block relative w-[12px] h-[12px] my-[15px] mx-auto rounded-full bg-[#EDEDED];
+    @apply block relative w-[1.11vmin] h-[1.11vmin] my-[1.39vmin] mx-auto rounded-full bg-[#EDEDED];
     box-shadow:
-      -24px 0 #ededed,
-      24px 0 #ededed;
+      -2.22vmi 0 #ededed,
+      2.22vmi 0 #ededed;
     animation: shadowPulse 2s linear infinite;
   }
 }
@@ -283,20 +287,20 @@ footer {
   33% {
     background: #ededed;
     box-shadow:
-      -24px 0 #509bf8,
-      24px 0 #ededed;
+      -2.22vmi 0 #509bf8,
+      2.22vmi 0 #ededed;
   }
   66% {
     background: #509bf8;
     box-shadow:
-      -24px 0 #ededed,
-      24px 0 #ededed;
+      -2.22vmi 0 #ededed,
+      2.22vmi 0 #ededed;
   }
   100% {
     background: #ededed;
     box-shadow:
-      -24px 0 #ededed,
-      24px 0 #509bf8;
+      -2.22vmi 0 #ededed,
+      2.22vmi 0 #509bf8;
   }
 }
 
@@ -327,7 +331,7 @@ footer {
     @apply absolute right-0 w-[16.66%] h-full;
 
     .bg_hexagon {
-      @apply absolute -top-[14%] right-[-12px] -scale-y-100;
+      @apply absolute -top-[14%] right-[-1.11vmin] -scale-y-100;
     }
 
     .bg_octagon {
