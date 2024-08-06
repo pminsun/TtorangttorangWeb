@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cls } from '@/utils/config';
 import { useRouter } from 'next/router';
-import { useLoginModalStore, useSettingStore, useUserStore } from '@/store/store';
+import { useLoginModalStore, useSettingStore, useUserStore, useFinalScriptStore } from '@/store/store';
 import { authorizationCodeLink } from '@/api/fetchData';
 
 export default function Header() {
@@ -13,7 +13,8 @@ export default function Header() {
   const router = useRouter();
   const { login, setLogin } = useLoginModalStore();
   const { userEmail } = useUserStore();
-  const { setOriginScript, setNewScript, setSubject, setPresentPurpose, setEndingTxt, repeat, setRepeat } = useSettingStore();
+  const { setOriginScript, setNewScript, setSubject, setPresentPurpose, setEndingTxt, setRepeat } = useSettingStore();
+  const { setFinalScript, setQaArray } = useFinalScriptStore();
 
   useEffect(() => {
     if (userEmail && pathname !== '/announce') {
@@ -23,6 +24,8 @@ export default function Header() {
       setPresentPurpose('회사 컨퍼런스');
       setEndingTxt('합니다체');
       setRepeat(false);
+      setFinalScript('');
+      setQaArray([]);
     }
   }, [pathname, setEndingTxt, setNewScript, setOriginScript, setPresentPurpose, setRepeat, setSubject, userEmail]);
 
