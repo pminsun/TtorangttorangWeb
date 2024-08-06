@@ -47,6 +47,10 @@ import ImageGatewayMain from '../../public/images/gatewayMain.svg';
 import ImageGatewayArrow from '../../public/images/gatwayArrow.svg';
 
 import ImageModalDelete from '../../public/images/modal_delete.svg';
+import ImageGateway_one from '../../public/images/gateway_one.svg';
+import ImageGateway_two from '../../public/images/gateway_two.svg';
+import ImageGateway_three from '../../public/images/gateway_three.svg';
+import ImageActiveArrow from '../../public/images/acrive_arrow.svg';
 
 export { ImageGatewayNewInfo, ImageGatewayNewBanner, ImageGatewayBannerTxt, ImageGBenner, ImageMainBenner, ImageLogo, ImageMobileLogo, ImageVarLogo, ImageBenner, ImageTtorangArch, ImageTtorangNote };
 
@@ -70,3 +74,4 @@ export { ImageGatewayOctagon, ImageGatewayRound, ImageGatewayFlower, ImageGatewa
 export { ImageMainStepArrowActive, ImageKakoLogo, ImageMainStepArrowLeft, ImageMainStepArrowRight, ImageDeleteX, ImageAddPlus };
 
 export { ImageModalDelete };
+export { ImageGateway_one, ImageGateway_two, ImageGateway_three, ImageActiveArrow };
