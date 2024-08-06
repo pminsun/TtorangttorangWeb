@@ -5,13 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cls } from '@/utils/config';
 import { useRouter } from 'next/router';
-import { useLoginModalStore, useSettingStore, useUserStore, useFinalScriptStore } from '@/store/store';
+import { useLoginModalStore, useSettingStore, useNextMoveBtnStore, useUserStore, useFinalScriptStore } from '@/store/store';
 import { authorizationCodeLink } from '@/api/fetchData';
 
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const { login, setLogin } = useLoginModalStore();
+  const { setNextMoveBtn } = useNextMoveBtnStore();
   const { userEmail } = useUserStore();
   const { setOriginScript, setNewScript, setSubject, setPresentPurpose, setEndingTxt, setRepeat } = useSettingStore();
   const { setFinalScript, setQaArray } = useFinalScriptStore();
@@ -26,6 +27,7 @@ export default function Header() {
       setRepeat(false);
       setFinalScript('');
       setQaArray([]);
+      setNextMoveBtn(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, userEmail]);
