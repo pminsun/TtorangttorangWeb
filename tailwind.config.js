@@ -88,8 +88,14 @@ module.exports = {
           borderRadius: '4px',
         },
       };
+      const layoutUtilities = {
+        '.content_w_size': {
+          width: '66.67vmax',
+        },
+      };
       addUtilities(newCssUtilities, ['responsive', 'hover']);
       addUtilities(colorUtilities, ['responsive', 'hover']);
+      addUtilities(layoutUtilities, ['responsive', 'hover']);
     }),
   ],
 };

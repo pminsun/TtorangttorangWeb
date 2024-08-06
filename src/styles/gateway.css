@@ -11,18 +11,18 @@
   }
 
   .inner {
-    @apply relative flex_center w-full h-screen py-[52px];
+    @apply relative flex_center w-full h-screen py-[4.81vmin];
 
     > div:last-of-type {
-      @apply flex_center w-[66.67vmax] h-full overflow-hidden mx-auto;
+      @apply flex_center content_w_size h-full overflow-hidden mx-auto;
 
       &.gate_main {
-        @apply pt-[3%] pb-[2%];
+        @apply pt-[5.56vmin] pb-[3.98vmin];
         > div:first-of-type {
-          @apply flex-1 h-full pt-[4.5%];
+          @apply flex justify-between flex-col flex-1 h-full pt-[5.46vmin];
 
           > .gatewayMent_area {
-            @apply flex flex-col items-start pb-[4.44vmin];
+            @apply flex flex-col items-start justify-between flex-1 pb-[4.44vmin];
 
             > p:first-of-type {
               @apply text-[3.70vmin] tracking-tight font-medium gray_colorTxt;
@@ -42,7 +42,7 @@
           }
 
           .moveToGuide_area {
-            @apply flex_center flex-col gap-[3.24vmin] mr-[12%] pt-[4.17vmin] text-center border-t border-[#C4C4C4];
+            @apply flex_center flex-col gap-[3.24vmin] mr-[10.83vmin] pt-[4.17vmin] text-center border-t border-[#C4C4C4];
 
             .guideArrow {
               @apply flex_center w-[7.41vmin] h-[7.41vmin] cursor-pointer bg-[#B0D3FF] rounded-full;
@@ -62,7 +62,7 @@
         }
 
         > div.gate_mainImg {
-          @apply relative w-[47.5%] h-full bg-blue-200;
+          @apply relative w-[31.72vmax] h-full bg-blue-200;
 
           img {
             @apply object-cover;
