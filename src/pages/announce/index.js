@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
-
 import Slider from 'react-slick';
 import ModifyAnnounce from '@/components/ModifyAnnounce';
 import SaveAnnounce from '@/components/SaveAnnounce';
@@ -10,7 +9,7 @@ import { useNextMoveBtnStore, useScriptLoadingStore, useQaLoadingStore, useUserS
 import ShapeBg from '@/components/ShapeBg';
 
 export default function Announce() {
-  const { userEmail, accessToken, userAccessToken } = useUserStore();
+  const { userEmail, userAccessToken } = useUserStore();
   const { nextMoveBtn } = useNextMoveBtnStore();
   const { qaLoading } = useQaLoadingStore();
   const { scriptLoading } = useScriptLoadingStore();

@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { useUserStore } from '@/store/store';
 
 const api_base_uri = process.env.NEXT_PUBLIC_API_BASE_URL;
 
+//clova
 export const fetchAnnounceData = async (data) => {
   return await axios({
     method: 'post',
@@ -33,6 +33,7 @@ export const fetchQnAData = async (data) => {
   });
 };
 
+// userScript
 export const fetchSaveScript = async (data, userAccessToken) => {
   return await axios({
     method: 'post',
@@ -42,6 +43,17 @@ export const fetchSaveScript = async (data, userAccessToken) => {
       topic: data.topic,
       qnaList: data.qnaList,
     },
+    headers: {
+      Authorization: `Bearer ${userAccessToken}`,
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+  });
+};
+
+export const getUserScript = async (userAccessToken) => {
+  return await axios({
+    method: 'get',
+    url: `${api_base_uri}/api/script`,
     headers: {
       Authorization: `Bearer ${userAccessToken}`,
       'Content-Type': 'application/json; charset=utf-8',

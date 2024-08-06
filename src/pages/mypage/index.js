@@ -1,19 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
+import { useQuery } from '@tanstack/react-query';
 import Slider from 'react-slick';
 import ShapeBg from '@/components/ShapeBg';
-import { useSettingStore, useUserStore } from '@/store/store';
-import { fetchKakaoLogOut } from '@/api/fetchData';
+import { useUserStore } from '@/store/store';
+import { sliceMyScript, sliceMyScriptDateOnly, sliceMyScriptTitle, reverseData } from '@/utils/config';
+import { fetchKakaoLogOut, getUserScript } from '@/api/fetchData';
 
 export default function Mypage() {
   const router = useRouter();
   const [deleteAnnounce, setDeleteAnnounce] = useState(false);
   const [withdrawal, setWithdrawal] = useState(false);
-  const { userEmail, setUserEmail, accessToken, setAccessToken, clearUser } = useUserStore();
+  const { userEmail, accessToken, userAccessToken, clearUser } = useUserStore();
+  const [addListLength, setAddListLength] = useState(0);
 
+  // 내 발표문 data
+  const {
+    data: myScripts,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ['myScriptsData'],
+    queryFn: () => getUserScript(userAccessToken),
+  });
+
+  const fiveItemInoneLine = myScripts?.data.data.length % 5;
+
+  useEffect(() => {
+    if (myScripts) {
+      const myScriptDataLength = myScripts?.data.data.length;
+      const remainder = myScriptDataLength % 5;
+      const itemsNeeded = remainder === 0 ? 0 : 5 - remainder;
+
+      setAddListLength(itemsNeeded);
+    }
+  }, [myScripts]);
+
+  // 슬라이드
   function NextArrow(props) {
     const { className, style, onClick } = props;
 
@@ -76,6 +102,7 @@ export default function Mypage() {
     dotsClass: 'dots_custom',
   };
 
+  // 카카오 로그아웃
   const kakaoLogOut = async () => {
     try {
       await fetchKakaoLogOut(accessToken);
@@ -115,38 +142,49 @@ export default function Mypage() {
             <p className="mypage_title">나의 발표문</p>
             <div className="myAnnounce_slide">
               <Slider {...settings}>
-                <div className="myAnnounce">
-                  <div className="announce_title">
-                    <p>가나다라마가나</p>
+                {reverseData(
+                  myScripts?.data.data.map((item, index) => (
                     <div
-                      onClick={() => setDeleteAnnounce(true)}
-                      className="delteBtn"
+                      className="myAnnounce"
+                      key={item.id}
                     >
-                      <Image
-                        src={LocalImages.ImageDeleteX}
-                        alt="ImageDeleteX"
-                        width={14}
-                        height={14}
-                      />
+                      <div className="announce_title">
+                        <p>{sliceMyScriptTitle(item.topic)}</p>
+                        <div
+                          onClick={() => setDeleteAnnounce(true)}
+                          className="delteBtn"
+                        >
+                          <Image
+                            src={LocalImages.ImageDeleteX}
+                            alt="ImageDeleteX"
+                            width={14}
+                            height={14}
+                          />
+                        </div>
+                      </div>
+                      <Link
+                        href={`/mypage/announce/${item.id}`}
+                        className="announce_content"
+                      >
+                        <p>{sliceMyScript(item.content)}</p>
+                        <p className="date">{sliceMyScriptDateOnly(item.regTime)}</p>
+                      </Link>
                     </div>
-                  </div>
-                  <Link
-                    href={'/mypage/announce/1'}
-                    className="announce_content"
-                  >
-                    <p>디자인 프로세스를 설명해 주세요. 프로젝트의 시작부터 끝까지 어떤 단계들을 거치나요?디자인 프로세스를 설명해 주세요. 텍스트 예시 텍스트 예시텍스트 예시 텍스트 아무...</p>
-                    <p className="date">2023.8.19</p>
-                  </Link>
-                </div>
-                {[1, 2, 3, 4, 5, 6].map((item, index) => (
+                  )),
+                )}
+
+                {Array.from({ length: addListLength }, (_, index) => (
                   <div
-                    key={index}
                     className="myAnnounce"
+                    key={index}
                   >
                     <div className="announce_title">
                       <p>새 발표문 쓰기</p>
                     </div>
-                    <div className="announce_content">
+                    <Link
+                      href={`/announce`}
+                      className="announce_content"
+                    >
                       <div className="plusBtn">
                         <Image
                           src={LocalImages.ImageAddPlus}
@@ -155,7 +193,7 @@ export default function Mypage() {
                           height={64}
                         />
                       </div>
-                    </div>
+                    </Link>
                   </div>
                 ))}
               </Slider>

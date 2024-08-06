@@ -148,7 +148,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
   const saveScriptToAccount = async () => {
     try {
       const data = {
-        content: finalScript.replace(/\n/g, ''),
+        content: finalScript,
         topic: subject,
         qnaList: qaArray,
       };
