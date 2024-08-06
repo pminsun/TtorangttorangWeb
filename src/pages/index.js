@@ -142,17 +142,26 @@ export default function Home() {
                 onClick={() => setCurrentPage(2)}
                 className="guideArrow"
               >
-                <Image
-                  src={LocalImages.ImageActiveArrow}
-                  alt="ImageActiveArrow"
-                  width={39}
-                  height={35}
-                />
+                <div className="activeArrow_area">
+                  <Image
+                    src={LocalImages.ImageActiveArrow}
+                    alt="ImageActiveArrow"
+                    width={39}
+                    height={35}
+                  />
+                </div>
               </div>
               <p>아래에 가이드가 있어요</p>
             </div>
           </div>
-          <div className="gate_mainImg"></div>
+          <div className="gate_mainImg">
+            <Image
+              src={LocalImages.ImageGatwayMain}
+              alt="ImageGatwayMain"
+              width={609}
+              height={714}
+            />
+          </div>
         </div>
       </div>
       <div className="inner">
