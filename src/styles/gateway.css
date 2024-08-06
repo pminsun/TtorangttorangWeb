@@ -1,11 +1,67 @@
 .gateway_container {
-  @apply relative w-full h-full overflow-hidden bg-[#fefefe];
-  > section {
-    /* @apply w-[66.67%] mx-auto; */
-    @apply absolute_fullPage flex_center;
+  @apply relative w-full h-screen overflow-hidden bg-[#fefefe];
+
+  /* 화면에서 스크롤바 안보이게 */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gateway_shapeBg {
+    @apply fixed top-0 bottom-0 left-0 right-0 w-full h-full;
+  }
+
+  .inner {
+    @apply relative flex_center w-full h-screen py-[52px];
+
+    > div:last-of-type {
+      @apply flex_center w-[66.67%] h-full overflow-hidden mx-auto;
+
+      &.gate_main {
+        @apply pt-[3%] pb-[2%];
+        > div:first-of-type {
+          @apply flex-1 h-full pt-[4.5%];
+
+          > .gatewayMent_area {
+            @apply flex flex-col items-start pb-[48px];
+
+            > p:first-of-type {
+              @apply text-[40px] tracking-tight font-medium gray_colorTxt;
+            }
+
+            > h2 {
+              @apply mb-[19px] text-[64px] leading-[92px] font-bold tracking-tight text-[#3D6BE1];
+            }
+
+            > p:last-of-type {
+              @apply text-[20px] leading-[40px] tracking-tight font-normal text-[#424242];
+            }
+
+            .start_btn {
+              @apply flex_center w-[218px] h-[64px] cursor-pointer mt-[40px] text-[28px] font-medium tracking-tight active_color;
+            }
+          }
+
+          .moveToGuide_area {
+            @apply flex_center flex-col gap-[35px] mr-[12%] pt-[45px] text-center border-t border-[#C4C4C4];
+
+            .guideArrow {
+              @apply flex_center w-[80px] h-[80px] cursor-pointer bg-[#B0D3FF] rounded-full;
+            }
+
+            > p {
+              @apply text-[28px] font-medium tracking-tight main_colorTxt;
+            }
+          }
+        }
+
+        > div.gate_mainImg {
+          @apply w-[47.5%] h-full bg-blue-200;
+        }
+      }
+    }
   }
 
   .moveToTop_area {
-    @apply flex_center fixed right-[80px] bottom-[182px] z-20 w-[60px] h-[60px] text-[18px] font-medium rounded-full cursor-pointer text-white main_colorBg;
+    @apply flex_center fixed right-[64px] bottom-[154px] z-20 w-[60px] h-[60px] text-[18px] font-medium rounded-full cursor-pointer text-white main_colorBg;
   }
 }

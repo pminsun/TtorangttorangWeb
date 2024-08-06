@@ -13,11 +13,12 @@
 html,
 body,
 #__next {
-  @apply w-full h-screen font-NotoSansKR bg-[#f9f9f9];
+  @apply relative w-full h-screen overflow-y-hidden font-NotoSansKR bg-[#f9f9f9];
 }
 
+/* py-[52px] */
 .root_layout {
-  @apply py-[52px] w-full h-full;
+  @apply w-full h-full;
 }
 
 input,
@@ -36,7 +37,7 @@ textarea {
 
 /* header */
 header {
-  @apply absolute top-0 left-0 right-0 flex_center w-full h-[52px] main_colorBg;
+  @apply absolute top-0 left-0 right-0 z-20 flex_center w-full h-[52px] main_colorBg;
 
   > .header_container {
     @apply flex_xBetween w-[66.67%] h-full;
@@ -300,7 +301,7 @@ footer {
 }
 
 .shape_bg {
-  @apply absolute_fullPage;
+  @apply absolute_fullPage overflow-hidden;
 
   > div:first-of-type {
     @apply absolute left-0 w-[16.66%] h-full;
@@ -314,7 +315,7 @@ footer {
     }
 
     .bg_round {
-      @apply absolute -bottom-[53%] left-[-20px] -scale-x-100;
+      @apply absolute -bottom-[38%] left-[-20px] -scale-x-100;
 
       img {
         @apply scale-95;
@@ -326,11 +327,11 @@ footer {
     @apply absolute right-0 w-[16.66%] h-full;
 
     .bg_hexagon {
-      @apply absolute -top-[18%] right-[-15px] -scale-y-100;
+      @apply absolute -top-[14%] right-[-12px] -scale-y-100;
     }
 
     .bg_octagon {
-      @apply absolute -bottom-[40%] right-[-50%] -scale-x-100;
+      @apply absolute -bottom-[33%] right-[-50%] -scale-x-100;
     }
   }
 }
