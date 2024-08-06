@@ -14,7 +14,7 @@
     @apply relative flex_center w-full h-screen py-[52px];
 
     > div:last-of-type {
-      @apply flex_center w-[66.67%] h-full overflow-hidden mx-auto;
+      @apply flex_center w-[66.67vmax] h-full overflow-hidden mx-auto;
 
       &.gate_main {
         @apply pt-[3%] pb-[2%];
@@ -22,46 +22,57 @@
           @apply flex-1 h-full pt-[4.5%];
 
           > .gatewayMent_area {
-            @apply flex flex-col items-start pb-[48px];
+            @apply flex flex-col items-start pb-[4.44vmin];
 
             > p:first-of-type {
-              @apply text-[40px] tracking-tight font-medium gray_colorTxt;
+              @apply text-[3.70vmin] tracking-tight font-medium gray_colorTxt;
             }
 
             > h2 {
-              @apply mb-[19px] text-[64px] leading-[92px] font-bold tracking-tight text-[#3D6BE1];
+              @apply mb-[1.76vmin] text-[5.93vmin] leading-[8.52vmin] font-bold tracking-tight text-[#3D6BE1];
             }
 
             > p:last-of-type {
-              @apply text-[20px] leading-[40px] tracking-tight font-normal text-[#424242];
+              @apply text-[1.85vmin] leading-[3.70vmin] tracking-tight font-normal text-[#424242];
             }
 
             .start_btn {
-              @apply flex_center w-[218px] h-[64px] cursor-pointer mt-[40px] text-[28px] font-medium tracking-tight active_color;
+              @apply flex_center w-[20.19vmin] h-[5.93vmin] cursor-pointer mt-[3.70vmin] text-[2.59vmin] font-medium tracking-tight active_color;
             }
           }
 
           .moveToGuide_area {
-            @apply flex_center flex-col gap-[35px] mr-[12%] pt-[45px] text-center border-t border-[#C4C4C4];
+            @apply flex_center flex-col gap-[3.24vmin] mr-[12%] pt-[4.17vmin] text-center border-t border-[#C4C4C4];
 
             .guideArrow {
-              @apply flex_center w-[80px] h-[80px] cursor-pointer bg-[#B0D3FF] rounded-full;
+              @apply flex_center w-[7.41vmin] h-[7.41vmin] cursor-pointer bg-[#B0D3FF] rounded-full;
+
+              .activeArrow_area {
+                @apply w-[3.611vmin] h-[3.241vmin];
+                img {
+                  @apply w-full h-full;
+                }
+              }
             }
 
             > p {
-              @apply text-[28px] font-medium tracking-tight main_colorTxt;
+              @apply text-[2.59vmin] font-medium tracking-tight main_colorTxt;
             }
           }
         }
 
         > div.gate_mainImg {
-          @apply w-[47.5%] h-full bg-blue-200;
+          @apply relative w-[47.5%] h-full bg-blue-200;
+
+          img {
+            @apply object-cover;
+          }
         }
       }
     }
   }
 
   .moveToTop_area {
-    @apply flex_center fixed right-[64px] bottom-[154px] z-20 w-[60px] h-[60px] text-[18px] font-medium rounded-full cursor-pointer text-white main_colorBg;
+    @apply flex_center fixed right-[5.93vmin] bottom-[14.26vmin] z-20 w-[5.56vmin] h-[5.56vmin] text-[1.67vmin] font-medium rounded-full cursor-pointer text-white main_colorBg;
   }
 }
