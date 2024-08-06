@@ -33,18 +33,16 @@ export const fetchQnAData = async (data) => {
   });
 };
 
-export const fetchSaveScript = async (data) => {
+export const fetchSaveScript = async (data, userAccessToken) => {
   return await axios({
     method: 'post',
     url: `${api_base_uri}/api/script`,
     data: {
-      topic: data.topic,
-      purpose: data.purpose,
-      word: data.word,
       content: data.content,
       qnaList: data.qnaList,
     },
     headers: {
+      Authorization: `Bearer ${userAccessToken}`,
       'Content-Type': 'application/json; charset=utf-8',
     },
   });

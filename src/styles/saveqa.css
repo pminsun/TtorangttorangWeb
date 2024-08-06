@@ -2,7 +2,7 @@
   @apply w-full h-full;
 
   form {
-    @apply flex_xBetween w-full h-full pt-[31px];
+    @apply flex_xBetween w-full h-full pt-[2.87vmin];
 
     > div {
       @apply h-full;
@@ -12,27 +12,27 @@
       @apply w-[51.5%];
 
       .scriptFinal_area {
-        @apply w-full h-[71%] area_border px-[31px] py-[12px];
+        @apply w-full h-[71%] area_border px-[2.87vmin] py-[1.11vmin];
 
         > p.title {
-          @apply mb-[12px] text-[14px] font-medium gray_colorTxt;
+          @apply mb-[1.11vmin] text-[1.30vmin] font-medium gray_colorTxt;
         }
 
         .scriptTxt {
-          @apply relative w-full h-[calc(100%-72px)] pl-[13px] pb-[51px] area_border;
+          @apply relative w-full h-[calc(100%-72px)] pl-[1.20vmin] pb-[4.72vmin] area_border;
 
           textarea {
-            @apply w-full h-full text-[14px] leading-[31px] pt-[12px]  pr-[26px] font-medium gray_colorTxt bg-[#fbfbfb];
+            @apply w-full h-full text-[1.30vmin] leading-[2.87vmin] pt-[1.11vmin]  pr-[2.41vmin] font-medium gray_colorTxt bg-[#fbfbfb];
             &::-webkit-input-placeholder {
-              font-size: 14px;
+              font-size: 1.3vmin;
             }
             &::-webkit-textarea {
-              font-size: 14px;
+              font-size: 1.3vmin;
             }
 
             /* scrollbar */
             &::-webkit-scrollbar {
-              width: 9.5px;
+              width: 0.88vmin;
             }
 
             &::-webkit-scrollbar-thumb {
@@ -45,17 +45,17 @@
           }
 
           > p {
-            @apply absolute bottom-[7px] right-[37px] flex justify-end text-[14px] font-medium gray_colorTxt;
+            @apply absolute bottom-[0.65vmin] right-[3.42vmin] flex justify-end text-[1.30vmin] font-medium gray_colorTxt;
           }
         }
       }
 
       .copyClipboard {
-        @apply flex_vertical_center gap-[4px] w-[100px] mt-[13px] cursor-pointer;
+        @apply flex_vertical_center gap-[0.37vmin] w-[9.26vmin] mt-[1.20vmin] cursor-pointer;
       }
       .copy_area {
         .icon {
-          @apply w-[24px] h-[24px];
+          @apply w-[2.22vmin] h-[2.22vmin];
 
           img {
             @apply object-cover w-full h-full;
@@ -63,7 +63,7 @@
         }
 
         p {
-          @apply text-[14px] font-medium gray_colorTxt;
+          @apply text-[1.30vmin] font-medium gray_colorTxt;
         }
       }
     }
@@ -81,7 +81,7 @@
             @apply flex-col w-full h-full flex_center;
 
             > div:first-of-type {
-              @apply w-[254px] h-[254px] mb-[24px];
+              @apply w-[23.52vmin] h-[23.52vmin] mb-[2.22vmin];
 
               img {
                 @apply w-full h-full;
@@ -89,7 +89,7 @@
             }
 
             p {
-              @apply text-[20px] font-normal gray_colorTxt text-center;
+              @apply text-[1.85vmin] font-normal gray_colorTxt text-center;
             }
           }
 

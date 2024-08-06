@@ -213,6 +213,10 @@ section.main_container {
                 @apply text-[1.30vmin] leading-[2.87vmin] font-medium gray_colorTxt;
               }
 
+              mark {
+                @apply text-[1.30vmin];
+              }
+
               /* scrollbar */
               &::-webkit-scrollbar {
                 width: 0.88vmin;

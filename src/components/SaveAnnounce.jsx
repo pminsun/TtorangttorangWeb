@@ -9,7 +9,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'next/link';
 import { fetchQnAData, fetchSaveScript } from '@/api/fetchData';
 
-export default function SaveAnnounce({ userEmail }) {
+export default function SaveAnnounce({ userEmail, userAccessToken }) {
   const pathname = usePathname();
   const { subject, presentPurpose, endingTxt } = useSettingStore();
   const { setLogin } = useLoginModalStore();
@@ -151,13 +151,10 @@ export default function SaveAnnounce({ userEmail }) {
   const saveScriptToAccount = async () => {
     try {
       const data = {
-        topic: subject,
-        purpose: presentPurpose,
-        word: endingTxt,
         content: finalScript.replace(/\n/g, ''),
         qnaList: qaArray,
       };
-      const response = await fetchSaveScript(data);
+      await fetchSaveScript(data, userAccessToken);
     } catch (error) {
       console.error('Error fetching save script:', error);
     }
@@ -315,7 +312,7 @@ export default function SaveAnnounce({ userEmail }) {
                   </button>
                   <button
                     type="button"
-                    onClick={() => (userEmail ? saveScriptToAccount : setLogin(true))}
+                    onClick={() => (userEmail ? saveScriptToAccount() : qaArray.length > 0 ? setLogin(true) : '')}
                     className={cls(qaArray.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
                   >
                     저장하기
