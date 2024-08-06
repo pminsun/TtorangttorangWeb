@@ -8,26 +8,25 @@ import Slider from 'react-slick';
 import ShapeBg from '@/components/ShapeBg';
 import { useUserStore } from '@/store/store';
 import { sliceMyScript, sliceMyScriptDateOnly, sliceMyScriptTitle, reverseData } from '@/utils/config';
-import { fetchKakaoLogOut, getUserScript } from '@/api/fetchData';
+import { fetchKakaoLogOut, getUserScript, deleteUserScript } from '@/api/fetchData';
 
 export default function Mypage() {
   const router = useRouter();
-  const [deleteAnnounce, setDeleteAnnounce] = useState(false);
+  const [deleteAnnounce, setDeleteAnnounce] = useState({ show: false, id: '' });
   const [withdrawal, setWithdrawal] = useState(false);
   const { userEmail, accessToken, userAccessToken, clearUser } = useUserStore();
   const [addListLength, setAddListLength] = useState(0);
 
-  // 내 발표문 data
+  // 내 발표문 data 가져오기
   const {
     data: myScripts,
     isLoading,
     error,
+    refetch,
   } = useQuery({
     queryKey: ['myScriptsData'],
     queryFn: () => getUserScript(userAccessToken),
   });
-
-  const fiveItemInoneLine = myScripts?.data.data.length % 5;
 
   useEffect(() => {
     if (myScripts) {
@@ -38,6 +37,16 @@ export default function Mypage() {
       setAddListLength(itemsNeeded);
     }
   }, [myScripts]);
+
+  // 내 발표문 삭제
+  const deleteMyScript = async (id) => {
+    try {
+      await deleteUserScript(userAccessToken, id);
+      refetch();
+    } catch (error) {
+      console.error('Failed:', error);
+    }
+  };
 
   // 슬라이드
   function NextArrow(props) {
@@ -151,7 +160,7 @@ export default function Mypage() {
                       <div className="announce_title">
                         <p>{sliceMyScriptTitle(item.topic)}</p>
                         <div
-                          onClick={() => setDeleteAnnounce(true)}
+                          onClick={() => setDeleteAnnounce({ show: true, id: item.id })}
                           className="delteBtn"
                         >
                           <Image
@@ -172,7 +181,6 @@ export default function Mypage() {
                     </div>
                   )),
                 )}
-
                 {Array.from({ length: addListLength }, (_, index) => (
                   <div
                     className="myAnnounce"
@@ -196,6 +204,30 @@ export default function Mypage() {
                     </Link>
                   </div>
                 ))}
+                {myScripts?.data.data.length === 0 &&
+                  new Array(5).fill(null).map((_, index) => (
+                    <div
+                      className="myAnnounce"
+                      key={index}
+                    >
+                      <div className="announce_title">
+                        <p>새 발표문 쓰기</p>
+                      </div>
+                      <Link
+                        href={`/announce`}
+                        className="announce_content"
+                      >
+                        <div className="plusBtn">
+                          <Image
+                            src={LocalImages.ImageAddPlus}
+                            alt="ImageAddPlus"
+                            width={64}
+                            height={64}
+                          />
+                        </div>
+                      </Link>
+                    </div>
+                  ))}
               </Slider>
             </div>
           </div>
@@ -224,11 +256,11 @@ export default function Mypage() {
         </div>
       </section>
       {/* 삭제 모달 */}
-      {deleteAnnounce && (
+      {deleteAnnounce.show && (
         <>
           <div
             className="modalBlackBg"
-            onClick={() => setDeleteAnnounce(false)}
+            onClick={() => setDeleteAnnounce({ show: false, id: '' })}
           ></div>
           <div className="modal_box withdrawal_box">
             <div className="character_box">
@@ -247,11 +279,19 @@ export default function Mypage() {
             <div className="modalBtn_area">
               <button
                 type="button"
-                onClick={() => setDeleteAnnounce(false)}
+                onClick={() => setDeleteAnnounce({ show: false, id: '' })}
               >
                 아니요
               </button>
-              <button type="button">네</button>
+              <button
+                type="button"
+                onClick={() => {
+                  deleteMyScript(deleteAnnounce.id);
+                  setDeleteAnnounce({ show: false, id: '' });
+                }}
+              >
+                네
+              </button>
             </div>
           </div>
         </>
