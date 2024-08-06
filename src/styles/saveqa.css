@@ -19,7 +19,7 @@
         }
 
         .scriptTxt {
-          @apply relative w-full h-[calc(100%-72px)] pl-[1.20vmin] pb-[4.72vmin] area_border;
+          @apply relative w-full h-[calc(100%-6.67vmin)] pl-[1.20vmin] pb-[4.72vmin] area_border;
 
           textarea {
             @apply w-full h-full text-[1.30vmin] leading-[2.87vmin] pt-[1.11vmin]  pr-[2.41vmin] font-medium gray_colorTxt bg-[#fbfbfb];
@@ -51,7 +51,11 @@
       }
 
       .copyClipboard {
-        @apply flex_vertical_center gap-[0.37vmin] w-[9.26vmin] mt-[1.20vmin] cursor-pointer;
+        @apply flex_vertical_center gap-[0.37vmin] w-[10vmin] mt-[1.20vmin] cursor-pointer;
+
+        p {
+          @apply text-[1.30vmin] font-medium gray_colorTxt;
+        }
       }
       .copy_area {
         .icon {
@@ -98,7 +102,7 @@
 
             /* scrollbar */
             &::-webkit-scrollbar {
-              width: 9.5px;
+              width: 0.88vmin;
             }
 
             &::-webkit-scrollbar-thumb {
@@ -117,18 +121,18 @@
               }
 
               .question_area {
-                @apply w-full min-h-[152px] py-[37px] pr-[29px] flex_xBetween;
+                @apply w-full min-h-[14.07vmin] py-[3.42vmin] pr-[2.68vmin] flex_xBetween;
 
                 > p:first-of-type {
-                  @apply text-[18px] font-bold text-[#424242];
+                  @apply text-[1.67vmin] font-bold text-[#424242];
                 }
 
                 > p.question {
-                  @apply w-[350px] text-left break-words text-[16px] gray_colorTxt font-medium leading-[32px];
+                  @apply w-[32.41vmin] text-left break-words text-[1.48vmin] gray_colorTxt font-medium leading-[2.96vmin];
                 }
 
                 .list_arrow {
-                  @apply w-[24px] h-[24px];
+                  @apply w-[2.22vmin] h-[2.22vmin];
 
                   img {
                     @apply object-cover w-full h-full;
@@ -137,18 +141,18 @@
               }
 
               .answer_area {
-                @apply flex items-start gap-[55px] invisible w-full overflow-hidden transition-all duration-300 max-h-0;
+                @apply flex items-start gap-[5.09vmin] invisible w-full overflow-hidden transition-all duration-300 max-h-0;
 
                 &.on {
-                  @apply visible max-h-[300px] mt-[27px]  pb-[37px];
+                  @apply visible max-h-[27.78vmin] mt-[2.50vmin]  pb-[3.42vmin];
                 }
 
                 > p:first-of-type {
-                  @apply text-[18px] font-bold text-[#424242];
+                  @apply text-[1.67vmin] font-bold text-[#424242];
                 }
 
                 > p.answer {
-                  @apply max-w-[350px] break-words text-[16px] gray_colorTxt font-medium leading-[32px];
+                  @apply max-w-[32.41vmin] break-words text-[1.48vmin] gray_colorTxt font-medium leading-[2.96vmin];
                 }
               }
             }
@@ -156,10 +160,10 @@
         }
 
         .finalBtn_box {
-          @apply flex_xBetween gap-[20px] w-full h-[60px] mt-[21px];
+          @apply flex_xBetween gap-[1.85vmin] w-full h-[5.56vmin] mt-[1.94vmin];
 
           button {
-            @apply flex_center flex-1 h-full area_border text-[16px] font-medium rounded;
+            @apply flex_center flex-1 h-full area_border text-[1.48vmin] font-medium rounded;
           }
         }
       }
