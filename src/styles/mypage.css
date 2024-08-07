@@ -30,9 +30,14 @@
   }
 
   .myAnnounce_area {
-    @apply flex flex-col h-[49.8%];
+    @apply flex flex-col;
     .myAnnounce_slide {
       @apply relative flex-1;
+
+      .slick-slider {
+        @apply overflow-hidden;
+      }
+
       .slick-track {
         @apply flex overflow-hidden;
       }
@@ -48,7 +53,11 @@
         overflow: hidden;
       }
       .slick-arrow {
-        @apply absolute_yHalf w-[7.41vmin] h-[7.41vmin];
+        @apply absolute top-[45%] -translate-y-1/2 w-[7.41vmin] h-[7.41vmin];
+
+        img {
+          @apply w-full h-full object-cover;
+        }
 
         &.slick-prev {
           @apply left-[-11.11vmin];
@@ -83,7 +92,7 @@
       }
 
       .myAnnounce {
-        @apply block w-[22.22vmin] h-full area_border cursor-pointer;
+        @apply block w-[22.22vmin] h-[23.70vmin] area_border cursor-pointer;
 
         .announce_title {
           @apply flex_xBetween w-full h-[5vmin] px-[1.30vmin] cursor-default main_colorBg;
@@ -93,12 +102,16 @@
           }
 
           .delteBtn {
-            @apply flex_center w-[2.22vmin] h-[2.22vmin] cursor-pointer;
+            @apply flex_center w-[1.11vmin] h-[1.11vmin] cursor-pointer;
+
+            img {
+              @apply w-full h-full object-cover;
+            }
           }
         }
 
         .announce_content {
-          @apply flex_center flex-col h-[calc(100%-5vmin)] px-[1.30vmin] pt-[0.74vmin] pb-[1.30vmin] overflow-hidden;
+          @apply flex_xBetween flex-col h-[calc(100%-5vmin)] px-[1.30vmin] pt-[1.67vmin] pb-[1.30vmin] overflow-hidden;
 
           > p:first-of-type {
             @apply text-[1.30vmin] font-medium leading-[2.96vmin] pb-[0.37vmin] gray_colorTxt;
@@ -107,8 +120,15 @@
             @apply flex justify-end w-full pt-[0.74vmin] border-t border-[#C4C4C4] text-[1.30vmin] font-medium gray_colorTxt;
           }
 
-          > div.plusBtn {
-            @apply w-[5.93vmin] h-[5.93vmin] cursor-pointer;
+          .plusBtn_area {
+            @apply flex_center h-full;
+            > div.plusBtn {
+              @apply w-[5.93vmin] h-[5.93vmin] cursor-pointer;
+
+              img {
+                @apply w-full h-full object-cover;
+              }
+            }
           }
         }
       }
@@ -123,53 +143,6 @@
         a,
         button {
           @apply flex_center w-[15.56vmin] h-[5.74vmin] text-[1.85vmin] font-medium gray_colorTxt area_border;
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 1750px) {
-  .mypage_container {
-    @apply pt-[2.96vmin]  pb-[3.33vmin];
-
-    .mypage_title {
-      @apply mb-[1.85vmin] text-[2.22vmin];
-    }
-
-    .userInfo_area {
-      > div {
-        @apply py-[1.30vmin];
-
-        > div.user {
-          .userIcon {
-            @apply w-[5.74vmin] h-[5.74vmin] rounded-full bg-[#EBF2FA];
-          }
-
-          > p {
-            @apply text-[2.22vmin];
-          }
-        }
-
-        > button {
-          @apply w-[13.70vmin] h-[3.89vmin] text-[1.67vmin] font-medium area_border;
-        }
-      }
-    }
-    .myAnnounce_area {
-      .myAnnounce_slide {
-        .myAnnounce {
-          .announce_title {
-            > p {
-              @apply text-[1.67vmin] font-medium text-[#FEFEFE];
-            }
-          }
-
-          .announce_content {
-            > p:first-of-type {
-              @apply text-[1.11vmin] leading-[2.59vmin];
-            }
-          }
         }
       }
     }

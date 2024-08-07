@@ -66,8 +66,8 @@ export default function Mypage() {
         onClick={onClick}
       >
         <Image
-          src={LocalImages.ImageMainStepArrowRight}
-          alt="ImageMainStepArrowRight"
+          src={LocalImages.ImageMainStepArrowActive}
+          alt="ImageMainStepArrowActive"
           width={80}
           height={80}
         />
@@ -84,10 +84,11 @@ export default function Mypage() {
         onClick={onClick}
       >
         <Image
-          src={LocalImages.ImageMainStepArrowLeft}
-          alt="ImageMainStepArrowLeft"
+          src={LocalImages.ImageMainStepArrowActive}
+          alt="ImageMainStepArrowActive"
           width={80}
           height={80}
+          className="-scale-x-100"
         />
       </div>
     );
@@ -136,7 +137,14 @@ export default function Mypage() {
             <p className="mypage_title">내 정보</p>
             <div>
               <div className="user">
-                <div className="userIcon"></div>
+                <div className="userIcon">
+                  <Image
+                    src={LocalImages.ImageMypageIcon}
+                    alt="ImageMypageIcon"
+                    width={72}
+                    height={72}
+                  />
+                </div>
                 <p>{userEmail}</p>
               </div>
               <button
@@ -193,13 +201,15 @@ export default function Mypage() {
                       href={`/announce`}
                       className="announce_content"
                     >
-                      <div className="plusBtn">
-                        <Image
-                          src={LocalImages.ImageAddPlus}
-                          alt="ImageAddPlus"
-                          width={64}
-                          height={64}
-                        />
+                      <div className="plusBtn_area">
+                        <div className="plusBtn">
+                          <Image
+                            src={LocalImages.ImageAddPlus}
+                            alt="ImageAddPlus"
+                            width={64}
+                            height={64}
+                          />
+                        </div>
                       </div>
                     </Link>
                   </div>
@@ -269,7 +279,6 @@ export default function Mypage() {
                 alt="ImageModalDelete"
                 width={120}
                 height={120}
-                className="scale-125"
               />
             </div>
             <div className="withdrawalMent_box">
@@ -304,7 +313,14 @@ export default function Mypage() {
             onClick={() => setWithdrawal(false)}
           ></div>
           <div className="modal_box withdrawal_box">
-            <div className="character_box"></div>
+            <div className="character_box">
+              <Image
+                src={LocalImages.ImageTtorangWithdrawal}
+                alt="ImageTtorangWithdrawal"
+                width={120}
+                height={120}
+              />
+            </div>
             <div className="withdrawalMent_box">
               <p>정말 탈퇴하시겠어요?</p>
               <p>탈퇴하시면 모든 정보를 잃게 돼요</p>

@@ -105,7 +105,7 @@ footer {
           @apply relative pr-[1.11vmin] font-medium text-[1.48vmin] gray_colorTxt;
 
           &:first-of-type::after {
-            @apply content-[''] absolute_yHalf right-[0px] mt-[2px] w-[1px] h-[14px] gray_colorBg;
+            @apply content-[''] absolute_yHalf right-[0px] mt-[2px] w-[1px] h-[1.30vmin] gray_colorBg;
           }
 
           &:last-of-type {
@@ -166,31 +166,6 @@ footer {
     > p:last-of-type {
       @apply text-[1.48vmin] font-normal text-[#757575];
     }
-  }
-}
-
-/* SkeletonLoading */
-.skeletonLine {
-  @apply relative mb-[5px] rounded-[5px] h-[26px] overflow-hidden bg-[#d6d6d6];
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, #d6d6d6, #eeeeee, #d6d6d6);
-    animation: 2s linear infinite skeleton-animation;
-  }
-}
-
-@keyframes skeleton-animation {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(100%);
   }
 }
 
@@ -255,9 +230,13 @@ footer {
   }
 
   &.withdrawal_box {
-    @apply w-[37.04vmin] h-[32.22vmin];
+    @apply w-[37.04vmin] h-[32.22vmin] py-[2.78vmin];
     .character_box {
-      @apply mb-[2.22vmin];
+      @apply w-[11.11vmin] h-[11.11vmin] overflow-hidden mb-[2.22vmin];
+
+      img {
+        @apply w-full h-full object-cover;
+      }
     }
 
     .withdrawalMent_box {
@@ -276,11 +255,11 @@ footer {
         @apply flex_center w-[13.06vmin] h-[5.56vmin];
 
         &:first-of-type {
-          @apply active_color;
+          @apply active_color text-[1.48vmin];
         }
 
         &:last-of-type {
-          @apply area_border;
+          @apply area_border text-[1.48vmin];
         }
       }
     }
