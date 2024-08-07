@@ -162,3 +162,15 @@ export const fetchKakaoLogOut = async (accessToken) => {
     },
   });
 };
+
+// 또랑또랑 탈되
+export const fetchTtorangWithdrawal = async (userAccessToken) => {
+  return await axios({
+    method: 'post',
+    url: `${api_base_uri}/api/user/withdrawal`,
+    headers: {
+      Authorization: `Bearer ${userAccessToken}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+  });
+};
