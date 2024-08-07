@@ -192,10 +192,15 @@ export default function ModifyAnnounce({ userEmail }) {
       let extractedScriptText = finaldata.substring(0, improveIndex).replace('발표 대본', '').trim().replace(/[-:*]/g, '').trim();
 
       // === 개선내용 === //
-      let extractedImproveEText = finaldata.substring(improveIndex).replace('개선 내용', '').replace(/[-:*]/g, '').trim();
-      const improvementSections = extractedImproveEText.split('\n\n');
-      const improvementPairs = improvementSections.flatMap((section) => section.split(',').map((item) => item.trim()));
-      setImprovementMent(improvementPairs[0]);
+      let extractedImproveEText = '';
+      if (improveIndex !== -1) {
+        extractedImproveEText = finaldata.substring(improveIndex).replace('개선 내용', '').replace(/[-:*]/g, '').trim();
+        const improvementSections = extractedImproveEText.split('\n\n');
+        const improvementPairs = improvementSections.flatMap((section) => section.split(',').map((item) => item.trim()));
+        setImprovementMent(improvementPairs[0]);
+      } else {
+        setImprovementMent(''); // 개선 내용이 없는 경우에는 빈 문자열로 설정
+      }
 
       // 재교정 시 (2회차 이상)
       if (newScript.length > 0 && modifyBtn && compareScriptToggle) {

@@ -36,7 +36,7 @@ textarea {
 
 /* header */
 header {
-  @apply absolute top-0 left-0 right-0 z-20 flex_center w-full h-[6.33vmin] main_colorBg;
+  @apply absolute top-0 left-0 right-0 z-20 flex_center w-full h-[5.64vmin] main_colorBg;
 
   > .header_container {
     @apply flex_xBetween content_w_size h-full;
@@ -59,13 +59,13 @@ header {
       }
 
       nav {
-        @apply ml-[14.12vmin];
+        @apply ml-[18.24vmin];
         ul {
-          @apply flex_vertical_center gap-[2.92vmin] h-full;
+          @apply flex_vertical_center gap-[2.6vmin] h-full;
 
           a,
           button {
-            @apply relative flex_center w-[16.06vmin] h-full font-medium text-[2.92vmin] text-[#FEFEFE];
+            @apply relative flex_center w-[14.31vmin] h-full font-medium text-[2.6vmin] text-[#FEFEFE];
 
             &.on::after {
               @apply content-[''] absolute bottom-0 left-0 w-full h-[0.49vmin] bg-[#FEFEFE];
@@ -79,7 +79,7 @@ header {
       @apply h-full;
       button,
       a {
-        @apply flex_center px-[1.34vmin] h-full font-medium text-[2.92vmin] text-white;
+        @apply flex_center px-[1.34vmin] h-full font-medium text-[2.6vmin] text-white;
       }
     }
   }
@@ -87,13 +87,13 @@ header {
 
 /* footer */
 footer {
-  @apply absolute bottom-0 left-0 right-0 w-full h-[6.33vmin] bg-white;
+  @apply absolute bottom-0 left-0 right-0 w-full h-[5.64vmin] bg-white;
 
   .ft_container {
     @apply flex_xBetween content_w_size h-full mx-auto;
 
     p {
-      @apply gray_colorTxt font-medium text-[1.95vmin];
+      @apply gray_colorTxt font-medium text-[1.73vmin];
     }
 
     > div {
@@ -101,25 +101,25 @@ footer {
         @apply flex_vertical_center;
 
         p {
-          @apply relative pr-[1.46vmin] font-medium text-[1.95vmin] gray_colorTxt;
+          @apply relative pr-[1.3vmin] font-medium text-[1.73vmin] gray_colorTxt;
 
           &:first-of-type::after {
             @apply content-[''] absolute_yHalf right-[0px] mt-[0.24vmin] w-[0.12px] h-[1.7vmin] gray_colorBg;
           }
 
           &:last-of-type {
-            @apply px-[1.46vmin];
+            @apply px-[1.3vmin];
           }
         }
       }
 
       &:last-of-type {
-        @apply flex_center gap-[3.65vmin];
+        @apply flex_center gap-[3.36vmin];
 
         a {
           @apply flex_center gap-[0.73vmin];
           .ftIcon_box {
-            @apply w-[2.92vmin] h-[2.92vmin];
+            @apply w-[2.6vmin] h-[2.6vmin];
 
             img {
               @apply object-cover w-full h-full;
@@ -174,10 +174,10 @@ footer {
 }
 
 .modal_box {
-  @apply flex_center flex-col absolute_center z-[80] w-[38.73vmin] h-[25.93vmin] rounded bg-white;
+  @apply flex_center flex-col absolute_center z-[80] w-[34.5vmin] h-[23.1vmin] rounded bg-white;
 
   .character_box {
-    @apply flex_center w-[9.73vmin] h-[9.73vmin] mb-[2.96vmin] bg-[#EBF2FA];
+    @apply flex_center w-[9.22vmin] h-[9.22vmin] mb-[3.47vmin] bg-[#EBF2FA];
 
     img {
       @apply w-full h-full object-cover;
@@ -185,10 +185,10 @@ footer {
   }
 
   &.login_box {
-    @apply w-[48.7vmin] h-[42.34vmin] px-[2.43vmin];
+    @apply w-[43.4vmin] h-[37.8vmin] px-[2.17vmin];
 
     .modal_close {
-      @apply absolute top-[1.7vmin] right-[2.07vmin] z-10 w-[2.92vmin] h-[2.92vmin] cursor-pointer;
+      @apply absolute top-[1.7vmin] right-[2.07vmin] z-10 w-[2.6vmin] h-[2.6vmin] cursor-pointer;
 
       img {
         @apply w-full h-full object-cover;
@@ -205,14 +205,14 @@ footer {
 
     .login_ment {
       > p {
-        @apply text-[2.43vmin] font-medium text-center text-[#424242];
+        @apply text-[2.17vmin] font-medium text-center text-[#424242];
       }
     }
 
     .modalBtn_area {
       @apply flex flex-col w-full;
       .kakoLogin {
-        @apply flex_center relative w-full h-[7.55vmin] my-[2.92vmin] bg-[#FEE404];
+        @apply flex_center relative w-full h-[6.72vmin] my-[2.6vmin] bg-[#FEE404];
 
         .kakoLogo {
           @apply absolute_yHalf left-[2.07vmin] w-[2.56vmin] h-[2.56vmin];
@@ -229,9 +229,9 @@ footer {
   }
 
   &.withdrawal_box {
-    @apply w-[48.7vmin] h-[42.34vmin] py-[3.65vmin];
+    @apply w-[48.7vmin] h-[42.34vmin] py-[3.36vmin];
     .character_box {
-      @apply w-[14.61vmin] h-[14.61vmin] overflow-hidden mb-[2.92vmin];
+      @apply w-[14.61vmin] h-[14.61vmin] overflow-hidden mb-[2.6vmin];
 
       img {
         @apply w-full h-full object-cover;
@@ -240,7 +240,7 @@ footer {
 
     .withdrawalMent_box {
       p:first-of-type {
-        @apply mb-[14.61vmin] text-[2.92vmin] font-medium text-center text-[#424242];
+        @apply mb-[14.61vmin] text-[2.6vmin] font-medium text-center text-[#424242];
       }
       p:last-of-type {
         @apply text-[2.19vmin] font-medium text-center gray_colorTxt;
@@ -254,11 +254,11 @@ footer {
         @apply flex_center w-[17.18vmin] h-[7.3vmin];
 
         &:first-of-type {
-          @apply active_color text-[1.95vmin];
+          @apply active_color text-[1.73vmin];
         }
 
         &:last-of-type {
-          @apply area_border text-[1.95vmin];
+          @apply area_border text-[1.73vmin];
         }
       }
     }
@@ -273,7 +273,7 @@ footer {
   }
 
   .loader {
-    @apply block relative w-[1.46vmin] h-[1.46vmin] mx-auto rounded-full bg-[#EDEDED];
+    @apply block relative w-[1.3vmin] h-[1.3vmin] mx-auto rounded-full bg-[#EDEDED];
     animation: l5 1s infinite linear alternate;
   }
 }
@@ -312,7 +312,7 @@ footer {
     @apply absolute left-0 w-[21.9vmax] h-full;
 
     .bg_flower {
-      @apply absolute -top-[32.85vmin] left-[-2.43vmin] w-[33.22vmin] h-[70.23vmin];
+      @apply absolute -top-[32.85vmin] left-[-2.17vmin] w-[33.22vmin] h-[70.23vmin];
 
       img {
         @apply scale-95;

@@ -18,7 +18,7 @@ export default function Header() {
   const { setFinalScript, setQaArray } = useFinalScriptStore();
 
   useEffect(() => {
-    if (pathname !== '/announce') {
+    if (userEmail && pathname !== '/announce') {
       setOriginScript('');
       setNewScript('');
       setSubject('');
