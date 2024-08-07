@@ -14,7 +14,7 @@ export default function Mypage() {
   const router = useRouter();
   const [deleteAnnounce, setDeleteAnnounce] = useState({ show: false, id: '' });
   const [withdrawal, setWithdrawal] = useState(false);
-  const { userEmail, setUserEmail, accessToken, setAccessToken, userAccessToken, setUserAccessToken, clearUser } = useUserStore();
+  const { userEmail, accessToken, userAccessToken, clearUser } = useUserStore();
   const [addListLength, setAddListLength] = useState(0);
 
   // 내 발표문 data 가져오기
@@ -247,13 +247,28 @@ export default function Mypage() {
             <p className="mypage_title">기타</p>
             <ul>
               <li>
-                <Link href={'/'}>공지사항</Link>
+                <Link
+                  target="_blank"
+                  href={'https://angry-mice-e3f.notion.site/c76269690bc947bfb1182122fd25a9f1?pvs=4'}
+                >
+                  공지사항
+                </Link>
               </li>
               <li>
-                <Link href={'/'}>개인정보처리방침</Link>
+                <Link
+                  target="_blank"
+                  href={'https://angry-mice-e3f.notion.site/619ff9c30eb1436a99abe3cd808335b4?pvs=4'}
+                >
+                  개인정보처리방침
+                </Link>
               </li>
               <li>
-                <Link href={'/'}>이용약관</Link>
+                <Link
+                  target="_blank"
+                  href={'https://angry-mice-e3f.notion.site/619ff9c30eb1436a99abe3cd808335b4?pvs=4'}
+                >
+                  이용약관
+                </Link>
               </li>
               <li>
                 <button
