@@ -14,7 +14,7 @@ export default function Mypage() {
   const router = useRouter();
   const [deleteAnnounce, setDeleteAnnounce] = useState({ show: false, id: '' });
   const [withdrawal, setWithdrawal] = useState(false);
-  const { userEmail, accessToken, userAccessToken, clearUser } = useUserStore();
+  const { userEmail, setUserEmail, accessToken, setAccessToken, userAccessToken, setUserAccessToken, clearUser } = useUserStore();
   const [addListLength, setAddListLength] = useState(0);
 
   // 내 발표문 data 가져오기
@@ -116,7 +116,9 @@ export default function Mypage() {
   const kakaoLogOut = async () => {
     try {
       await fetchKakaoLogOut(accessToken);
-      clearUser();
+      setUserEmail('');
+      setAccessToken('');
+      setUserAccessToken('');
       router.push('/');
     } catch (e) {
       // 이미 만료된 토큰일 경우
