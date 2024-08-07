@@ -68,6 +68,7 @@ const KakaoCallback = () => {
           console.error('토큰 에러:', tokenError.response ? tokenError.response.data : tokenError.message);
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query.code, router, setAccessToken, setUserEmail, setUserAccessToken]);
 
   return (

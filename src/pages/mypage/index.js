@@ -121,7 +121,7 @@ export default function Mypage() {
     } catch (e) {
       // 이미 만료된 토큰일 경우
       if (e.response && e.response.data && e.response.data.code === -401) {
-        window.location.href = '/';
+        router.push('/');
       } else {
         console.error('Error LogOut:', e);
       }
