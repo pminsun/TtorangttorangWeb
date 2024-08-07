@@ -369,7 +369,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                   </button>
                   <button
                     type="button"
-                    onClick={() => (userEmail ? saveScriptToAccount() : qaArray.length > 0 ? setLogin(true) : '')}
+                    onClick={() => (userEmail ? (saveScriptToAccount(), router.push('/mypage')) : qaArray.length > 0 ? setLogin(true) : '')}
                     className={cls(qaArray.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
                   >
                     저장하기
