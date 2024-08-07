@@ -92,7 +92,7 @@
   }
 }
 section.main_container {
-  @apply !block !content_w_size h-full overflow-hidden mx-auto pt-[2.41vmin] pb-[7.87vmin] bg-[#fbfbfb];
+  @apply !block !content_w_size h-full overflow-hidden mx-auto pt-[2.41vmin] pb-[7.87vmin];
 
   /* common */
   .required {
@@ -111,41 +111,6 @@ section.main_container {
 
       &:first-of-type {
         @apply font-bold text-[2.22vmin];
-      }
-    }
-  }
-
-  .skeleton_box {
-    @apply absolute top-0 left-0 w-full h-auto overflow-x-hidden overflow-y-auto;
-  }
-
-  /* banner */
-  section.topBanner_area {
-    @apply relative w-full h-[27.78vmin] rounded-md bg-[#3D6BE1] overflow-hidden;
-
-    img {
-      @apply object-cover w-full h-full;
-    }
-
-    .topBanner_ment {
-      @apply flex_center flex-col absolute_center w-[74.07vmin];
-
-      .topBanner_mentArea {
-        p {
-          @apply text-center font-[800] text-[2.59vmin] text-white font-TmoneyRoundWind;
-
-          &:last-of-type {
-            @apply text-[2.31vmin] my-[1.11vmin];
-          }
-        }
-      }
-
-      .topBanner_logo {
-        @apply w-[17.41vmin] h-[8.52vmin];
-
-        img {
-          @apply object-cover w-full h-full;
-        }
       }
     }
   }
