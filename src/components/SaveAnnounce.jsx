@@ -214,8 +214,11 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
 
   useEffect(() => {
     if (myScriptDetail) {
+      const detailTopic = myScriptDetail.data.data.topic;
       const detailScript = myScriptDetail.data.data.content;
       const detailQA = myScriptDetail.data.data.qnaList;
+
+      setModifyTitle(detailTopic);
       setSaveAnnounce(detailScript);
       setSaveAnnounceCharCount(detailScript.length);
       setSaveQaArray(detailQA);
@@ -230,6 +233,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
     try {
       const data = {
         content: saveAnnounce,
+        topic: modifyTitle,
       };
       await fetchModifyScript(data, userAccessToken, scriptId);
     } catch (error) {
@@ -256,6 +260,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                   maxLength="30"
                   value={sliceTitleOverThirty(modifyTitle)}
                   onChange={userModifyTitle}
+                  disabled={modifySaveAnnounce ? false : true}
                 />
               </div>
             )}

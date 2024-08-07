@@ -93,7 +93,7 @@ footer {
     @apply flex_xBetween content_w_size h-full mx-auto;
 
     p {
-      @apply gray_colorTxt font-medium text-[1.48vmin];
+      @apply gray_colorTxt font-medium text-[1.95vmin];
     }
 
     > div {

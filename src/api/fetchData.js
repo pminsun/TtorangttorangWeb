@@ -89,6 +89,7 @@ export const fetchModifyScript = async (data, userAccessToken, id) => {
     url: `${api_base_uri}/api/script/${id}`,
     data: {
       content: data.content,
+      topic: data.topic,
     },
     headers: {
       Authorization: `Bearer ${userAccessToken}`,
