@@ -36,7 +36,7 @@ textarea {
 
 /* header */
 header {
-  @apply absolute top-0 left-0 right-0 z-20 flex_center w-full h-[4.81vmin] main_colorBg;
+  @apply absolute top-0 left-0 right-0 z-20 flex_center w-full h-[6.33vmin] main_colorBg;
 
   > .header_container {
     @apply flex_xBetween content_w_size h-full;
@@ -45,7 +45,7 @@ header {
       @apply h-full flex_vertical_center;
       h1 {
         .logo_area {
-          @apply block w-[9.07vmin] h-[3.06vmin];
+          @apply block w-[11.92vmin] h-[4.63vmin];
 
           img {
             @apply w-full h-full;
@@ -59,16 +59,16 @@ header {
       }
 
       nav {
-        @apply ml-[10.74vmin];
+        @apply ml-[14.12vmin];
         ul {
-          @apply flex_vertical_center gap-[2.22vmin] h-full;
+          @apply flex_vertical_center gap-[2.92vmin] h-full;
 
           a,
           button {
-            @apply relative flex_center w-[12.22vmin] h-full font-medium text-[2.22vmin] text-[#FEFEFE];
+            @apply relative flex_center w-[16.06vmin] h-full font-medium text-[2.92vmin] text-[#FEFEFE];
 
             &.on::after {
-              @apply content-[''] absolute bottom-0 left-0 w-full h-[0.37vmin] bg-[#FEFEFE];
+              @apply content-[''] absolute bottom-0 left-0 w-full h-[0.49vmin] bg-[#FEFEFE];
             }
           }
         }
@@ -79,7 +79,7 @@ header {
       @apply h-full;
       button,
       a {
-        @apply flex_center px-[1.02vmin] h-full font-medium text-[2.22vmin] text-white;
+        @apply flex_center px-[1.34vmin] h-full font-medium text-[2.92vmin] text-white;
       }
     }
   }
@@ -87,7 +87,7 @@ header {
 
 /* footer */
 footer {
-  @apply absolute bottom-0 left-0 right-0 w-full h-[4.81vmin] bg-white;
+  @apply absolute bottom-0 left-0 right-0 w-full h-[6.33vmin] bg-white;
 
   .ft_container {
     @apply flex_xBetween content_w_size h-full mx-auto;
