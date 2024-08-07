@@ -8,7 +8,7 @@ import { useFinalScriptStore, useSettingStore, useQaLoadingStore, useLoginModalS
 import { askListArray, cls, formatNumber, testScript, testScriptTitle } from '@/utils/config';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'next/link';
-import { fetchQnAData, fetchSaveScript, getDetailScript } from '@/api/fetchData';
+import { fetchModifyScript, fetchQnAData, fetchSaveScript, getDetailScript } from '@/api/fetchData';
 import { useRouter } from 'next/router';
 
 export default function SaveAnnounce({ userEmail, userAccessToken }) {
@@ -195,7 +195,6 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
 
   useEffect(() => {
     if (router.isReady && id) {
-      // 현재 경로가 '/mypage/announce/*' 형식인지 확인
       if (router.pathname.startsWith('/mypage/announce/')) {
         setScriptId(id);
       }
@@ -222,10 +221,20 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
     }
   }, [myScriptDetail]);
 
-  console.log(myScriptDetail);
-  console.log(userAccessToken);
-
+  // 예상질문 교정페이지 / 마이페이지 구분
   const qaItems = scriptId ? saveQaArray : qaArray;
+
+  // 저장한 발표문 유저 수정
+  const userModifySavedScript = async () => {
+    try {
+      const data = {
+        content: saveAnnounce,
+      };
+      await fetchModifyScript(data, userAccessToken, scriptId);
+    } catch (error) {
+      console.error('Error fetching modified script:', error);
+    }
+  };
 
   return (
     <section className={cls('main_container', announcePage ? '' : 'myAnnounce_detail_container')}>
@@ -283,7 +292,14 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
               <button
                 type="button"
                 className={cls('scriptSave_btn', modifySaveAnnounce ? 'active_color' : 'gray_colorTxt area_border', announcePage ? 'mt-[3.04vmin]' : 'mt-[2.28vmin]')}
-                onClick={() => setModifySaveAnnounce(!modifySaveAnnounce)}
+                onClick={() => {
+                  if (!modifySaveAnnounce) {
+                    setModifySaveAnnounce(!modifySaveAnnounce);
+                  } else {
+                    userModifySavedScript();
+                    setModifySaveAnnounce(false);
+                  }
+                }}
               >
                 {modifySaveAnnounce ? '저장하기' : '수정하기'}
               </button>

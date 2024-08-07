@@ -86,7 +86,7 @@ export const getDetailScript = async (userAccessToken, id) => {
 export const fetchModifyScript = async (data, userAccessToken, id) => {
   return await axios({
     method: 'post',
-    url: `${api_base_uri}/api/script${id}`,
+    url: `${api_base_uri}/api/script/${id}`,
     data: {
       content: data.content,
     },
