@@ -84,8 +84,8 @@ module.exports = {
           color: '#FEFEFE',
         },
         '.area_border': {
-          border: '1px solid #C4C4C4',
-          borderRadius: '4px',
+          border: '0.093vmin solid #C4C4C4',
+          borderRadius: '0.37vmin',
         },
       };
       const layoutUtilities = {
