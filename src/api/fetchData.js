@@ -72,6 +72,17 @@ export const deleteUserScript = async (userAccessToken, id) => {
   });
 };
 
+export const getDetailScript = async (userAccessToken, id) => {
+  return await axios({
+    method: 'get',
+    url: `${api_base_uri}/api/script/${id}`,
+    headers: {
+      Authorization: `Bearer ${userAccessToken}`,
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+  });
+};
+
 // Login
 const grant_type = 'authorization_code';
 const client_id = process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID;

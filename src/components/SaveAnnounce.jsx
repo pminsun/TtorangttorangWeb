@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import GuideMent from './GuideMent';
+import { useQuery } from '@tanstack/react-query';
 import * as LocalImages from '@/utils/imageImports';
 import { useFinalScriptStore, useSettingStore, useQaLoadingStore, useLoginModalStore } from '@/store/store';
 import { askListArray, cls, formatNumber, testScript, testScriptTitle } from '@/utils/config';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'next/link';
-import { fetchQnAData, fetchSaveScript } from '@/api/fetchData';
+import { fetchQnAData, fetchSaveScript, getDetailScript } from '@/api/fetchData';
+import { useRouter } from 'next/router';
 
 export default function SaveAnnounce({ userEmail, userAccessToken }) {
   const pathname = usePathname();
@@ -25,6 +27,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
   const [saveAnnounceCharCount, setSaveAnnounceCharCount] = useState(0);
   const [modifyTitle, setModifyTitle] = useState('');
   const [modifyTitleCharCount, setModifyTitleCharCount] = useState(0);
+  const [saveQaArray, setSaveQaArray] = useState([]);
 
   // 교정하기 페이지 = true / 마이 발표문 상세 = false
   useEffect(() => {
@@ -185,6 +188,45 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
     return text.length > 30 ? text.slice(0, 30) + '...' : text;
   };
 
+  // 저장한 내 발표문 data 가져오기
+  const router = useRouter();
+  const [scriptId, setScriptId] = useState('');
+  const { id } = router.query;
+
+  useEffect(() => {
+    if (router.isReady && id) {
+      // 현재 경로가 '/mypage/announce/*' 형식인지 확인
+      if (router.pathname.startsWith('/mypage/announce/')) {
+        setScriptId(id);
+      }
+    }
+  }, [router.isReady, id, router.pathname]);
+
+  const {
+    data: myScriptDetail,
+    isLoading,
+    error,
+    refetch,
+  } = useQuery({
+    queryKey: ['myScriptDetail'],
+    queryFn: () => getDetailScript(userAccessToken, scriptId),
+  });
+
+  useEffect(() => {
+    if (myScriptDetail) {
+      const detailScript = myScriptDetail.data.data.content;
+      const detailQA = myScriptDetail.data.data.qnaList;
+      setSaveAnnounce(detailScript);
+      setSaveAnnounceCharCount(detailScript.length);
+      setSaveQaArray(detailQA);
+    }
+  }, [myScriptDetail]);
+
+  console.log(myScriptDetail);
+  console.log(userAccessToken);
+
+  const qaItems = scriptId ? saveQaArray : qaArray;
+
   return (
     <section className={cls('main_container', announcePage ? '' : 'myAnnounce_detail_container')}>
       {announcePage && <div className="progress_bar"></div>}
@@ -273,7 +315,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                   </div>
                 ) : (
                   <ul>
-                    {qaArray.map((item, index) => (
+                    {qaItems.map((item, index) => (
                       <li
                         key={index}
                         onClick={() => toggleQAItem(index)}
