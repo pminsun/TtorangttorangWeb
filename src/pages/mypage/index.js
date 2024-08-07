@@ -115,11 +115,11 @@ export default function Mypage() {
   // 카카오 로그아웃
   const kakaoLogOut = async () => {
     try {
-      await fetchKakaoLogOut(accessToken);
-      setUserEmail('');
-      setAccessToken('');
-      setUserAccessToken('');
-      router.push('/');
+      const res = await fetchKakaoLogOut(accessToken);
+      if (res) {
+        router.push('/');
+        clearUser();
+      }
     } catch (e) {
       // 이미 만료된 토큰일 경우
       if (e.response && e.response.data && e.response.data.code === -401) {
