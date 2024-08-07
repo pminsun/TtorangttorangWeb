@@ -11,7 +11,7 @@
   }
 
   .inner {
-    @apply relative flex_center w-full h-screen py-[6.33vmin];
+    @apply relative flex_center w-full h-screen py-[5.64vmin];
 
     > div:last-of-type {
       @apply flex_center content_w_size h-full overflow-hidden mx-auto;

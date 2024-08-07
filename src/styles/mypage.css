@@ -1,5 +1,5 @@
 .mypage_container {
-  @apply relative w-full h-full py-[6.33vmin] overflow-hidden bg-[#fbfbfb];
+  @apply relative w-full h-full py-[5.64vmin] overflow-hidden bg-[#fbfbfb];
 
   .content_area {
     @apply relative flex justify-between flex-col content_w_size h-full mx-auto pt-[5.46vmin] pb-[8.43vmin];
