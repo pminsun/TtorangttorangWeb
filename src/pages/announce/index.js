@@ -124,8 +124,15 @@ export default function Announce() {
       {qaLoading && (
         <>
           <div className="modalBlackBg"></div>
-          <div className="modal_box">
-            <div className="character_box"></div>
+          <div className="modal_box py-[2.69vmin]">
+            <div className="character_box">
+              <Image
+                src={LocalImages.ImageModalScriptIcon}
+                alt="ImageModalScriptIcon"
+                width={80}
+                height={80}
+              />
+            </div>
             <p>예상 질문을 받아오고 있어요</p>
             <div className="loader_area">
               <span className="loader"></span>
