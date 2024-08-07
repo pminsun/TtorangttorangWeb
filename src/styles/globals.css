@@ -101,25 +101,25 @@ footer {
         @apply flex_vertical_center;
 
         p {
-          @apply relative pr-[1.11vmin] font-medium text-[1.48vmin] gray_colorTxt;
+          @apply relative pr-[1.46vmin] font-medium text-[1.95vmin] gray_colorTxt;
 
           &:first-of-type::after {
-            @apply content-[''] absolute_yHalf right-[0px] mt-[0.19vmin] w-[1px] h-[1.30vmin] gray_colorBg;
+            @apply content-[''] absolute_yHalf right-[0px] mt-[0.24vmin] w-[0.12px] h-[1.7vmin] gray_colorBg;
           }
 
           &:last-of-type {
-            @apply px-[1.11vmin];
+            @apply px-[1.46vmin];
           }
         }
       }
 
       &:last-of-type {
-        @apply flex_center gap-[2.78vmin];
+        @apply flex_center gap-[3.65vmin];
 
         a {
-          @apply flex_center gap-[0.56vmin];
+          @apply flex_center gap-[0.73vmin];
           .ftIcon_box {
-            @apply w-[2.22vmin] h-[2.22vmin];
+            @apply w-[2.92vmin] h-[2.92vmin];
 
             img {
               @apply object-cover w-full h-full;
