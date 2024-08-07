@@ -16,7 +16,6 @@ body,
   @apply relative w-full h-screen overflow-y-hidden font-NotoSansKR bg-[#f9f9f9];
 }
 
-/* py-[52px] */
 .root_layout {
   @apply w-full h-full;
 }
@@ -105,7 +104,7 @@ footer {
           @apply relative pr-[1.11vmin] font-medium text-[1.48vmin] gray_colorTxt;
 
           &:first-of-type::after {
-            @apply content-[''] absolute_yHalf right-[0px] mt-[2px] w-[1px] h-[1.30vmin] gray_colorBg;
+            @apply content-[''] absolute_yHalf right-[0px] mt-[0.19vmin] w-[1px] h-[1.30vmin] gray_colorBg;
           }
 
           &:last-of-type {
@@ -303,10 +302,10 @@ footer {
   @apply absolute_fullPage overflow-hidden;
 
   > div:first-of-type {
-    @apply absolute left-0 w-[16.66%] h-full;
+    @apply absolute left-0 w-[16.67vmax] h-full;
 
     .bg_flower {
-      @apply absolute -top-[25%] left-[-20px];
+      @apply absolute -top-[25.00vmin] left-[-1.85vmin] w-[25.28vmin] h-[53.52vmin];
 
       img {
         @apply scale-95;
@@ -314,7 +313,7 @@ footer {
     }
 
     .bg_round {
-      @apply absolute -bottom-[38%] left-[-20px] -scale-x-100;
+      @apply absolute -bottom-[32vmin] left-[-18vmin] -scale-x-100 w-[53.52vmin] h-[53.52vmin];
 
       img {
         @apply scale-95;
@@ -323,14 +322,22 @@ footer {
   }
 
   > div:last-of-type {
-    @apply absolute right-0 w-[16.66%] h-full;
+    @apply absolute right-0 w-[16.67vmax] h-full;
 
     .bg_hexagon {
-      @apply absolute -top-[14%] right-[-1.11vmin] -scale-y-100;
+      @apply absolute -top-[17vmin] right-[-5vmin] w-[38.35vmin] h-[49.54vmin];
+
+      img {
+        @apply w-full h-full;
+      }
     }
 
     .bg_octagon {
-      @apply absolute -bottom-[33%] right-[-50%] -scale-x-100;
+      @apply absolute -bottom-[33.0vmin] right-[-21vmin] w-[56.52vmin] h-[56.52vmin] -scale-x-100;
+
+      img {
+        @apply w-full h-full;
+      }
     }
   }
 }
