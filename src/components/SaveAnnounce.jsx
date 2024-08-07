@@ -209,6 +209,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
   } = useQuery({
     queryKey: ['myScriptDetail'],
     queryFn: () => getDetailScript(userAccessToken, scriptId),
+    enabled: !!scriptId, // scriptId가 있을 때만 쿼리 실행
   });
 
   useEffect(() => {
