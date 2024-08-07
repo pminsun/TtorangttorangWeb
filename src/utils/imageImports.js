@@ -61,6 +61,9 @@ import ImageGatewayTtorang from '../../public/images/ttorang_gatway.svg';
 import ImageMypageIcon from '../../public/images/mypage_icon.svg';
 import ImageTtorangWithdrawal from '../../public/images/ttorang_withdrawal.svg';
 
+import ImageGatewayRightBg from '../../public/images/gateway_rightBg.svg';
+import ImageGatewayTtorangMain from '../../public/images/ttorang_main.svg';
+
 export { ImageGatewayNewInfo, ImageGatewayNewBanner, ImageGatewayBannerTxt, ImageGBenner, ImageMainBenner, ImageLogo, ImageMobileLogo, ImageVarLogo, ImageBenner, ImageTtorangArch, ImageTtorangNote };
 
 export { ImageLogoWhite, ImageIconCheckboxArrow, ImageIconArrow, ImageIconCopy, ImageIconDescription, ImageIconHelp, ImageIconSyncAlt };
@@ -84,4 +87,4 @@ export { ImageGatewayOctagon, ImageGatewayRound, ImageGatewayFlower, ImageGatewa
 export { ImageMainStepArrowActive, ImageKakoLogo, ImageMainStepArrowLeft, ImageMainStepArrowRight, ImageDeleteX, ImageAddPlus };
 
 export { ImageModalDelete, ImageTtorangHi, ImageModalClose, ImageMypageIcon, ImageTtorangWithdrawal };
-export { ImageGateway_one, ImageGateway_two, ImageGateway_three, ImageActiveArrow, ImageGatwayMain };
+export { ImageGateway_one, ImageGateway_two, ImageGateway_three, ImageActiveArrow, ImageGatewayTtorangMain, ImageGatwayMain, ImageGatewayRightBg };
