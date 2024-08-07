@@ -8,7 +8,7 @@ import Slider from 'react-slick';
 import ShapeBg from '@/components/ShapeBg';
 import { useUserStore } from '@/store/store';
 import { sliceMyScript, sliceMyScriptDateOnly, sliceMyScriptTitle, reverseData } from '@/utils/config';
-import { fetchKakaoLogOut, getUserScript, deleteUserScript } from '@/api/fetchData';
+import { fetchKakaoLogOut, getUserScript, deleteUserScript, fetchTtorangWithdrawal } from '@/api/fetchData';
 
 export default function Mypage() {
   const router = useRouter();
@@ -130,6 +130,31 @@ export default function Mypage() {
     }
   };
 
+  // 또랑또랑 서비스 탈퇴
+  const ttorangWithdrawal = async () => {
+    try {
+      const res = await fetchTtorangWithdrawal(userAccessToken);
+      if (res) {
+        // 탈퇴가 성공한 경우 로그아웃 시도
+        try {
+          await fetchKakaoLogOut(accessToken);
+        } catch (logOutError) {
+          console.error('Error LogOut:', logOutError);
+        }
+
+        // 로그아웃 성공 여부와 상관없이 사용자 데이터 초기화 및 리디렉션
+        clearUser();
+        router.push('/');
+      }
+    } catch (e) {
+      // 이미 만료된 토큰일 경우
+      if (e.response && e.response.data && e.response.data.code === -401) {
+        router.push('/');
+      } else {
+        console.error('Error Withdrawal:', e);
+      }
+    }
+  };
   return (
     <>
       <section className="mypage_container">
@@ -349,7 +374,12 @@ export default function Mypage() {
               >
                 아니요
               </button>
-              <button type="button">네</button>
+              <button
+                type="button"
+                onClick={ttorangWithdrawal}
+              >
+                네
+              </button>
             </div>
           </div>
         </>
