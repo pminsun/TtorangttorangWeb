@@ -1,30 +1,30 @@
 .mypage_container {
-  @apply relative w-full h-full overflow-hidden bg-[#fbfbfb];
+  @apply relative w-full h-full py-[4.81vmin] overflow-hidden bg-[#fbfbfb];
 
   .content_area {
-    @apply relative flex justify-between flex-col content_w_size h-full mx-auto pt-[20px] pb-[20px];
+    @apply relative flex justify-between flex-col content_w_size h-full mx-auto pt-[5.46vmin] pb-[8.43vmin];
   }
   .mypage_title {
-    @apply mb-[40px] text-[28px] font-bold gray_colorTxt;
+    @apply mb-[3.70vmin] text-[2.59vmin] font-bold gray_colorTxt;
   }
 
   .userInfo_area {
     > div {
-      @apply flex_xBetween w-full py-[24px] pl-[28px] pr-[45px] area_border;
+      @apply flex_xBetween w-full py-[2.22vmin] pl-[2.59vmin] pr-[4.17vmin] area_border;
 
       > div.user {
-        @apply flex_vertical_center gap-[40px];
+        @apply flex_vertical_center gap-[3.70vmin];
         .userIcon {
-          @apply w-[72px] h-[72px] rounded-full bg-[#EBF2FA];
+          @apply w-[6.67vmin] h-[6.67vmin] rounded-full bg-[#EBF2FA];
         }
 
         > p {
-          @apply text-[28px] font-medium gray_colorTxt;
+          @apply text-[2.59vmin] font-medium gray_colorTxt;
         }
       }
 
       > button {
-        @apply w-[148px] h-[62px] text-[20px] font-medium area_border;
+        @apply w-[13.70vmin] h-[5.74vmin] text-[1.85vmin] font-medium area_border;
       }
     }
   }
@@ -37,25 +37,25 @@
         @apply flex overflow-hidden;
       }
       .slick-slide {
-        margin-right: 20px;
+        margin-right: 1.85vmin;
 
         > div {
           @apply h-full;
         }
       }
       .slick-list {
-        margin-right: -20px; /* 오른쪽 여백을 제거 */
+        margin-right: -1.85vmin; /* 오른쪽 여백을 제거 */
         overflow: hidden;
       }
       .slick-arrow {
-        @apply absolute_yHalf w-[80px] h-[80px];
+        @apply absolute_yHalf w-[7.41vmin] h-[7.41vmin];
 
         &.slick-prev {
-          @apply left-[-120px];
+          @apply left-[-11.11vmin];
         }
 
         &.slick-next {
-          @apply right-[-120px];
+          @apply right-[-11.11vmin];
         }
 
         &.slick-disabled {
@@ -64,12 +64,12 @@
       }
 
       .dots_custom {
-        @apply w-full flex_center mt-[20px];
+        @apply w-full flex_center mt-[1.85vmin];
 
         ul {
-          @apply flex_vertical_center gap-[24px];
+          @apply flex_vertical_center gap-[2.22vmin];
           li {
-            @apply w-[16px] h-[16px] rounded-full bg-[#D9D9D9];
+            @apply w-[1.48vmin] h-[1.48vmin] rounded-full bg-[#D9D9D9];
 
             &.slick-active {
               @apply bg-[#509BF8];
@@ -83,32 +83,32 @@
       }
 
       .myAnnounce {
-        @apply block w-[240px] h-full area_border cursor-pointer;
+        @apply block w-[22.22vmin] h-full area_border cursor-pointer;
 
         .announce_title {
-          @apply flex_xBetween w-full h-[54px] px-[14px] cursor-default main_colorBg;
+          @apply flex_xBetween w-full h-[5vmin] px-[1.30vmin] cursor-default main_colorBg;
 
           > p {
-            @apply text-[20px] font-medium text-[#FEFEFE];
+            @apply text-[1.85vmin] font-medium text-[#FEFEFE];
           }
 
           .delteBtn {
-            @apply flex_center w-[24px] h-[24px] cursor-pointer;
+            @apply flex_center w-[2.22vmin] h-[2.22vmin] cursor-pointer;
           }
         }
 
         .announce_content {
-          @apply flex_center flex-col h-[calc(100%-54px)] px-[14px] pt-[8px] pb-[14px] overflow-hidden;
+          @apply flex_center flex-col h-[calc(100%-5vmin)] px-[1.30vmin] pt-[0.74vmin] pb-[1.30vmin] overflow-hidden;
 
           > p:first-of-type {
-            @apply text-[14px] font-medium leading-[32px] pb-[4px] gray_colorTxt;
+            @apply text-[1.30vmin] font-medium leading-[2.96vmin] pb-[0.37vmin] gray_colorTxt;
           }
           > p.date {
-            @apply flex justify-end w-full pt-[8px] border-t border-[#C4C4C4] text-[14px] font-medium gray_colorTxt;
+            @apply flex justify-end w-full pt-[0.74vmin] border-t border-[#C4C4C4] text-[1.30vmin] font-medium gray_colorTxt;
           }
 
           > div.plusBtn {
-            @apply w-[64px] h-[64px] cursor-pointer;
+            @apply w-[5.93vmin] h-[5.93vmin] cursor-pointer;
           }
         }
       }
@@ -122,7 +122,7 @@
       li {
         a,
         button {
-          @apply flex_center w-[168px] h-[62px] text-[20px] font-medium gray_colorTxt area_border;
+          @apply flex_center w-[15.56vmin] h-[5.74vmin] text-[1.85vmin] font-medium gray_colorTxt area_border;
         }
       }
     }
@@ -131,28 +131,28 @@
 
 @media (max-width: 1750px) {
   .mypage_container {
-    @apply pt-[32px]  pb-[36px];
+    @apply pt-[2.96vmin]  pb-[3.33vmin];
 
     .mypage_title {
-      @apply mb-[20px] text-[24px];
+      @apply mb-[1.85vmin] text-[2.22vmin];
     }
 
     .userInfo_area {
       > div {
-        @apply py-[14px];
+        @apply py-[1.30vmin];
 
         > div.user {
           .userIcon {
-            @apply w-[62px] h-[62px] rounded-full bg-[#EBF2FA];
+            @apply w-[5.74vmin] h-[5.74vmin] rounded-full bg-[#EBF2FA];
           }
 
           > p {
-            @apply text-[24px];
+            @apply text-[2.22vmin];
           }
         }
 
         > button {
-          @apply w-[148px] h-[42px] text-[18px] font-medium area_border;
+          @apply w-[13.70vmin] h-[3.89vmin] text-[1.67vmin] font-medium area_border;
         }
       }
     }
@@ -161,13 +161,13 @@
         .myAnnounce {
           .announce_title {
             > p {
-              @apply text-[18px] font-medium text-[#FEFEFE];
+              @apply text-[1.67vmin] font-medium text-[#FEFEFE];
             }
           }
 
           .announce_content {
             > p:first-of-type {
-              @apply text-[12px] leading-[28px];
+              @apply text-[1.11vmin] leading-[2.59vmin];
             }
           }
         }
@@ -179,21 +179,21 @@
 .myAnnounce_detail_container {
   @apply relative;
   .scriptTitle_area {
-    @apply w-full mb-[21px];
+    @apply w-full mb-[1.94vmin];
 
     p {
-      @apply flex justify-end mb-[4px] text-[14px] font-medium gray_colorTxt;
+      @apply flex justify-end mb-[0.37vmin] text-[1.30vmin] font-medium gray_colorTxt;
     }
 
     input {
-      @apply w-full h-[63px] py-[12px] px-[20px] text-[20px] area_border font-medium gray_colorTxt;
+      @apply w-full h-[5.83vmin] py-[1.11vmin] px-[1.85vmin] text-[1.85vmin] area_border font-medium gray_colorTxt;
     }
   }
 
   .scriptSave_btn {
-    @apply flex_center w-[240px] h-[60px] ml-auto mt-[40px] text-[16px] font-medium;
+    @apply flex_center w-[22.22vmin] h-[5.56vmin] ml-auto mt-[3.70vmin] text-[1.48vmin] font-medium;
   }
   .back_btn {
-    @apply flex_center w-[240px] h-[60px] ml-auto mt-[40px] text-[16px] font-medium active_color;
+    @apply flex_center w-[22.22vmin] h-[5.56vmin] ml-auto mt-[3.70vmin] text-[1.48vmin] font-medium active_color;
   }
 }
