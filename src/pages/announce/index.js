@@ -105,10 +105,19 @@ export default function Announce() {
       {scriptLoading && (
         <>
           <div className="modalBlackBg"></div>
-          <div className="modal_box">
-            <div className="character_box"></div>
+          <div className="modal_box py-[2.69vmin]">
+            <div className="character_box">
+              <Image
+                src={LocalImages.ImageModalScriptIcon}
+                alt="ImageModalScriptIcon"
+                width={80}
+                height={80}
+              />
+            </div>
             <p>초안 정보를 불러오고 있어요</p>
-            <span className="loader"></span>
+            <div className="loader_area">
+              <span className="loader"></span>
+            </div>
           </div>
         </>
       )}
@@ -118,7 +127,9 @@ export default function Announce() {
           <div className="modal_box">
             <div className="character_box"></div>
             <p>예상 질문을 받아오고 있어요</p>
-            <span className="loader"></span>
+            <div className="loader_area">
+              <span className="loader"></span>
+            </div>
           </div>
         </>
       )}

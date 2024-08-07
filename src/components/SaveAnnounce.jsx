@@ -189,7 +189,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
     <section className={cls('main_container', announcePage ? '' : 'myAnnounce_detail_container')}>
       {announcePage && <div className="progress_bar"></div>}
       <section className="saveQa_area">
-        <form>
+        <form className={cls(announcePage ? 'pt-[3.36vmin]' : 'pt-0')}>
           <div className="userModify_box">
             {announcePage && (
               <GuideMent
@@ -207,7 +207,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                 />
               </div>
             )}
-            <div className="scriptFinal_area">
+            <div className={cls('scriptFinal_area', announcePage ? 'h-[44vmin]' : 'h-[47.4vmin]')}>
               <p className="title">발표 대본</p>
               <div className="scriptTxt">
                 <textarea
@@ -224,7 +224,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                 text={announcePage ? finalScript : saveAnnounce}
                 onCopy={() => alert('완성된 발표문을 복사했어요')}
               >
-                <div className="copy_area">
+                <div>
                   <div className="icon">
                     <Image
                       src={LocalImages.ImageIconCopy}
@@ -240,7 +240,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
             {!announcePage && (
               <button
                 type="button"
-                className={cls('scriptSave_btn', modifySaveAnnounce ? 'active_color' : 'gray_colorTxt area_border')}
+                className={cls('scriptSave_btn', modifySaveAnnounce ? 'active_color' : 'gray_colorTxt area_border', announcePage ? 'mt-[3.04vmin]' : 'mt-[2.28vmin]')}
                 onClick={() => setModifySaveAnnounce(!modifySaveAnnounce)}
               >
                 {modifySaveAnnounce ? '저장하기' : '수정하기'}
@@ -249,12 +249,12 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
           </div>
           <div className="qa_box">
             <GuideMent
-              firstMent={announcePage ? '예상 질문과 답변' : '타이틀'}
-              secondMent={announcePage ? '반복 연습으로 더욱 완벽한 발표를 만들어 보세요!' : '타이틀 설명 가이드 텍스트'}
+              firstMent={announcePage ? '예상 질문과 답변' : '예상 질문과 답변'}
+              secondMent={announcePage ? '반복 연습으로 더욱 완벽한 발표를 만들어 보세요!' : '반복 연습으로 더욱 완벽한 발표를 만들어 보세요!'}
               saveMentStyle={announcePage ? '' : 'saveMentStyle'}
             />
             <div>
-              <div className="qa_area">
+              <div className={cls('qa_area', announcePage ? 'h-[44vmin]' : 'h-[47.4vmin]')}>
                 {qaArray.length === 0 && announcePage ? (
                   <div className="none_qa">
                     <div>

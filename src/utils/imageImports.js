@@ -63,6 +63,7 @@ import ImageTtorangWithdrawal from '../../public/images/ttorang_withdrawal.svg';
 
 import ImageGatewayRightBg from '../../public/images/gateway_rightBg.svg';
 import ImageGatewayTtorangMain from '../../public/images/ttorang_main.svg';
+import ImageModalScriptIcon from '../../public/images/modalScript_icon.svg';
 
 export { ImageGatewayNewInfo, ImageGatewayNewBanner, ImageGatewayBannerTxt, ImageGBenner, ImageMainBenner, ImageLogo, ImageMobileLogo, ImageVarLogo, ImageBenner, ImageTtorangArch, ImageTtorangNote };
 
@@ -84,7 +85,7 @@ export {
 
 export { ImageGatewayOctagon, ImageGatewayRound, ImageGatewayFlower, ImageGatewayHexagon };
 
-export { ImageMainStepArrowActive, ImageKakoLogo, ImageMainStepArrowLeft, ImageMainStepArrowRight, ImageDeleteX, ImageAddPlus };
+export { ImageModalScriptIcon, ImageMainStepArrowActive, ImageKakoLogo, ImageMainStepArrowLeft, ImageMainStepArrowRight, ImageDeleteX, ImageAddPlus };
 
 export { ImageModalDelete, ImageTtorangHi, ImageModalClose, ImageMypageIcon, ImageTtorangWithdrawal };
 export { ImageGateway_one, ImageGateway_two, ImageGateway_three, ImageActiveArrow, ImageGatewayTtorangMain, ImageGatwayMain, ImageGatewayRightBg };

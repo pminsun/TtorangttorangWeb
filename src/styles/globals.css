@@ -268,33 +268,40 @@ footer {
     @apply text-[1.67vmin] font-medium text-center gray_colorTxt;
   }
 
+  .loader_area {
+    @apply my-[1.39vmin] w-full;
+  }
+
   .loader {
-    @apply block relative w-[1.11vmin] h-[1.11vmin] my-[1.39vmin] mx-auto rounded-full bg-[#EDEDED];
-    box-shadow:
-      -2.22vmi 0 #ededed,
-      2.22vmi 0 #ededed;
-    animation: shadowPulse 2s linear infinite;
+    @apply block relative w-[1.11vmin] h-[1.11vmin] mx-auto rounded-full bg-[#EDEDED];
+    animation: l5 1s infinite linear alternate;
   }
 }
 
-@keyframes shadowPulse {
-  33% {
-    background: #ededed;
+@keyframes l5 {
+  0% {
     box-shadow:
-      -2.22vmi 0 #509bf8,
-      2.22vmi 0 #ededed;
+      20px 0 #509bf8,
+      -20px 0 #ededed;
+    background: #509bf8;
+  }
+  33% {
+    box-shadow:
+      20px 0 #509bf8,
+      -20px 0 #ededed;
+    background: #ededed;
   }
   66% {
-    background: #509bf8;
     box-shadow:
-      -2.22vmi 0 #ededed,
-      2.22vmi 0 #ededed;
+      20px 0 #ededed,
+      -20px 0 #509bf8;
+    background: #ededed;
   }
   100% {
-    background: #ededed;
     box-shadow:
-      -2.22vmi 0 #ededed,
-      2.22vmi 0 #509bf8;
+      20px 0 #ededed,
+      -20px 0 #509bf8;
+    background: #509bf8;
   }
 }
 
