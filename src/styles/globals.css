@@ -163,7 +163,7 @@ footer {
     }
 
     > p:last-of-type {
-      @apply text-[1.48vmin] font-normal text-[#757575];
+      @apply text-[16px] font-normal text-[#757575];
     }
   }
 }
