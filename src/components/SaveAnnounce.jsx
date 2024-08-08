@@ -273,6 +273,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                   value={announcePage ? finalScript : saveAnnounce}
                   onChange={userModifyScript}
                   disabled={modifySaveAnnounce || announcePage ? false : true}
+                  className={cls(announcePage ? 'h-[34.51vmin]' : 'h-[38vmin]')}
                 />
                 <p>{announcePage ? formatNumber(charCountFinal) : formatNumber(saveAnnounceCharCount)}/ 3000</p>
               </div>
