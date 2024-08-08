@@ -188,9 +188,15 @@ export default function ModifyAnnounce({ userEmail }) {
       const finaldata = newContentQueue.join('');
       const improveIndex = finaldata.indexOf('개선 내용');
 
-      // console.log(finaldata);
       // === 교정문 === //
-      let extractedScriptText = finaldata.substring(0, improveIndex).replace('발표 대본', '').trim().replace(/[-:*]/g, '').trim();
+      let extractedScriptText;
+      if (improveIndex !== -1) {
+        // '개선 내용'이 있을 때
+        extractedScriptText = finaldata.substring(0, improveIndex).replace('발표 대본', '').trim().replace(/[-:*]/g, '').trim();
+      } else {
+        // '개선 내용'이 없을 때
+        extractedScriptText = finaldata.replace('발표 대본', '').trim().replace(/[-:*]/g, '').trim();
+      }
 
       // === 개선내용 === //
       let extractedImproveEText = '';

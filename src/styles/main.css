@@ -19,7 +19,7 @@
       }
 
       &:last-of-type {
-        @apply flex_center absolute right-[25vmin] -translate-x-1/2 h-full z-20;
+        @apply flex_center absolute right-[22vmin] -translate-x-1/2 h-full z-20;
       }
 
       p:first-of-type {
@@ -103,7 +103,11 @@ section.main_container {
     @apply w-full pb-[1.41vmin];
 
     &.saveMentStyle {
-      @apply flex_horizontal_center flex-col h-[6.83vmin] mb-[1.41vmin] pb-[0];
+      @apply flex_horizontal_center flex-col h-[9vmin] mb-[1.41vmin] pb-[0];
+
+      > p:first-of-type {
+        @apply mb-[0.43vmin];
+      }
     }
 
     p {
@@ -140,7 +144,7 @@ section.main_container {
           }
 
           .scriptTxt {
-            @apply relative w-full h-[calc(100%-3.06vmin)] pl-[2.17vmin] pb-[0.65vmin] overflow-hidden area_border;
+            @apply relative w-full pl-[2.17vmin] pb-[0.65vmin] overflow-hidden area_border;
 
             .textSize {
               @apply relative w-full h-[calc(100%-1.94vmin)] overflow-hidden;
