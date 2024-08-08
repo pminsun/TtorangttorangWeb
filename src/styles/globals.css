@@ -185,7 +185,7 @@ footer {
   }
 
   &.login_box {
-    @apply w-[43.4vmin] h-[37.8vmin] px-[2.17vmin];
+    @apply w-[43.37vmin] h-[41.68vmin] p-[2.17vmin];
 
     .modal_close {
       @apply absolute top-[1.7vmin] right-[2.07vmin] z-10 w-[2.6vmin] h-[2.6vmin] cursor-pointer;
