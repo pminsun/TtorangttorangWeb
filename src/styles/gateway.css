@@ -29,7 +29,7 @@
             }
 
             > h2 {
-              @apply mb-[2.31vmin] text-[6vmin] leading-[8.52vmin] font-bold tracking-tight text-[#3D6BE1];
+              @apply whitespace-nowrap mb-[2.31vmin] text-[6vmin] leading-[8.52vmin] font-bold tracking-tight text-[#3D6BE1];
             }
 
             > p:last-of-type {
