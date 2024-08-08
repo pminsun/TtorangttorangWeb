@@ -2,7 +2,7 @@
   @apply w-full h-full;
 
   form {
-    @apply flex_xBetween w-full h-full;
+    @apply flex_xBetween gap-[4vmin] w-full h-full;
 
     > div {
       @apply h-full;
@@ -73,7 +73,7 @@
     }
 
     .qa_box {
-      @apply w-[26.04vmax];
+      @apply w-[26.04vmax] mx-0 my-auto;
 
       > div:last-of-type {
         @apply w-full h-full;
