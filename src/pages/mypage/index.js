@@ -218,7 +218,7 @@ export default function Mypage() {
                 )}
                 {Array.from({ length: addListLength }, (_, index) => (
                   <div
-                    className="myAnnounce"
+                    className="myAnnounce noneAnnounce"
                     key={index}
                   >
                     <div className="announce_title">

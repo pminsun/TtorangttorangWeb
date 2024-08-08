@@ -2,29 +2,33 @@
   @apply relative w-full h-full py-[5.64vmin] overflow-hidden bg-[#fbfbfb];
 
   .content_area {
-    @apply relative flex justify-between flex-col content_w_size h-full mx-auto pt-[5.46vmin] pb-[8.43vmin];
+    @apply relative flex justify-between flex-col content_w_size h-full mx-auto pt-[6.4vmin] pb-[9.87vmin];
   }
   .mypage_title {
-    @apply mb-[3.70vmin] text-[2.59vmin] font-bold gray_colorTxt;
+    @apply mb-[3.25vmin] text-[3.04vmin] font-bold gray_colorTxt;
   }
 
   .userInfo_area {
     > div {
-      @apply flex_xBetween w-full py-[2.22vmin] pl-[2.59vmin] pr-[4.17vmin] area_border;
+      @apply flex_xBetween w-full py-[0.98vmin] pl-[3.04vmin] pr-[4.88vmin] area_border;
 
       > div.user {
-        @apply flex_vertical_center gap-[3.70vmin];
+        @apply flex_vertical_center gap-[4.34vmin];
         .userIcon {
-          @apply w-[6.67vmin] h-[6.67vmin] rounded-full bg-[#EBF2FA];
+          @apply w-[7.81vmin] h-[7.81vmin] rounded-full bg-[#EBF2FA];
+
+          img {
+            @apply w-full h-full;
+          }
         }
 
         > p {
-          @apply text-[2.59vmin] font-medium gray_colorTxt;
+          @apply text-[3.04vmin] font-medium gray_colorTxt;
         }
       }
 
       > button {
-        @apply w-[13.70vmin] h-[5.74vmin] text-[1.85vmin] font-medium area_border;
+        @apply w-[16.05vmin] h-[5.1vmin] text-[2.17vmin] font-medium area_border;
       }
     }
   }
@@ -34,37 +38,33 @@
     .myAnnounce_slide {
       @apply relative flex-1;
 
-      .slick-slider {
-        @apply overflow-hidden;
-      }
-
       .slick-track {
         @apply flex overflow-hidden;
       }
       .slick-slide {
-        margin-right: 1.85vmin;
+        margin-right: 2.17vmin;
 
         > div {
           @apply h-full;
         }
       }
       .slick-list {
-        margin-right: -1.85vmin; /* 오른쪽 여백을 제거 */
+        margin-right: -2.17vmin; /* 오른쪽 여백을 제거 */
         overflow: hidden;
       }
       .slick-arrow {
-        @apply absolute top-[45%] -translate-y-1/2 w-[7.41vmin] h-[7.41vmin];
+        @apply absolute top-[45%] -translate-y-1/2 w-[8.67vmin] h-[8.67vmin];
 
         img {
           @apply w-full h-full object-cover;
         }
 
         &.slick-prev {
-          @apply left-[-11.11vmin];
+          @apply left-[-13.01vmin];
         }
 
         &.slick-next {
-          @apply right-[-11.11vmin];
+          @apply right-[-13.01vmin];
         }
 
         &.slick-disabled {
@@ -73,12 +73,12 @@
       }
 
       .dots_custom {
-        @apply w-full flex_center mt-[1.85vmin];
+        @apply w-full flex_center mt-[2.17vmin];
 
         ul {
-          @apply flex_vertical_center gap-[2.22vmin];
+          @apply flex_vertical_center gap-[2.6vmin];
           li {
-            @apply w-[1.48vmin] h-[1.48vmin] rounded-full bg-[#D9D9D9];
+            @apply w-[1.73vmin] h-[1.73vmin] rounded-full bg-[#D9D9D9];
 
             &.slick-active {
               @apply bg-[#509BF8];
@@ -92,17 +92,17 @@
       }
 
       .myAnnounce {
-        @apply block w-[22.22vmin] h-[23.70vmin] area_border cursor-pointer;
+        @apply block w-[26vmin] h-[27.7vmin] area_border cursor-pointer;
 
         .announce_title {
-          @apply flex_xBetween w-full h-[5vmin] px-[1.30vmin] cursor-default main_colorBg;
+          @apply flex_xBetween w-full h-[5.86vmin] px-[1.73vmin] cursor-default main_colorBg;
 
           > p {
-            @apply text-[1.85vmin] font-medium text-[#FEFEFE];
+            @apply text-[2.17vmin] font-medium text-[#FEFEFE];
           }
 
           .delteBtn {
-            @apply flex_center w-[1.11vmin] h-[1.11vmin] cursor-pointer;
+            @apply flex_center w-[1.3vmin] h-[1.3vmin] cursor-pointer;
 
             img {
               @apply w-full h-full object-cover;
@@ -111,17 +111,17 @@
         }
 
         .announce_content {
-          @apply flex_xBetween flex-col h-[calc(100%-5vmin)] px-[1.30vmin] pt-[1.67vmin] pb-[1.30vmin] overflow-hidden;
+          @apply flex_xBetween flex-col h-[calc(100%-5.86vmin)] px-[1.84vmin] pt-[1.95vmin] pb-[0.87vmin] overflow-hidden;
 
           > p:first-of-type {
-            @apply text-[1.30vmin] font-medium leading-[2.96vmin] pb-[0.37vmin] gray_colorTxt;
+            @apply text-[1.52vmin] font-medium leading-[3.47vmin] pb-[1.95vmin] gray_colorTxt;
           }
           > p.date {
-            @apply flex justify-end w-full pt-[0.74vmin] border-t border-[#C4C4C4] text-[1.30vmin] font-medium gray_colorTxt;
+            @apply flex justify-end w-full pt-[0.87vmin] border-t border-[#C4C4C4] text-[1.52vmin] font-medium gray_colorTxt;
           }
 
           .plusBtn_area {
-            @apply flex_center h-full;
+            @apply flex_center h-full bg-red-200;
             > div.plusBtn {
               @apply w-[5.93vmin] h-[5.93vmin] cursor-pointer;
 
@@ -142,7 +142,7 @@
       li {
         a,
         button {
-          @apply flex_center w-[15.56vmin] h-[5.74vmin] text-[1.85vmin] font-medium gray_colorTxt area_border;
+          @apply flex_center w-[18.24vmin] h-[6.5vmin] text-[2.17vmin] font-medium gray_colorTxt area_border;
         }
       }
     }
