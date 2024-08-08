@@ -105,7 +105,7 @@ export default function Announce() {
       {scriptLoading && (
         <>
           <div className="modalBlackBg"></div>
-          <div className="modal_box py-[2.69vmin]">
+          <div className="modal_box py-[3.15vmin] bg-[#F9F9F9]">
             <div className="character_box">
               <Image
                 src={LocalImages.ImageModalScriptIcon}
@@ -124,7 +124,7 @@ export default function Announce() {
       {qaLoading && (
         <>
           <div className="modalBlackBg"></div>
-          <div className="modal_box py-[2.69vmin]">
+          <div className="modal_box py-[3.15vmin]">
             <div className="character_box">
               <Image
                 src={LocalImages.ImageModalScriptIcon}
