@@ -19,7 +19,7 @@
         }
 
         .scriptTxt {
-          @apply relative w-full  pl-[1.41vmin] pb-[1.52vmin] area_border;
+          @apply relative w-full pl-[1.41vmin] pb-[1.52vmin] area_border;
 
           textarea {
             @apply w-full h-[34.51vmin] text-[1.52vmin] leading-[3.36vmin] pt-[2.28vmin] pr-[2.82vmin] font-medium gray_colorTxt bg-[#fbfbfb];

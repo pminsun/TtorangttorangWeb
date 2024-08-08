@@ -258,7 +258,7 @@ export default function ModifyAnnounce({ userEmail }) {
                 <p className="title">
                   <span className="required">*</span>발표 내용
                 </p>
-                <div className="scriptTxt">
+                <div className="scriptTxt h-[calc(100%-3.06vmin)]">
                   {!compareScriptToggle && (
                     <>
                       <div
