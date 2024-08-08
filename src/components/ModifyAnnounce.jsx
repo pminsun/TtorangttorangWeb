@@ -188,7 +188,7 @@ export default function ModifyAnnounce({ userEmail }) {
       const finaldata = newContentQueue.join('');
       const improveIndex = finaldata.indexOf('개선 내용');
 
-      console.log(finaldata);
+      // console.log(finaldata);
       // === 교정문 === //
       let extractedScriptText = finaldata.substring(0, improveIndex).replace('발표 대본', '').trim().replace(/[-:*]/g, '').trim();
 

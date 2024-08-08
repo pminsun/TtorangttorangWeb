@@ -13,7 +13,7 @@ export function reverseData(data) {
 }
 
 export function sliceMyScript(txt) {
-  return txt.slice(0, 70) + '...';
+  return txt.slice(0, 60) + '...';
 }
 
 export function sliceMyScriptTitle(txt) {

@@ -2,7 +2,7 @@
   @apply relative w-full h-full py-[5.64vmin] overflow-hidden bg-[#fbfbfb];
 
   .content_area {
-    @apply relative flex justify-between flex-col content_w_size h-full mx-auto pt-[6.4vmin] pb-[9.87vmin];
+    @apply relative flex justify-between flex-col content_w_size h-full mx-auto pt-[4vmin] pb-[6vmin];
   }
   .mypage_title {
     @apply mb-[3.25vmin] text-[3.04vmin] font-bold gray_colorTxt;
@@ -111,7 +111,7 @@
         }
 
         .announce_content {
-          @apply flex_xBetween flex-col h-[calc(100%-5.86vmin)] px-[1.84vmin] pt-[1.95vmin] pb-[0.87vmin] overflow-hidden;
+          @apply flex-col h-[calc(100%-5.86vmin)] px-[1.84vmin] pt-[1.95vmin] pb-[0.87vmin] overflow-hidden;
 
           > p:first-of-type {
             @apply text-[1.52vmin] font-medium leading-[3.47vmin] pb-[1.95vmin] gray_colorTxt;
@@ -121,7 +121,7 @@
           }
 
           .plusBtn_area {
-            @apply flex_center h-full bg-red-200;
+            @apply flex_center h-full;
             > div.plusBtn {
               @apply w-[5.93vmin] h-[5.93vmin] cursor-pointer;
 

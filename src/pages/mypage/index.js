@@ -26,6 +26,7 @@ export default function Mypage() {
   } = useQuery({
     queryKey: ['myScriptsData'],
     queryFn: () => getUserScript(userAccessToken),
+    refetchOnWindowFocus: true,
   });
 
   useEffect(() => {
@@ -208,7 +209,7 @@ export default function Mypage() {
                       </div>
                       <Link
                         href={`/mypage/announce/${item.id}`}
-                        className="announce_content"
+                        className="announce_content flex_xBetween"
                       >
                         <p>{sliceMyScript(item.content)}</p>
                         <p className="date">{sliceMyScriptDateOnly(item.regTime)}</p>
@@ -218,7 +219,7 @@ export default function Mypage() {
                 )}
                 {Array.from({ length: addListLength }, (_, index) => (
                   <div
-                    className="myAnnounce noneAnnounce"
+                    className="myAnnounce"
                     key={index}
                   >
                     <div className="announce_title">
@@ -226,7 +227,7 @@ export default function Mypage() {
                     </div>
                     <Link
                       href={`/announce`}
-                      className="announce_content"
+                      className="announce_content flex_center"
                     >
                       <div className="plusBtn_area">
                         <div className="plusBtn">
