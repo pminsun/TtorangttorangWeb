@@ -19,7 +19,7 @@
       }
 
       &:last-of-type {
-        @apply flex_center absolute right-[22vmin] -translate-x-1/2 h-full z-20;
+        @apply flex_center absolute left-[51.56vmax] -translate-x-1/2 h-full z-20;
       }
 
       p:first-of-type {

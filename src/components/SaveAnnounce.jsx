@@ -289,6 +289,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                       alt="ImageIconCopy"
                       width={24}
                       height={24}
+                      className="w-full h-full"
                     />
                   </div>
                   <p>복사하기</p>
