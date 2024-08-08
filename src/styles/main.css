@@ -1,12 +1,12 @@
 .progress_container {
-  @apply z-50 fixed left-1/2 -translate-x-1/2 top-[7.22vmin] content_w_size h-[6.11vmin];
+  @apply z-50 fixed left-1/2 -translate-x-1/2 top-[7.81vmin] content_w_size h-[7.16vmin];
 
   .progress_barLine {
-    @apply absolute_center w-full h-[2px] bg-[#EDEDED];
+    @apply absolute_center w-full h-[0.22vmin] bg-[#EDEDED];
   }
 
   .progress_barLine_active {
-    @apply absolute_yHalf left-0 h-[2px] main_colorBg;
+    @apply absolute_yHalf left-0 h-[0.22vmin] main_colorBg;
   }
 
   .page_infoList {
@@ -19,25 +19,25 @@
       }
 
       &:last-of-type {
-        @apply flex_center absolute right-[25.93vmin] -translate-x-1/2 h-full z-20;
+        @apply flex_center absolute right-[24vmin] -translate-x-1/2 h-full z-20;
       }
 
       p:first-of-type {
-        @apply w-[1.48vmin] h-[1.48vmin] rounded-full bg-[#EDEDED];
+        @apply w-[1.73vmin] h-[1.73vmin] rounded-full bg-[#EDEDED];
 
         span {
-          @apply text-[1.48vmin] hidden;
+          @apply text-[1.95vmin] hidden;
         }
       }
 
       p:last-of-type {
-        @apply hidden main_colorTxt text-[1.30vmin] font-bold;
+        @apply hidden main_colorTxt text-[1.52vmin] font-bold;
       }
 
       &.on {
         @apply mt-[0.93vmin];
         > p:first-of-type {
-          @apply flex_center w-[3.70vmin] h-[3.70vmin] rounded-full bg-[#f9f9f9] main_colorTxt border border-[#509BF8];
+          @apply flex_center w-[4.34vmin] h-[4.34vmin] rounded-full bg-[#f9f9f9] main_colorTxt border border-[#509BF8];
 
           span {
             @apply block;
@@ -72,14 +72,14 @@
   }
 
   .slick-arrow {
-    @apply absolute_yHalf w-[7.41vmin] h-[7.41vmin];
+    @apply absolute_yHalf w-[8.67vmin] h-[8.67vmin];
 
     &.slick-prev {
-      @apply left-[18.52vmin];
+      @apply left-[10vmax];
     }
 
     &.slick-next {
-      @apply right-[18.52vmin];
+      @apply right-[10vmax];
     }
 
     &.slick-disabled {
@@ -92,7 +92,7 @@
   }
 }
 section.main_container {
-  @apply !block !content_w_size h-full overflow-hidden mx-auto pt-[2.41vmin] pb-[7.87vmin];
+  @apply !block !content_w_size h-full overflow-hidden mx-auto pt-[2.17vmin] pb-[6.18vmin];
 
   /* common */
   .required {
@@ -100,62 +100,62 @@ section.main_container {
   }
 
   .ment_box {
-    @apply w-full pb-[1.20vmin];
+    @apply w-full pb-[1.41vmin];
 
     &.saveMentStyle {
-      @apply flex_horizontal_center flex-col h-[8.15vmin] mb-[1.94vmin] pb-[0];
+      @apply flex_horizontal_center flex-col h-[6.83vmin] mb-[1.41vmin] pb-[0];
     }
 
     p {
-      @apply gray_colorTxt font-normal text-[1.67vmin];
+      @apply gray_colorTxt font-normal text-[1.95vmin];
 
       &:first-of-type {
-        @apply font-bold text-[2.22vmin];
+        @apply font-bold text-[2.6vmin];
       }
     }
   }
 
   .progress_bar {
-    @apply w-full h-[6.11vmin];
+    @apply w-full h-[7.16vmin];
   }
 
   /* 발표 대본 교정 */
   section.correction_area {
-    @apply w-full h-[calc(100%-6.11vmin)];
+    @apply w-full h-[calc(100%-7.16vmin)];
 
     > form {
-      @apply flex items-start justify-between w-full h-full pt-[2.87vmin];
+      @apply flex items-start justify-between w-full h-full;
       > .scriptWrite_box {
         @apply w-[39.58vmax] h-full;
 
         > div:last-of-type {
-          @apply w-full h-[51.04vmin] py-[1.85vmin] px-[2.78vmin] area_border;
+          @apply w-full h-[54.79vmin] pt-[2.17vmin] pb-[2.71vmin] px-[2.93vmin] area_border;
 
           .scriptMain_area {
-            @apply h-[calc(100%-8.98vmin)];
+            @apply h-[37.43vmin];
           }
 
           p.title {
-            @apply mb-[1.11vmin] text-[1.30vmin] font-medium gray_colorTxt;
+            @apply mb-[1.52vmin] text-[1.52vmin] font-medium gray_colorTxt;
           }
 
           .scriptTxt {
-            @apply relative w-full h-[calc(100%-3.06vmin)] pl-[1.85vmin] pb-[1.85vmin] overflow-hidden area_border;
+            @apply relative w-full h-[calc(100%-3.06vmin)] pl-[2.17vmin] pb-[0.65vmin] overflow-hidden area_border;
 
             .textSize {
               @apply relative w-full h-[calc(100%-1.94vmin)] overflow-hidden;
             }
             textarea {
-              @apply w-full h-full text-[1.30vmin] leading-[2.87vmin] pr-[1.85vmin] pt-[1.85vmin] font-medium gray_colorTxt bg-[#fbfbfb];
+              @apply w-full h-full text-[1.520vmin] leading-[2.87vmin] pr-[2.17vmin] pt-[2.17vmin] font-medium gray_colorTxt bg-[#fbfbfb];
               &::-webkit-input-placeholder {
-                font-size: 1.3vmin;
+                font-size: 1.52vmin;
               }
               &::-webkit-textarea {
-                font-size: 1.3vmin;
+                font-size: 1.52vmin;
               }
               /* scrollbar */
               &::-webkit-scrollbar {
-                width: 0.88vmin;
+                width: 0.98vmin;
               }
 
               &::-webkit-scrollbar-thumb {
@@ -168,18 +168,18 @@ section.main_container {
             }
 
             > p {
-              @apply flex justify-end text-[1.30vmin] pr-[1.85vmin] font-medium gray_colorTxt;
+              @apply flex justify-end text-[1.520vmin] pr-[2.17vmin] font-medium gray_colorTxt;
             }
 
             .newScript {
-              @apply w-full h-full pr-[1.85vmin] pt-[1.85vmin] overflow-y-auto;
+              @apply w-full h-full pr-[2.17vmin] pt-[2.17vmin] overflow-y-auto;
 
               span {
-                @apply text-[1.30vmin] leading-[2.87vmin] font-medium gray_colorTxt;
+                @apply text-[1.520vmin] leading-[2.87vmin] font-medium gray_colorTxt;
               }
 
               mark {
-                @apply text-[1.30vmin];
+                @apply text-[1.520vmin];
               }
 
               /* scrollbar */
@@ -198,10 +198,10 @@ section.main_container {
           }
 
           .contentInfo_area {
-            @apply w-full mt-[1.11vmin];
+            @apply w-full mt-[2.17vmin];
 
             .script_fun {
-              @apply w-full flex_vertical_center gap-[2.22vmin] h-[2.41vmin] mb-[1.02vmin];
+              @apply w-full flex_vertical_center gap-[2.6vmin] h-[2.82vmin] mb-[2.17vmin];
 
               .copy_box {
                 > div {
@@ -212,7 +212,7 @@ section.main_container {
               > div {
                 @apply flex_vertical_center gap-[0.37vmin] cursor-pointer;
                 .icon {
-                  @apply w-[2.22vmin] h-[2.22vmin];
+                  @apply w-[2.6vmin] h-[2.6vmin];
 
                   img {
                     @apply object-cover w-full h-full;
@@ -220,22 +220,22 @@ section.main_container {
                 }
 
                 p {
-                  @apply text-[1.30vmin] font-medium gray_colorTxt;
+                  @apply text-[1.52vmin] font-medium gray_colorTxt;
                 }
               }
             }
 
             .script_info {
-              @apply flex_vertical_center w-full h-[4.44vmin] px-[0.46vmin] pt-[0.83vmin] pb-[1.20vmin] area_border;
+              @apply flex_vertical_center w-full h-[5.21vmin] px-[0.54vmin] pt-[0.98vmin] pb-[1.41vmin] area_border;
 
               p {
-                @apply text-[1.30vmin] font-medium gray_colorTxt;
+                @apply text-[1.52vmin] font-medium gray_colorTxt;
 
                 &:first-of-type {
                   @apply relative pr-[1.48vmin];
 
                   &::after {
-                    @apply content-[''] absolute_yHalf right-0 w-[1px] h-[1.30vmin] bg-[#757575];
+                    @apply content-[''] absolute_yHalf right-0 w-[1px] h-[1.52vmin] bg-[#757575];
                   }
                 }
 
@@ -244,7 +244,7 @@ section.main_container {
                 }
 
                 > span {
-                  @apply text-[1.30vmin] font-medium main_colorTxt;
+                  @apply text-[1.520vmin] font-medium main_colorTxt;
                 }
               }
             }
@@ -259,22 +259,22 @@ section.main_container {
           @apply w-full h-full;
 
           .detailSetting {
-            @apply flex flex-col gap-[3.70vmin] w-full h-[51.04vmin] py-[1.94vmin] px-[3.33vmin] area_border;
+            @apply flex flex-col justify-between gap-[2.17vmin] w-full h-[54.79vmin] py-[3.8vmin] px-[4.01vmin] area_border;
 
             p.title {
-              @apply mb-[1.11vmin] text-[1.30vmin] font-medium gray_colorTxt;
+              @apply mb-[1.3vmin] text-[1.52vmin] font-medium gray_colorTxt;
             }
 
             > div:first-of-type {
-              @apply h-[15.74vmin];
+              @apply h-[18.43vmin];
               .subject_box {
-                @apply relative w-full h-[calc(100%-3.06vmin)] area_border rounded overflow-hidden;
+                @apply relative w-full h-[calc(100%-4.12vmin)] area_border rounded overflow-hidden;
                 textarea {
-                  @apply w-full h-full p-[1.85vmin] text-[1.30vmin] font-medium bg-[#fbfbfb];
+                  @apply w-full h-full p-[2.17vmin] text-[1.52vmin] font-medium bg-[#fbfbfb];
                 }
 
                 .subject_charCount {
-                  @apply absolute bottom-[1.85vmin] right-[1.20vmin] font-medium text-[1.30vmin] gray_colorTxt;
+                  @apply absolute bottom-[2.17vmin] right-[1.20vmin] font-medium text-[1.52vmin] gray_colorTxt;
                 }
               }
             }
@@ -284,28 +284,29 @@ section.main_container {
               @apply flex_vertical_center gap-[1.76vmin] w-full h-[3.80vmin];
 
               > p {
-                @apply flex_center w-[10.28vmin] h-full text-[1.30vmin] font-medium text-center rounded cursor-pointer;
+                @apply flex_center w-[10.28vmin] h-full text-[1.520vmin] font-medium text-center rounded cursor-pointer;
               }
             }
 
             .repeat_box {
+              @apply mt-[2.17vmin];
               > div {
-                @apply flex_vertical_center gap-[1.11vmin] w-[23.15vmin] cursor-pointer;
+                @apply flex_vertical_center gap-[0.98vmin] w-[23.15vmin] cursor-pointer;
                 .checkbox {
-                  @apply flex_center w-[2.22vmin] h-[2.22vmin] rounded cursor-pointer;
+                  @apply flex_center w-[2.6vmin] h-[2.6vmin] rounded cursor-pointer;
                 }
 
                 > p {
-                  @apply text-[1.30vmin] select-none font-medium gray_colorTxt;
+                  @apply text-[1.52vmin] select-none font-medium gray_colorTxt;
                 }
               }
             }
           }
 
           .modifyBtn_box {
-            @apply flex_xBetween gap-[1.85vmin] w-full h-[5.56vmin] mt-[1.85vmin];
+            @apply flex_xBetween gap-[2.17vmin] w-full h-[6.5vmin] mt-[3.04vmin];
             button {
-              @apply flex_center flex-1 h-full area_border text-[1.48vmin] font-medium rounded;
+              @apply flex_center flex-1 h-full area_border text-[1.73vmin] font-medium rounded;
             }
           }
         }
@@ -334,7 +335,7 @@ section.main_container {
           }
 
           p {
-            @apply text-center text-[1.67vmin] leading-[2.96vmin] gray_colorTxt;
+            @apply text-center text-[1.95vmin] leading-[2.96vmin] gray_colorTxt;
           }
         }
       }
@@ -346,17 +347,17 @@ section.main_container {
         ul {
           @apply w-full border border-[#c4c4c3];
           li {
-            @apply px-[1.85vmin] border-b border-[#c4c4c3] cursor-pointer bg-[#fefefe];
+            @apply px-[2.17vmin] border-b border-[#c4c4c3] cursor-pointer bg-[#fefefe];
 
             .list_ask {
               @apply w-full h-[9.26vmin] flex_xBetween;
 
               span {
-                @apply px-[1.48vmin] gray_colorTxt text-[1.67vmin];
+                @apply px-[1.48vmin] gray_colorTxt text-[1.95vmin];
               }
 
               .list_arrow {
-                @apply w-[2.22vmin] h-[2.22vmin];
+                @apply w-[2.6vmin] h-[2.6vmin];
 
                 img {
                   @apply object-cover w-full h-full;
@@ -371,7 +372,7 @@ section.main_container {
               }
 
               > div {
-                @apply w-full px-[1.48vmin] py-[1.30vmin] gray_colorTxt font-medium text-[1.67vmin] border border-[#C4C4C4];
+                @apply w-full px-[1.48vmin] py-[1.520vmin] gray_colorTxt font-medium text-[1.95vmin] border border-[#C4C4C4];
               }
             }
 
