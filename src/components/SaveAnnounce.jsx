@@ -264,7 +264,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                 />
               </div>
             )}
-            <div className={cls('scriptFinal_area', announcePage ? 'h-[44vmin]' : 'h-[47.4vmin]')}>
+            <div className={cls('scriptFinal_area', announcePage ? 'h-[51.59vmin]' : 'h-[47.4vmin]')}>
               <p className="title">발표 대본</p>
               <div className="scriptTxt">
                 <textarea
@@ -318,7 +318,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
               saveMentStyle={announcePage ? '' : 'saveMentStyle'}
             />
             <div>
-              <div className={cls('qa_area', announcePage ? 'h-[44vmin]' : 'h-[47.4vmin]')}>
+              <div className={cls('qa_area', announcePage ? 'h-[52.1vmin]' : 'h-[47.4vmin]')}>
                 {qaArray.length === 0 && announcePage ? (
                   <div className="none_qa">
                     <div>
@@ -344,7 +344,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                       >
                         <div className="question_area">
                           <p>질문</p>
-                          <p className="question">{item.question}</p>
+                          <p className={cls('question', askListState[index] ? 'font-bold' : 'font-medium')}>{item.question}</p>
                           <div className={cls('list_arrow', askListState[index] ? 'scale-y-[-1]' : 'scale-y-[1]')}>
                             <Image
                               src={LocalImages.ImageIconArrow}
