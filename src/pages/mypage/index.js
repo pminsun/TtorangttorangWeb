@@ -283,7 +283,7 @@ export default function Mypage() {
               <li>
                 <Link
                   target="_blank"
-                  href={'https://angry-mice-e3f.notion.site/619ff9c30eb1436a99abe3cd808335b4?pvs=4'}
+                  href={'https://angry-mice-e3f.notion.site/6ba53151bbb146f098fd248dfe3005bd'}
                 >
                   개인정보처리방침
                 </Link>
