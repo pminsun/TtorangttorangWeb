@@ -266,7 +266,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
             )}
             <div className={cls('scriptFinal_area', announcePage ? 'h-[51.59vmin]' : 'h-[55.55vmin]')}>
               <p className="title">발표 대본</p>
-              <div className={cls('scriptTxt', announcePage ? 'h-[calc(100%-3.06vmin)]' : 'h-[44vmin]')}>
+              <div className={cls('scriptTxt', announcePage ? 'h-[calc(100%-8vmin)]' : 'h-[44vmin]')}>
                 <textarea
                   placeholder="발표문 초안을 작성해 주세요. 꼼꼼히 작성할수록 세심한 교정과 정확한 예상 질문을 받을 수 있어요."
                   maxLength="3000"
