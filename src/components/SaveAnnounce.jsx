@@ -282,7 +282,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                 onCopy={() => alert('완성된 발표문을 복사했어요')}
               >
                 <div>
-                  <div className="icon">
+                  <div className="icon w-[2.6vmin] h-[2.6vmin]">
                     <Image
                       src={LocalImages.ImageIconCopy}
                       alt="ImageIconCopy"
