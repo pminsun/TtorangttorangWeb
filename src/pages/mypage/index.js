@@ -46,6 +46,10 @@ export default function Mypage() {
   });
 
   useEffect(() => {
+    refetch();
+  }, [refetch]);
+
+  useEffect(() => {
     if (myScripts) {
       const myScriptDataLength = myScripts?.data.data.length;
       const remainder = myScriptDataLength % 5;
