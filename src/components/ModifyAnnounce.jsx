@@ -194,10 +194,14 @@ export default function ModifyAnnounce({ userEmail }) {
       // === 개선내용 === //
       let extractedImproveEText = '';
       if (improveIndex !== -1) {
-        extractedImproveEText = finaldata.substring(improveIndex).replace('개선 내용', '').replace(/[-:*]/g, '').trim();
-        const improvementSections = extractedImproveEText.split('\n\n');
-        const improvementPairs = improvementSections.flatMap((section) => section.split(',').map((item) => item.trim()));
-        setImprovementMent(improvementPairs[0]);
+        extractedImproveEText = finaldata.substring(improveIndex).replace('개선 내용', '').trim();
+        // 각 줄에서 '-'와 공백을 제거한 후 배열화
+        const improvementPairs = extractedImproveEText
+          .split('\n') // 각 줄로 분리
+          .map((item) => item.replace(/[-:*]/g, '').trim()); // 각 줄에서 불필요한 문자 제거
+
+        const firstImprovement = improvementPairs.filter((text) => text.length !== 0);
+        setImprovementMent(firstImprovement[0]);
       } else {
         setImprovementMent(''); // 개선 내용이 없는 경우에는 빈 문자열로 설정
       }
