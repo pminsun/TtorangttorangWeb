@@ -264,9 +264,9 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                 />
               </div>
             )}
-            <div className={cls('scriptFinal_area', announcePage ? 'h-[51.59vmin]' : 'h-[47.4vmin]')}>
+            <div className={cls('scriptFinal_area', announcePage ? 'h-[51.59vmin]' : 'h-[55.55vmin]')}>
               <p className="title">발표 대본</p>
-              <div className="scriptTxt">
+              <div className={cls('scriptTxt', announcePage ? 'h-[calc(100%-3.06vmin)]' : 'h-[44.57vmin] bg-red-200')}>
                 <textarea
                   placeholder="발표문 초안을 작성해 주세요. 꼼꼼히 작성할수록 세심한 교정과 정확한 예상 질문을 받을 수 있어요."
                   maxLength="3000"
@@ -318,7 +318,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
               saveMentStyle={announcePage ? '' : 'saveMentStyle'}
             />
             <div>
-              <div className={cls('qa_area', announcePage ? 'h-[52.1vmin]' : 'h-[47.4vmin]')}>
+              <div className={cls('qa_area', announcePage ? 'h-[52vmin]' : 'h-[55.55vmin]')}>
                 {qaArray.length === 0 && announcePage ? (
                   <div className="none_qa">
                     <div>
@@ -342,7 +342,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                         key={index}
                         onClick={() => toggleQAItem(index)}
                       >
-                        <div className="question_area">
+                        <div className={cls('question_area', announcePage ? 'min-h-[12.9vmin]' : 'min-h-[13.8vmin]')}>
                           <p>질문</p>
                           <p className={cls('question', askListState[index] ? 'font-bold' : 'font-medium')}>{item.question}</p>
                           <div className={cls('list_arrow', askListState[index] ? 'scale-y-[-1]' : 'scale-y-[1]')}>

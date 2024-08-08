@@ -150,23 +150,23 @@
 }
 
 .myAnnounce_detail_container {
-  @apply relative;
+  @apply relative !pt-[9.98vmin] !pb-[6.18vmin];
   .scriptTitle_area {
-    @apply w-full mb-[1.94vmin];
+    @apply w-full mb-[1.41vmin];
 
     p {
       @apply flex justify-end mb-[0.37vmin] text-[1.30vmin] font-medium gray_colorTxt;
     }
 
     input {
-      @apply w-full h-[5.83vmin] py-[1.11vmin] px-[1.85vmin] text-[1.85vmin] area_border font-medium gray_colorTxt;
+      @apply w-full h-[6.83vmin] py-[1.41vmin] px-[2.17vmin] text-[2.17vmin] area_border font-medium gray_colorTxt;
     }
   }
 
   .scriptSave_btn {
-    @apply flex_center w-[22.22vmin] h-[5.56vmin] ml-auto mt-[3.70vmin] text-[1.48vmin] font-medium;
+    @apply flex_center w-[26.02vmin] h-[6.5vmin] ml-auto mt-[2.28vmin] text-[1.73vmin] font-medium;
   }
   .back_btn {
-    @apply flex_center w-[22.22vmin] h-[5.56vmin] ml-auto mt-[3.70vmin] text-[1.48vmin] font-medium active_color;
+    @apply flex_center w-[26.02vmin] h-[6.5vmin] ml-auto mt-[2.28vmin] text-[1.73vmin] font-medium active_color;
   }
 }
