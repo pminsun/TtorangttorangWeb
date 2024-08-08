@@ -273,7 +273,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                   value={announcePage ? finalScript : saveAnnounce}
                   onChange={userModifyScript}
                   disabled={modifySaveAnnounce || announcePage ? false : true}
-                  className={cls(announcePage ? 'h-[34.51vmin]' : 'h-[38vmin]')}
+                  className={cls(announcePage ? 'h-[34.51vmin]' : '!h-[39vmin]')}
                 />
                 <p>{announcePage ? formatNumber(charCountFinal) : formatNumber(saveAnnounceCharCount)}/ 3000</p>
               </div>
@@ -306,6 +306,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                   } else {
                     userModifySavedScript();
                     setModifySaveAnnounce(false);
+                    router.push('/mypage');
                   }
                 }}
               >
@@ -344,7 +345,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                         key={index}
                         onClick={() => toggleQAItem(index)}
                       >
-                        <div className={cls('question_area', announcePage ? 'min-h-[12.9vmin]' : 'min-h-[13.8vmin]')}>
+                        <div className={cls('question_area', announcePage ? 'min-h-[12.9vmin]' : 'min-h-[13.7vmin]')}>
                           <p>질문</p>
                           <p className={cls('question', askListState[index] ? 'font-bold' : 'font-medium')}>{item.question}</p>
                           <div className={cls('list_arrow', askListState[index] ? 'scale-y-[-1]' : 'scale-y-[1]')}>

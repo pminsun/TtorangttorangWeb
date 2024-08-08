@@ -177,7 +177,7 @@ footer {
   @apply flex_center flex-col absolute_center z-[80] w-[34.5vmin] h-[23.1vmin] rounded bg-white;
 
   .character_box {
-    @apply flex_center w-[9.22vmin] h-[9.22vmin] mb-[3.47vmin] bg-[#EBF2FA];
+    @apply flex_center w-[9.22vmin] h-[9.22vmin] mb-[1vmin] bg-[#EBF2FA];
 
     img {
       @apply w-full h-full object-cover;
