@@ -312,7 +312,7 @@ footer {
     @apply absolute left-0 w-[21.9vmax] h-full;
 
     .bg_flower {
-      @apply absolute -top-[32.85vmin] left-[-2.17vmin] w-[33.22vmin] h-[70.23vmin];
+      @apply absolute -top-[33vmin] left-[-2.5vmin] w-[33.22vmin] h-[70.23vmin];
 
       img {
         @apply scale-95;
@@ -320,7 +320,7 @@ footer {
     }
 
     .bg_round {
-      @apply absolute -bottom-[32vmin] left-[-23.6vmin] -scale-x-100 w-[70.23vmin] h-[70.23vmin];
+      @apply absolute -bottom-[43vmin] left-[-26vmin] -scale-x-100 w-[70.23vmin] h-[70.23vmin];
 
       img {
         @apply scale-95;
@@ -332,7 +332,7 @@ footer {
     @apply absolute right-0 w-[21.88vmax] h-full;
 
     .bg_hexagon {
-      @apply absolute -top-[22.26vmin] right-[-6.57vmin] w-[50.54vmin] h-[65.12vmin];
+      @apply absolute -top-[24vmin] right-[-10vmin] w-[50.54vmin] h-[65.12vmin];
 
       img {
         @apply w-full h-full;
@@ -340,7 +340,7 @@ footer {
     }
 
     .bg_octagon {
-      @apply absolute -bottom-[43.3vmin] right-[-27.48vmin] w-[74.22vmin] h-[74.22vmin] -scale-x-100;
+      @apply absolute -bottom-[45vmin] right-[-30vmin] w-[74.22vmin] h-[74.22vmin] -scale-x-100;
 
       img {
         @apply w-full h-full;
