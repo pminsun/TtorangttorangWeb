@@ -359,6 +359,14 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                         <div className={cls('answer_area', askListState[index] ? 'on' : '')}>
                           <p>답변</p>
                           <p className="answer">{item.answer}</p>
+                          <div className="list_arrow">
+                            <Image
+                              src={LocalImages.ImageIconArrow}
+                              alt="ImageIconArrow"
+                              width={24}
+                              height={24}
+                            />
+                          </div>
                         </div>
                       </li>
                     ))}

@@ -141,7 +141,7 @@
               }
 
               .answer_area {
-                @apply flex items-start gap-[4.3vmin] invisible w-full overflow-hidden transition-all duration-300 max-h-0;
+                @apply flex items-start justify-between pr-[2.1vmin] invisible w-full overflow-hidden transition-all duration-300 max-h-0;
 
                 &.on {
                   @apply visible max-h-[27.78vmin] mt-[2.50vmin] pb-[3.42vmin];
@@ -152,7 +152,11 @@
                 }
 
                 > p.answer {
-                  @apply max-w-[32.41vmin] break-words text-[1.73vmin] gray_colorTxt font-medium leading-[2.96vmin];
+                  @apply max-w-[18.23vmax] break-words text-[1.73vmin] gray_colorTxt font-medium leading-[2.96vmin];
+                }
+
+                .list_arrow {
+                  @apply w-[2.4vmin] h-[2.22vmin] opacity-0;
                 }
               }
             }
