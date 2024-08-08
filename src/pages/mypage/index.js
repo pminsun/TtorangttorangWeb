@@ -6,7 +6,7 @@ import * as LocalImages from '@/utils/imageImports';
 import { useQuery } from '@tanstack/react-query';
 import Slider from 'react-slick';
 import ShapeBg from '@/components/ShapeBg';
-import { useUserStore } from '@/store/store';
+import { useUserStore, useFinalScriptStore, useSettingStore, useNextMoveBtnStore } from '@/store/store';
 import { sliceMyScript, sliceMyScriptDateOnly, sliceMyScriptTitle, reverseData } from '@/utils/config';
 import { fetchKakaoLogOut, getUserScript, deleteUserScript, fetchTtorangWithdrawal } from '@/api/fetchData';
 
@@ -16,6 +16,22 @@ export default function Mypage() {
   const [withdrawal, setWithdrawal] = useState(false);
   const { userEmail, accessToken, userAccessToken, clearUser } = useUserStore();
   const [addListLength, setAddListLength] = useState(0);
+  const { setNextMoveBtn } = useNextMoveBtnStore();
+  const { setOriginScript, setNewScript, setSubject, setPresentPurpose, setEndingTxt, setRepeat } = useSettingStore();
+  const { setFinalScript, setQaArray } = useFinalScriptStore();
+
+  useEffect(() => {
+    setOriginScript('');
+    setNewScript('');
+    setSubject('');
+    setPresentPurpose('회사 컨퍼런스');
+    setEndingTxt('합니다체');
+    setRepeat(false);
+    setFinalScript('');
+    setQaArray([]);
+    setNextMoveBtn(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // 내 발표문 data 가져오기
   const {
