@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import * as LocalImages from '@/utils/imageImports';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLoginModalStore, useUserStore } from '@/store/store';
+import { useLoginModalStore, useUserStore, useNextMoveBtnStore, useSettingStore, useFinalScriptStore } from '@/store/store';
 import ShapeBg from '@/components/ShapeBg';
 
 export default function Home() {
@@ -12,6 +12,22 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isScrolling, setIsScrolling] = useState(false);
   const [scrollTimeout, setScrollTimeout] = useState(null);
+  const { setNextMoveBtn } = useNextMoveBtnStore();
+  const { setOriginScript, setNewScript, setSubject, setPresentPurpose, setEndingTxt, setRepeat } = useSettingStore();
+  const { setFinalScript, setQaArray } = useFinalScriptStore();
+
+  useEffect(() => {
+    setOriginScript('');
+    setNewScript('');
+    setSubject('');
+    setPresentPurpose('회사 컨퍼런스');
+    setEndingTxt('합니다체');
+    setRepeat(false);
+    setFinalScript('');
+    setQaArray([]);
+    setNextMoveBtn(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const scrollToPage = (page) => {
