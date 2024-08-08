@@ -114,10 +114,10 @@
             }
 
             li {
-              @apply flex_center flex-col w-full cursor-pointer border-b border-[#C4C4C4];
+              @apply flex_center flex-col w-full cursor-pointer border-b-[0.11vmin] border-[#C4C4C4];
 
               &:first-of-type {
-                @apply border-t border-[#C4C4C4];
+                @apply border-t-[0.11vmin] border-[#C4C4C4];
               }
 
               .question_area {
