@@ -2,37 +2,37 @@
   @apply w-full h-full;
 
   form {
-    @apply flex_xBetween w-full h-full pt-[2.87vmin];
+    @apply flex_xBetween w-full h-full;
 
     > div {
       @apply h-full;
     }
 
     .userModify_box {
-      @apply w-[51.5%];
+      @apply w-[70.53vmin];
 
       .scriptFinal_area {
-        @apply w-full h-[71%] area_border px-[2.87vmin] py-[1.11vmin];
+        @apply w-full area_border px-[3.36vmin] py-[1.3vmin];
 
         > p.title {
-          @apply mb-[1.11vmin] text-[1.30vmin] font-medium gray_colorTxt;
+          @apply mb-[1.41vmin] text-[1.52vmin] font-medium gray_colorTxt;
         }
 
         .scriptTxt {
-          @apply relative w-full h-[calc(100%-6.67vmin)] pl-[1.20vmin] pb-[4.72vmin] area_border;
+          @apply relative w-full h-[40.56vmin] pl-[1.41vmin] pb-[1.52vmin] area_border;
 
           textarea {
-            @apply w-full h-full text-[1.30vmin] leading-[2.87vmin] pt-[1.11vmin]  pr-[2.41vmin] font-medium gray_colorTxt bg-[#fbfbfb];
+            @apply w-full h-[34.51vmin] text-[1.52vmin] leading-[3.36vmin] pt-[2.28vmin] pr-[2.82vmin] font-medium gray_colorTxt bg-[#fbfbfb];
             &::-webkit-input-placeholder {
-              font-size: 1.3vmin;
+              font-size: 1.52vmin;
             }
             &::-webkit-textarea {
-              font-size: 1.3vmin;
+              font-size: 1.52vmin;
             }
 
             /* scrollbar */
             &::-webkit-scrollbar {
-              width: 0.88vmin;
+              width: 0.98vmin;
             }
 
             &::-webkit-scrollbar-thumb {
@@ -45,47 +45,47 @@
           }
 
           > p {
-            @apply absolute bottom-[0.65vmin] right-[3.42vmin] flex justify-end text-[1.30vmin] font-medium gray_colorTxt;
+            @apply absolute bottom-[1.52vmin] right-[2.82vmin] flex justify-end text-[1.52vmin] font-medium gray_colorTxt;
           }
         }
       }
 
       .copyClipboard {
-        @apply flex_vertical_center gap-[0.37vmin] w-[10vmin] mt-[1.20vmin] cursor-pointer;
+        @apply flex_vertical_center gap-[0.43vmin] w-[10vmin] mt-[1.3vmin] cursor-pointer;
 
         p {
-          @apply text-[1.30vmin] font-medium gray_colorTxt;
+          @apply text-[1.52vmin] font-medium gray_colorTxt;
         }
       }
       .copy_area {
         .icon {
-          @apply w-[2.22vmin] h-[2.22vmin];
+          @apply w-[2.6vmin] h-[2.6vmin];
 
           img {
-            @apply object-cover w-full h-full;
+            @apply w-full h-full;
           }
         }
 
         p {
-          @apply text-[1.30vmin] font-medium gray_colorTxt;
+          @apply text-[1.52vmin] font-medium gray_colorTxt;
         }
       }
     }
 
     .qa_box {
-      @apply w-[39.5%];
+      @apply w-[26.04vmax];
 
       > div:last-of-type {
         @apply w-full h-full;
 
         .qa_area {
-          @apply w-full h-[71%];
+          @apply w-full;
 
           .none_qa {
             @apply flex-col w-full h-full flex_center;
 
             > div:first-of-type {
-              @apply w-[23.52vmin] h-[23.52vmin] mb-[2.22vmin];
+              @apply w-[27.55vmin] h-[27.55vmin] mb-[2.6vmin];
 
               img {
                 @apply w-full h-full;
@@ -93,7 +93,7 @@
             }
 
             p {
-              @apply text-[1.85vmin] font-normal gray_colorTxt text-center;
+              @apply text-[2.17vmin] font-normal gray_colorTxt text-center;
             }
           }
 
@@ -102,7 +102,7 @@
 
             /* scrollbar */
             &::-webkit-scrollbar {
-              width: 0.88vmin;
+              width: 0.98vmin;
             }
 
             &::-webkit-scrollbar-thumb {
@@ -121,18 +121,18 @@
               }
 
               .question_area {
-                @apply w-full min-h-[14.07vmin] py-[3.42vmin] pr-[2.68vmin] flex_xBetween;
+                @apply w-full min-h-[12.9vmin] pr-[2.06vmin] flex_xBetween;
 
                 > p:first-of-type {
-                  @apply text-[1.67vmin] font-bold text-[#424242];
+                  @apply text-[1.95vmin] font-bold text-[#424242];
                 }
 
                 > p.question {
-                  @apply w-[32.41vmin] text-left break-words text-[1.48vmin] gray_colorTxt font-medium leading-[2.96vmin];
+                  @apply w-[18.23vmax] text-left break-words text-[1.73vmin] gray_colorTxt leading-[3.47vmin];
                 }
 
                 .list_arrow {
-                  @apply w-[2.22vmin] h-[2.22vmin];
+                  @apply w-[2.38vmin] h-[2.22vmin];
 
                   img {
                     @apply object-cover w-full h-full;
@@ -141,18 +141,18 @@
               }
 
               .answer_area {
-                @apply flex items-start gap-[5.09vmin] invisible w-full overflow-hidden transition-all duration-300 max-h-0;
+                @apply flex items-start gap-[4.3vmin] invisible w-full overflow-hidden transition-all duration-300 max-h-0;
 
                 &.on {
-                  @apply visible max-h-[27.78vmin] mt-[2.50vmin]  pb-[3.42vmin];
+                  @apply visible max-h-[27.78vmin] mt-[2.50vmin] pb-[3.42vmin];
                 }
 
                 > p:first-of-type {
-                  @apply text-[1.67vmin] font-bold text-[#424242];
+                  @apply text-[1.95vmin] font-bold text-[#424242];
                 }
 
                 > p.answer {
-                  @apply max-w-[32.41vmin] break-words text-[1.48vmin] gray_colorTxt font-medium leading-[2.96vmin];
+                  @apply max-w-[32.41vmin] break-words text-[1.73vmin] gray_colorTxt font-medium leading-[2.96vmin];
                 }
               }
             }
@@ -160,10 +160,10 @@
         }
 
         .finalBtn_box {
-          @apply flex_xBetween gap-[1.85vmin] w-full h-[5.56vmin] mt-[1.94vmin];
+          @apply flex_xBetween gap-[2.17vmin] w-full h-[6.5vmin] mt-[3.04vmin];
 
           button {
-            @apply flex_center flex-1 h-full area_border text-[1.48vmin] font-medium rounded;
+            @apply flex_center flex-1 h-full area_border text-[1.73vmin] font-medium rounded;
           }
         }
       }

@@ -19,7 +19,7 @@
       }
 
       &:last-of-type {
-        @apply flex_center absolute right-[24vmin] -translate-x-1/2 h-full z-20;
+        @apply flex_center absolute right-[27vmin] -translate-x-1/2 h-full z-20;
       }
 
       p:first-of-type {
@@ -308,85 +308,6 @@ section.main_container {
             button {
               @apply flex_center flex-1 h-full area_border text-[1.73vmin] font-medium rounded;
             }
-          }
-        }
-      }
-    }
-  }
-
-  /* 예상질문 */
-  section.ask_area {
-    @apply w-full mt-[5.56vmin];
-
-    .ask_box {
-      @apply w-full min-h-[61.57vmin];
-
-      /* 교정 전 예상질문 X */
-      .askNone {
-        @apply min-h-[61.57vmin] h-full flex_center;
-        > div {
-          @apply flex-col flex_center gap-[3.70vmin];
-          .illust_box {
-            @apply w-[23.52vmin] h-[23.52vmin];
-
-            img {
-              @apply object-cover w-full h-full;
-            }
-          }
-
-          p {
-            @apply text-center text-[1.95vmin] leading-[2.96vmin] gray_colorTxt;
-          }
-        }
-      }
-
-      /* 교정 후 예상질문 O */
-      .askList {
-        @apply w-full;
-
-        ul {
-          @apply w-full border border-[#c4c4c3];
-          li {
-            @apply px-[2.17vmin] border-b border-[#c4c4c3] cursor-pointer bg-[#fefefe];
-
-            .list_ask {
-              @apply w-full h-[9.26vmin] flex_xBetween;
-
-              span {
-                @apply px-[1.48vmin] gray_colorTxt text-[1.95vmin];
-              }
-
-              .list_arrow {
-                @apply w-[2.6vmin] h-[2.6vmin];
-
-                img {
-                  @apply object-cover w-full h-full;
-                }
-              }
-            }
-
-            .list_answer {
-              @apply invisible overflow-hidden transition-all duration-300 max-h-0;
-              &.on {
-                @apply pb-[2.78vmin] visible max-h-[27.78vmin];
-              }
-
-              > div {
-                @apply w-full px-[1.48vmin] py-[1.520vmin] gray_colorTxt font-medium text-[1.95vmin] border border-[#C4C4C4];
-              }
-            }
-
-            &:last-of-type {
-              @apply border-b-0;
-            }
-          }
-        }
-
-        .askCopy {
-          @apply flex_center w-[16.67vmin] h-[5.56vmin] mt-[4.81vmin] ml-auto cursor-pointer rounded main_colorBg;
-
-          span {
-            @apply flex_center w-full h-full font-medium text-[1.48vmin] text-white;
           }
         }
       }
