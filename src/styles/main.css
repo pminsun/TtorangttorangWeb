@@ -274,11 +274,24 @@ section.main_container {
               .subject_box {
                 @apply relative w-full h-[calc(100%-4.12vmin)] area_border rounded overflow-hidden;
                 textarea {
-                  @apply w-full h-full p-[2.17vmin] text-[1.52vmin] font-medium bg-[#fbfbfb];
+                  @apply w-full h-[calc(100%-2.17vmin)] pt-[2.17vmin] px-[2.17vmin] text-[1.52vmin] font-medium bg-[#fbfbfb];
+
+                  /* scrollbar */
+                  &::-webkit-scrollbar {
+                    width: 0.88vmin;
+                  }
+
+                  &::-webkit-scrollbar-thumb {
+                    background: #509bf8;
+                  }
+
+                  &::-webkit-scrollbar-track {
+                    background: #ededed;
+                  }
                 }
 
                 .subject_charCount {
-                  @apply absolute bottom-[2.17vmin] right-[1.20vmin] font-medium text-[1.52vmin] gray_colorTxt;
+                  @apply absolute bottom-[0.4vmin] right-[2.15vmin] font-medium text-[1.52vmin] gray_colorTxt;
                 }
               }
             }
