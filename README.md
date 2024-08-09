@@ -1,40 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## AI 발표 교정 서비스 또랑또랑
 
-## Getting Started
+<!-- Table of Contents -->
 
-First, run the development server:
+## :notebook_with_decorative_cover: 목차
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [About the Project](#star2-about-the-project)
+  - [Tech Stack](#space_invader-tech-stack)
+- [개발 Roadmap](#compass-개발-roadmap)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<!-- About the Project -->
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## :star2: About the Project
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+<h3>AI 발표 교정 서비스 또랑또랑</h3>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Project Link: [https://www.ttorang.site/](https://www.ttorang.site/)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<p>또랑또랑은 발표 준비에 어려움을 겪는 사용자들을 위한 AI 기반 발표문 교정 & 예상 질문 제공 서비스예요. 사용자가 입력한 주제와 목적에 맞춰 발표문을 교정하고, 예상 질문과 답변을 제공하여 발표 준비를 도와드려요</p>
 
-## Learn More
+<!-- TechStack -->
 
-To learn more about Next.js, take a look at the following resources:
+### :space_invader: Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<p>기술스택</p>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Javsscript
+- Next.js
+- React.js
+- TailwindCSS
+- axios
+- zustand
+- TanStack Query
