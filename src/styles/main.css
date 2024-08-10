@@ -23,7 +23,7 @@
       }
 
       p:first-of-type {
-        @apply w-[1.73vmin] h-[1.73vmin] rounded-full bg-[#fff];
+        @apply w-[1.73vmin] h-[1.73vmin] rounded-full bg-[#EDEDED];
 
         span {
           @apply text-[1.95vmin] hidden;
