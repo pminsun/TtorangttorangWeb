@@ -345,7 +345,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                         key={index}
                         onClick={() => toggleQAItem(index)}
                       >
-                        <div className={cls('question_area', announcePage ? 'min-h-[12.9vmin]' : 'min-h-[13.7vmin]')}>
+                        <div className={cls('question_area', announcePage ? 'min-h-[12.8vmin]' : 'min-h-[13.7vmin]')}>
                           <p>질문</p>
                           <p className={cls('question', askListState[index] ? 'font-bold' : 'font-medium')}>{item.question}</p>
                           <div className={cls('list_arrow', askListState[index] ? 'scale-y-[-1]' : 'scale-y-[1]')}>
