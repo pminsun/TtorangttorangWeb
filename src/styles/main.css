@@ -150,7 +150,7 @@ section.main_container {
               @apply relative w-full h-[calc(100%-1.94vmin)] overflow-hidden;
             }
             textarea {
-              @apply w-full h-full text-[1.520vmin] leading-[2.87vmin] pr-[2.17vmin] pt-[2.17vmin] font-medium gray_colorTxt bg-[#fbfbfb];
+              @apply w-full h-full text-[1.520vmin] leading-[2.87vmin] pr-[2.17vmin] pt-[2.17vmin] font-medium gray_colorTxt;
               &::-webkit-input-placeholder {
                 font-size: 1.52vmin;
               }
@@ -274,7 +274,7 @@ section.main_container {
               .subject_box {
                 @apply relative w-full h-[calc(100%-4.12vmin)] area_border rounded overflow-hidden;
                 textarea {
-                  @apply w-full h-[calc(100%-2.17vmin)] pt-[2.17vmin] px-[2.17vmin] text-[1.52vmin] font-medium bg-[#fbfbfb];
+                  @apply w-full h-[calc(100%-2.17vmin)] pt-[2.17vmin] px-[2.17vmin] text-[1.52vmin] font-medium;
 
                   /* scrollbar */
                   &::-webkit-scrollbar {

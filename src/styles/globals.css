@@ -28,6 +28,7 @@ select,
 select:focus {
   outline: none !important;
   box-shadow: none !important;
+  @apply bg-[#f9f9f9];
 }
 
 textarea {

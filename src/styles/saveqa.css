@@ -22,7 +22,7 @@
           @apply relative w-full pl-[1.41vmin] pb-[1.52vmin] area_border;
 
           textarea {
-            @apply w-full text-[1.52vmin] leading-[3.36vmin] pt-[2.28vmin] pr-[2.82vmin] font-medium gray_colorTxt bg-[#fbfbfb];
+            @apply w-full text-[1.52vmin] leading-[3.36vmin] pt-[2.28vmin] pr-[2.82vmin] font-medium gray_colorTxt;
             &::-webkit-input-placeholder {
               font-size: 1.52vmin;
             }
