@@ -23,7 +23,7 @@
       }
 
       p:first-of-type {
-        @apply w-[1.73vmin] h-[1.73vmin] rounded-full bg-[#EDEDED];
+        @apply w-[1.73vmin] h-[1.73vmin] rounded-full bg-[#fff];
 
         span {
           @apply text-[1.95vmin] hidden;
@@ -37,7 +37,7 @@
       &.on {
         @apply mt-[0.93vmin];
         > p:first-of-type {
-          @apply flex_center w-[4.34vmin] h-[4.34vmin] rounded-full bg-[#f9f9f9] main_colorTxt border border-[#509BF8];
+          @apply flex_center w-[4.34vmin] h-[4.34vmin] rounded-full bg-[#fff] main_colorTxt border border-[#509BF8];
 
           span {
             @apply block;

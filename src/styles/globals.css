@@ -13,7 +13,7 @@
 html,
 body,
 #__next {
-  @apply relative w-full h-screen overflow-y-hidden font-NotoSansKR bg-[#fbfbfb];
+  @apply relative w-full h-screen overflow-y-hidden font-NotoSansKR bg-[#fff];
 }
 
 .root_layout {
@@ -28,7 +28,7 @@ select,
 select:focus {
   outline: none !important;
   box-shadow: none !important;
-  @apply bg-[#fbfbfb];
+  @apply bg-[#ffff];
 }
 
 textarea {
