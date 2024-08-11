@@ -6,7 +6,7 @@ import { cls, formatNumber } from '@/utils/config';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { fetchAnnounceData } from '@/api/fetchData';
 import HighlightWithinTextarea from 'react-highlight-within-textarea';
-import { diffWords } from 'diff';
+import { diffWords, diffChars } from 'diff';
 import { useNextMoveBtnStore, useSettingStore, useInitialSettingStore, useFinalScriptStore, useScriptLoadingStore } from '@/store/store';
 
 export default function ModifyAnnounce({ userEmail }) {
@@ -130,7 +130,7 @@ export default function ModifyAnnounce({ userEmail }) {
 
   const filterOut = ['-', '"', '"', '!.', '!', '[', ']', ':'];
   const highlightDiffs = (oldStr, newStr) => {
-    const diff = diffWords(oldStr, newStr);
+    const diff = diffChars(oldStr, newStr);
     const highlights = [];
 
     diff
