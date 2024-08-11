@@ -7,15 +7,19 @@ import '@/styles/mypage.css';
 import '@/styles/fonts/notoSansKR.css';
 import '@/styles/fonts/tmoneyRoundWind.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Seo from '@/components/Seo';
 
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </QueryClientProvider>
+    <>
+      <Seo />
+      <QueryClientProvider client={queryClient}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </QueryClientProvider>
+    </>
   );
 }
