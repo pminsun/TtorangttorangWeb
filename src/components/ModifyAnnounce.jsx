@@ -208,10 +208,9 @@ export default function ModifyAnnounce({ userEmail }) {
           .map((item) => item.replace(/[-:*]/g, '').trim()); // 각 줄에서 불필요한 문자 제거
 
         const firstImprovement = improvementPairs.filter((text) => text.length !== 0);
-
         setImprovementMent(firstImprovement[0]);
       } else {
-        setImprovementMent(''); // 개선 내용이 없는 경우에는 빈 문자열로 설정
+        setImprovementMent('불필요한 단어 삭제'); // 개선 내용이 없는 경우에는 빈 문자열로 설정
       }
 
       // 재교정 시 (2회차 이상)
