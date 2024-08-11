@@ -210,7 +210,7 @@ export default function ModifyAnnounce({ userEmail }) {
         const firstImprovement = improvementPairs.filter((text) => text.length !== 0);
         setImprovementMent(firstImprovement[0]);
       } else {
-        setImprovementMent('불필요한 단어 삭제'); // 개선 내용이 없는 경우에는 빈 문자열로 설정
+        setImprovementMent('발표 흐름 매끄럽게 이어지도록 구성 변경'); // 개선 내용이 없는 경우에는 빈 문자열로 설정
       }
 
       // 재교정 시 (2회차 이상)
