@@ -5,11 +5,10 @@
 ## :notebook_with_decorative_cover: 목차
 
 - [About the Project](#star2-about-the-project)
-  - [또랑또랑 Screenshots](#camera-또랑또랑-screenshots)
-  - [Tech Stack](#space_invader-tech-stack)
-  - [또랑또랑 특징](#dart-또랑또랑-특징)
-  - [주요 색상](#art-주요-색상)
-  - [프로젝트 구조](#space-프로젝트-구조)
+- [Tech Stack](#space_invader-tech-stack)
+- [또랑또랑 특징](#dart-또랑또랑-특징)
+- [주요 색상](#art-주요-색상)
+- [프로젝트 구조](#space-프로젝트-구조)
 
 <!-- About the Project -->
 
@@ -18,7 +17,7 @@
 <h3>AI 발표 교정 서비스 또랑또랑</h3>
 <p>또랑또랑은 발표 준비에 어려움을 겪는 사용자들을 위한 AI 기반 발표문 교정 & 예상 질문 제공 서비스예요. 사용자가 입력한 주제와 목적에 맞춰 발표문을 교정하고, 예상 질문과 답변을 제공하여 발표 준비를 도와드려요</p>
 
-팀구성 - FE 2명, BE 1명, 디자이너 1명, 기획자 2명
+**팀구성** - FE 2명, BE 1명, 디자이너 1명, 기획자 2명
 
 - [또랑또랑](https://www.ttorang.site/)
 - [고도화 서비스 소개서](https://drive.google.com/file/d/1KZk_mwY65ydV1TKN7F1UNat-uy_lvvfm/view)
@@ -35,8 +34,6 @@
 <!-- TechStack -->
 
 ### :space_invader: Tech Stack
-
-<p>기술스택</p>
 
 - **Frontend** : Javsscript, Next.js, React.js, axios, TanStack Query, zustand, TailwindCSS
 - **Backend** : SpringBoot 3.2, MySQL 8.0, Docker, Github Actions, Ncloud Server, Clova Studio
@@ -68,3 +65,12 @@
 <!-- 프로젝트 구조 -->
 
 ### :space_invader: 프로젝트 구조
+
+<!-- 페이지별 기능 -->
+
+| 시연                                                                                        | 설명    |
+| ------------------------------------------------------------------------------------------- | ------- |
+| <img src="https://github.com/user-attachments/assets/61c53add-0912-4dca-b04b-a2ae9cbf35e5"> | 홈      |
+| -풀페이지 스크롤 이벤트로 스크롤 시 가이드 노출                                             |
+| 테스트1                                                                                     | 테스트3 |
+| 테스트1                                                                                     | 테스트3 |
