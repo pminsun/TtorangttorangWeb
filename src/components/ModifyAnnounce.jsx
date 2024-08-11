@@ -449,7 +449,7 @@ export default function ModifyAnnounce({ userEmail }) {
                       modifyScript();
                     }
                   }}
-                  className={cls(modifyBtn ? 'active_color cursor-pointer' : 'cursor-default')}
+                  className={cls(modifyBtn ? 'active_color cursor-pointer' : 'cursor-default bg-[#fff]')}
                 >
                   교정하기
                 </button>

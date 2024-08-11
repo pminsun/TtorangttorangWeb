@@ -386,7 +386,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                   <button
                     type="button"
                     onClick={() => (userEmail && qaArray.length > 0 ? (saveScriptToAccount(), router.push('/mypage')) : qaArray.length > 0 ? setLogin(true) : '')}
-                    className={cls(qaArray.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
+                    className={cls(qaArray.length > 0 ? 'active_color cursor-pointer' : 'cursor-default bg-[#fff]')}
                   >
                     저장하기
                   </button>

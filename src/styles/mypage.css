@@ -167,6 +167,6 @@
     @apply flex_center w-[26.02vmin] h-[6.5vmin] ml-auto mt-[2.28vmin] text-[1.73vmin] font-medium;
   }
   .back_btn {
-    @apply flex_center w-[26.02vmin] h-[6.5vmin] ml-auto mt-[2.28vmin] text-[1.73vmin] font-medium active_color;
+    @apply flex_center w-[26.02vmin] h-[6.5vmin] ml-auto mt-[2.28vmin] text-[1.73vmin] rounded font-medium active_color;
   }
 }
