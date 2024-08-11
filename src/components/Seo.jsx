@@ -26,7 +26,7 @@ export default function Seo() {
       />
       <meta
         property="og:description"
-        content="또랑또랑 AI 발표 도우미"
+        content="AI 발표 도우미 - 단 한 번의 클릭으로 쉽고 빠르게 준비할 수 있어요"
       />
       <meta
         property="og:type"
@@ -35,6 +35,10 @@ export default function Seo() {
       <meta
         property="og:url"
         content="https://www.ttorang.site/"
+      />
+      <meta
+        property="og:image"
+        content="/images/thumbnail.png"
       />
       <link
         rel="icon"
