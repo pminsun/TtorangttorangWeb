@@ -1,4 +1,4 @@
-## 클로바 스튜디오 AI 발표 교정 서비스 또랑또랑
+## 또랑또랑 :: 클로바 스튜디오 AI 발표 교정 서비스
 
 <!-- Table of Contents -->
 
@@ -8,7 +8,7 @@
 - [Tech Stack](#space_invader-tech-stack)
 - [또랑또랑 특징](#dart-또랑또랑-특징)
 - [주요 색상](#art-주요-색상)
-- [페이지별 기능](#space-페이지별-기능)
+- [페이지별 기능](#hammer_and_wrench-페이지별-기능)
 
 <!-- About the Project -->
 
