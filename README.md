@@ -41,8 +41,6 @@
 - **Backend** : SpringBoot 3.2, MySQL 8.0, Docker, Github Actions, Ncloud Server, Clova Studio
 - **서비스 배포 환경** : Vercel
 
-<br><br>
-
 <!-- Features -->
 
 ## :dart: 또랑또랑 특징
