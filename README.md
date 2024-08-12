@@ -68,8 +68,10 @@
 
 <!-- 페이지별 기능 -->
 
-| 시연                                                                                        | 설명                                               |
-| ------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| <img src="https://github.com/user-attachments/assets/13aefdcd-f573-4552-b061-03789e2ecca4"> | 홈 -풀페이지 스크롤 이벤트로 스크롤 시 가이드 노출 |
-| 테스트1                                                                                     | 테스트3                                            |
-| 테스트1                                                                                     | 테스트3                                            |
+| 시연                                                                                        | 설명                                                |
+| ------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| <img src="https://github.com/user-attachments/assets/d258fd70-33eb-407e-b5a4-5598261d4aa9"> | 홈 - 풀페이지 스크롤 이벤트로 스크롤 시 가이드 노출 |
+| <img src="https://github.com/user-attachments/assets/ee552554-f8da-4fc0-bd2f-5076db20f207"> | 교정하기 1step                                      |
+| <img src="https://github.com/user-attachments/assets/b4512e0d-971d-4eff-b407-8736b36f16b8"> | 교정하기 2step                                      |
+| <img src="https://github.com/user-attachments/assets/9cc777f1-a772-431d-9eba-103438821cfd"> | 로그인, 마이페이지                                  |
+| <img src="https://github.com/user-attachments/assets/9476edfb-2f26-4ba0-b0e0-9284fa5f8bc5"> | 저장한 발표문 CRUD                                  |
