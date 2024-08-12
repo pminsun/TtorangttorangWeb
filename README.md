@@ -8,7 +8,6 @@
 - [Tech Stack](#space_invader-tech-stack)
 - [또랑또랑 특징](#dart-또랑또랑-특징)
 - [주요 색상](#art-주요-색상)
-- [프로젝트 구조](#space-프로젝트-구조)
 - [페이지별 기능](#space-페이지별-기능)
 
 <!-- About the Project -->
@@ -62,10 +61,6 @@
 | Secondary Color | ![#FEFEFE](https://via.placeholder.com/10/f3f4f6?text=+) #FEFEFE |
 | Accent Color    | ![#509BF8](https://via.placeholder.com/10/2c82f2?text=+) #509BF8 |
 | Text Color      | ![#757575](https://via.placeholder.com/10/000000?text=+) #757575 |
-
-<!-- 프로젝트 구조 -->
-
-### :space_invader: 프로젝트 구조
 
 ### :space_invader: 페이지별 기능
 
