@@ -66,11 +66,11 @@
 
 <!-- 페이지별 기능 -->
 
-| 시연                                                                                                                                | 설명                                                |
-| ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| <img width="600" alt="home" src="https://github.com/user-attachments/assets/8a02b6a9-0b21-4402-a8ec-efdaaa153bdd" alt="home">       | 홈 - 풀페이지 스크롤 이벤트로 스크롤 시 가이드 노출 |
-| <img width="600" alt="step1" src="https://github.com/user-attachments/assets/378b0ea0-766c-40bf-a2c7-c1d8043cd617" alt="step1">     | 교정하기 1step                                      |
-| <img width="600" alt="step2" src="https://github.com/user-attachments/assets/a3f1a78d-ab21-4a7b-a433-208f0b861681" alt="step2">     | 교정하기 2step                                      |
-| <img width="600" alt="login" src="https://github.com/user-attachments/assets/883d8bcf-3963-43bf-b197-b5aa1a03f1ff" alt="login">     | 로그인                                              |
-| <img width="600" alt="mypage" src="https://github.com/user-attachments/assets/d4ddb932-c1d5-46f2-9b7a-a45c77f23bb4" alt="mypage">   | 마이페이지                                          |
-| <img width="600" alt="deatail" src="https://github.com/user-attachments/assets/6c988e0c-bb20-4a4c-8f27-77fb12f4eaa3" alt="deatail"> | 저장한 발표문 CRUD                                  |
+| 시연                                                                                                                                | 설명                                                                       |
+| ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| <img width="400" alt="home" src="https://github.com/user-attachments/assets/8a02b6a9-0b21-4402-a8ec-efdaaa153bdd" alt="home">       | <p>홈</p> <ul><li>풀페이지 스크롤 이벤트로 스크롤 시 가이드 노출</li></ul> |
+| <img width="400" alt="step1" src="https://github.com/user-attachments/assets/378b0ea0-766c-40bf-a2c7-c1d8043cd617" alt="step1">     | 교정하기 1step                                                             |
+| <img width="400" alt="step2" src="https://github.com/user-attachments/assets/a3f1a78d-ab21-4a7b-a433-208f0b861681" alt="step2">     | 교정하기 2step                                                             |
+| <img width="400" alt="login" src="https://github.com/user-attachments/assets/883d8bcf-3963-43bf-b197-b5aa1a03f1ff" alt="login">     | 로그인                                                                     |
+| <img width="400" alt="mypage" src="https://github.com/user-attachments/assets/d4ddb932-c1d5-46f2-9b7a-a45c77f23bb4" alt="mypage">   | 마이페이지                                                                 |
+| <img width="400" alt="deatail" src="https://github.com/user-attachments/assets/6c988e0c-bb20-4a4c-8f27-77fb12f4eaa3" alt="deatail"> | 저장한 발표문 CRUD                                                         |
