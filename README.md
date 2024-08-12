@@ -35,7 +35,7 @@
 
 <!-- TechStack -->
 
-### :space_invader: Tech Stack
+## :space_invader: Tech Stack
 
 - **Frontend** : Javsscript, Next.js, React.js, axios, TanStack Query, zustand, TailwindCSS
 - **Backend** : SpringBoot 3.2, MySQL 8.0, Docker, Github Actions, Ncloud Server, Clova Studio
@@ -45,7 +45,7 @@
 
 <!-- Features -->
 
-### :dart: 또랑또랑 특징
+## :dart: 또랑또랑 특징
 
 - **클로바 스튜디오 AI를 활용한 발표문 교정 & 예상 질문 제공 서비스** : Next.js로 제작하고 Vercel로 배포한 웹사이트로, 클로바 AI를 통해 실시간으로 발표문 교정과 예상 질문을 제공합니다.
 - **발표문 교정 및 예상 질문 생성 기능** : 클로바 AI에서 제공하는 Content-Type: "text/event-stream" 형식의 스트리밍 데이터를 처리하여, 사용자가 입력한 발표문을 AI가 실시간으로 분석하고, 개선된 발표문과 Q&A 리스트를 UI에 반영합니다.
@@ -59,7 +59,7 @@
 
 <!-- Color Reference -->
 
-### :art: 주요 색상
+## :art: 주요 색상
 
 | Color           | Hex                                                              |
 | --------------- | ---------------------------------------------------------------- |
@@ -70,7 +70,7 @@
 
 <br><br>
 
-### :hammer_and_wrench: 페이지별 기능
+## :hammer_and_wrench: 페이지별 기능
 
 <!-- 페이지별 기능 -->
 
