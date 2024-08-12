@@ -152,7 +152,7 @@
                 }
 
                 > p.answer {
-                  @apply max-w-[18.23vmax] break-words text-[1.73vmin] gray_colorTxt font-medium leading-[2.96vmin];
+                  @apply w-[18.23vmax] break-words text-[1.73vmin] gray_colorTxt font-medium leading-[2.96vmin];
                 }
 
                 .list_arrow {
