@@ -55,8 +55,6 @@
 - **하이라이팅 기능** : diff 라이브러리를 활용하여 초안과 교정본을 비교해 차이점을 하이라이팅 처리했습니다.
 - **복사하기 기능** : clipboard 라이브러리를 활용해 초안, 교정문, 완성된 발표문을 복사할 수 있는 기능을 구현했습니다.
 
-<br><br>
-
 <!-- Color Reference -->
 
 ## :art: 주요 색상
@@ -67,8 +65,6 @@
 | Secondary Color | ![#FEFEFE](https://via.placeholder.com/10/f3f4f6?text=+) #FEFEFE |
 | Accent Color    | ![#509BF8](https://via.placeholder.com/10/2c82f2?text=+) #509BF8 |
 | Text Color      | ![#757575](https://via.placeholder.com/10/000000?text=+) #757575 |
-
-<br><br>
 
 ## :hammer_and_wrench: 페이지별 기능
 
