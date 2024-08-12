@@ -27,7 +27,7 @@
 
 ### :camera: 또랑또랑 Screenshots
 
-<div align="center"> 
+<div> 
   <img width="1280" alt="ttorangcapture" src="https://github.com/user-attachments/assets/df8af666-b8d5-40ad-a881-d00e4265c4cc" alt="screenshot">
 </div>
 
@@ -69,18 +69,18 @@
 **홈**
 | 시연 | 설명 |
 | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| <img width="400" alt="home" src="https://github.com/user-attachments/assets/8a02b6a9-0b21-4402-a8ec-efdaaa153bdd" alt="home"> | <p align="center">홈</p> <ul><li>풀페이지 스크롤 이벤트로 스크롤 시 가이드 노출</li></ul> |
+| <img width="400" alt="home" src="https://github.com/user-attachments/assets/8a02b6a9-0b21-4402-a8ec-efdaaa153bdd" alt="home"> | <p>홈</p> <ul><li>풀페이지 스크롤 이벤트로 스크롤 시 가이드 노출</li></ul> |
 
 **교정하기**
 | 시연 | 설명 |
 | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| <img width="400" alt="step1" src="https://github.com/user-attachments/assets/378b0ea0-766c-40bf-a2c7-c1d8043cd617" alt="step1"> | <p align="center">교정하기 1step::발표문 교정</p> <ul><li>초안, 주제, 발표 목적, 종결 어미, 중복 표현 작성 및 선택 후 교정하기 가능</li><li>초안 정보를 불러오는 모달 노출</li><li>초안에 없는 정보 교정본에 하이라이팅 처리</li><li>원문보기 / 교정문 보기 선택으로 비교가능</li><li>복사하기 버튼으로 초안/ 교정문 복사 가능</li><li>초안/교정본 글자수, 예상 발표 시간 도출</li><li>1차 교정 후 교정본, 주제 수정 또는 발표 목적, 종결 어미, 종결어미 이전과 다른 선택 시 재 교정가능</li><li>초기화 버튼 클릭시 리셋</li><li>교정 후 다음 스텝 이동가능</li></ul> |
-| <img width="400" alt="step2" src="https://github.com/user-attachments/assets/a3f1a78d-ab21-4a7b-a433-208f0b861681" alt="step2"> | <p align="center">교정하기 2step::예상 질문&답변</p> <ul><li>완성 발표문에서 사용자 추가 수정 가능</li><li>완성 발표문 복사하기 가능</li><li>예상 질문 받기 버튼 클릭 시 예상 질문 모달 노출 후 완성 발표문에 대한 얘상 질문과 답변 도출</li><li>비로그인 상태에서 저장하기 버튼 클릭 시 로그인 모달 노출 로그인 상태 시 저장 후 마이페이지로 이동</li></ul> |
+| <img width="400" alt="step1" src="https://github.com/user-attachments/assets/378b0ea0-766c-40bf-a2c7-c1d8043cd617" alt="step1"> | <p>교정하기 1step::발표문 교정</p> <ul><li>초안, 주제 작성 설정 선택 후 교정하기 가능</li><li>초안 정보를 불러오는 모달 노출</li><li>초안에 없는 정보 교정본에 하이라이팅 처리</li><li>원문보기 / 교정문 보기 선택으로 비교가능</li><li>복사하기 버튼으로 초안/ 교정문 복사 가능</li><li>초안/교정본 글자수, 예상 발표 시간 도출</li><li>1차 교정 후 교정본, 주제 수정 또는 설정 이전과 다른 선택 시 재 교정가능</li><li>초기화 버튼 클릭시 리셋</li><li>교정 후 다음 스텝 이동가능</li></ul> |
+| <img width="400" alt="step2" src="https://github.com/user-attachments/assets/a3f1a78d-ab21-4a7b-a433-208f0b861681" alt="step2"> | <p>교정하기 2step::예상 질문&답변</p> <ul><li>완성 발표문에서 사용자 추가 수정 가능</li><li>완성 발표문 복사하기 가능</li><li>예상질문 받기 버튼 클릭 시 로딩 모달 노출 후 완성 발표문에 대한 얘상 질문과 답변 도출</li><li>비로그인 상태에서 저장하기 버튼 클릭 시 로그인 모달</li><li>로그인 상태에서 저장하기 버튼 클릭 시 저장 후 마이페이지로 이동</li></ul> |
 
 **로그인 / 마이페이지**
 | 시연 | 설명 |
 | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| <img width="400" alt="login" src="https://github.com/user-attachments/assets/883d8bcf-3963-43bf-b197-b5aa1a03f1ff" alt="login"> | <p align="center">로그인</p> <ul><li>로그인 클릭 시 카카오 로그인/로그인 없이 체험 모달 노출</li></ul> |
-| <img width="400" alt="withdrawal" src="https://github.com/user-attachments/assets/077bb329-dcaa-4345-88fb-da00e35b933c" alt="withdrawal"> | <p align="center">탈퇴</p> <ul><li>회원탈퇴 클릭 시 서비스 탈퇴 모달 노출</li>></ul> |
-| <img width="400" alt="mypage" src="https://github.com/user-attachments/assets/97eeba10-fe7c-4c53-a228-06c004502340" alt="mypage"> | <p align="center">마이페이지</p> <ul><li>저장된 발표문 리스트 노출</li><li>5개씩 발표문 슬라이드 노출</li><li>발표문 X 선택시 삭제 확인모달 노출 후 삭제</li><li>5발표문 선택시 해당 발표문 상세페이지로 이동</li></ul> |
-| <img width="400" alt="deatail" src="https://github.com/user-attachments/assets/6c988e0c-bb20-4a4c-8f27-77fb12f4eaa3" alt="deatail"> | <p align="center">저장한 발표문 상세</p> <ul><li>저장한 발표대본 / 예상 질문과 답변 노출</li><li>수정하기 클릭 시 발표문 제목, 발표문 수정 후 저장 가능</li><li>뒤로가기 클릭 시 마이페이지로 이동</li></ul>|
+| <img width="400" alt="login" src="https://github.com/user-attachments/assets/883d8bcf-3963-43bf-b197-b5aa1a03f1ff" alt="login"> | <p>로그인</p> <ul><li>로그인 클릭 시 카카오 로그인/로그인 없이 체험 모달 노출</li></ul> |
+| <img width="400" alt="withdrawal" src="https://github.com/user-attachments/assets/077bb329-dcaa-4345-88fb-da00e35b933c" alt="withdrawal"> | <p>탈퇴</p> <ul><li>회원탈퇴 클릭 시 서비스 탈퇴 모달 노출</li>></ul> |
+| <img width="400" alt="mypage" src="https://github.com/user-attachments/assets/97eeba10-fe7c-4c53-a228-06c004502340" alt="mypage"> | <p>마이페이지</p> <ul><li>저장된 발표문 리스트 노출</li><li>5개씩 발표문 슬라이드 노출</li><li>발표문 X 선택시 삭제 확인모달 노출 후 삭제</li><li>발표문 선택시 해당 발표문 상세페이지로 이동</li></ul> |
+| <img width="400" alt="deatail" src="https://github.com/user-attachments/assets/6c988e0c-bb20-4a4c-8f27-77fb12f4eaa3" alt="deatail"> | <p>저장한 발표문 상세</p> <ul><li>저장한 발표대본 / 예상 질문과 답변 노출</li><li>수정하기 클릭 시 발표문 제목, 발표문 수정 후 저장 가능</li><li>뒤로가기 클릭 시 마이페이지로 이동</li></ul>|
