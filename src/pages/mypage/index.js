@@ -143,7 +143,8 @@ export default function Mypage() {
       }
     } catch (e) {
       // 이미 만료된 토큰일 경우
-      if (e.response && e.response.data && e.response.data.code === -401) {
+      if (e.response && e.response.status === 401) {
+        clearUser();
         router.push('/');
       } else {
         console.error('Error LogOut:', e);
@@ -169,7 +170,8 @@ export default function Mypage() {
       }
     } catch (e) {
       // 이미 만료된 토큰일 경우
-      if (e.response && e.response.data && e.response.data.code === -401) {
+      if (e.response && e.response.status === 401) {
+        clearUser();
         router.push('/');
       } else {
         console.error('Error Withdrawal:', e);
