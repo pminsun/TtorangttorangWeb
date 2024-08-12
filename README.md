@@ -31,6 +31,8 @@
   <img width="1280" alt="ttorangcapture" src="https://github.com/user-attachments/assets/df8af666-b8d5-40ad-a881-d00e4265c4cc" alt="screenshot">
 </div>
 
+<br><br>
+
 <!-- TechStack -->
 
 ### :space_invader: Tech Stack
@@ -38,6 +40,8 @@
 - **Frontend** : Javsscript, Next.js, React.js, axios, TanStack Query, zustand, TailwindCSS
 - **Backend** : SpringBoot 3.2, MySQL 8.0, Docker, Github Actions, Ncloud Server, Clova Studio
 - **서비스 배포 환경** : Vercel
+
+<br><br>
 
 <!-- Features -->
 
@@ -51,11 +55,11 @@
 - **하이라이팅 기능** : diff 라이브러리를 활용하여 초안과 교정본을 비교해 차이점을 하이라이팅 처리했습니다.
 - **복사하기 기능** : clipboard 라이브러리를 활용해 초안, 교정문, 완성된 발표문을 복사할 수 있는 기능을 구현했습니다.
 
+<br><br>
+
 <!-- Color Reference -->
 
 ### :art: 주요 색상
-
----
 
 | Color           | Hex                                                              |
 | --------------- | ---------------------------------------------------------------- |
@@ -64,7 +68,9 @@
 | Accent Color    | ![#509BF8](https://via.placeholder.com/10/2c82f2?text=+) #509BF8 |
 | Text Color      | ![#757575](https://via.placeholder.com/10/000000?text=+) #757575 |
 
-### :space_invader: 페이지별 기능
+<br><br>
+
+### :hammer_and_wrench: 페이지별 기능
 
 <!-- 페이지별 기능 -->
 
