@@ -89,6 +89,6 @@
 | 시연 | 설명 |
 | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | <img width="400" alt="login" src="https://github.com/user-attachments/assets/883d8bcf-3963-43bf-b197-b5aa1a03f1ff" alt="login"> | <p>로그인</p> <ul><li>로그인 클릭 시 카카오 로그인/로그인 없이 체험 모달 노출</li></ul> |
-| <img width="400" alt="withdrawal" src="https://github.com/user-attachments/assets/077bb329-dcaa-4345-88fb-da00e35b933c" alt="withdrawal"> | <p>탈퇴</p> <ul><li>회원탈퇴 클릭 시 서비스 탈퇴 모달 노출</li>></ul> |
+| <img width="400" alt="withdrawal" src="https://github.com/user-attachments/assets/077bb329-dcaa-4345-88fb-da00e35b933c" alt="withdrawal"> | <p>탈퇴</p> <ul><li>회원탈퇴 클릭 시 서비스 탈퇴 모달 노출</li></ul> |
 | <img width="400" alt="mypage" src="https://github.com/user-attachments/assets/97eeba10-fe7c-4c53-a228-06c004502340" alt="mypage"> | <p>마이페이지</p> <ul><li>저장된 발표문 리스트 노출</li><li>5개씩 발표문 슬라이드 노출</li><li>발표문 X 선택시 삭제 확인모달 노출 후 삭제</li><li>발표문 선택시 해당 발표문 상세페이지로 이동</li></ul> |
 | <img width="400" alt="deatail" src="https://github.com/user-attachments/assets/6c988e0c-bb20-4a4c-8f27-77fb12f4eaa3" alt="deatail"> | <p>저장한 발표문 상세</p> <ul><li>저장한 발표대본 / 예상 질문과 답변 노출</li><li>수정하기 클릭 시 발표문 제목, 발표문 수정 후 저장 가능</li><li>뒤로가기 클릭 시 마이페이지로 이동</li></ul>|
