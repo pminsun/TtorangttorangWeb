@@ -66,11 +66,21 @@
 
 <!-- 페이지별 기능 -->
 
-| 시연                                                                                                                                | 설명                                                                       |
-| ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| <img width="400" alt="home" src="https://github.com/user-attachments/assets/8a02b6a9-0b21-4402-a8ec-efdaaa153bdd" alt="home">       | <p>홈</p> <ul><li>풀페이지 스크롤 이벤트로 스크롤 시 가이드 노출</li></ul> |
-| <img width="400" alt="step1" src="https://github.com/user-attachments/assets/378b0ea0-766c-40bf-a2c7-c1d8043cd617" alt="step1">     | 교정하기 1step                                                             |
-| <img width="400" alt="step2" src="https://github.com/user-attachments/assets/a3f1a78d-ab21-4a7b-a433-208f0b861681" alt="step2">     | 교정하기 2step                                                             |
-| <img width="400" alt="login" src="https://github.com/user-attachments/assets/883d8bcf-3963-43bf-b197-b5aa1a03f1ff" alt="login">     | 로그인                                                                     |
-| <img width="400" alt="mypage" src="https://github.com/user-attachments/assets/d4ddb932-c1d5-46f2-9b7a-a45c77f23bb4" alt="mypage">   | 마이페이지                                                                 |
-| <img width="400" alt="deatail" src="https://github.com/user-attachments/assets/6c988e0c-bb20-4a4c-8f27-77fb12f4eaa3" alt="deatail"> | 저장한 발표문 CRUD                                                         |
+<h4>홈</h4>
+| 시연                                                                                                                                | 설명                                                                                                |
+| ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| <img width="400" alt="home" src="https://github.com/user-attachments/assets/8a02b6a9-0b21-4402-a8ec-efdaaa153bdd" alt="home">       | <p style="textAlign:center">홈</p> <ul><li>풀페이지 스크롤 이벤트로 스크롤 시 가이드 노출</li></ul> |
+
+<h4>교정하기</h4>
+| 시연                                                                                                                                | 설명                                                                                                |
+| ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| <img width="400" alt="step1" src="https://github.com/user-attachments/assets/378b0ea0-766c-40bf-a2c7-c1d8043cd617" alt="step1"> | <p style="textAlign:center">교정하기 1step::발표문 교정</p> |
+| <img width="400" alt="step2" src="https://github.com/user-attachments/assets/a3f1a78d-ab21-4a7b-a433-208f0b861681" alt="step2"> | <p style="textAlign:center">교정하기 2step::예상 질문&답변</p> |
+
+<h4>로그인 / 마이페이지</h4>
+| 시연                                                                                                                                | 설명                                                                                                |
+| ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| <img width="400" alt="login" src="https://github.com/user-attachments/assets/883d8bcf-3963-43bf-b197-b5aa1a03f1ff" alt="login"> | <p style="textAlign:center">로그인</p> <ul><li>로그인 클릭 시 카카오 로그인/로그인 없이 체험 모달 노출</li></ul> |
+| <img width="400" alt="withdrawal" src="https://github.com/user-attachments/assets/077bb329-dcaa-4345-88fb-da00e35b933c" alt="withdrawal"> | <p style="textAlign:center">탈퇴</p> |
+| <img width="400" alt="mypage" src="https://github.com/user-attachments/assets/97eeba10-fe7c-4c53-a228-06c004502340" alt="mypage"> | <p style="textAlign:center">마이페이지</p> |
+| <img width="400" alt="deatail" src="https://github.com/user-attachments/assets/6c988e0c-bb20-4a4c-8f27-77fb12f4eaa3" alt="deatail"> | <p style="textAlign:center">저장한 발표문 CRUD </p> |
