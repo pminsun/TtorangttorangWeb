@@ -1,91 +1,71 @@
-import ImageLogo from '../../public/images/Logo.svg';
-import ImageMobileLogo from '../../public/images/mobile_logo.svg';
-import ImageVarLogo from '../../public/images/Logo_var.svg';
-import ImageLogoWhite from '../../public/images/Logo_white.svg';
-import ImageBenner from '../../public/images/Benner.svg';
-import ImageMainBenner from '../../public/images/main_banner.svg';
+// logo
+import ImageTtorangWhiteLogo from '@/public/images/logo/Logo_white.svg';
+import ImageKakoLogo from '@/public/images/logo/kakoLogo.svg';
+import ImageMobileLogo from '@/public/images/logo/mobile_logo.svg';
 
-import ImageGBenner from '../../public/images/g_banner.svg';
+// ttorang-character
+import ImageTtorangHi from '@/public/images/ttorangCharacter/ttorang_hi.svg';
+import ImageTtorangArch from '@/public/images/ttorangCharacter/ttorang_arch.svg';
+import ImageTtorangNote from '@/public/images/ttorangCharacter/ttorang_note.svg';
+import ImageTtorangWithdrawal from '@/public/images/ttorangCharacter/ttorang_withdrawal.svg';
 
-import ImageTtorangArch from '../../public/images/ttorang_arch.svg';
-import ImageTtorangNote from '../../public/images/ttorang_note.svg';
+// 도형 bg
+import ImageGatewayOctagon from '@/public/images/shapeBg/octagon.svg';
+import ImageGatewayRound from '@/public/images/shapeBg/round.svg';
+import ImageGatewayFlower from '@/public/images/shapeBg/flower.svg';
+import ImageGatewayHexagon from '@/public/images/shapeBg/hexagon.svg';
 
-import ImageIconCheckboxArrow from '../../public/images/icon_checkbox_arrow.svg';
-import ImageIconArrow from '../../public/images/icon_arrow.svg';
-import ImageIconCopy from '../../public/images/icon_copy.svg';
-import ImageIconDescription from '../../public/images/icon_description.svg';
-import ImageIconHelp from '../../public/images/icon_help.svg';
-import ImageIconSyncAlt from '../../public/images/icon_sync_alt.svg';
+// icon
+import ImageIconHelp from '@/public/images/icon/icon_help.svg';
+import ImageIconDescription from '@/public/images/icon/icon_description.svg';
+import ImageModalClose from '@/public/images/icon/modal_close.svg';
+import ImageModalDelete from '@/public/images/icon/modal_delete.svg';
+import ImageModalScriptIcon from '@/public/images/icon/modalScript_icon.svg';
+import ImageMainStepArrowRight from '@/public/images/icon/mainStepArrowRight.svg';
+import ImageMainStepArrowActive from '@/public/images/icon/mainArrowActive.svg';
+import ImageDeleteX from '@/public/images/icon/deleteX.svg';
+import ImageAddPlus from '@/public/images/icon/addPlus.svg';
+import ImageIconCheckboxArrow from '@/public/images/icon/icon_checkbox_arrow.svg';
+import ImageIconArrow from '@/public/images/icon/icon_arrow.svg';
+import ImageActiveArrow from '@/public/images/icon/acrive_arrow.svg';
+import ImageIconCopy from '@/public/images/icon/icon_copy.svg';
+import ImageIconSyncAlt from '@/public/images/icon/icon_sync_alt.svg';
+import ImageMypageUserIcon from '@/public/images/icon/mypage_icon.svg';
 
-import ImageGatewayIntro from '../../public/images/gatway_intro.svg';
-import ImageGatewayIntroStar from '../../public/images/text_star.svg';
-import ImageGatewayIntroRound from '../../public/images/text_round.svg';
-import ImageGatewayDetailInfo from '../../public/images/gate_detailInfo.svg';
-import ImageGatewayAskBG from '../../public/images/gateway_askBG.svg';
-import ImageGatewayAskPoint from '../../public/images/gateway_askPoint.svg';
-import ImageGatewayFeedback from '../../public/images/gateway_feedback.svg';
-import ImageGatewayModify from '../../public/images/gateway_modify.svg';
+// gateway-guide
+import ImageGatwayMain from '@/public/images/gatewayGuide/gatwayMain.svg';
+import ImageGatewayRightBg from '@/public/images/gatewayGuide/gateway_rightBg.svg';
+import ImageGateway_one from '@/public/images/gatewayGuide/gateway_one.svg';
+import ImageGateway_two from '@/public/images/gatewayGuide/gateway_two.svg';
+import ImageGateway_three from '@/public/images/gatewayGuide/gateway_three.svg';
 
-import ImageGatewayOctagon from '../../public/images/gatway_octagon.svg';
-import ImageGatewayRound from '../../public/images/gatway_round.svg';
-import ImageGatewayFlower from '../../public/images/gatway_flower.svg';
-import ImageGatewayHexagon from '../../public/images/gateway_hexagon.svg';
-
-import ImageGatewayBannerTxt from '../../public/images/banner_txt.svg';
-import ImageGatewayNewBanner from '../../public/images/new_bannerBG.svg';
-
-import ImageGatewayNewInfo from '../../public/images/new_gatewayInfo.svg';
-
-import ImageMainStepArrowLeft from '../../public/images/mainStepArrowLeft.svg';
-import ImageMainStepArrowRight from '../../public/images/mainStepArrowRight.svg';
-import ImageMainStepArrowActive from '../../public/images/mainArrowActive.svg';
-import ImageDeleteX from '../../public/images/deleteX.svg';
-import ImageAddPlus from '../../public/images/addPlus.svg';
-import ImageKakoLogo from '../../public/images/kakoLogo.svg';
-
-import ImageGatewayArrow from '../../public/images/gatwayArrow.svg';
-
-import ImageModalDelete from '../../public/images/modal_delete.svg';
-import ImageGateway_one from '../../public/images/gateway_one.svg';
-import ImageGateway_two from '../../public/images/gateway_two.svg';
-import ImageGateway_three from '../../public/images/gateway_three.svg';
-import ImageActiveArrow from '../../public/images/acrive_arrow.svg';
-import ImageGatwayMain from '../../public/images/gatwayMain.svg';
-
-import ImageTtorangHi from '../../public/images/ttorang_hi.svg';
-import ImageModalClose from '../../public/images/modal_close.svg';
-
-import ImageGatewayMainBg from '../../public/images/gateway_mainBg.svg';
-import ImageGatewayTtorang from '../../public/images/ttorang_gatway.svg';
-
-import ImageMypageIcon from '../../public/images/mypage_icon.svg';
-import ImageTtorangWithdrawal from '../../public/images/ttorang_withdrawal.svg';
-
-import ImageGatewayRightBg from '../../public/images/gateway_rightBg.svg';
-import ImageGatewayTtorangMain from '../../public/images/ttorang_main.svg';
-import ImageModalScriptIcon from '../../public/images/modalScript_icon.svg';
-
-export { ImageGatewayNewInfo, ImageGatewayNewBanner, ImageGatewayBannerTxt, ImageGBenner, ImageMainBenner, ImageLogo, ImageMobileLogo, ImageVarLogo, ImageBenner, ImageTtorangArch, ImageTtorangNote };
-
-export { ImageLogoWhite, ImageIconCheckboxArrow, ImageIconArrow, ImageIconCopy, ImageIconDescription, ImageIconHelp, ImageIconSyncAlt };
-
+// icon
 export {
-  ImageGatewayArrow,
-  ImageGatewayIntro,
-  ImageGatewayIntroStar,
-  ImageGatewayIntroRound,
-  ImageGatewayDetailInfo,
-  ImageGatewayAskBG,
-  ImageGatewayAskPoint,
-  ImageGatewayFeedback,
-  ImageGatewayModify,
-  ImageGatewayMainBg,
-  ImageGatewayTtorang,
+  ImageModalScriptIcon,
+  ImageMainStepArrowActive,
+  ImageMainStepArrowRight,
+  ImageDeleteX,
+  ImageAddPlus,
+  ImageModalClose,
+  ImageModalDelete,
+  ImageMypageUserIcon,
+  ImageIconCheckboxArrow,
+  ImageIconArrow,
+  ImageIconCopy,
+  ImageIconSyncAlt,
+  ImageActiveArrow,
+  ImageIconHelp,
+  ImageIconDescription,
 };
 
+// logo
+export { ImageMobileLogo, ImageTtorangWhiteLogo, ImageKakoLogo };
+
+// ttorang-character
+export { ImageTtorangHi, ImageTtorangWithdrawal, ImageTtorangArch, ImageTtorangNote };
+
+// 도형 bg
 export { ImageGatewayOctagon, ImageGatewayRound, ImageGatewayFlower, ImageGatewayHexagon };
 
-export { ImageModalScriptIcon, ImageMainStepArrowActive, ImageKakoLogo, ImageMainStepArrowLeft, ImageMainStepArrowRight, ImageDeleteX, ImageAddPlus };
-
-export { ImageModalDelete, ImageTtorangHi, ImageModalClose, ImageMypageIcon, ImageTtorangWithdrawal };
-export { ImageGateway_one, ImageGateway_two, ImageGateway_three, ImageActiveArrow, ImageGatewayTtorangMain, ImageGatwayMain, ImageGatewayRightBg };
+// gateway
+export { ImageGatwayMain, ImageGateway_one, ImageGateway_two, ImageGateway_three, ImageGatewayRightBg };

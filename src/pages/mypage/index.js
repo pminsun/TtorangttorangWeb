@@ -189,8 +189,8 @@ export default function Mypage() {
               <div className="user">
                 <div className="userIcon">
                   <Image
-                    src={LocalImages.ImageMypageIcon}
-                    alt="ImageMypageIcon"
+                    src={LocalImages.ImageMypageUserIcon}
+                    alt="ImageMypageUserIcon"
                     width={72}
                     height={72}
                   />

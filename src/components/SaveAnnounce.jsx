@@ -5,7 +5,7 @@ import GuideMent from './GuideMent';
 import { useQuery } from '@tanstack/react-query';
 import * as LocalImages from '@/utils/imageImports';
 import { useFinalScriptStore, useSettingStore, useQaLoadingStore, useLoginModalStore } from '@/store/store';
-import { askListArray, cls, formatNumber, testScript, testScriptTitle } from '@/utils/config';
+import { askListArray, cls, formatNumber } from '@/utils/config';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'next/link';
 import { fetchModifyScript, fetchQnAData, fetchSaveScript, getDetailScript } from '@/api/fetchData';
@@ -164,10 +164,6 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
   // 최초로 저장된 발표문
   useEffect(() => {
     if (!announcePage) {
-      setModifyTitle(testScriptTitle);
-      setModifyTitleCharCount(testScriptTitle.length);
-      setSaveAnnounce(testScript);
-      setSaveAnnounceCharCount(testScript.length);
       setQaArray(askListArray);
     }
   }, [announcePage, setQaArray]);
@@ -226,7 +222,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
   }, [myScriptDetail]);
 
   // 예상질문 교정페이지 / 마이페이지 구분
-  const qaItems = scriptId ? saveQaArray : qaArray;
+  const qaItems = scriptId && scriptId ? saveQaArray : qaArray;
 
   // 저장한 발표문 유저 수정
   const userModifySavedScript = async () => {
@@ -322,7 +318,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
             />
             <div>
               <div className={cls('qa_area', announcePage ? 'h-[52vmin]' : 'h-[55.55vmin]')}>
-                {qaArray.length === 0 && announcePage ? (
+                {qaArray?.length === 0 && announcePage ? (
                   <div className="none_qa">
                     <div>
                       <Image
@@ -340,7 +336,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                   </div>
                 ) : (
                   <ul>
-                    {qaItems.map((item, index) => (
+                    {qaItems?.map((item, index) => (
                       <li
                         key={index}
                         onClick={() => toggleQAItem(index)}

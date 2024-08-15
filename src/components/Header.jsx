@@ -47,8 +47,8 @@ export default function Header() {
                 className="logo_area"
               >
                 <Image
-                  src={LocalImages.ImageVarLogo}
-                  alt="ImageVarLogo"
+                  src={LocalImages.ImageTtorangWhiteLogo}
+                  alt="ImageTtorangWhiteLogo"
                   width={98}
                   height={33}
                 />
