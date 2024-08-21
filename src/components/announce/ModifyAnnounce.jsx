@@ -6,8 +6,9 @@ import { cls, formatNumber } from '@/utils/config';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { fetchAnnounceData } from '@/api/fetchData';
 import HighlightWithinTextarea from 'react-highlight-within-textarea';
-import { diffWords, diffChars } from 'diff';
+import { diffChars } from 'diff';
 import { useNextMoveBtnStore, useSettingStore, useInitialSettingStore, useFinalScriptStore, useScriptLoadingStore } from '@/store/store';
+import CopyAnnounce from './CopyAnnounce';
 
 export default function ModifyAnnounce({ userEmail }) {
   const { setNextMoveBtn } = useNextMoveBtnStore();
@@ -302,35 +303,14 @@ export default function ModifyAnnounce({ userEmail }) {
                 <div className="script_fun">
                   <div className="copy_box">
                     {originScript.length === 0 ? (
-                      <div>
-                        <div className="icon w-[2.6vmin] h-[2.6vmin]">
-                          <Image
-                            src={LocalImages.ImageIconCopy}
-                            alt="ImageIconCopy"
-                            width={24}
-                            height={24}
-                            className="w-full h-full"
-                          />
-                        </div>
-                        <p>복사하기</p>
-                      </div>
+                      <CopyAnnounce />
                     ) : (
                       <CopyToClipboard
                         className="copyClipboard"
                         text={compareScriptToggle ? newScript : originScript}
                         onCopy={() => alert('발표문을 복사했어요')}
                       >
-                        <div>
-                          <div className="icon">
-                            <Image
-                              src={LocalImages.ImageIconCopy}
-                              alt="ImageIconCopy"
-                              width={24}
-                              height={24}
-                            />
-                          </div>
-                          <p>복사하기</p>
-                        </div>
+                        <CopyAnnounce />
                       </CopyToClipboard>
                     )}
                   </div>

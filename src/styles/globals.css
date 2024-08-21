@@ -351,3 +351,10 @@ footer {
     }
   }
 }
+
+/* 복사하기 */
+.copy_box {
+  > div {
+    @apply flex_vertical_center gap-[0.37vmin] cursor-pointer;
+  }
+}
