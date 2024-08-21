@@ -8,6 +8,8 @@ import Slider from 'react-slick';
 import { useUserStore, useFinalScriptStore, useSettingStore, useNextMoveBtnStore } from '@/store/store';
 import { sliceMyScript, sliceMyScriptDateOnly, sliceMyScriptTitle, reverseData } from '@/utils/config';
 import { fetchKakaoLogOut, getUserScript, deleteUserScript, fetchTtorangWithdrawal } from '@/api/fetchData';
+import { mypageTxt } from '@/utils/constants';
+import Modal from '@/components/layout/Modal';
 
 export default function Mypage() {
   const router = useRouter();
@@ -64,10 +66,8 @@ export default function Mypage() {
   };
 
   // 슬라이드
-  function NextArrow(props) {
-    const { className, style, onClick } = props;
-
-    const dynamicStyle = {
+  const Arrow = ({ className, style, onClick, direction }) => {
+    const arrowStyle = {
       ...style,
       display: 'block',
       cursor: 'pointer',
@@ -77,37 +77,19 @@ export default function Mypage() {
     return (
       <div
         className={className}
-        style={dynamicStyle}
+        style={arrowStyle}
         onClick={onClick}
       >
         <Image
           src={LocalImages.ImageMainStepArrowActive}
-          alt="ImageMainStepArrowActive"
+          alt="Arrow"
           width={80}
           height={80}
+          className={direction === 'prev' ? '-scale-x-100' : ''}
         />
       </div>
     );
-  }
-
-  function PrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: 'block', cursor: 'pointer', zIndex: 50 }}
-        onClick={onClick}
-      >
-        <Image
-          src={LocalImages.ImageMainStepArrowActive}
-          alt="ImageMainStepArrowActive"
-          width={80}
-          height={80}
-          className="-scale-x-100"
-        />
-      </div>
-    );
-  }
+  };
 
   const settings = {
     dots: true,
@@ -115,8 +97,8 @@ export default function Mypage() {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <Arrow direction="next" />,
+    prevArrow: <Arrow direction="prev" />,
     draggable: false,
     swipe: false,
     appendDots: (dots) => (
@@ -126,6 +108,30 @@ export default function Mypage() {
     ),
     dotsClass: 'dots_custom',
   };
+
+  // 빈 발표문
+  const emptyAnnounce = () => (
+    <>
+      <div className="announce_title">
+        <p>새 발표문 쓰기</p>
+      </div>
+      <Link
+        href={`/announce`}
+        className="announce_content flex_center"
+      >
+        <div className="plusBtn_area">
+          <div className="plusBtn">
+            <Image
+              src={LocalImages.ImageAddPlus}
+              alt="ImageAddPlus"
+              width={64}
+              height={64}
+            />
+          </div>
+        </div>
+      </Link>
+    </>
+  );
 
   // 카카오 로그아웃
   const kakaoLogOut = async () => {
@@ -172,12 +178,16 @@ export default function Mypage() {
       }
     }
   };
+
+  // 기타
+  const linkKeys = ['notice', 'privacyPolicy', 'termsOfUse'];
+
   return (
     <>
       <section className="mypage_container">
         <div className="content_area">
           <div className="userInfo_area">
-            <p className="mypage_title">내 정보</p>
+            <p className="mypage_title">{mypageTxt.title.myInfo}</p>
             <div>
               <div className="user">
                 <div className="userIcon">
@@ -194,12 +204,12 @@ export default function Mypage() {
                 type="button"
                 onClick={kakaoLogOut}
               >
-                로그아웃
+                {mypageTxt.myInfo.logout}
               </button>
             </div>
           </div>
           <div className="myAnnounce_area">
-            <p className="mypage_title">나의 발표문</p>
+            <p className="mypage_title">{mypageTxt.title.myAnnounce}</p>
             <div className="myAnnounce_slide">
               <Slider {...settings}>
                 {reverseData(
@@ -237,24 +247,7 @@ export default function Mypage() {
                     className="myAnnounce"
                     key={index}
                   >
-                    <div className="announce_title">
-                      <p>새 발표문 쓰기</p>
-                    </div>
-                    <Link
-                      href={`/announce`}
-                      className="announce_content flex_center"
-                    >
-                      <div className="plusBtn_area">
-                        <div className="plusBtn">
-                          <Image
-                            src={LocalImages.ImageAddPlus}
-                            alt="ImageAddPlus"
-                            width={64}
-                            height={64}
-                          />
-                        </div>
-                      </div>
-                    </Link>
+                    {emptyAnnounce()}
                   </div>
                 ))}
                 {myScripts?.data.data.length === 0 &&
@@ -263,60 +256,34 @@ export default function Mypage() {
                       className="myAnnounce"
                       key={index}
                     >
-                      <div className="announce_title">
-                        <p>새 발표문 쓰기</p>
-                      </div>
-                      <Link
-                        href={`/announce`}
-                        className="announce_content"
-                      >
-                        <div className="plusBtn">
-                          <Image
-                            src={LocalImages.ImageAddPlus}
-                            alt="ImageAddPlus"
-                            width={64}
-                            height={64}
-                          />
-                        </div>
-                      </Link>
+                      {emptyAnnounce()}
                     </div>
                   ))}
               </Slider>
             </div>
           </div>
           <div className="other_area">
-            <p className="mypage_title">기타</p>
+            <p className="mypage_title">{mypageTxt.title.other}</p>
             <ul>
-              <li>
-                <Link
-                  target="_blank"
-                  href={'https://angry-mice-e3f.notion.site/c76269690bc947bfb1182122fd25a9f1?pvs=4'}
-                >
-                  공지사항
-                </Link>
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  href={'https://angry-mice-e3f.notion.site/6ba53151bbb146f098fd248dfe3005bd'}
-                >
-                  개인정보처리방침
-                </Link>
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  href={'https://angry-mice-e3f.notion.site/619ff9c30eb1436a99abe3cd808335b4?pvs=4'}
-                >
-                  이용약관
-                </Link>
-              </li>
+              {linkKeys.map((key) => {
+                const item = mypageTxt.other[key];
+                return (
+                  <li key={key}>
+                    <Link
+                      target="_blank"
+                      href={item.link}
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                );
+              })}
               <li>
                 <button
                   type="button"
                   onClick={() => setWithdrawal(true)}
                 >
-                  회원탈퇴
+                  {mypageTxt.other.withdrawal.title}
                 </button>
               </li>
             </ul>
@@ -325,80 +292,22 @@ export default function Mypage() {
       </section>
       {/* 삭제 모달 */}
       {deleteAnnounce.show && (
-        <>
-          <div
-            className="modalBlackBg"
-            onClick={() => setDeleteAnnounce({ show: false, id: '' })}
-          ></div>
-          <div className="modal_box modal_select">
-            <div className="character_box">
-              <Image
-                src={LocalImages.ImageModalDelete}
-                alt="ImageModalDelete"
-                width={120}
-                height={120}
-              />
-            </div>
-            <div className="selectMent_box">
-              <p>정말 삭제를 진행하시겠어요?</p>
-              <p>삭제 시 복구가 불가능해요</p>
-            </div>
-            <div className="modalBtn_area">
-              <button
-                type="button"
-                onClick={() => setDeleteAnnounce({ show: false, id: '' })}
-              >
-                아니요
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  deleteMyScript(deleteAnnounce.id);
-                  setDeleteAnnounce({ show: false, id: '' });
-                }}
-              >
-                네
-              </button>
-            </div>
-          </div>
-        </>
+        <Modal
+          type="delete"
+          onClose={() => setDeleteAnnounce({ show: false, id: '' })}
+          onConfirm={() => {
+            deleteMyScript(deleteAnnounce.id);
+            setDeleteAnnounce({ show: false, id: '' });
+          }}
+        />
       )}
       {/* 탈퇴 모달 */}
       {withdrawal && (
-        <>
-          <div
-            className="modalBlackBg"
-            onClick={() => setWithdrawal(false)}
-          ></div>
-          <div className="modal_box modal_select">
-            <div className="character_box">
-              <Image
-                src={LocalImages.ImageTtorangWithdrawal}
-                alt="ImageTtorangWithdrawal"
-                width={120}
-                height={120}
-              />
-            </div>
-            <div className="selectMent_box">
-              <p>정말 탈퇴하시겠어요?</p>
-              <p>탈퇴하시면 모든 정보를 잃게 돼요</p>
-            </div>
-            <div className="modalBtn_area">
-              <button
-                type="button"
-                onClick={() => setWithdrawal(false)}
-              >
-                아니요
-              </button>
-              <button
-                type="button"
-                onClick={ttorangWithdrawal}
-              >
-                네
-              </button>
-            </div>
-          </div>
-        </>
+        <Modal
+          type="withdrawal"
+          onClose={() => setWithdrawal(false)}
+          onConfirm={ttorangWithdrawal}
+        />
       )}
     </>
   );
