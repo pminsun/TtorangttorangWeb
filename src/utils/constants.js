@@ -81,6 +81,18 @@ export const ANNOUNCE_TXT = {
     reset: '초기화',
     modify: '교정하기',
   },
+  scriptFinal: {
+    title: '발표 대본',
+    initialGetQna: '예상 질문 받기',
+    AgainGetQna: '질문 다시 받기',
+    saveBtn: '저장하기',
+    noneQna: {
+      first: '아직 발표문을 분석하지 못했어요',
+      second: '아래의 [예상 질문 받기] 버튼을 눌러주세요',
+    },
+    question: '질문',
+    answer: '답변',
+  },
 };
 
 export const MYPAGE_TXT = {
@@ -108,5 +120,10 @@ export const MYPAGE_TXT = {
     withdrawal: {
       title: '회원탈퇴',
     },
+  },
+  detailMyScript: {
+    saveBtn: '저장하기',
+    modifyBtn: '수정하기',
+    backBtn: '뒤로가기',
   },
 };

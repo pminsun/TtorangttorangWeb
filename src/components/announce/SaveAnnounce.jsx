@@ -10,7 +10,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'next/link';
 import { fetchModifyScript, fetchQnAData, fetchSaveScript, getDetailScript } from '@/api/fetchData';
 import { useRouter } from 'next/router';
-import { ANNOUNCE_TXT } from '@/utils/constants';
+import { ANNOUNCE_TXT, MYPAGE_TXT } from '@/utils/constants';
 
 export default function SaveAnnounce({ userEmail, userAccessToken }) {
   const pathname = usePathname();
@@ -262,10 +262,10 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
               </div>
             )}
             <div className={cls('scriptFinal_area', announcePage ? 'h-[51.59vmin]' : 'h-[55.55vmin]')}>
-              <p className="title">발표 대본</p>
+              <p className="title">{ANNOUNCE_TXT.scriptFinal.title}</p>
               <div className={cls('scriptTxt', announcePage ? 'h-[calc(100%-8vmin)]' : 'h-[44vmin]')}>
                 <textarea
-                  placeholder="발표문 초안을 작성해 주세요. 꼼꼼히 작성할수록 세심한 교정과 정확한 예상 질문을 받을 수 있어요."
+                  placeholder={ANNOUNCE_TXT.scriptWrite.inputDescription}
                   maxLength="3000"
                   value={announcePage ? finalScript : saveAnnounce}
                   onChange={userModifyScript}
@@ -308,7 +308,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                   }
                 }}
               >
-                {modifySaveAnnounce ? '저장하기' : '수정하기'}
+                {modifySaveAnnounce ? MYPAGE_TXT.detailMyScript.saveBtn : MYPAGE_TXT.detailMyScript.modifyBtn}
               </button>
             )}
           </div>
@@ -331,9 +331,9 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                       />
                     </div>
                     <p>
-                      아직 발표문을 분석하지 못했어요
+                      {ANNOUNCE_TXT.scriptFinal.noneQna.first}
                       <br />
-                      아래의 [예상 질문 받기] 버튼을 눌러주세요
+                      {ANNOUNCE_TXT.scriptFinal.noneQna.second}
                     </p>
                   </div>
                 ) : (
@@ -344,7 +344,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                         onClick={() => toggleQAItem(index)}
                       >
                         <div className={cls('question_area', announcePage ? 'min-h-[12.8vmin]' : 'min-h-[13.7vmin]')}>
-                          <p>질문</p>
+                          <p>{ANNOUNCE_TXT.scriptFinal.question}</p>
                           <p className={cls('question', askListState[index] ? 'font-bold' : 'font-medium')}>{item.question}</p>
                           <div className={cls('list_arrow', askListState[index] ? 'scale-y-[-1]' : 'scale-y-[1]')}>
                             <Image
@@ -356,7 +356,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                           </div>
                         </div>
                         <div className={cls('answer_area', askListState[index] ? 'on' : '')}>
-                          <p>답변</p>
+                        <p>{ANNOUNCE_TXT.scriptFinal.answer}</p>
                           <p className="answer">{item.answer}</p>
                           <div className="list_arrow">
                             <Image
@@ -379,14 +379,14 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                     onClick={getQAList}
                     className={cls(finalScript.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
                   >
-                    {qaArray?.length > 0 ? '질문 다시 받기' : '예상 질문 받기'}
+                    {qaArray?.length > 0 ? ANNOUNCE_TXT.scriptFinal.AgainGetQna : ANNOUNCE_TXT.scriptFinal.initialGetQna}
                   </button>
                   <button
                     type="button"
                     onClick={() => (userEmail && qaArray?.length > 0 ? (saveScriptToAccount(), router.push('/mypage')) : qaArray.length > 0 ? setLogin(true) : '')}
                     className={cls(qaArray?.length > 0 ? 'active_color cursor-pointer' : 'cursor-default bg-[#fff]')}
                   >
-                    저장하기
+                    {ANNOUNCE_TXT.scriptFinal.saveBtn}
                   </button>
                 </div>
               )}
@@ -396,7 +396,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                   type="button"
                   className="back_btn"
                 >
-                  뒤로가기
+                  {MYPAGE_TXT.detailMyScript.backBtn}
                 </Link>
               )}
             </div>
