@@ -2,11 +2,10 @@ import { useState } from 'react';
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
 import Slider from 'react-slick';
-import ModifyAnnounce from '@/components/ModifyAnnounce';
-import SaveAnnounce from '@/components/SaveAnnounce';
-import ProgressBar from '@/components/ProgressBar';
+import ModifyAnnounce from '@/components/announce/ModifyAnnounce';
+import SaveAnnounce from '@/components/announce/SaveAnnounce';
+import ProgressBar from '@/components/announce/ProgressBar';
 import { useNextMoveBtnStore, useScriptLoadingStore, useQaLoadingStore, useUserStore } from '@/store/store';
-import ShapeBg from '@/components/ShapeBg';
 
 export default function Announce() {
   const { userEmail, userAccessToken } = useUserStore();
@@ -16,7 +15,6 @@ export default function Announce() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   function NextArrow(props) {
-    ㅁ;
     const { className, style, onClick } = props;
 
     const dynamicStyle = {
@@ -92,7 +90,6 @@ export default function Announce() {
   return (
     <>
       <div className="slider-container">
-        <ShapeBg />
         <ProgressBar currentSlide={currentSlide} />
         <Slider {...settings}>
           <ModifyAnnounce userEmail={userEmail} />
@@ -105,8 +102,8 @@ export default function Announce() {
       {/* loading */}
       {scriptLoading && (
         <>
-          <div className="modalBlackBg"></div>
-          <div className="modal_box py-[3.15vmin] !bg-[#F9F9F9]">
+          <div className="modalBlackBg" />
+          <div className="modal_box modal_loading">
             <div className="character_box">
               <Image
                 src={LocalImages.ImageModalScriptIcon}
@@ -124,8 +121,8 @@ export default function Announce() {
       )}
       {qaLoading && (
         <>
-          <div className="modalBlackBg"></div>
-          <div className="modal_box py-[3.15vmin] !bg-[#F9F9F9]">
+          <div className="modalBlackBg" />
+          <div className="modal_box modal_loading">
             <div className="character_box">
               <Image
                 src={LocalImages.ImageModalScriptIcon}

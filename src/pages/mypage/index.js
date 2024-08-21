@@ -5,7 +5,6 @@ import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
 import { useQuery } from '@tanstack/react-query';
 import Slider from 'react-slick';
-import ShapeBg from '@/components/ShapeBg';
 import { useUserStore, useFinalScriptStore, useSettingStore, useNextMoveBtnStore } from '@/store/store';
 import { sliceMyScript, sliceMyScriptDateOnly, sliceMyScriptTitle, reverseData } from '@/utils/config';
 import { fetchKakaoLogOut, getUserScript, deleteUserScript, fetchTtorangWithdrawal } from '@/api/fetchData';
@@ -176,7 +175,6 @@ export default function Mypage() {
   return (
     <>
       <section className="mypage_container">
-        <ShapeBg />
         <div className="content_area">
           <div className="userInfo_area">
             <p className="mypage_title">내 정보</p>
@@ -332,7 +330,7 @@ export default function Mypage() {
             className="modalBlackBg"
             onClick={() => setDeleteAnnounce({ show: false, id: '' })}
           ></div>
-          <div className="modal_box withdrawal_box">
+          <div className="modal_box modal_select">
             <div className="character_box">
               <Image
                 src={LocalImages.ImageModalDelete}
@@ -341,7 +339,7 @@ export default function Mypage() {
                 height={120}
               />
             </div>
-            <div className="withdrawalMent_box">
+            <div className="selectMent_box">
               <p>정말 삭제를 진행하시겠어요?</p>
               <p>삭제 시 복구가 불가능해요</p>
             </div>
@@ -372,7 +370,7 @@ export default function Mypage() {
             className="modalBlackBg"
             onClick={() => setWithdrawal(false)}
           ></div>
-          <div className="modal_box withdrawal_box">
+          <div className="modal_box modal_select">
             <div className="character_box">
               <Image
                 src={LocalImages.ImageTtorangWithdrawal}
@@ -381,7 +379,7 @@ export default function Mypage() {
                 height={120}
               />
             </div>
-            <div className="withdrawalMent_box">
+            <div className="selectMent_box">
               <p>정말 탈퇴하시겠어요?</p>
               <p>탈퇴하시면 모든 정보를 잃게 돼요</p>
             </div>

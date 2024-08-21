@@ -89,7 +89,7 @@ export default function Header() {
           <div
             className="modalBlackBg"
             onClick={() => setLogin(false)}
-          ></div>
+          />
           <div className="modal_box login_box">
             <div
               className="modal_close"

@@ -3,12 +3,33 @@ import * as LocalImages from '@/utils/imageImports';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLoginModalStore, useUserStore, useNextMoveBtnStore, useSettingStore, useFinalScriptStore } from '@/store/store';
-import ShapeBg from '@/components/ShapeBg';
+
+const guideContent = [
+  {
+    img: LocalImages.ImageGateway_one,
+    imgAlt: 'ImageGateway_one',
+    width: 1279,
+    height: 625,
+  },
+  {
+    img: LocalImages.ImageGateway_two,
+    imgAlt: 'ImageGateway_two',
+    width: 1323,
+    height: 567,
+  },
+  {
+    img: LocalImages.ImageGateway_three,
+    imgAlt: 'ImageGateway_three',
+    width: 1277,
+    height: 362,
+  },
+];
 
 export default function Home() {
   const { userEmail } = useUserStore();
   const { setLogin } = useLoginModalStore();
   const outerDivRef = useRef();
+  const maxPage = 4;
   const [currentPage, setCurrentPage] = useState(1);
   const [isScrolling, setIsScrolling] = useState(false);
   const [scrollTimeout, setScrollTimeout] = useState(null);
@@ -16,6 +37,7 @@ export default function Home() {
   const { clearSettings } = useSettingStore();
   const { clearFinal } = useFinalScriptStore();
 
+  // 초기화
   useEffect(() => {
     clearSettings();
     clearFinal();
@@ -23,6 +45,7 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // fullpage 스크롤
   useEffect(() => {
     const scrollToPage = (page) => {
       const outerDiv = outerDivRef.current;
@@ -50,9 +73,8 @@ export default function Home() {
 
       if (!outerDiv) return;
 
-      const { scrollTop, clientHeight, scrollHeight } = outerDiv;
+      const { clientHeight, scrollHeight } = outerDiv;
       const pageHeight = clientHeight;
-      const maxScrollTop = scrollHeight - clientHeight;
       let nextPage = currentPage;
 
       if (deltaY > 0) {
@@ -65,7 +87,7 @@ export default function Home() {
 
       // 페이지 범위 내로 조정
       if (nextPage < 1) nextPage = 1;
-      if (nextPage > 4) nextPage = 4;
+      if (nextPage > maxPage) nextPage = maxPage;
 
       if (nextPage !== currentPage) {
         // 스크롤이 이미 진행 중이면 다음 스크롤을 무시
@@ -114,9 +136,6 @@ export default function Home() {
       ref={outerDivRef}
       className="gateway_container outer"
     >
-      <div className="gateway_shapeBg">
-        <ShapeBg />
-      </div>
       <div className="inner">
         <div className="gate_main">
           <div>
@@ -174,36 +193,21 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="inner">
-        <div>
-          <Image
-            src={LocalImages.ImageGateway_one}
-            alt="ImageGateway_one"
-            width={1279}
-            height={625}
-          />
+      {guideContent.map((item, index) => (
+        <div
+          key={index}
+          className="inner"
+        >
+          <div>
+            <Image
+              src={item.img}
+              alt={item.imgAlt}
+              width={item.width}
+              height={item.height}
+            />
+          </div>
         </div>
-      </div>
-      <div className="inner">
-        <div>
-          <Image
-            src={LocalImages.ImageGateway_two}
-            alt="ImageGateway_two"
-            width={1323}
-            height={567}
-          />
-        </div>
-      </div>
-      <div className="inner">
-        <div>
-          <Image
-            src={LocalImages.ImageGateway_three}
-            alt="ImageGateway_three"
-            width={1277}
-            height={362}
-          />
-        </div>
-      </div>
+      ))}
       <div
         onClick={() => setCurrentPage(1)}
         className="moveToTop_area"

@@ -17,7 +17,7 @@ body,
 }
 
 .root_layout {
-  @apply w-full h-full;
+  @apply w-full h-full bg-[#fefefe];
 }
 
 input,
@@ -177,69 +177,42 @@ footer {
 .modal_box {
   @apply flex_center flex-col absolute_center z-[80] w-[34.5vmin] h-[23.1vmin] rounded bg-white;
 
+  > p {
+    @apply text-[2.19vmin] font-medium text-center gray_colorTxt;
+  }
+
   .character_box {
-    @apply flex_center w-[9.22vmin] h-[9.22vmin] mb-[1vmin] bg-[#EBF2FA];
-
-    img {
-      @apply w-full h-full object-cover;
-    }
+    @apply flex_center bg-[#EBF2FA];
   }
 
-  &.login_box {
-    @apply w-[43.37vmin] h-[41.68vmin] p-[2.17vmin];
+  img {
+    @apply w-full h-full object-cover;
+  }
 
-    .modal_close {
-      @apply absolute top-[1.7vmin] right-[2.07vmin] z-10 w-[2.6vmin] h-[2.6vmin] cursor-pointer;
-
-      img {
-        @apply w-full h-full object-cover;
-      }
-    }
-
+  &.modal_loading {
+    @apply py-[3.15vmin] !bg-[#F9F9F9];
     .character_box {
-      @apply w-[14.61vmin] h-[14.61vmin];
-
-      img {
-        @apply w-full h-full object-cover;
-      }
+      @apply w-[9.22vmin] h-[9.22vmin] mb-[1vmin];
     }
 
-    .login_ment {
-      > p {
-        @apply text-[2.17vmin] font-medium text-center text-[#424242];
-      }
-    }
+    .loader_area {
+      @apply my-[1.82vmin] w-full;
 
-    .modalBtn_area {
-      @apply flex flex-col w-full;
-      .kakoLogin {
-        @apply flex_center relative w-full h-[6.72vmin] my-[2.6vmin] bg-[#FEE404];
-
-        .kakoLogo {
-          @apply absolute_yHalf left-[2.07vmin] w-[2.56vmin] h-[2.56vmin];
-        }
-        span {
-          @apply text-[2.07vmin] font-normal text-[#000000];
-        }
-      }
-
-      .noneLogin {
-        @apply cursor-pointer text-[2.19vmin] font-medium gray_colorTxt;
+      .loader {
+        @apply block relative w-[1.3vmin] h-[1.3vmin] mx-auto rounded-full bg-[#EDEDED];
+        animation: loadingAni 1s infinite linear alternate;
       }
     }
   }
 
-  &.withdrawal_box {
+  &.modal_select {
     @apply w-[48.7vmin] h-[42.34vmin] py-[3.36vmin];
+
     .character_box {
       @apply w-[13.01vmin] h-[13.01vmin] overflow-hidden mb-[2.6vmin];
-
-      img {
-        @apply w-full h-full object-cover;
-      }
     }
 
-    .withdrawalMent_box {
+    .selectMent_box {
       p:first-of-type {
         @apply mb-[1.3vmin] text-[2.6vmin] font-medium text-center text-[#424242];
       }
@@ -265,21 +238,45 @@ footer {
     }
   }
 
-  > p {
-    @apply text-[2.19vmin] font-medium text-center gray_colorTxt;
-  }
+  &.login_box {
+    @apply w-[43.37vmin] h-[41.68vmin] p-[2.17vmin];
 
-  .loader_area {
-    @apply my-[1.82vmin] w-full;
-  }
+    .modal_close {
+      @apply absolute top-[1.7vmin] right-[2.07vmin] z-10 w-[2.6vmin] h-[2.6vmin] cursor-pointer;
+    }
 
-  .loader {
-    @apply block relative w-[1.3vmin] h-[1.3vmin] mx-auto rounded-full bg-[#EDEDED];
-    animation: l5 1s infinite linear alternate;
+    .character_box {
+      @apply w-[14.61vmin] h-[14.61vmin] mb-[1vmin];
+    }
+
+    .login_ment {
+      > p {
+        @apply text-[2.17vmin] font-medium text-center text-[#424242];
+      }
+    }
+
+    .modalBtn_area {
+      @apply flex flex-col w-full;
+      .kakoLogin {
+        @apply flex_center relative w-full h-[6.72vmin] my-[2.6vmin] bg-[#FEE404];
+
+        .kakoLogo {
+          @apply absolute_yHalf left-[2.07vmin] w-[2.56vmin] h-[2.56vmin];
+        }
+
+        span {
+          @apply text-[2.07vmin] font-normal text-[#000000];
+        }
+      }
+
+      .noneLogin {
+        @apply cursor-pointer text-[2.19vmin] font-medium gray_colorTxt;
+      }
+    }
   }
 }
 
-@keyframes l5 {
+@keyframes loadingAni {
   0% {
     box-shadow:
       20px 0 #509bf8,
@@ -304,6 +301,11 @@ footer {
       -20px 0 #509bf8;
     background: #509bf8;
   }
+}
+
+/* shapeBG */
+.shapeBg_container {
+  @apply fixed top-0 bottom-0 left-0 right-0 w-full h-screen;
 }
 
 .shape_bg {

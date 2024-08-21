@@ -1,13 +1,9 @@
 .gateway_container {
-  @apply relative w-full h-screen overflow-hidden bg-[#fefefe];
+  @apply relative w-full h-screen overflow-hidden;
 
   /* 화면에서 스크롤바 안보이게 */
   &::-webkit-scrollbar {
     display: none;
-  }
-
-  .gateway_shapeBg {
-    @apply fixed top-0 bottom-0 left-0 right-0 w-full h-full;
   }
 
   .inner {
