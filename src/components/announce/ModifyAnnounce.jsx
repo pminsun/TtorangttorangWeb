@@ -302,17 +302,11 @@ export default function ModifyAnnounce({ userEmail }) {
               <div className="contentInfo_area">
                 <div className="script_fun">
                   <div className="copy_box">
-                    {originScript.length === 0 ? (
-                      <CopyAnnounce />
-                    ) : (
-                      <CopyToClipboard
-                        className="copyClipboard"
-                        text={compareScriptToggle ? newScript : originScript}
-                        onCopy={() => alert('발표문을 복사했어요')}
-                      >
-                        <CopyAnnounce />
-                      </CopyToClipboard>
-                    )}
+                    <CopyAnnounce
+                      compareScriptToggle={compareScriptToggle}
+                      newScript={newScript}
+                      originScript={originScript}
+                    />
                   </div>
                   {newScript.length > 0 && (
                     <div onClick={() => setcompareScriptToggle(!compareScriptToggle)}>

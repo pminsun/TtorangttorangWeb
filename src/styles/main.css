@@ -207,12 +207,6 @@ section.main_container {
             .script_fun {
               @apply w-full flex_vertical_center gap-[2.6vmin] h-[2.82vmin] mb-[2.17vmin];
 
-              .copy_box {
-                > div {
-                  @apply flex_vertical_center gap-[0.37vmin] cursor-pointer;
-                }
-              }
-
               > div {
                 @apply flex_vertical_center gap-[0.37vmin] cursor-pointer;
                 .icon {

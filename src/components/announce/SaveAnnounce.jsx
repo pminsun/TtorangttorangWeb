@@ -273,24 +273,25 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                 />
                 <p>{announcePage ? formatNumber(charCountFinal) : formatNumber(saveAnnounceCharCount)}/ 3000</p>
               </div>
-              <CopyToClipboard
-                className="copyClipboard"
-                text={announcePage ? finalScript : saveAnnounce}
-                onCopy={() => alert('완성된 발표문을 복사했어요')}
-              >
-                <div>
-                  <div className="icon w-[2.6vmin] h-[2.6vmin]">
-                    <Image
-                      src={LocalImages.ImageIconCopy}
-                      alt="ImageIconCopy"
-                      width={24}
-                      height={24}
-                      className="w-full h-full"
-                    />
+              <div className="copy_box">
+                <CopyToClipboard
+                  className="copyClipboard"
+                  text={announcePage ? finalScript : saveAnnounce}
+                  onCopy={() => alert('완성된 발표문을 복사했어요')}
+                >
+                  <div>
+                    <div className="icon">
+                      <Image
+                        src={LocalImages.ImageIconCopy}
+                        alt="ImageIconCopy"
+                        width={24}
+                        height={24}
+                      />
+                    </div>
+                    <p>복사하기</p>
                   </div>
-                  <p>복사하기</p>
-                </div>
-              </CopyToClipboard>
+                </CopyToClipboard>
+              </div>
             </div>
             {!announcePage && (
               <button

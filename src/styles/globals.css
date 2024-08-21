@@ -356,5 +356,17 @@ footer {
 .copy_box {
   > div {
     @apply flex_vertical_center gap-[0.37vmin] cursor-pointer;
+
+    .icon {
+      @apply w-[2.6vmin] h-[2.6vmin];
+
+      img {
+        @apply object-cover w-full h-full;
+      }
+    }
+
+    p {
+      @apply text-[1.52vmin] font-medium gray_colorTxt;
+    }
   }
 }
