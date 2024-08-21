@@ -77,6 +77,10 @@ export const ANNOUNCE_TXT = {
       title: '중복 표현을 제거할게요',
     },
   },
+  modifyBtn: {
+    reset: '초기화',
+    modify: '교정하기',
+  },
 };
 
 export const MYPAGE_TXT = {

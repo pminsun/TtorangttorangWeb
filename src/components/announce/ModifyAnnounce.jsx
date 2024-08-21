@@ -215,6 +215,9 @@ export default function ModifyAnnounce({ userEmail }) {
     }
   };
 
+  // 버튼활성화 조건
+  const getButtonClass = (condition) => cls(condition ? 'active_color cursor-pointer' : 'cursor-default');
+
   return (
     <section className="main_container">
       <div className="progress_bar"></div>
@@ -227,20 +230,14 @@ export default function ModifyAnnounce({ userEmail }) {
             />
             <div>
               <div className="scriptMain_area">
-                <p className="title">
-                  <span className="required">*</span>
-                  {ANNOUNCE_TXT.scriptWrite.title}
-                </p>
-                <div className="scriptTxt h-[calc(100%-3.06vmin)]">
-                  <AnnouncContent
-                    scriptWriteBoxRef={scriptWriteBoxRef}
-                    writeOriginScript={writeOriginScript}
-                    charCountOrigin={charCountOrigin}
-                    highlightedText={highlightedText}
-                    charCountNew={charCountNew}
-                    setCharCountNew={setCharCountNew}
-                  />
-                </div>
+                <AnnouncContent
+                  scriptWriteBoxRef={scriptWriteBoxRef}
+                  writeOriginScript={writeOriginScript}
+                  charCountOrigin={charCountOrigin}
+                  highlightedText={highlightedText}
+                  charCountNew={charCountNew}
+                  setCharCountNew={setCharCountNew}
+                />
               </div>
               <div className="contentInfo_area">
                 <ScriptFunc />
@@ -269,9 +266,9 @@ export default function ModifyAnnounce({ userEmail }) {
                       deleteAllScript();
                     }
                   }}
-                  className={cls(originScript.length > 0 || subject.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
+                  className={getButtonClass(originScript.length > 0 || subject.length > 0)}
                 >
-                  초기화
+                  {ANNOUNCE_TXT.modifyBtn.reset}
                 </button>
                 <button
                   type="button"
@@ -280,9 +277,9 @@ export default function ModifyAnnounce({ userEmail }) {
                       modifyScript();
                     }
                   }}
-                  className={cls(modifyBtn ? 'active_color cursor-pointer' : 'cursor-default bg-[#fff]')}
+                  className={getButtonClass(modifyBtn)}
                 >
-                  교정하기
+                  {ANNOUNCE_TXT.modifyBtn.modify}
                 </button>
               </div>
             </div>

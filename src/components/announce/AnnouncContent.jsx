@@ -59,5 +59,13 @@ export default function AnnouncContent(props) {
     </>
   );
 
-  return <>{!compareScriptToggle ? normalTxtArea() : modifyTxtArea()}</>;
+  return (
+    <>
+      <p className="title">
+        <span className="required">*</span>
+        {ANNOUNCE_TXT.scriptWrite.title}
+      </p>
+      <div className="scriptTxt h-[calc(100%-3.06vmin)]">{!compareScriptToggle ? normalTxtArea() : modifyTxtArea()}</div>
+    </>
+  );
 }
