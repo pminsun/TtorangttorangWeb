@@ -7,7 +7,7 @@ import { cls } from '@/utils/config';
 import { useRouter } from 'next/router';
 import { useLoginModalStore, useSettingStore, useNextMoveBtnStore, useUserStore, useFinalScriptStore } from '@/store/store';
 import { authorizationCodeLink } from '@/api/fetchData';
-import { headerTxt } from '@/utils/constants';
+import { HEADER_TXT } from '@/utils/constants';
 import Modal from './Modal';
 
 export default function Header() {
@@ -54,18 +54,18 @@ export default function Header() {
               <ul>
                 <li>
                   <Link
-                    href={headerTxt.mainHome.link}
-                    className={cls(pathname === headerTxt.mainHome.link ? 'on' : '')}
+                    href={HEADER_TXT.mainHome.link}
+                    className={cls(pathname === HEADER_TXT.mainHome.link ? 'on' : '')}
                   >
-                    {headerTxt.mainHome.title}
+                    {HEADER_TXT.mainHome.title}
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href={headerTxt.announce.link}
-                    className={cls(pathname === headerTxt.announce.link ? 'on' : '')}
+                    href={HEADER_TXT.announce.link}
+                    className={cls(pathname === HEADER_TXT.announce.link ? 'on' : '')}
                   >
-                    {headerTxt.announce.title}
+                    {HEADER_TXT.announce.title}
                   </Link>
                 </li>
               </ul>
@@ -73,13 +73,13 @@ export default function Header() {
           </div>
           <div className="header_user">
             {userEmail ? (
-              <Link href={headerTxt.mypage.link}>{headerTxt.mypage.title}</Link>
+              <Link href={HEADER_TXT.mypage.link}>{HEADER_TXT.mypage.title}</Link>
             ) : (
               <button
                 type="button"
                 onClick={() => setLogin(true)}
               >
-                {headerTxt.login}
+                {HEADER_TXT.login}
               </button>
             )}
           </div>

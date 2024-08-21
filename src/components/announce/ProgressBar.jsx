@@ -1,23 +1,34 @@
 import { cls } from '@/utils/config';
 
+const PROGRESS_BAR_WIDTH = {
+  default: 'w-1/2',
+  active: 'w-[51.56vmax]',
+};
+
+const STEP_INFO = [
+  { id: 0, title: '발표문 교정' },
+  { id: 1, title: '예상 질문 & 답변' },
+];
+
 export default function ProgressBar({ currentSlide }) {
+  const progressBarClass = currentSlide === 1 ? PROGRESS_BAR_WIDTH.active : PROGRESS_BAR_WIDTH.default;
+
   return (
     <div className="progress_container">
       <div className="progress_barLine"></div>
-      <div className={cls('progress_barLine_active', currentSlide === 1 ? 'w-[51.56vmax]' : 'w-1/2')}></div>
+      <div className={cls('progress_barLine_active', progressBarClass)}></div>
       <div className="page_infoList">
-        <div className={cls(currentSlide === 0 ? 'on' : '')}>
-          <p className={cls(currentSlide === 1 ? '!main_colorBg' : '')}>
-            <span>1</span>
-          </p>
-          <p>발표문 교정</p>
-        </div>
-        <div className={cls(currentSlide === 1 ? 'on' : '')}>
-          <p>
-            <span>2</span>
-          </p>
-          <p>예상 질문 & 답변</p>
-        </div>
+        {STEP_INFO.map((step) => (
+          <div
+            key={step.id}
+            className={cls(currentSlide === step.id ? 'on' : '')}
+          >
+            <p className={cls(currentSlide === step.id + 1 ? '!main_colorBg' : '')}>
+              <span>{step.id + 1}</span>
+            </p>
+            <p>{step.title}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

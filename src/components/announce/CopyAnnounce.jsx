@@ -1,14 +1,11 @@
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { usePathname } from 'next/navigation';
 
 export default function CopyAnnounce(props) {
   const { compareScriptToggle, newScript, originScript, announcePage, finalScript, saveAnnounce } = props;
-  const pathname = usePathname();
 
   const textToCopy = compareScriptToggle ? newScript : originScript;
-  // announcePage ? finalScript : saveAnnounce
   const isDisabled = originScript?.length === 0;
 
   return (

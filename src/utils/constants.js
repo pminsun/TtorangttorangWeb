@@ -1,4 +1,4 @@
-export const headerTxt = {
+export const HEADER_TXT = {
   mainHome: {
     title: '메인 홈',
     link: '/',
@@ -14,7 +14,7 @@ export const headerTxt = {
   login: '로그인',
 };
 
-export const footerTxt = {
+export const FOOTER_TXT = {
   teamName: '발표명장',
   projectHost: '비사이드 407기',
   service: {
@@ -26,7 +26,7 @@ export const footerTxt = {
   },
 };
 
-export const mypageTxt = {
+export const MYPAGE_TXT = {
   title: {
     myInfo: '내 정보',
     myAnnounce: '나의 발표문',

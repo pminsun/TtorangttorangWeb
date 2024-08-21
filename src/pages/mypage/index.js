@@ -8,7 +8,7 @@ import Slider from 'react-slick';
 import { useUserStore, useFinalScriptStore, useSettingStore, useNextMoveBtnStore } from '@/store/store';
 import { sliceMyScript, sliceMyScriptDateOnly, sliceMyScriptTitle, reverseData } from '@/utils/config';
 import { fetchKakaoLogOut, getUserScript, deleteUserScript, fetchTtorangWithdrawal } from '@/api/fetchData';
-import { mypageTxt } from '@/utils/constants';
+import { MYPAGE_TXT } from '@/utils/constants';
 import Modal from '@/components/layout/Modal';
 
 export default function Mypage() {
@@ -187,7 +187,7 @@ export default function Mypage() {
       <section className="mypage_container">
         <div className="content_area">
           <div className="userInfo_area">
-            <p className="mypage_title">{mypageTxt.title.myInfo}</p>
+            <p className="mypage_title">{MYPAGE_TXT.title.myInfo}</p>
             <div>
               <div className="user">
                 <div className="userIcon">
@@ -204,12 +204,12 @@ export default function Mypage() {
                 type="button"
                 onClick={kakaoLogOut}
               >
-                {mypageTxt.myInfo.logout}
+                {MYPAGE_TXT.myInfo.logout}
               </button>
             </div>
           </div>
           <div className="myAnnounce_area">
-            <p className="mypage_title">{mypageTxt.title.myAnnounce}</p>
+            <p className="mypage_title">{MYPAGE_TXT.title.myAnnounce}</p>
             <div className="myAnnounce_slide">
               <Slider {...settings}>
                 {reverseData(
@@ -263,10 +263,10 @@ export default function Mypage() {
             </div>
           </div>
           <div className="other_area">
-            <p className="mypage_title">{mypageTxt.title.other}</p>
+            <p className="mypage_title">{MYPAGE_TXT.title.other}</p>
             <ul>
               {linkKeys.map((key) => {
-                const item = mypageTxt.other[key];
+                const item = MYPAGE_TXT.other[key];
                 return (
                   <li key={key}>
                     <Link
@@ -283,7 +283,7 @@ export default function Mypage() {
                   type="button"
                   onClick={() => setWithdrawal(true)}
                 >
-                  {mypageTxt.other.withdrawal.title}
+                  {MYPAGE_TXT.other.withdrawal.title}
                 </button>
               </li>
             </ul>

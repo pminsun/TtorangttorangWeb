@@ -1,19 +1,19 @@
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
 import Link from 'next/link';
-import { footerTxt } from '@/utils/constants';
+import { FOOTER_TXT } from '@/utils/constants';
 
 export default function Footer() {
   return (
     <footer>
       <div className="ft_container">
         <div>
-          <p>{footerTxt.teamName}</p>
-          <p>{footerTxt.projectHost}</p>
+          <p>{FOOTER_TXT.teamName}</p>
+          <p>{FOOTER_TXT.projectHost}</p>
         </div>
         <div>
           <Link
-            href={footerTxt.service.contact.link}
+            href={FOOTER_TXT.service.contact.link}
             target="_blank"
           >
             <div className="ftIcon_box">
@@ -24,10 +24,10 @@ export default function Footer() {
                 height={24}
               />
             </div>
-            <span>{footerTxt.service.contact.title}</span>
+            <span>{FOOTER_TXT.service.contact.title}</span>
           </Link>
           <Link
-            href={footerTxt.service.Introduction.link}
+            href={FOOTER_TXT.service.Introduction.link}
             target="_blank"
           >
             <div className="ftIcon_box">
@@ -38,7 +38,7 @@ export default function Footer() {
                 height={24}
               />
             </div>
-            <span>{footerTxt.service.Introduction.title}</span>
+            <span>{FOOTER_TXT.service.Introduction.title}</span>
           </Link>
         </div>
       </div>
