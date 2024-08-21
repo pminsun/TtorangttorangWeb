@@ -6,6 +6,7 @@ import ModifyAnnounce from '@/components/announce/ModifyAnnounce';
 import SaveAnnounce from '@/components/announce/SaveAnnounce';
 import ProgressBar from '@/components/announce/ProgressBar';
 import { useNextMoveBtnStore, useScriptLoadingStore, useQaLoadingStore, useUserStore } from '@/store/store';
+import Modal from '@/components/layout/Modal';
 
 export default function Announce() {
   const { userEmail, userAccessToken } = useUserStore();
@@ -100,44 +101,8 @@ export default function Announce() {
         </Slider>
       </div>
       {/* loading */}
-      {scriptLoading && (
-        <>
-          <div className="modalBlackBg" />
-          <div className="modal_box modal_loading">
-            <div className="character_box">
-              <Image
-                src={LocalImages.ImageModalScriptIcon}
-                alt="ImageModalScriptIcon"
-                width={80}
-                height={80}
-              />
-            </div>
-            <p>초안 정보를 불러오고 있어요</p>
-            <div className="loader_area">
-              <span className="loader"></span>
-            </div>
-          </div>
-        </>
-      )}
-      {qaLoading && (
-        <>
-          <div className="modalBlackBg" />
-          <div className="modal_box modal_loading">
-            <div className="character_box">
-              <Image
-                src={LocalImages.ImageModalScriptIcon}
-                alt="ImageModalScriptIcon"
-                width={80}
-                height={80}
-              />
-            </div>
-            <p>예상 질문을 받아오고 있어요</p>
-            <div className="loader_area">
-              <span className="loader"></span>
-            </div>
-          </div>
-        </>
-      )}
+      {scriptLoading && <Modal type="announceLoading" />}
+      {qaLoading && <Modal type="qaLoading" />}
     </>
   );
 }

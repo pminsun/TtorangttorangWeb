@@ -1,18 +1,19 @@
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
 import Link from 'next/link';
+import { footerTxt } from '@/utils/constants';
 
 export default function Footer() {
   return (
     <footer>
       <div className="ft_container">
         <div>
-          <p>발표명장</p>
-          <p>비사이드 407기 </p>
+          <p>{footerTxt.teamName}</p>
+          <p>{footerTxt.projectHost}</p>
         </div>
         <div>
           <Link
-            href={'https://forms.gle/9X6VLT9aFX65U3E5A'}
+            href={footerTxt.service.contact.link}
             target="_blank"
           >
             <div className="ftIcon_box">
@@ -23,10 +24,10 @@ export default function Footer() {
                 height={24}
               />
             </div>
-            <span>문의하기</span>
+            <span>{footerTxt.service.contact.title}</span>
           </Link>
           <Link
-            href={'https://angry-mice-e3f.notion.site/395866ff990148659ec20768bfe2c084?pvs=4'}
+            href={footerTxt.service.Introduction.link}
             target="_blank"
           >
             <div className="ftIcon_box">
@@ -37,7 +38,7 @@ export default function Footer() {
                 height={24}
               />
             </div>
-            <span>서비스 소개</span>
+            <span>{footerTxt.service.Introduction.title}</span>
           </Link>
         </div>
       </div>

@@ -1,3 +1,31 @@
+export const headerTxt = {
+  mainHome: {
+    title: '메인 홈',
+    link: '/',
+  },
+  announce: {
+    title: '교정하기',
+    link: '/announce',
+  },
+  mypage: {
+    title: '마이페이지',
+    link: '/mypage',
+  },
+  login: '로그인',
+};
+
+export const footerTxt = {
+  teamName: '발표명장',
+  projectHost: '비사이드 407기',
+  service: {
+    contact: {
+      title: '문의하기',
+      link: 'https://forms.gle/9X6VLT9aFX65U3E5A',
+    },
+    Introduction: { title: '서비스 소개', link: 'https://angry-mice-e3f.notion.site/395866ff990148659ec20768bfe2c084?pvs=4' },
+  },
+};
+
 export const mypageTxt = {
   title: {
     myInfo: '내 정보',
