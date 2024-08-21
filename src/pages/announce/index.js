@@ -16,6 +16,7 @@ export default function Announce() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   function NextArrow(props) {
+    ㅁ;
     const { className, style, onClick } = props;
 
     const dynamicStyle = {

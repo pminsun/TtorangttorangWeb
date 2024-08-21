@@ -14,19 +14,13 @@ export default function Header() {
   const { login, setLogin } = useLoginModalStore();
   const { setNextMoveBtn } = useNextMoveBtnStore();
   const { userEmail } = useUserStore();
-  const { setOriginScript, setNewScript, setSubject, setPresentPurpose, setEndingTxt, setRepeat } = useSettingStore();
-  const { setFinalScript, setQaArray } = useFinalScriptStore();
+  const { clearSettings } = useSettingStore();
+  const { clearFinal } = useFinalScriptStore();
 
   useEffect(() => {
     if (userEmail && pathname !== '/announce') {
-      setOriginScript('');
-      setNewScript('');
-      setSubject('');
-      setPresentPurpose('회사 컨퍼런스');
-      setEndingTxt('합니다체');
-      setRepeat(false);
-      setFinalScript('');
-      setQaArray([]);
+      clearSettings();
+      clearFinal();
       setNextMoveBtn(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

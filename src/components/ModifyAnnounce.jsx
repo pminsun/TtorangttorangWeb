@@ -14,7 +14,8 @@ export default function ModifyAnnounce({ userEmail }) {
   const { setFinalScript } = useFinalScriptStore();
   const { setScriptLoading } = useScriptLoadingStore();
   // setting
-  const { originScript, setOriginScript, newScript, setNewScript, subject, setSubject, presentPurpose, setPresentPurpose, endingTxt, setEndingTxt, repeat, setRepeat } = useSettingStore();
+  const { clearSettings, originScript, setOriginScript, newScript, setNewScript, subject, setSubject, presentPurpose, setPresentPurpose, endingTxt, setEndingTxt, repeat, setRepeat } =
+    useSettingStore();
   const { initialSubject, setInitialSubject, initialPresentPurpose, setInitialPresentPurpose, initialEndingTxt, setInitialEndingTxt, initialrepeat, setInitialRepeat } = useInitialSettingStore();
   // 초안
   const [charCountOrigin, setCharCountOrigin] = useState(0);
@@ -99,14 +100,9 @@ export default function ModifyAnnounce({ userEmail }) {
 
   // script 초기화 버튼
   const deleteAllScript = () => {
-    setOriginScript('');
-    setNewScript('');
-    setSubject('');
+    clearSettings();
     setCharCountOrigin(0);
     setSubjectCharCount(0);
-    setPresentPurpose('회사 컨퍼런스');
-    setEndingTxt('합니다체');
-    setRepeat(false);
     setEstimatedPresentTime('0분 0초');
     setcompareScriptToggle(false);
   };

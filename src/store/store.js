@@ -16,6 +16,7 @@ export const useSettingStore = create(
       setRepeat: (value) => set({ repeat: value }),
       newScript: '',
       setNewScript: (value) => set({ newScript: value }),
+      clearSettings: () => set({ originScript: '', subject: '', presentPurpose: '회사 컨퍼런스', endingTxt: '합니다체', repeat: false, newScript: '' }),
     }),
     {
       name: 'settings', // 로컬 스토리지 키
@@ -34,6 +35,7 @@ export const useInitialSettingStore = create(
       setInitialEndingTxt: (value) => set({ initialEndingTxt: value }),
       initialrepeat: false,
       setInitialRepeat: (value) => set({ initialrepeat: value }),
+      clearInitialSettings: () => set({ initialSubject: '', initialPresentPurpose: '회사 컨퍼런스', initialEndingTxt: '합니다체', initialrepeat: false }),
     }),
     {
       name: 'initialSettings', // 로컬 스토리지 키
@@ -53,6 +55,7 @@ export const useFinalScriptStore = create(
       setFinalScript: (value) => set({ finalScript: value }),
       qaArray: [],
       setQaArray: (value) => set({ qaArray: value }),
+      clearFinal: () => set({ finalScript: '', qaArray: [] }),
     }),
     {
       name: 'final', // 로컬 스토리지 키

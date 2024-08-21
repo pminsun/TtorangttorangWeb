@@ -17,18 +17,13 @@ export default function Mypage() {
   const { userEmail, accessToken, userAccessToken, clearUser } = useUserStore();
   const [addListLength, setAddListLength] = useState(0);
   const { setNextMoveBtn } = useNextMoveBtnStore();
-  const { setOriginScript, setNewScript, setSubject, setPresentPurpose, setEndingTxt, setRepeat } = useSettingStore();
-  const { setFinalScript, setQaArray } = useFinalScriptStore();
+  const { clearSettings } = useSettingStore();
+  const { clearFinal } = useFinalScriptStore();
 
+  // 초기화
   useEffect(() => {
-    setOriginScript('');
-    setNewScript('');
-    setSubject('');
-    setPresentPurpose('회사 컨퍼런스');
-    setEndingTxt('합니다체');
-    setRepeat(false);
-    setFinalScript('');
-    setQaArray([]);
+    clearSettings();
+    clearFinal();
     setNextMoveBtn(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
