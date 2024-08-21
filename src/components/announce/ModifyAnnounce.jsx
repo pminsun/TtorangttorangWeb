@@ -1,14 +1,14 @@
 import { useEffect, useState, useRef } from 'react';
-import Image from 'next/image';
 import GuideMent from './GuideMent';
-import * as LocalImages from '@/utils/imageImports';
-import { cls, formatNumber } from '@/utils/config';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { cls } from '@/utils/config';
 import { fetchAnnounceData } from '@/api/fetchData';
-import HighlightWithinTextarea from 'react-highlight-within-textarea';
 import { diffChars } from 'diff';
-import { useNextMoveBtnStore, useSettingStore, useInitialSettingStore, useFinalScriptStore, useScriptLoadingStore } from '@/store/store';
-import CopyAnnounce from './CopyAnnounce';
+import { useNextMoveBtnStore, useSettingStore, useInitialSettingStore, useFinalScriptStore, useScriptLoadingStore, useCompareScriptStore } from '@/store/store';
+import AnnouncContent from './AnnouncContent';
+import ScriptInfo from './ScriptInfo';
+import ScriptFunc from './ScriptFunc';
+import DetailSetting from './DetailSetting';
+import { ANNOUNCE_TXT } from '@/utils/constants';
 
 export default function ModifyAnnounce({ userEmail }) {
   const { setNextMoveBtn } = useNextMoveBtnStore();
@@ -29,7 +29,7 @@ export default function ModifyAnnounce({ userEmail }) {
   // const [newScript, setNewScript] = useState('');
   const [initialNewScript, setInitialNewScript] = useState('');
   const [charCountNew, setCharCountNew] = useState(0);
-  const [compareScriptToggle, setcompareScriptToggle] = useState(false);
+  const { compareScriptToggle, setcompareScriptToggle } = useCompareScriptStore();
   const [highlightedText, setHighlightedText] = useState([]);
   const scriptWriteBoxRef = useRef(null);
   // 예상 발표 시간
@@ -68,29 +68,6 @@ export default function ModifyAnnounce({ userEmail }) {
     setCharCountOrigin(draft.length);
   };
 
-  // 주제 작성
-  const writeSubject = (event) => {
-    const MAX_LENGTH = 100;
-    let draft = event.target.value;
-
-    if (draft.length > MAX_LENGTH) {
-      draft = event.target.value.slice(0, MAX_LENGTH);
-    }
-
-    setSubject(draft);
-    setSubjectCharCount(draft.length);
-  };
-
-  // 발표 목적
-  const selectPurpose = (purpose) => {
-    setPresentPurpose(purpose);
-  };
-
-  // 종결 어미
-  const selectEndingTxt = (txt) => {
-    setEndingTxt(txt);
-  };
-
   // 예상 발표 시간
   useEffect(() => {
     const estimatedTime = compareScriptToggle ? Math.ceil(charCountNew / 5) : Math.ceil(charCountOrigin / 5); // 초 단위
@@ -125,7 +102,6 @@ export default function ModifyAnnounce({ userEmail }) {
     }
   }, [originScript, subject, newScript, initialNewScript, initialSubject, compareScriptToggle, initialPresentPurpose, presentPurpose, initialEndingTxt, endingTxt, initialrepeat, repeat]);
 
-  const filterOut = ['-', '"', '"', '!.', '!', '[', ']', ':'];
   const highlightDiffs = (oldStr, newStr) => {
     const diff = diffChars(oldStr, newStr);
     const highlights = [];
@@ -246,160 +222,45 @@ export default function ModifyAnnounce({ userEmail }) {
         <form>
           <div className="scriptWrite_box">
             <GuideMent
-              firstMent={'발표문 초안 작성'}
-              secondMent={'또랑또랑의 세심한 교정으로 더욱 명확하고 논리적인 발표문을 만들어 드려요'}
+              firstMent={ANNOUNCE_TXT.GuideTxt.oneStep.left.firstMent}
+              secondMent={ANNOUNCE_TXT.GuideTxt.oneStep.left.secondMent}
             />
             <div>
               <div className="scriptMain_area">
                 <p className="title">
-                  <span className="required">*</span>발표 내용
+                  <span className="required">*</span>
+                  {ANNOUNCE_TXT.scriptWrite.title}
                 </p>
                 <div className="scriptTxt h-[calc(100%-3.06vmin)]">
-                  {!compareScriptToggle && (
-                    <>
-                      <div
-                        ref={scriptWriteBoxRef}
-                        className="textSize"
-                      >
-                        <textarea
-                          placeholder="발표문 초안을 작성해 주세요. 꼼꼼히 작성할수록 세심한 교정과 정확한 예상 질문을 받을 수 있어요."
-                          maxLength="3000"
-                          value={originScript}
-                          onChange={writeOriginScript}
-                        />
-                      </div>
-                      <p>{formatNumber(charCountOrigin)} / 3000</p>
-                    </>
-                  )}
-                  {compareScriptToggle && (
-                    <>
-                      <div className="textSize">
-                        <div className="newScript">
-                          <HighlightWithinTextarea
-                            highlight={[
-                              {
-                                highlight: highlightedText.filter((item) => !filterOut.includes(item) && item.length > 1),
-                                className: '!bg-[#cbeaff]',
-                              },
-                            ]}
-                            value={newScript}
-                            onChange={(value) => {
-                              setNewScript(value);
-                              setFinalScript(value);
-                              setCharCountNew(value.length);
-                              if (value.length > 3000) {
-                                setCharCountNew(3000);
-                              }
-                            }}
-                          />
-                        </div>
-                      </div>
-                      <p>{formatNumber(charCountNew)} / 3000</p>
-                    </>
-                  )}
+                  <AnnouncContent
+                    scriptWriteBoxRef={scriptWriteBoxRef}
+                    writeOriginScript={writeOriginScript}
+                    charCountOrigin={charCountOrigin}
+                    highlightedText={highlightedText}
+                    charCountNew={charCountNew}
+                    setCharCountNew={setCharCountNew}
+                  />
                 </div>
               </div>
               <div className="contentInfo_area">
-                <div className="script_fun">
-                  <div className="copy_box">
-                    <CopyAnnounce
-                      compareScriptToggle={compareScriptToggle}
-                      newScript={newScript}
-                      originScript={originScript}
-                    />
-                  </div>
-                  {newScript.length > 0 && (
-                    <div onClick={() => setcompareScriptToggle(!compareScriptToggle)}>
-                      <div className="icon">
-                        <Image
-                          src={LocalImages.ImageIconSyncAlt}
-                          alt="ImageIconSyncAlt"
-                          width={24}
-                          height={24}
-                        />
-                      </div>
-                      <p>{compareScriptToggle ? '원문 보기' : '교정문 보기'}</p>
-                    </div>
-                  )}
-                </div>
-                <div className="script_info">
-                  <p>{estimatedPresentTime} (예상 발표 시간)</p>
-                  <p>
-                    개선 내용: <span>{compareScriptToggle ? improvementMent : '없음'}</span>
-                  </p>
-                </div>
+                <ScriptFunc />
+                <ScriptInfo
+                  improvementMent={improvementMent}
+                  estimatedPresentTime={estimatedPresentTime}
+                />
               </div>
             </div>
           </div>
           <div className="scriptSetting_box">
             <GuideMent
-              firstMent={'발표 정보 입력'}
-              secondMent={'발표에 대한 간단한 정보를 입력해 주세요'}
+              firstMent={ANNOUNCE_TXT.GuideTxt.oneStep.right.firstMent}
+              secondMent={ANNOUNCE_TXT.GuideTxt.oneStep.right.secondMent}
             />
             <div>
-              <div className="detailSetting">
-                <div>
-                  <p className="title">
-                    1. <span className="required">*</span>발표의 주제에 대해 간략히 설명해 주세요
-                  </p>
-                  <div className="subject_box">
-                    <textarea
-                      placeholder="ex : 생활 속에서 실천할 수 있는 환경 보호 방안"
-                      maxLength="100"
-                      value={subject}
-                      onChange={writeSubject}
-                    />
-                    <span className="subject_charCount">{subjectCharCount} / 100</span>
-                  </div>
-                </div>
-                <div>
-                  <p className="title">
-                    2. <span className="required">*</span>발표 목적을 선택해 주세요
-                  </p>
-                  <div className="purposeCheck">
-                    {['회사 컨퍼런스', '학교 발표', '소모임'].map((item, index) => (
-                      <p
-                        key={index}
-                        onClick={() => selectPurpose(item)}
-                        className={cls(presentPurpose === item ? 'active_color' : 'disabled_color')}
-                      >
-                        {item}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="title">
-                    3. <span className="required">*</span>종결 어미를 선택해 주세요
-                  </p>
-                  <div className="endingTxtCheck">
-                    {['합니다체', '해요체'].map((item, index) => (
-                      <p
-                        key={index}
-                        onClick={() => selectEndingTxt(item)}
-                        className={cls(endingTxt === item ? 'active_color' : 'disabled_color')}
-                      >
-                        - {item}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-                <div className="repeat_box">
-                  <div onClick={() => setRepeat(!repeat)}>
-                    <div className={cls('checkbox', repeat ? 'active_color' : 'disabled_color')}>
-                      {repeat && (
-                        <Image
-                          src={LocalImages.ImageIconCheckboxArrow}
-                          alt="ImageIconCheckboxArrow"
-                          width={11}
-                          height={10}
-                        />
-                      )}
-                    </div>
-                    <p>중복 표현을 제거할게요</p>
-                  </div>
-                </div>
-              </div>
+              <DetailSetting
+                subjectCharCount={subjectCharCount}
+                setSubjectCharCount={setSubjectCharCount}
+              />
               <div className="modifyBtn_box">
                 <button
                   type="button"

@@ -43,6 +43,12 @@ export const useInitialSettingStore = create(
   ),
 );
 
+// 원문 교정문 비교
+export const useCompareScriptStore = create((set) => ({
+  compareScriptToggle: false,
+  setcompareScriptToggle: (value) => set({ compareScriptToggle: value }),
+}));
+
 export const useNextMoveBtnStore = create((set) => ({
   nextMoveBtn: false,
   setNextMoveBtn: (value) => set({ nextMoveBtn: value }),

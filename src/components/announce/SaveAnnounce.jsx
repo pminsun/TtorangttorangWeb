@@ -10,6 +10,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'next/link';
 import { fetchModifyScript, fetchQnAData, fetchSaveScript, getDetailScript } from '@/api/fetchData';
 import { useRouter } from 'next/router';
+import { ANNOUNCE_TXT } from '@/utils/constants';
 
 export default function SaveAnnounce({ userEmail, userAccessToken }) {
   const pathname = usePathname();
@@ -245,8 +246,8 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
           <div className="userModify_box">
             {announcePage && (
               <GuideMent
-                firstMent={'완성 발표문'}
-                secondMent={'완성된 발표문을 분석하여 예상 질문과 답변을 받아보세요'}
+                firstMent={ANNOUNCE_TXT.GuideTxt.twoStep.left.firstMent}
+                secondMent={ANNOUNCE_TXT.GuideTxt.twoStep.left.secondMent}
               />
             )}
             {!announcePage && (
@@ -313,8 +314,8 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
           </div>
           <div className="qa_box">
             <GuideMent
-              firstMent={announcePage ? '예상 질문과 답변' : '예상 질문과 답변'}
-              secondMent={announcePage ? '반복 연습으로 더욱 완벽한 발표를 만들어 보세요!' : '반복 연습으로 더욱 완벽한 발표를 만들어 보세요!'}
+              firstMent={ANNOUNCE_TXT.GuideTxt.twoStep.right.firstMent}
+              secondMent={ANNOUNCE_TXT.GuideTxt.twoStep.right.secondMent}
               saveMentStyle={announcePage ? '' : 'saveMentStyle'}
             />
             <div>

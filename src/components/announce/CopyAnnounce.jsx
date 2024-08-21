@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { useSettingStore } from '@/store/store';
 
 export default function CopyAnnounce(props) {
-  const { compareScriptToggle, newScript, originScript, announcePage, finalScript, saveAnnounce } = props;
-
+  const { compareScriptToggle } = props;
+  const { originScript, newScript } = useSettingStore();
   const textToCopy = compareScriptToggle ? newScript : originScript;
   const isDisabled = originScript?.length === 0;
 
