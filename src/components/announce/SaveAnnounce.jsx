@@ -162,13 +162,6 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
     }
   };
 
-  // 최초로 저장된 발표문
-  useEffect(() => {
-    if (!announcePage) {
-      setQaArray(askListArray);
-    }
-  }, [announcePage, setQaArray]);
-
   // 저장한 내 발표문 제목
   const userModifyTitle = (event) => {
     const MAX_LENGTH = 30;
