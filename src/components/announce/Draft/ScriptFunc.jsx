@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import CopyAnnounce from './CopyAnnounce';
 import * as LocalImages from '@/utils/imageImports';
 import { useCompareScriptStore, useSettingStore } from '@/store/store';
 import { ANNOUNCE_TXT } from '@/utils/constants';
+import CopyAnnounce from '../CopyAnnounce';
 
 export default function ScriptFunc() {
   const { newScript } = useSettingStore();

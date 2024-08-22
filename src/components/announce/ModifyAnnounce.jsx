@@ -4,10 +4,10 @@ import { cls } from '@/utils/config';
 import { fetchAnnounceData } from '@/api/fetchData';
 import { diffChars } from 'diff';
 import { useNextMoveBtnStore, useSettingStore, useInitialSettingStore, useFinalScriptStore, useScriptLoadingStore, useCompareScriptStore } from '@/store/store';
-import AnnouncContent from './AnnouncContent';
-import ScriptInfo from './ScriptInfo';
-import ScriptFunc from './ScriptFunc';
-import DetailSetting from './DetailSetting';
+import AnnouncContent from './Draft/AnnouncContent';
+import ScriptInfo from './Draft/ScriptInfo';
+import ScriptFunc from './Draft/ScriptFunc';
+import DetailSetting from './Draft/DetailSetting';
 import { ANNOUNCE_TXT } from '@/utils/constants';
 
 export default function ModifyAnnounce({ userEmail }) {

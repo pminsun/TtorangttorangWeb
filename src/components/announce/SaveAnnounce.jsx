@@ -1,15 +1,12 @@
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import GuideMent from './GuideMent';
 import { useQuery } from '@tanstack/react-query';
-import * as LocalImages from '@/utils/imageImports';
 import { useFinalScriptStore, useSettingStore, useQaLoadingStore } from '@/store/store';
-import { askListArray, cls, formatNumber } from '@/utils/config';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { askListArray, cls } from '@/utils/config';
 import { fetchModifyScript, fetchQnAData, fetchSaveScript, getDetailScript } from '@/api/fetchData';
 import { useRouter } from 'next/router';
 import { ANNOUNCE_TXT, MYPAGE_TXT } from '@/utils/constants';
+import GuideMent from './GuideMent';
 import DisplayQnA from './ExpectedQnA/DisplayQnA';
 import NoneQnA from './ExpectedQnA/NoneQnA';
 import BtnsQnA from './ExpectedQnA/BtnsQnA';
