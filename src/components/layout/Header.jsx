@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
 import Link from 'next/link';

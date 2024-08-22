@@ -1,3 +1,11 @@
+export const GLOBAL_TXT = {
+  copy: {
+    copyTxt: '복사하기',
+    aleretModifyCopy: '발표문을 복사했어요',
+    alertFinalCopy: '완성된 발표문을 복사했어요',
+  },
+};
+
 export const HEADER_TXT = {
   mainHome: {
     title: '메인 홈',

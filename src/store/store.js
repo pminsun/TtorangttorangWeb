@@ -1,6 +1,13 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+// 교정하기 현재 페이지
+export const useCurrentSlideStore = create((set) => ({
+  currentSlide: 0,
+  setCurrentSlide: (value) => set({ currentSlide: value }),
+}));
+
+// 초안 정보
 export const useSettingStore = create(
   persist(
     (set) => ({
@@ -24,6 +31,7 @@ export const useSettingStore = create(
   ),
 );
 
+// 최초 초안 정보
 export const useInitialSettingStore = create(
   persist(
     (set) => ({

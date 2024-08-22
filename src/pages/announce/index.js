@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 import ModifyAnnounce from '@/components/announce/ModifyAnnounce';
 import SaveAnnounce from '@/components/announce/SaveAnnounce';
 import ProgressBar from '@/components/announce/ProgressBar';
-import { useNextMoveBtnStore, useScriptLoadingStore, useQaLoadingStore, useUserStore } from '@/store/store';
+import { useNextMoveBtnStore, useScriptLoadingStore, useQaLoadingStore, useUserStore, useCurrentSlideStore } from '@/store/store';
 import Modal from '@/components/layout/Modal';
 
 export default function Announce() {
@@ -13,7 +13,7 @@ export default function Announce() {
   const { nextMoveBtn } = useNextMoveBtnStore();
   const { qaLoading } = useQaLoadingStore();
   const { scriptLoading } = useScriptLoadingStore();
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const { currentSlide, setCurrentSlide } = useCurrentSlideStore();
 
   function NextArrow(props) {
     const { className, style, onClick } = props;

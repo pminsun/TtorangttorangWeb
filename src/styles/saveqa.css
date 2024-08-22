@@ -51,7 +51,7 @@
       }
 
       .copyClipboard {
-        @apply flex_vertical_center gap-[0.43vmin] w-[10vmin] mt-[1.3vmin] cursor-pointer;
+        @apply flex_vertical_center gap-[0.43vmin] w-[10vmin] cursor-pointer;
 
         p {
           @apply text-[1.52vmin] font-medium gray_colorTxt;

@@ -1,9 +1,7 @@
-import Image from 'next/image';
-import * as LocalImages from '@/utils/imageImports';
-import CopyToClipboard from 'react-copy-to-clipboard';
 import { cls, formatNumber } from '@/utils/config';
 import { ANNOUNCE_TXT } from '@/utils/constants';
 import { useFinalScriptStore } from '@/store/store';
+import CopyAnnounce from '../CopyAnnounce';
 
 export default function FinalAnnounce(props) {
   const { announcePage, saveAnnounce, userModifyScript, modifySaveAnnounce, charCountFinal, saveAnnounceCharCount } = props;
@@ -34,24 +32,8 @@ export default function FinalAnnounce(props) {
           {scriptLength}/ {MAX_LENGTH}
         </p>
       </div>
-      <div className="copy_box">
-        <CopyToClipboard
-          className="copyClipboard"
-          text={scriptValue}
-          onCopy={() => alert('완성된 발표문을 복사했어요')}
-        >
-          <div>
-            <div className="icon">
-              <Image
-                src={LocalImages.ImageIconCopy}
-                alt="ImageIconCopy"
-                width={24}
-                height={24}
-              />
-            </div>
-            <p>복사하기</p>
-          </div>
-        </CopyToClipboard>
+      <div className="copy_box mt-[1.3vmin]">
+        <CopyAnnounce saveAnnounce={saveAnnounce} />
       </div>
     </>
   );
