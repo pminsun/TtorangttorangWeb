@@ -370,3 +370,36 @@ footer {
     }
   }
 }
+
+/* 404페이지 */
+.error_container {
+  @apply relative w-full h-full py-[5.64vmin] overflow-hidden;
+
+  > div {
+    @apply relative flex_center flex-col content_w_size h-full mx-auto pt-[4vmin] pb-[6vmin];
+
+    .character_box {
+      @apply w-[20vmin] h-[20vmin] overflow-hidden mb-[2.6vmin];
+
+      img {
+        @apply w-full h-full object-cover;
+      }
+    }
+
+    p {
+      @apply text-[3.47vmin] font-medium gray_colorTxt;
+    }
+
+    .movePage_area {
+      @apply flex gap-[2vmin] mt-[4.34vmin];
+
+      a {
+        @apply flex_center block w-[22vmin] h-[3.5vmax] area_border text-[1.95vmin] font-semibold gray_colorTxt;
+
+        &:hover {
+          @apply main_colorBg text-white;
+        }
+      }
+    }
+  }
+}
