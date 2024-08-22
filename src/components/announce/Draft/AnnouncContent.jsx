@@ -1,6 +1,6 @@
 import { useCompareScriptStore, useFinalScriptStore, useSettingStore } from '@/store/store';
 import { formatNumber } from '@/utils/config';
-import { ANNOUNCE_TXT } from '@/utils/constants';
+import { ANNOUNCE_TXT, GLOBAL_TXT } from '@/utils/constants';
 import HighlightWithinTextarea from 'react-highlight-within-textarea';
 
 export default function AnnouncContent(props) {
@@ -62,7 +62,7 @@ export default function AnnouncContent(props) {
   return (
     <>
       <p className="title">
-        <span className="required">*</span>
+        <span className="required">{GLOBAL_TXT.required}</span>
         {ANNOUNCE_TXT.scriptWrite.title}
       </p>
       <div className="scriptTxt h-[calc(100%-3.06vmin)]">{!compareScriptToggle ? normalTxtArea() : modifyTxtArea()}</div>

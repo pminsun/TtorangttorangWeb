@@ -113,7 +113,7 @@ export default function Mypage() {
   const emptyAnnounce = () => (
     <>
       <div className="announce_title">
-        <p>새 발표문 쓰기</p>
+        <p>{MYPAGE_TXT.myAnnounce.emptyTitle}</p>
       </div>
       <Link
         href={`/announce`}

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import * as LocalImages from '@/utils/imageImports';
 import { useSettingStore } from '@/store/store';
 import { cls } from '@/utils/config';
-import { ANNOUNCE_TXT } from '@/utils/constants';
+import { ANNOUNCE_TXT, GLOBAL_TXT } from '@/utils/constants';
 
 export default function DetailSetting(props) {
   const { subjectCharCount, setSubjectCharCount } = props;
@@ -34,17 +34,22 @@ export default function DetailSetting(props) {
 
   const detailSettingTxt = ANNOUNCE_TXT.detailSetting;
 
+  // 조건별 css
+  const purposeActiveClass = cls(presentPurpose === item ? 'active_color' : 'disabled_color');
+  const endingTxtActiveClass = cls(endingTxt === item ? 'active_color' : 'disabled_color');
+  const repeatActiveClass = cls('checkbox', repeat ? 'active_color' : 'disabled_color');
+
   return (
     <div className="detailSetting">
       <div>
         <p className="title">
           {detailSettingTxt.subject.id}
-          <span className="required">*</span>
+          <span className="required">{GLOBAL_TXT.required}</span>
           {detailSettingTxt.subject.title}
         </p>
         <div className="subject_box">
           <textarea
-            placeholder="ex : 생활 속에서 실천할 수 있는 환경 보호 방안"
+            placeholder={detailSettingTxt.inputDescription}
             maxLength={MAX_SUBJECT_LENGTH}
             value={subject}
             onChange={writeSubject}
@@ -56,14 +61,14 @@ export default function DetailSetting(props) {
       </div>
       <div>
         <p className="title">
-          {detailSettingTxt.purpose.id} <span className="required">*</span> {detailSettingTxt.purpose.title}
+          {detailSettingTxt.purpose.id} <span className="required">{GLOBAL_TXT.required}</span> {detailSettingTxt.purpose.title}
         </p>
         <div className="purposeCheck">
           {detailSettingTxt.purpose.list.map((item, index) => (
             <p
               key={index}
               onClick={() => selectPurpose(item)}
-              className={cls(presentPurpose === item ? 'active_color' : 'disabled_color')}
+              className={purposeActiveClass}
             >
               {item}
             </p>
@@ -72,7 +77,7 @@ export default function DetailSetting(props) {
       </div>
       <div>
         <p className="title">
-          {detailSettingTxt.endingTxt.id} <span className="required">*</span>
+          {detailSettingTxt.endingTxt.id} <span className="required">{GLOBAL_TXT.required}</span>
           {detailSettingTxt.endingTxt.title}
         </p>
         <div className="endingTxtCheck">
@@ -80,7 +85,7 @@ export default function DetailSetting(props) {
             <p
               key={index}
               onClick={() => selectEndingTxt(item)}
-              className={cls(endingTxt === item ? 'active_color' : 'disabled_color')}
+              className={endingTxtActiveClass}
             >
               - {item}
             </p>
@@ -89,7 +94,7 @@ export default function DetailSetting(props) {
       </div>
       <div className="repeat_box">
         <div onClick={() => setRepeat(!repeat)}>
-          <div className={cls('checkbox', repeat ? 'active_color' : 'disabled_color')}>
+          <div className={repeatActiveClass}>
             {repeat && (
               <Image
                 src={LocalImages.ImageIconCheckboxArrow}

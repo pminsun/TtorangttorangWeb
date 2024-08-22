@@ -4,6 +4,7 @@ export const GLOBAL_TXT = {
     aleretModifyCopy: '발표문을 복사했어요',
     alertFinalCopy: '완성된 발표문을 복사했어요',
   },
+  required: '*',
 };
 
 export const HEADER_TXT = {
@@ -35,6 +36,10 @@ export const FOOTER_TXT = {
 };
 
 export const ANNOUNCE_TXT = {
+  progressBar: {
+    first: '발표문 교정',
+    second: '예상 질문 & 답변',
+  },
   GuideTxt: {
     oneStep: {
       left: {
@@ -67,6 +72,7 @@ export const ANNOUNCE_TXT = {
     improvementMentNone: '없음',
   },
   detailSetting: {
+    inputDescription: 'ex : 생활 속에서 실천할 수 있는 환경 보호 방안',
     subject: {
       id: '1.',
       title: '발표의 주제에 대해 간략히 설명해 주세요',
@@ -111,6 +117,9 @@ export const MYPAGE_TXT = {
   },
   myInfo: {
     logout: '로그아웃',
+  },
+  myAnnounce: {
+    emptyTitle: '새 발표문 쓰기',
   },
   other: {
     notice: {

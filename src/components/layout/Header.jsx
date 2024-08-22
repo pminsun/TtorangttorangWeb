@@ -20,7 +20,7 @@ export default function Header() {
   const { clearFinal } = useFinalScriptStore();
 
   useEffect(() => {
-    if (userEmail && pathname !== '/announce') {
+    if (userEmail && pathname !== HEADER_TXT.announce.link) {
       clearSettings();
       clearFinal();
       setNextMoveBtn(false);
@@ -39,7 +39,7 @@ export default function Header() {
           <div className="header_menu">
             <h1>
               <Link
-                href={'/'}
+                href={HEADER_TXT.mainHome.link}
                 className="logo_area"
               >
                 <Image
@@ -92,7 +92,7 @@ export default function Header() {
           onClose={() => setLogin(false)}
           onLogin={loginHandler}
           movePage={() => {
-            router.push('/announce');
+            router.push(HEADER_TXT.announce.link);
           }}
         />
       )}

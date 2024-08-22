@@ -1,4 +1,5 @@
 import { cls } from '@/utils/config';
+import { ANNOUNCE_TXT } from '@/utils/constants';
 
 const PROGRESS_BAR_WIDTH = {
   default: 'w-1/2',
@@ -6,8 +7,8 @@ const PROGRESS_BAR_WIDTH = {
 };
 
 const STEP_INFO = [
-  { id: 0, title: '발표문 교정' },
-  { id: 1, title: '예상 질문 & 답변' },
+  { id: 0, title: ANNOUNCE_TXT.progressBar.first },
+  { id: 1, title: ANNOUNCE_TXT.progressBar.second },
 ];
 
 export default function ProgressBar({ currentSlide }) {
