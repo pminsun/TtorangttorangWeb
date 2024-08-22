@@ -34,11 +34,6 @@ export default function DetailSetting(props) {
 
   const detailSettingTxt = ANNOUNCE_TXT.detailSetting;
 
-  // 조건별 css
-  const purposeActiveClass = cls(presentPurpose === item ? 'active_color' : 'disabled_color');
-  const endingTxtActiveClass = cls(endingTxt === item ? 'active_color' : 'disabled_color');
-  const repeatActiveClass = cls('checkbox', repeat ? 'active_color' : 'disabled_color');
-
   return (
     <div className="detailSetting">
       <div>
@@ -68,7 +63,7 @@ export default function DetailSetting(props) {
             <p
               key={index}
               onClick={() => selectPurpose(item)}
-              className={purposeActiveClass}
+              className={cls(presentPurpose === item ? 'active_color' : 'disabled_color')}
             >
               {item}
             </p>
@@ -85,7 +80,7 @@ export default function DetailSetting(props) {
             <p
               key={index}
               onClick={() => selectEndingTxt(item)}
-              className={endingTxtActiveClass}
+              className={cls(endingTxt === item ? 'active_color' : 'disabled_color')}
             >
               - {item}
             </p>
@@ -94,7 +89,7 @@ export default function DetailSetting(props) {
       </div>
       <div className="repeat_box">
         <div onClick={() => setRepeat(!repeat)}>
-          <div className={repeatActiveClass}>
+          <div className={cls('checkbox', repeat ? 'active_color' : 'disabled_color')}>
             {repeat && (
               <Image
                 src={LocalImages.ImageIconCheckboxArrow}
