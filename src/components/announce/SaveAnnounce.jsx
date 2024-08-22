@@ -4,18 +4,20 @@ import { usePathname } from 'next/navigation';
 import GuideMent from './GuideMent';
 import { useQuery } from '@tanstack/react-query';
 import * as LocalImages from '@/utils/imageImports';
-import { useFinalScriptStore, useSettingStore, useQaLoadingStore, useLoginModalStore } from '@/store/store';
+import { useFinalScriptStore, useSettingStore, useQaLoadingStore } from '@/store/store';
 import { askListArray, cls, formatNumber } from '@/utils/config';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import Link from 'next/link';
 import { fetchModifyScript, fetchQnAData, fetchSaveScript, getDetailScript } from '@/api/fetchData';
 import { useRouter } from 'next/router';
 import { ANNOUNCE_TXT, MYPAGE_TXT } from '@/utils/constants';
+import DisplayQnA from './ExpectedQnA/DisplayQnA';
+import NoneQnA from './ExpectedQnA/NoneQnA';
+import BtnsQnA from './ExpectedQnA/BtnsQnA';
+import FinalAnnounce from './ExpectedQnA/FinalAnnounce';
 
 export default function SaveAnnounce({ userEmail, userAccessToken }) {
   const pathname = usePathname();
   const { subject } = useSettingStore();
-  const { setLogin } = useLoginModalStore();
   const [announcePage, setAnnouncePage] = useState(true);
   const { finalScript, setFinalScript, qaArray, setQaArray } = useFinalScriptStore();
   const [charCountFinal, setCharCountFinal] = useState(0);
@@ -52,6 +54,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userEmail]);
 
+  // 발표문 수정
   const userModifyScript = (event) => {
     const MAX_LENGTH = 3000;
     let draft = event.target.value;
@@ -238,11 +241,20 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
     }
   };
 
+  // 조건별 css
+  const containerClass = cls('main_container', announcePage ? '' : 'myAnnounce_detail_container');
+  const announceFormClass = cls(announcePage ? 'pt-[3.36vmin]' : 'pt-0');
+  const myAnnounceClass = cls('scriptSave_btn', modifySaveAnnounce ? 'active_color' : 'gray_colorTxt area_border', announcePage ? 'mt-[3.04vmin]' : 'mt-[2.28vmin]');
+  const qnaAreaClass = cls('qa_area', announcePage ? 'h-[52vmin]' : 'h-[55.55vmin]');
+
+  // 마이페이지 발표문 수정 여부 버튼 텍스트 변경
+  const changeAnnounceBtnTxt = modifySaveAnnounce ? MYPAGE_TXT.detailMyScript.saveBtn : MYPAGE_TXT.detailMyScript.modifyBtn;
+
   return (
-    <section className={cls('main_container', announcePage ? '' : 'myAnnounce_detail_container')}>
+    <section className={containerClass}>
       {announcePage && <div className="progress_bar"></div>}
       <section className="saveQa_area">
-        <form className={cls(announcePage ? 'pt-[3.36vmin]' : 'pt-0')}>
+        <form className={announceFormClass}>
           <div className="userModify_box">
             {announcePage && (
               <GuideMent
@@ -250,6 +262,7 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                 secondMent={ANNOUNCE_TXT.GuideTxt.twoStep.left.secondMent}
               />
             )}
+            {/* 마이페이지 상세 발표문 제목 변경 */}
             {!announcePage && (
               <div className="scriptTitle_area">
                 <p>({modifyTitleCharCount}/30)</p>
@@ -261,43 +274,23 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                 />
               </div>
             )}
+            {/* 최종 발표문 */}
             <div className={cls('scriptFinal_area', announcePage ? 'h-[51.59vmin]' : 'h-[55.55vmin]')}>
               <p className="title">{ANNOUNCE_TXT.scriptFinal.title}</p>
-              <div className={cls('scriptTxt', announcePage ? 'h-[calc(100%-8vmin)]' : 'h-[44vmin]')}>
-                <textarea
-                  placeholder={ANNOUNCE_TXT.scriptWrite.inputDescription}
-                  maxLength="3000"
-                  value={announcePage ? finalScript : saveAnnounce}
-                  onChange={userModifyScript}
-                  disabled={modifySaveAnnounce || announcePage ? false : true}
-                  className={cls(announcePage ? 'h-[36vmin]' : '!h-[39vmin]')}
-                />
-                <p>{announcePage ? formatNumber(charCountFinal) : formatNumber(saveAnnounceCharCount)}/ 3000</p>
-              </div>
-              <div className="copy_box">
-                <CopyToClipboard
-                  className="copyClipboard"
-                  text={announcePage ? finalScript : saveAnnounce}
-                  onCopy={() => alert('완성된 발표문을 복사했어요')}
-                >
-                  <div>
-                    <div className="icon">
-                      <Image
-                        src={LocalImages.ImageIconCopy}
-                        alt="ImageIconCopy"
-                        width={24}
-                        height={24}
-                      />
-                    </div>
-                    <p>복사하기</p>
-                  </div>
-                </CopyToClipboard>
-              </div>
+              <FinalAnnounce
+                announcePage={announcePage}
+                saveAnnounce={saveAnnounce}
+                userModifyScript={userModifyScript}
+                modifySaveAnnounce={modifySaveAnnounce}
+                charCountFinal={charCountFinal}
+                saveAnnounceCharCount={saveAnnounceCharCount}
+              />
             </div>
+            {/* 마이페이지 상세 발표문 사용자 수정 및 저장 */}
             {!announcePage && (
               <button
                 type="button"
-                className={cls('scriptSave_btn', modifySaveAnnounce ? 'active_color' : 'gray_colorTxt area_border', announcePage ? 'mt-[3.04vmin]' : 'mt-[2.28vmin]')}
+                className={myAnnounceClass}
                 onClick={() => {
                   if (!modifySaveAnnounce) {
                     setModifySaveAnnounce(!modifySaveAnnounce);
@@ -308,10 +301,11 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                   }
                 }}
               >
-                {modifySaveAnnounce ? MYPAGE_TXT.detailMyScript.saveBtn : MYPAGE_TXT.detailMyScript.modifyBtn}
+                {changeAnnounceBtnTxt}
               </button>
             )}
           </div>
+          {/* 예상 질문 답변 영역 */}
           <div className="qa_box">
             <GuideMent
               firstMent={ANNOUNCE_TXT.GuideTxt.twoStep.right.firstMent}
@@ -319,23 +313,9 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
               saveMentStyle={announcePage ? '' : 'saveMentStyle'}
             />
             <div>
-              <div className={cls('qa_area', announcePage ? 'h-[52vmin]' : 'h-[55.55vmin]')}>
+              <div className={qnaAreaClass}>
                 {qaArray?.length === 0 && announcePage ? (
-                  <div className="none_qa">
-                    <div>
-                      <Image
-                        src={LocalImages.ImageTtorangNote}
-                        alt="ImageTtorangNote"
-                        width={254}
-                        height={254}
-                      />
-                    </div>
-                    <p>
-                      {ANNOUNCE_TXT.scriptFinal.noneQna.first}
-                      <br />
-                      {ANNOUNCE_TXT.scriptFinal.noneQna.second}
-                    </p>
-                  </div>
+                  <NoneQnA />
                 ) : (
                   <ul>
                     {qaItems?.map((item, index) => (
@@ -343,62 +323,23 @@ export default function SaveAnnounce({ userEmail, userAccessToken }) {
                         key={index}
                         onClick={() => toggleQAItem(index)}
                       >
-                        <div className={cls('question_area', announcePage ? 'min-h-[12.8vmin]' : 'min-h-[13.7vmin]')}>
-                          <p>{ANNOUNCE_TXT.scriptFinal.question}</p>
-                          <p className={cls('question', askListState[index] ? 'font-bold' : 'font-medium')}>{item.question}</p>
-                          <div className={cls('list_arrow', askListState[index] ? 'scale-y-[-1]' : 'scale-y-[1]')}>
-                            <Image
-                              src={LocalImages.ImageIconArrow}
-                              alt="ImageIconArrow"
-                              width={24}
-                              height={24}
-                            />
-                          </div>
-                        </div>
-                        <div className={cls('answer_area', askListState[index] ? 'on' : '')}>
-                        <p>{ANNOUNCE_TXT.scriptFinal.answer}</p>
-                          <p className="answer">{item.answer}</p>
-                          <div className="list_arrow">
-                            <Image
-                              src={LocalImages.ImageIconArrow}
-                              alt="ImageIconArrow"
-                              width={24}
-                              height={24}
-                            />
-                          </div>
-                        </div>
+                        <DisplayQnA
+                          announcePage={announcePage}
+                          item={item}
+                          index={index}
+                          askListState={askListState}
+                        />
                       </li>
                     ))}
                   </ul>
                 )}
               </div>
-              {announcePage && (
-                <div className="finalBtn_box">
-                  <button
-                    type="button"
-                    onClick={getQAList}
-                    className={cls(finalScript.length > 0 ? 'active_color cursor-pointer' : 'cursor-default')}
-                  >
-                    {qaArray?.length > 0 ? ANNOUNCE_TXT.scriptFinal.AgainGetQna : ANNOUNCE_TXT.scriptFinal.initialGetQna}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => (userEmail && qaArray?.length > 0 ? (saveScriptToAccount(), router.push('/mypage')) : qaArray.length > 0 ? setLogin(true) : '')}
-                    className={cls(qaArray?.length > 0 ? 'active_color cursor-pointer' : 'cursor-default bg-[#fff]')}
-                  >
-                    {ANNOUNCE_TXT.scriptFinal.saveBtn}
-                  </button>
-                </div>
-              )}
-              {!announcePage && (
-                <Link
-                  href={'/mypage'}
-                  type="button"
-                  className="back_btn"
-                >
-                  {MYPAGE_TXT.detailMyScript.backBtn}
-                </Link>
-              )}
+              <BtnsQnA
+                announcePage={announcePage}
+                getQAList={getQAList}
+                userEmail={userEmail}
+                saveScriptToAccount={saveScriptToAccount}
+              />
             </div>
           </div>
         </form>
