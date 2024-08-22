@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { useFinalScriptStore, useSettingStore, useQaLoadingStore } from '@/store/store';
-import { askListArray, cls } from '@/utils/config';
+import { cls } from '@/utils/config';
 import { fetchModifyScript, fetchQnAData, fetchSaveScript, getDetailScript } from '@/api/fetchData';
 import { useRouter } from 'next/router';
 import { ANNOUNCE_TXT, MYPAGE_TXT } from '@/utils/constants';
