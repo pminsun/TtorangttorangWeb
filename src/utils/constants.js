@@ -144,3 +144,5 @@ export const MYPAGE_TXT = {
     backBtn: '뒤로가기',
   },
 };
+
+export const TEST_TXT = {};
